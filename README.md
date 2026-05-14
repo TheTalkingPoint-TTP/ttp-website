@@ -96,6 +96,27 @@ Reg-body links are wired to the respective lookup pages (HPCSA iRegister, SACSSP
 ### 0c. Quick-exit button (new — privacy escape)
 A floating "Quick exit" button bottom-right of every page. Clicking it (or pressing **Esc**) redirects to `bbc.com/weather` and clears the page from browser history. Useful for DV-mediation and sensitive-case visitors. If TTP wants the exit URL changed, search for `'https://www.bbc.com/weather'` in the inline `<script>`.
 
+### 0d. Professional memberships row (new — text-badge placeholders)
+The "Memberships" row in the trust band lists 7 bodies as styled text badges: **ASCHP, DiSAC, FAMAC, SACSSP, HPCSA, NABFAM, SAAM** (same set as the existing live site at thetalkingpoint.co.za).
+
+Closer to launch, swap each `<span class="badge">…</span>` for the real logo (inline SVG or `<img>`). An HTML comment in `index.html` lists the website for each body so logos can be sourced + linked. Suggested format:
+
+```html
+<a href="https://www.hpcsa.co.za/" target="_blank" rel="noopener" class="badge">
+  <img src="assets/img/memberships/hpcsa.svg" alt="HPCSA" />
+</a>
+```
+
+### 0e. Phone numbers (now both visible — verify which is which)
+The CTA shows two numbers and the footer shows two phone lines:
+- `021 300 2053` — labelled "office"
+- `072 565 9255` — labelled "24/7 line"
+
+Both came from the existing live site. Closer to launch, confirm which is which (and whether 072 is the actual ListenUp dedicated number or a personal cell).
+
+### 0f. Email — now `bianca@thetalkingpoint.co.za`
+Footer was `info@…` (aspirational), now matches the live site's `bianca@…`. Swap if a generic `info@` mailbox is preferred for inbound enquiries.
+
 ### 1. Social media links
 All four social icons in the footer are already wired:
 - LinkedIn → `linkedin.com/company/the-talking-point`

@@ -1219,14 +1219,39 @@
   }
   .howstart-title em { font-style: italic; color: var(--lime); }
   .howstart-sub { font-size: 16px; line-height: 1.55; color: rgba(14,30,58,0.7); margin-top: 18px; }
-  .howstart-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 880px) { .howstart-grid { grid-template-columns: 1fr; } }
+  .howstart-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 1100px) { .howstart-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+  @media (max-width: 560px)  { .howstart-grid { grid-template-columns: 1fr; } }
   .howstart-step {
     background: var(--ivory-warm);
     border: 1px solid var(--hairline-dark);
     border-radius: 18px;
-    padding: 32px 28px;
+    padding: 28px 24px;
     position: relative;
+  }
+
+  /* ─── MEMBERSHIPS ROW (inside .trust band) ─── */
+  .trust-inner { flex-direction: column; align-items: stretch; gap: 24px; }
+  .trust-row { display: flex; align-items: center; justify-content: space-between; gap: 36px; flex-wrap: wrap; }
+  .trust-row + .trust-row { padding-top: 22px; border-top: 1px solid var(--hairline-dark); }
+  .trust-items.memberships { gap: 14px; }
+  .trust-items .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    background: var(--navy);
+    color: var(--ivory);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 720px) {
+    .trust-row { gap: 14px; }
+    .trust-items.memberships { gap: 8px; }
+    .trust-items .badge { padding: 5px 10px; font-size: 9px; letter-spacing: 0.12em; }
   }
   .howstart-num {
     font-family: var(--mono);
@@ -1687,14 +1712,40 @@
 <!-- ═══════════════════════════════════════════════ TRUST -->
 <div class="trust">
   <div class="trust-inner container">
-    <span class="trust-label">Governance</span>
-    <div class="trust-items">
-      <span>POPIA</span>
-      <span>HPCSA-registered</span>
-      <span>Clinical supervision</span>
-      <span>SLA-backed</span>
-      <span>9 provinces</span>
-      <span>Since 2017</span>
+    <!--
+      MEMBERSHIPS ROW — text badges as placeholders. Closer to launch, swap these
+      <span class="badge">…</span> elements for inline SVG/IMG logos when TTP supplies them.
+      Body name → likely link target (for future logo + click-through):
+        ASCHP   → https://www.aschp.net/
+        DiSAC   → https://disac.co.za/
+        FAMAC   → https://famac.co.za/
+        SACSSP  → https://www.sacssp.co.za/
+        HPCSA   → https://www.hpcsa.co.za/
+        NABFAM  → https://nabfam.org.za/
+        SAAM    → https://www.saam.org.za/
+    -->
+    <div class="trust-row">
+      <span class="trust-label">Memberships</span>
+      <div class="trust-items memberships">
+        <span class="badge">ASCHP</span>
+        <span class="badge">DiSAC</span>
+        <span class="badge">FAMAC</span>
+        <span class="badge">SACSSP</span>
+        <span class="badge">HPCSA</span>
+        <span class="badge">NABFAM</span>
+        <span class="badge">SAAM</span>
+      </div>
+    </div>
+    <div class="trust-row">
+      <span class="trust-label">Governance</span>
+      <div class="trust-items">
+        <span>POPIA</span>
+        <span>HPCSA-registered</span>
+        <span>Clinical supervision</span>
+        <span>SLA-backed</span>
+        <span>9 provinces</span>
+        <span>Since 2017</span>
+      </div>
     </div>
   </div>
 </div>
@@ -1711,18 +1762,23 @@
     <div class="howstart-grid">
       <div class="howstart-step">
         <span class="howstart-num">Step 01</span>
-        <h3 class="howstart-step-title">You <em>reach out</em>.</h3>
-        <p class="howstart-step-desc">Send a WhatsApp to ListenUp, or call the line. No forms. No questionnaires. No diagnostic checklist before you can speak.</p>
+        <h3 class="howstart-step-title"><em>First contact</em>.</h3>
+        <p class="howstart-step-desc">WhatsApp, call, or message. No forms. No questionnaires. The door is always open — 3am, Sunday, Christmas Day.</p>
       </div>
       <div class="howstart-step">
         <span class="howstart-num">Step 02</span>
-        <h3 class="howstart-step-title">A real human <em>answers</em>.</h3>
-        <p class="howstart-step-desc">Usually within a few minutes. 24/7/365 — including 3am, Sundays, public holidays. In your language, on your terms.</p>
+        <h3 class="howstart-step-title"><em>ListenUp</em> answers.</h3>
+        <p class="howstart-step-desc">A real, qualified human picks up — case manager, counsellor, or social worker. End-to-end encrypted. In your language. Usually within minutes.</p>
       </div>
       <div class="howstart-step">
         <span class="howstart-num">Step 03</span>
-        <h3 class="howstart-step-title">We <em>walk it</em> with you.</h3>
-        <p class="howstart-step-desc">A confidential conversation with a qualified counsellor, mediator, or trauma specialist — in-person, by phone, or video. We figure out the right next step together.</p>
+        <h3 class="howstart-step-title"><em>Checking in</em>.</h3>
+        <p class="howstart-step-desc">We don't leave you wondering what happens next. Whether it was one conversation or the start of something longer, we follow up.</p>
+      </div>
+      <div class="howstart-step">
+        <span class="howstart-num">Step 04</span>
+        <h3 class="howstart-step-title">Meet the <em>experts</em>.</h3>
+        <p class="howstart-step-desc">If you need ongoing support, we match you with the right qualified professional — counsellor, mediator, or trauma specialist — in your province.</p>
       </div>
     </div>
   </div>
@@ -1743,6 +1799,9 @@
       </a>
       <a href="tel:+27213002053" class="btn-outline">Call 021 300 2053</a>
     </div>
+    <p style="margin-top: 22px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(14,30,58,0.6);">
+      After hours? 24/7 line <a href="tel:+27725659255" style="color: var(--navy); border-bottom: 1px dotted rgba(14,30,58,0.4); padding-bottom: 1px;">072 565 9255</a>
+    </p>
   </div>
 </section>
 
@@ -1793,8 +1852,9 @@
       <div class="footer-col">
         <h4>Reach us</h4>
         <ul>
-          <li><a href="tel:+27213002053">+27 (0) 21 300 2053</a></li>
-          <li><a href="mailto:info@thetalkingpoint.co.za">info@thetalkingpoint.co.za</a></li>
+          <li><a href="tel:+27213002053">+27 (0) 21 300 2053</a> <span style="opacity:0.5; font-size:12px;">· office</span></li>
+          <li><a href="tel:+27725659255">072 565 9255</a> <span style="opacity:0.5; font-size:12px;">· 24/7 line</span></li>
+          <li><a href="mailto:bianca@thetalkingpoint.co.za">bianca@thetalkingpoint.co.za</a></li>
           <li><a href="https://wa.me/27829089319">WhatsApp ListenUp</a></li>
         </ul>
       </div>
