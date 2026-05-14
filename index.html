@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Talking Point — Real humans. Real support. 24/7.</title>
+<meta name="description" content="The Talking Point Group. Mental health, trauma response, and mediation that actually works. Real humans. Real support. 24/7. Across all nine provinces of South Africa." />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="The Talking Point — Real humans. Real support. 24/7." />
+<meta property="og:description" content="Mental health, trauma response, and mediation that actually works. Across all nine provinces of South Africa." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://thetalkingpoint.co.za" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #0E1E3A;
+    --navy-90: #14254a;
+    --navy-80: #1c2f5a;
+    --lime: #8BC53F;
+    --lime-bright: #a4dc4e;
+    --ivory: #FAF7F2;
+    --ivory-warm: #F4EFE6;
+    --coral: #FF5C39;
+    --coral-soft: #FFB7A3;
+    --ink: #0A0F1F;
+    --mute: rgba(250, 247, 242, 0.55);
+    --mute-dark: rgba(14, 30, 58, 0.6);
+    --hairline: rgba(250, 247, 242, 0.14);
+    --hairline-dark: rgba(14, 30, 58, 0.12);
+
+    --display: "Fraunces", "Times New Roman", serif;
+    --body: "Outfit", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--ivory);
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--lime); color: var(--navy); }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { display: block; max-width: 100%; height: auto; }
+
+  /* ─── GRAIN OVERLAY ─── */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  /* ─── NAV ─── */
+  nav.top {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 22px clamp(20px, 4vw, 56px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s var(--ease-out), backdrop-filter 0.4s, border-color 0.4s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.top.scrolled {
+    background: rgba(14, 30, 58, 0.72);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .logo {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    display: flex;
+    align-items: baseline;
+    gap: 1px;
+  }
+  .logo .semi {
+    color: var(--lime);
+    font-weight: 700;
+    display: inline-block;
+    transform: translateY(2px);
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .nav-links a {
+    position: relative;
+    padding: 6px 0;
+    color: var(--ivory);
+    transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--lime);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--ease-out);
+  }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-cta {
+    background: var(--lime);
+    color: var(--navy);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: transform 0.3s var(--ease-out), background 0.3s;
+  }
+  .nav-cta:hover { background: var(--lime-bright); transform: translateY(-1px); }
+
+  .burger { display: none; }
+  @media (max-width: 880px) {
+    .nav-links, .nav-cta { display: none; }
+    .burger {
+      display: flex; flex-direction: column; gap: 5px;
+      padding: 8px; cursor: pointer;
+    }
+    .burger span {
+      width: 22px; height: 1.5px; background: var(--ivory); transition: 0.3s;
+    }
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    padding: 140px clamp(20px, 4vw, 56px) 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(139, 197, 63, 0.08), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(255, 92, 57, 0.06), transparent 60%);
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--mute);
+    z-index: 2;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .hero-meta .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--lime);
+    margin-right: 8px;
+    animation: pulse 2s var(--ease-in-out) infinite;
+    vertical-align: middle;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(139, 197, 63, 0.6); }
+    50% { box-shadow: 0 0 0 10px rgba(139, 197, 63, 0); }
+  }
+
+  .hero-headline {
+    font-family: var(--display);
+    font-weight: 350;
+    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+    font-size: clamp(56px, 11vw, 184px);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    color: var(--ivory);
+    margin: 60px 0 40px;
+    z-index: 2;
+    position: relative;
+  }
+  .hero-headline em {
+    font-style: italic;
+    font-weight: 350;
+    color: var(--lime);
+    font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+  }
+  .hero-headline .underline-scribble {
+    position: relative;
+    display: inline-block;
+  }
+  .hero-headline .underline-scribble svg {
+    position: absolute;
+    left: -2%; right: -2%; bottom: -8%;
+    width: 104%;
+    height: 26%;
+    overflow: visible;
+  }
+  .hero-headline .underline-scribble svg path {
+    fill: none;
+    stroke: var(--coral);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    animation: scribble 1.6s 1.2s var(--ease-out) forwards;
+  }
+  @keyframes scribble { to { stroke-dashoffset: 0; } }
+
+  .hero-foot {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: end;
+    gap: 40px;
+    z-index: 2;
+    position: relative;
+  }
+  .hero-sub {
+    font-family: var(--body);
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.45;
+    max-width: 480px;
+    color: rgba(250, 247, 242, 0.78);
+  }
+  .hero-sub strong { color: var(--ivory); font-weight: 600; }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--lime);
+    color: var(--navy);
+    padding: 18px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.3s var(--ease-out), background 0.3s;
+    border: none;
+    cursor: pointer;
+    font-family: var(--body);
+  }
+  .btn-primary:hover { background: var(--lime-bright); transform: translateY(-2px); }
+  .btn-primary .arrow { width: 16px; height: 16px; transition: transform 0.3s var(--ease-out); }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+  .btn-ghost {
+    color: var(--ivory);
+    padding: 18px 32px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    font-weight: 500;
+    font-size: 15px;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: pointer;
+    font-family: var(--body);
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--ivory); background: rgba(250, 247, 242, 0.04); }
+
+  @media (max-width: 720px) {
+    .hero-foot { grid-template-columns: 1fr; }
+    .hero-actions { justify-content: flex-start; }
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee {
+    background: var(--ivory);
+    color: var(--navy);
+    padding: 28px 0;
+    overflow: hidden;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    position: relative;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 48px;
+    white-space: nowrap;
+    animation: marquee 38s linear infinite;
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(32px, 5vw, 64px);
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .marquee-track span { display: flex; align-items: center; gap: 48px; }
+  .marquee-track .dot { width: 10px; height: 10px; background: var(--lime); border-radius: 50%; flex-shrink: 0; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ─── REAL HUMANS STRIP ─── */
+  .humans {
+    background: var(--ivory);
+    padding: 80px clamp(20px, 4vw, 56px);
+    color: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+  .humans-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+    margin-bottom: 48px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (max-width: 720px) {
+    .humans-head { grid-template-columns: 1fr; }
+  }
+  .humans-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+    font-size: clamp(36px, 5.5vw, 72px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+  .humans-title em { font-style: italic; color: var(--lime); font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1; }
+  .humans-sub {
+    font-size: 16px;
+    color: rgba(14, 30, 58, 0.65);
+    max-width: 36ch;
+    text-align: right;
+    line-height: 1.45;
+  }
+  @media (max-width: 720px) {
+    .humans-sub { text-align: left; }
+  }
+  .humans-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 880px) {
+    .humans-strip { grid-template-columns: repeat(3, 1fr); }
+    .humans-strip > *:nth-child(n+4) { display: none; }
+  }
+  @media (max-width: 480px) {
+    .humans-strip { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .humans-strip > *:nth-child(n+3) { display: none; }
+  }
+  .human-card {
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.6s var(--ease-out);
+    color: var(--ivory);
+    /* Each card has a distinctive on-brand gradient (works WITH OR WITHOUT a photo) */
+  }
+  .human-card:nth-child(1) { background: linear-gradient(160deg, #1c2f5a 0%, #0E1E3A 50%, #14254a 100%); }
+  .human-card:nth-child(2) { background: linear-gradient(160deg, #0E1E3A 0%, #14254a 60%, #8BC53F 180%); }
+  .human-card:nth-child(3) { background: linear-gradient(160deg, #14254a 0%, #1c2f5a 50%, #0E1E3A 100%); }
+  .human-card:nth-child(4) { background: linear-gradient(160deg, #0E1E3A 0%, #1c2f5a 70%, #FF5C39 220%); }
+  .human-card:nth-child(5) { background: linear-gradient(160deg, #1c2f5a 0%, #0E1E3A 100%); }
+
+  .human-card:hover { transform: translateY(-6px); }
+
+  /* Photo overlay (shows on top of gradient if it loads) */
+  .human-card .photo {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.2) contrast(1.05);
+    transition: filter 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    z-index: 1;
+  }
+  .human-card:hover .photo { filter: grayscale(0) contrast(1); transform: scale(1.03); }
+  /* Gradient overlay for legibility — also sits on top of photo when present */
+  .human-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14, 30, 58, 0.15) 0%, transparent 35%, rgba(14, 30, 58, 0.85) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* The "card content" sits on top of everything */
+  .human-card .card-inner {
+    position: absolute; inset: 0;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 3;
+  }
+  .human-card .initial {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(250, 247, 242, 0.3);
+    background: rgba(250, 247, 242, 0.08);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 500;
+    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+    color: var(--ivory);
+    font-style: italic;
+  }
+  .human-card .name {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ivory);
+    margin-bottom: 8px;
+  }
+  .human-card .role {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ivory);
+    opacity: 0.85;
+  }
+  .human-card .role .green {
+    color: var(--lime);
+    display: inline-block;
+    margin-right: 5px;
+  }
+  /* staggered heights for kinetic feel */
+  .human-card:nth-child(2) { transform: translateY(20px); }
+  .human-card:nth-child(2):hover { transform: translateY(14px); }
+  .human-card:nth-child(4) { transform: translateY(12px); }
+  .human-card:nth-child(4):hover { transform: translateY(6px); }
+  @media (max-width: 720px) {
+    .human-card:nth-child(2), .human-card:nth-child(4) { transform: none; }
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: clamp(80px, 12vh, 140px) clamp(20px, 4vw, 56px); position: relative; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute);
+    margin-bottom: 32px;
+  }
+  .eyebrow .marker { width: 8px; height: 8px; background: var(--lime); border-radius: 50%; }
+  .eyebrow.dark { color: var(--mute-dark); }
+  .section-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin-bottom: 32px;
+    max-width: 18ch;
+  }
+  .section-title em { font-style: italic; color: var(--lime); font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1; }
+
+  /* ─── MANIFESTO ─── */
+  .manifesto { background: var(--ivory); color: var(--navy); }
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: start;
+  }
+  @media (max-width: 880px) { .manifesto-grid { grid-template-columns: 1fr; } }
+  .manifesto-list { list-style: none; }
+  .manifesto-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-top: 1px solid var(--hairline-dark);
+    align-items: baseline;
+  }
+  .manifesto-item:last-child { border-bottom: 1px solid var(--hairline-dark); }
+  .manifesto-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--navy);
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+  .manifesto-text {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .manifesto-text strong {
+    font-weight: 600;
+    background: linear-gradient(180deg, transparent 60%, rgba(139, 197, 63, 0.35) 60%);
+    padding: 0 4px;
+  }
+
+  /* ─── PHONE / LISTENUP SHOWCASE ─── */
+  .listenup { background: var(--navy); overflow: hidden; position: relative; }
+  .listenup-bg {
+    position: absolute;
+    top: -10%; right: -10%;
+    width: 60%; aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(139, 197, 63, 0.1), transparent 60%);
+    pointer-events: none;
+  }
+  .listenup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+    position: relative;
+  }
+  @media (max-width: 880px) { .listenup-grid { grid-template-columns: 1fr; } }
+  .listenup-copy { max-width: 540px; }
+  .listenup-copy p { font-size: 18px; line-height: 1.55; color: rgba(250, 247, 242, 0.75); margin-bottom: 24px; }
+  .listenup-features {
+    list-style: none;
+    margin-top: 32px;
+    display: grid;
+    gap: 14px;
+  }
+  .listenup-features li {
+    padding-left: 28px;
+    position: relative;
+    font-size: 16px;
+    color: var(--ivory);
+  }
+  .listenup-features li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 14px; height: 1.5px;
+    background: var(--lime);
+  }
+
+  /* Phone mockup */
+  .phone-wrap { display: flex; justify-content: center; perspective: 1200px; }
+  .phone {
+    width: 320px; height: 640px;
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    border-radius: 44px;
+    padding: 12px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.08);
+    transform: rotateY(-8deg) rotateX(4deg);
+    transition: transform 0.6s var(--ease-out);
+  }
+  .phone:hover { transform: rotateY(0) rotateX(0); }
+  .phone-screen { width: 100%; height: 100%; background: #ECE5DD; border-radius: 32px; overflow: hidden; position: relative; }
+  .phone-header {
+    background: #075E54;
+    padding: 14px 16px 12px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .phone-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--lime);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .phone-name { font-family: var(--body); font-size: 14px; font-weight: 600; line-height: 1.2; }
+  .phone-status { font-family: var(--body); font-size: 11px; opacity: 0.8; }
+  .phone-status .live { display: inline-block; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; margin-right: 4px; animation: pulse 2s infinite; }
+  .phone-messages { padding: 16px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .msg { max-width: 80%; padding: 8px 12px; border-radius: 12px; font-size: 13px; line-height: 1.35; color: #111; font-family: var(--body); animation: msgIn 0.5s var(--ease-out) backwards; }
+  .msg.in { background: white; border-top-left-radius: 4px; align-self: flex-start; }
+  .msg.out { background: #DCF8C6; border-top-right-radius: 4px; align-self: flex-end; }
+  .msg .time { display: block; font-size: 9px; color: #555; text-align: right; margin-top: 3px; }
+  .msg:nth-child(1) { animation-delay: 0.2s; }
+  .msg:nth-child(2) { animation-delay: 0.6s; }
+  .msg:nth-child(3) { animation-delay: 1.0s; }
+  .msg:nth-child(4) { animation-delay: 1.6s; }
+  .msg:nth-child(5) { animation-delay: 2.2s; }
+  @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .typing { display: inline-flex; gap: 3px; padding: 8px 12px; background: white; border-radius: 12px; align-self: flex-start; }
+  .typing span { width: 6px; height: 6px; background: #888; border-radius: 50%; animation: typing 1.4s var(--ease-in-out) infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+  /* ─── SERVICES ─── */
+  .services { background: var(--ivory); color: var(--navy); }
+  .services-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+  @media (max-width: 880px) { .services-head { grid-template-columns: 1fr; } }
+  .services-intro { max-width: 460px; font-size: 18px; color: rgba(14, 30, 58, 0.7); line-height: 1.5; }
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--hairline-dark);
+  }
+  @media (max-width: 880px) { .service-grid { grid-template-columns: 1fr; } }
+  .service-card {
+    padding: 0 0 40px;
+    border-right: 1px solid var(--hairline-dark);
+    border-bottom: 1px solid var(--hairline-dark);
+    position: relative;
+    transition: background 0.4s var(--ease-out);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .service-card:last-child { border-right: none; }
+  @media (max-width: 880px) { .service-card { border-right: none; } }
+  .service-card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--lime);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s var(--ease-out);
+    z-index: 2;
+  }
+  .service-card:hover::before { transform: scaleY(1); transform-origin: top; }
+  .service-card:hover { background: rgba(139, 197, 63, 0.06); }
+  .service-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin-bottom: 32px;
+    filter: grayscale(0.3) contrast(1.05);
+    transition: filter 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    background: linear-gradient(135deg, var(--navy), var(--navy-80)); /* fallback */
+  }
+  .service-card:hover .service-img { filter: grayscale(0) contrast(1); }
+  .service-body { padding: 0 32px; }
+  .service-body.no-image-pad { padding-top: 40px; }
+  .service-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--navy);
+    opacity: 0.5;
+    letter-spacing: 0.14em;
+    margin-bottom: 24px;
+  }
+  .service-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .service-desc { font-size: 15px; line-height: 1.5; color: rgba(14, 30, 58, 0.7); margin-bottom: 28px; }
+  .service-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+  .service-tags li {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border: 1px solid var(--hairline-dark);
+    border-radius: 999px;
+    color: var(--navy);
+  }
+
+  /* ─── RESPONSE / GOLDEN EGG ─── */
+  .response { background: var(--navy); color: var(--ivory); position: relative; overflow: hidden; }
+  .response::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 30% at 80% 50%, rgba(255, 92, 57, 0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .response-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: center;
+    position: relative;
+  }
+  @media (max-width: 880px) { .response-grid { grid-template-columns: 1fr; } }
+  .response-callout {
+    background: rgba(250, 247, 242, 0.03);
+    border: 1px solid var(--hairline);
+    border-radius: 24px;
+    padding: 36px;
+    backdrop-filter: blur(10px);
+  }
+  .response-callout .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--coral);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .response-callout .label .dot { width: 8px; height: 8px; background: var(--coral); border-radius: 50%; animation: pulse-coral 2s infinite; }
+  @keyframes pulse-coral { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 92, 57, 0.6); } 50% { box-shadow: 0 0 0 12px rgba(255, 92, 57, 0); } }
+  .response-callout h3 {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .response-callout p { font-size: 15px; line-height: 1.55; color: rgba(250, 247, 242, 0.7); }
+  .response-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+  }
+  .stat-num {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-weight: 380;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--lime);
+    letter-spacing: -0.02em;
+  }
+  .stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mute); margin-top: 8px; }
+
+  /* ─── SPLIT PATH ─── */
+  .paths { background: var(--ivory-warm); color: var(--navy); }
+  .path-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 60px;
+  }
+  @media (max-width: 720px) { .path-grid { grid-template-columns: 1fr; } }
+  .path-card {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: 48px 40px;
+    border-radius: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 380px;
+  }
+  .path-card:hover { transform: translateY(-6px); }
+  .path-card.alt { background: var(--coral); color: var(--navy); }
+  .path-card::after {
+    content: "";
+    position: absolute;
+    right: -30%; bottom: -30%;
+    width: 80%; aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 197, 63, 0.2), transparent 70%);
+    pointer-events: none;
+  }
+  .path-card.alt::after { background: radial-gradient(circle, rgba(14, 30, 58, 0.15), transparent 70%); }
+  .path-tag { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.7; }
+  .path-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin-top: auto;
+  }
+  .path-title em { font-style: italic; color: var(--lime); }
+  .path-card.alt .path-title em { color: var(--navy); font-weight: 500; }
+  .path-desc { font-size: 15px; line-height: 1.5; opacity: 0.8; max-width: 32ch; }
+  .path-arrow {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(250, 247, 242, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, transform 0.3s;
+    border: 1px solid var(--hairline);
+  }
+  .path-card:hover .path-arrow { background: var(--lime); border-color: var(--lime); transform: rotate(-45deg); }
+  .path-card.alt .path-arrow { background: rgba(14, 30, 58, 0.1); border-color: rgba(14, 30, 58, 0.2); }
+  .path-card.alt:hover .path-arrow { background: var(--navy); }
+  .path-card.alt:hover .path-arrow svg path { stroke: var(--ivory); }
+  .path-card:hover .path-arrow svg path { stroke: var(--navy); }
+  .path-arrow svg { width: 16px; height: 16px; }
+  .path-arrow svg path { stroke: var(--ivory); stroke-width: 1.8; fill: none; transition: stroke 0.3s; }
+  .path-card.alt .path-arrow svg path { stroke: var(--navy); }
+
+  /* ─── TESTIMONIAL / QUOTE ─── */
+  .testimonial { background: var(--navy); padding: clamp(80px, 14vh, 160px) clamp(20px, 4vw, 56px); }
+  .testimonial-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .quote {
+    font-family: var(--display);
+    font-weight: 350;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+    font-size: clamp(28px, 4.2vw, 52px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ivory);
+    margin-bottom: 32px;
+  }
+  .quote em { font-style: italic; color: var(--lime); }
+  .quote-attr {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--mute);
+  }
+  .quote-attr .name { color: var(--ivory); }
+
+  /* ─── TRUST STRIP ─── */
+  .trust { background: var(--ivory); padding: 48px clamp(20px, 4vw, 56px); border-top: 1px solid var(--hairline-dark); border-bottom: 1px solid var(--hairline-dark); }
+  .trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .trust-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mute-dark); }
+  .trust-items { display: flex; gap: 36px; flex-wrap: wrap; }
+  .trust-items span {
+    font-family: var(--display);
+    font-weight: 480;
+    font-size: 18px;
+    color: var(--navy);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    letter-spacing: -0.01em;
+  }
+
+  /* ─── CTA ─── */
+  .cta {
+    background: var(--lime);
+    color: var(--navy);
+    padding: clamp(80px, 14vh, 160px) clamp(20px, 4vw, 56px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: ";";
+    position: absolute;
+    font-family: var(--display);
+    font-size: clamp(400px, 60vw, 800px);
+    line-height: 0.8;
+    color: rgba(14, 30, 58, 0.06);
+    bottom: -20%; right: -5%;
+    font-weight: 700;
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; z-index: 2; }
+  .cta-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--navy);
+    opacity: 0.7;
+    margin-bottom: 24px;
+  }
+  .cta-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 1;
+    font-size: clamp(48px, 8vw, 120px);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 40px;
+  }
+  .cta-title em { font-style: italic; }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+  .btn-dark {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: 20px 36px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.3s var(--ease-out), background 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: var(--body);
+  }
+  .btn-dark:hover { background: var(--navy-90); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    padding: 20px 36px;
+    border-radius: 999px;
+    border: 1.5px solid var(--navy);
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.3s, color 0.3s;
+    cursor: pointer;
+    font-family: var(--body);
+  }
+  .btn-outline:hover { background: var(--navy); color: var(--ivory); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: 80px clamp(20px, 4vw, 56px) 32px;
+    border-top: 1px solid var(--hairline);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+    font-weight: 350;
+    font-size: 34px;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+  }
+  .footer-brand em { color: var(--lime); font-style: italic; }
+  .footer-tagline { font-size: 15px; color: rgba(250, 247, 242, 0.6); max-width: 30ch; line-height: 1.5; margin-bottom: 28px; }
+
+  /* ─── SOCIAL ICONS ─── */
+  .socials {
+    display: flex;
+    gap: 10px;
+  }
+  .social-btn {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: rgba(250, 247, 242, 0.06);
+    border: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ivory);
+    transition: background 0.3s var(--ease-out), border-color 0.3s, transform 0.3s, color 0.3s;
+  }
+  .social-btn:hover {
+    background: var(--lime);
+    border-color: var(--lime);
+    color: var(--navy);
+    transform: translateY(-3px);
+  }
+  .social-btn svg { width: 18px; height: 18px; }
+
+  .footer-col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mute);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { font-size: 14px; color: rgba(250, 247, 242, 0.85); transition: color 0.3s; }
+  .footer-col a:hover { color: var(--lime); }
+  .footer-bottom {
+    border-top: 1px solid var(--hairline);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--mute);
+    text-transform: uppercase;
+  }
+
+  /* ─── REVEAL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── HERO INTRO ANIMATION ─── */
+  .hero-headline > * { animation: heroIn 1.2s var(--ease-out) backwards; }
+  .hero-headline .line1 { animation-delay: 0.1s; }
+  .hero-headline .line2 { animation-delay: 0.3s; }
+  .hero-headline .line3 { animation-delay: 0.5s; }
+  @keyframes heroIn { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-meta, .hero-sub, .hero-actions { animation: fadeIn 1s var(--ease-out) 0.8s backwards; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* utility */
+  .container { max-width: 1400px; margin: 0 auto; }
+
+</style>
+</head>
+<body>
+
+<nav class="top" id="topnav">
+  <a href="#" class="logo">the.talking point<span class="semi">;</span></a>
+  <div class="nav-links">
+    <a href="#manifesto">What we believe</a>
+    <a href="#listenup">ListenUp</a>
+    <a href="#services">Services</a>
+    <a href="#paths">For you / For business</a>
+  </div>
+  <a href="#cta" class="nav-cta">Start the conversation →</a>
+  <div class="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-meta">
+    <span><span class="dot"></span>Real humans answering, right now — 24/7</span>
+    <span>Est. 2017 / All 9 provinces</span>
+  </div>
+
+  <h1 class="hero-headline">
+    <span class="line1 line">Let's talk</span><br/>
+    <span class="line2 line">about what</span><br/>
+    <span class="line3 line">no one says
+      <span class="underline-scribble">
+        <em>out loud</em>
+        <svg viewBox="0 0 600 40" preserveAspectRatio="none">
+          <path d="M 8 28 Q 80 6, 160 22 T 320 18 T 480 24 T 592 16" />
+        </svg>
+      </span>.
+    </span>
+  </h1>
+
+  <div class="hero-foot">
+    <p class="hero-sub">
+      Mental health, trauma response, and mediation that actually works. <strong>Real humans</strong>, on the other end of a WhatsApp message, at 3am, in your language — when you don't know what else to do.
+    </p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">
+        Start the conversation
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#manifesto" class="btn-ghost">See what we're about</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>The 3am thoughts<span class="dot"></span>The call from the school<span class="dot"></span>The silence after<span class="dot"></span>The funeral nobody planned<span class="dot"></span>The marriage you can't fix alone<span class="dot"></span>The hijacking last week<span class="dot"></span>The grief that won't leave<span class="dot"></span>The 3am thoughts<span class="dot"></span>The call from the school<span class="dot"></span>The silence after<span class="dot"></span>The funeral nobody planned<span class="dot"></span>The marriage you can't fix alone<span class="dot"></span>The hijacking last week<span class="dot"></span>The grief that won't leave<span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ REAL HUMANS STRIP -->
+<!--
+  IMAGES NOTE: photos are hot-linked from images.unsplash.com (free Unsplash license).
+  To swap an image:
+    1. Go to unsplash.com, find the photo you want, click "Download free → original"
+    2. Right-click the resulting image and copy URL OR use the share URL format below
+    3. Replace the src= attribute. Format: https://images.unsplash.com/photo-XXX?w=800&q=80&auto=format&fit=crop
+  If you'd prefer to host locally: download images into /assets/img/ and change src to "assets/img/filename.jpg"
+-->
+<section class="humans">
+  <div class="humans-head">
+    <h2 class="humans-title">Real humans.<br/>Not <em>bots</em>. Not scripts.</h2>
+    <p class="humans-sub">A national network of qualified counsellors, mediators, social workers and case managers — across all nine provinces.</p>
+  </div>
+
+  <div class="humans-strip">
+    <div class="human-card">
+      <img class="photo" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <div class="card-inner">
+        <span class="initial">N</span>
+        <div>
+          <p class="name">Nomvula M.</p>
+          <p class="role"><span class="green">●</span> Case manager · Cape Town</p>
+        </div>
+      </div>
+    </div>
+    <div class="human-card">
+      <img class="photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <div class="card-inner">
+        <span class="initial">L</span>
+        <div>
+          <p class="name">Lerato D.</p>
+          <p class="role"><span class="green">●</span> Counsellor · Gauteng</p>
+        </div>
+      </div>
+    </div>
+    <div class="human-card">
+      <img class="photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <div class="card-inner">
+        <span class="initial">T</span>
+        <div>
+          <p class="name">Thando K.</p>
+          <p class="role"><span class="green">●</span> Mediator · KZN</p>
+        </div>
+      </div>
+    </div>
+    <div class="human-card">
+      <img class="photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <div class="card-inner">
+        <span class="initial">A</span>
+        <div>
+          <p class="name">Ayesha P.</p>
+          <p class="role"><span class="green">●</span> Trauma specialist · Western Cape</p>
+        </div>
+      </div>
+    </div>
+    <div class="human-card">
+      <img class="photo" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <div class="card-inner">
+        <span class="initial">S</span>
+        <div>
+          <p class="name">Sipho N.</p>
+          <p class="role"><span class="green">●</span> Social worker · Eastern Cape</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ MANIFESTO -->
+<section class="manifesto" id="manifesto">
+  <div class="container">
+    <div class="manifesto-grid">
+      <div>
+        <span class="eyebrow dark"><span class="marker"></span>What we believe / 01</span>
+        <h2 class="section-title">This isn't a wellness <em>app</em>.</h2>
+        <p style="font-size:17px; line-height:1.55; color: rgba(14,30,58,0.7); max-width: 40ch; margin-top: 16px;">
+          It's the medical that keeps us alive. It's the talking that lets us live. We've been doing this since 2017 — quietly, properly, with real people on the other end of the line.
+        </p>
+      </div>
+
+      <ol class="manifesto-list">
+        <li class="manifesto-item reveal">
+          <span class="manifesto-num">01 / 06</span>
+          <p class="manifesto-text">We don't do <strong>chatbots</strong>. The voice on the other end of your message is a real, qualified human.</p>
+        </li>
+        <li class="manifesto-item reveal reveal-delay-1">
+          <span class="manifesto-num">02 / 06</span>
+          <p class="manifesto-text">We don't do <strong>scripts</strong>. We do containing conversations, in your language, on your terms.</p>
+        </li>
+        <li class="manifesto-item reveal reveal-delay-2">
+          <span class="manifesto-num">03 / 06</span>
+          <p class="manifesto-text">We don't do <strong>nine-to-five</strong>. We answer at 3am, on a Sunday, on Christmas Day, on the worst day of your life.</p>
+        </li>
+        <li class="manifesto-item reveal reveal-delay-3">
+          <span class="manifesto-num">04 / 06</span>
+          <p class="manifesto-text">We don't do <strong>wellness theatre</strong>. We do trauma debriefing, mediation, family work, escalation when it's needed.</p>
+        </li>
+        <li class="manifesto-item reveal reveal-delay-4">
+          <span class="manifesto-num">05 / 06</span>
+          <p class="manifesto-text">We don't pretend you have to be <strong>okay</strong>. You're allowed to be in pieces. We'll sit with you anyway.</p>
+        </li>
+        <li class="manifesto-item reveal reveal-delay-4">
+          <span class="manifesto-num">06 / 06</span>
+          <p class="manifesto-text">We do <strong>show up</strong>. Clinically, professionally, every single time — backed by HPCSA-registered professionals across all nine provinces.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ LISTENUP -->
+<section class="listenup" id="listenup">
+  <div class="listenup-bg"></div>
+  <div class="container">
+    <div class="listenup-grid">
+      <div class="listenup-copy">
+        <span class="eyebrow"><span class="marker"></span>The platform / 02</span>
+        <h2 class="section-title">A WhatsApp message<br/>that <em>actually</em> gets answered.</h2>
+        <p>
+          ListenUp is our 24/7 confidential, one-on-one WhatsApp support service. End-to-end encrypted. No queue. No bot. No script. Just a qualified case manager — and behind them, a national network of professionals ready to escalate the moment they're needed.
+        </p>
+        <ul class="listenup-features">
+          <li>24/7/365 — real humans, every hour</li>
+          <li>End-to-end encrypted WhatsApp — no app to download</li>
+          <li>Multilingual professional network across all nine provinces</li>
+          <li>Clinical escalation to armed and medical response when required</li>
+        </ul>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-header">
+              <div class="phone-avatar">L</div>
+              <div>
+                <div class="phone-name">ListenUp</div>
+                <div class="phone-status"><span class="live"></span>online · responding</div>
+              </div>
+            </div>
+            <div class="phone-messages">
+              <div class="msg in">Hi. I don't really know how to start this.<span class="time">02:47</span></div>
+              <div class="msg out">I'm here. There's no right way to start. Take your time.<span class="time">02:48</span></div>
+              <div class="msg in">My husband hasn't been home for two nights and I can't stop crying. The kids are asking. I don't know what to tell them.<span class="time">02:50</span></div>
+              <div class="msg out">That's a lot to be carrying on your own at this hour. Are you safe right now?<span class="time">02:50</span></div>
+              <div class="msg out">Let's talk through what you need first — and then we can figure out the kids together.<span class="time">02:51</span></div>
+              <div class="typing"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-head">
+      <div>
+        <span class="eyebrow dark"><span class="marker"></span>What we do / 03</span>
+        <h2 class="section-title">Three pillars.<br/>One <em>human-first</em> ecosystem.</h2>
+      </div>
+      <p class="services-intro">
+        We work across mental health, mediation, and physical response — clinically supervised, governance-grade, and built for the moments that actually matter.
+      </p>
+    </div>
+
+    <div class="service-grid">
+      <article class="service-card reveal">
+        <img class="service-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.add('no-image-pad');" />
+        <div class="service-body">
+          <div class="service-num">01 / Mental Health</div>
+          <h3 class="service-title">When the inside is louder than the outside.</h3>
+          <p class="service-desc">Wellness, family & bereavement counselling. Trauma debriefing within 72 hours. Parenting support. PTSD-informed care.</p>
+          <ul class="service-tags">
+            <li>Counselling</li>
+            <li>Trauma</li>
+            <li>Bereavement</li>
+            <li>PTSD</li>
+            <li>Parenting</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="service-card reveal reveal-delay-1">
+        <img class="service-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.add('no-image-pad');" />
+        <div class="service-body">
+          <div class="service-num">02 / Mediation</div>
+          <h3 class="service-title">When the conversation has stopped.</h3>
+          <p class="service-desc">Family & divorce mediation. Workplace conflict before it hits the CCMA. Legal coaching that respects your wallet and your sanity.</p>
+          <ul class="service-tags">
+            <li>Divorce</li>
+            <li>Workplace</li>
+            <li>Schools</li>
+            <li>Legal coaching</li>
+            <li>Rule 41A</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="service-card reveal reveal-delay-2">
+        <img class="service-img" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.add('no-image-pad');" />
+        <div class="service-body">
+          <div class="service-num">03 / Response</div>
+          <h3 class="service-title">When the moment becomes an emergency.</h3>
+          <p class="service-desc">Bundled armed and medical response, dispatched on a clinical decision — not a guess. Nationwide, every province, 24/7.</p>
+          <ul class="service-tags">
+            <li>Armed response</li>
+            <li>Medical</li>
+            <li>9 provinces</li>
+            <li>Clinical trigger</li>
+            <li>SLA-backed</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ RESPONSE / GOLDEN EGG -->
+<section class="response">
+  <div class="container">
+    <div class="response-grid">
+      <div>
+        <span class="eyebrow"><span class="marker"></span>The thing nobody else does / 04</span>
+        <h2 class="section-title">From a <em>conversation</em><br/>to a vehicle in the driveway.</h2>
+        <p style="font-size: 18px; line-height: 1.55; color: rgba(250, 247, 242, 0.7); max-width: 50ch; margin-top: 24px;">
+          When a ListenUp conversation flags real and present danger, our clinical team can trigger an armed and medical response unit to the caller's location. The decision is clinical. The dispatch is national. The liability stays where it belongs.
+        </p>
+      </div>
+
+      <div class="response-callout">
+        <span class="label"><span class="dot"></span>Live case — anonymised</span>
+        <h3>"They got there before he did."</h3>
+        <p>
+          A woman messaged at 11pm: ex-partner was on his way to the house, she was alone with the kids, she had no plan. Within seven minutes our case manager had assessed risk, clinically triggered dispatch, and stayed on WhatsApp with her until the response unit arrived in the driveway. She is alive. Her kids slept through it.
+        </p>
+        <div class="response-stats">
+          <div>
+            <div class="stat-num">7<span style="font-size:24px;">min</span></div>
+            <div class="stat-label">Avg. dispatch time</div>
+          </div>
+          <div>
+            <div class="stat-num">9</div>
+            <div class="stat-label">Provinces covered</div>
+          </div>
+          <div>
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Every day, every hour</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ TESTIMONIAL / QUOTE -->
+<section class="testimonial">
+  <div class="testimonial-inner">
+    <span class="eyebrow"><span class="marker"></span>What we keep coming back to</span>
+    <p class="quote">
+      "It is the medical support and services<br/>that keep us <em>alive</em>.<br/>
+      But it is the psychological, mental, and social support<br/>that enables us to <em>live</em>."
+    </p>
+    <p class="quote-attr"><span class="name">George L Engel</span> &nbsp;/&nbsp; University of Rochester, 1977</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ SPLIT PATH -->
+<section class="paths" id="paths">
+  <div class="container">
+    <span class="eyebrow dark"><span class="marker"></span>Where do you start? / 05</span>
+    <h2 class="section-title">Pick the door that <em>fits</em>.</h2>
+
+    <div class="path-grid">
+      <a href="#cta" class="path-card">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <span class="path-tag">For individuals & families</span>
+          <span class="path-arrow">
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <p class="path-desc">You're going through something. You don't need a brochure. You need someone to pick up. Tap, message, talk.</p>
+        <h3 class="path-title">I need to <em>talk</em><br/>to someone.</h3>
+      </a>
+
+      <a href="#cta" class="path-card alt">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <span class="path-tag">For business & insurers</span>
+          <span class="path-arrow">
+            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <p class="path-desc">Mental health as underwriting risk management — not as a wellness perk. Three-layer commercial model. PMPM-friendly. Built for scale.</p>
+        <h3 class="path-title">I need to <em>protect</em><br/>my book.</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ TRUST -->
+<div class="trust">
+  <div class="trust-inner container">
+    <span class="trust-label">Governance</span>
+    <div class="trust-items">
+      <span>POPIA</span>
+      <span>HPCSA-registered</span>
+      <span>Clinical supervision</span>
+      <span>SLA-backed</span>
+      <span>9 provinces</span>
+      <span>Since 2017</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ CTA -->
+<section class="cta" id="cta">
+  <div class="cta-inner">
+    <p class="cta-eyebrow">— the semicolon ; means the sentence continues —</p>
+    <h2 class="cta-title">Yours <em>does</em> too.</h2>
+    <p style="font-size: 19px; max-width: 50ch; margin: 0 auto; color: rgba(14, 30, 58, 0.75); line-height: 1.5;">
+      Whatever you're carrying right now, you don't have to carry it alone. Send one message. A real human will answer.
+    </p>
+    <div class="cta-actions">
+      <a href="https://wa.me/27829089319" class="btn-dark">
+        WhatsApp ListenUp now
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:+27213002053" class="btn-outline">Call 021 300 2053</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3 class="footer-brand">the.talking point<em>;</em></h3>
+        <p class="footer-tagline">
+          Real humans. Real support. 24/7. Mental health, mediation, and response across all nine provinces of South Africa.
+        </p>
+        <!-- SOCIAL BUTTONS -->
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/the-talking-point" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/TTPTALK/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thetalkingpointgroupsa/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://wa.me/27829089319" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp ListenUp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#listenup">ListenUp platform</a></li>
+          <li><a href="#services">Counselling & trauma</a></li>
+          <li><a href="#services">Mediation</a></li>
+          <li><a href="#services">Workplace conflict</a></li>
+          <li><a href="#services">Schools</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Business</h4>
+        <ul>
+          <li><a href="#paths">For insurers</a></li>
+          <li><a href="#paths">For corporates</a></li>
+          <li><a href="#paths">Pricing model</a></li>
+          <li><a href="#paths">Case studies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reach us</h4>
+        <ul>
+          <li><a href="tel:+27213002053">+27 (0) 21 300 2053</a></li>
+          <li><a href="mailto:info@thetalkingpoint.co.za">info@thetalkingpoint.co.za</a></li>
+          <li><a href="https://wa.me/27829089319">WhatsApp ListenUp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© The Talking Point Group (Pty) Ltd · 2017/519926/07</span>
+      <span>Cape Town · Joburg · all 9 provinces</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── Nav scroll state ───
+  const nav = document.getElementById('topnav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // ─── Reveal on scroll ───
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+# The Talking Point — Website
+
+> Real humans. Real support. 24/7.
+
+A single-page editorial site for **The Talking Point Group** — mental health, mediation, and trauma response across all nine provinces of South Africa.
+
+---
+
+## What's in this folder
+
+```
+ttp-website/
+├── index.html          ← the whole site (HTML + CSS + JS, all inline)
+├── README.md           ← this file
+├── .gitignore
+└── assets/
+    ├── favicon.svg     ← TTP semicolon mark
+    └── img/            ← drop your own photos here if/when you want to host locally
+```
+
+Right now the site is a **single file**. All styling and behaviour live inside `index.html` — easy to edit, easy to deploy, nothing to "build".
+
+---
+
+## Run it locally
+
+Just **double-click `index.html`**. It opens in your browser. Done.
+
+(Internet is needed for the Google Fonts and the Unsplash photos to load. Everything else is local.)
+
+---
+
+## Push to GitHub (first time)
+
+Open Terminal (Mac) or Git Bash (Windows). `cd` into this folder, then:
+
+```bash
+git init
+git add .
+git commit -m "Initial site"
+git branch -M main
+git remote add origin https://github.com/TheTalkingPoint/ttp-website.git
+git push -u origin main
+```
+
+> Replace the remote URL with whatever the actual repo name is on `github.com/TheTalkingPoint`. If the repo is called `website` or just `talkingpoint`, swap that in.
+
+### After the first push, to push changes:
+
+```bash
+git add .
+git commit -m "What you changed"
+git push
+```
+
+---
+
+## Deploy to GitHub Pages (free public URL)
+
+Once the repo is on GitHub:
+
+1. Open the repo on github.com
+2. Go to **Settings → Pages**
+3. Under **Source**, pick the `main` branch and the `/ (root)` folder
+4. Click **Save**
+
+Within a minute or two GitHub gives you a public URL like:
+
+```
+https://thetalkingpoint.github.io/ttp-website/
+```
+
+That's the link you can share with the team or use as a staging site. Any time you push a new commit, the live site updates automatically.
+
+If you later want to use `thetalkingpoint.co.za` instead, that's a DNS change at your registrar (we can sort that separately).
+
+---
+
+## What to update before showing this to the world
+
+### 1. Social media links
+All four social icons in the footer are already wired:
+- LinkedIn → `linkedin.com/company/the-talking-point`
+- Facebook → `facebook.com/TTPTALK`
+- Instagram → `instagram.com/thetalkingpointgroupsa`
+- WhatsApp → `wa.me/27829089319`
+
+If any of these are wrong, search the file for the URL and replace it.
+
+### 2. The WhatsApp number
+Used in two places: the "WhatsApp ListenUp now" button in the CTA, and the WhatsApp social icon in the footer. Both use `wa.me/27829089319` (Maryke's mobile from the Project Help proposal). If you'd prefer a different number, find and replace in `index.html`.
+
+### 3. The phone number
+Used in two places — the "Call 021 300 2053" button and the footer. Currently `+27 21 300 2053`.
+
+### 4. The "Real humans" portrait strip
+Five named cards under the marquee. **Both the photos AND the names are placeholders** (Nomvula M., Lerato D., Thando K., Ayesha P., Sipho N.) — they're not real TTP team members. The cards are designed to look great with or without the photos loading.
+
+Three options:
+
+- **Best**: Replace placeholder names with real TTP team first names + initial, and drop real team headshots into `assets/img/`. Then change each `src=` from `https://images.unsplash.com/...` to `assets/img/team-firstname.jpg`. Highest authenticity.
+- **OK**: Keep the placeholder names + swap to better Unsplash photos. Go to unsplash.com, find a photo, right-click → "Copy image address", paste over the existing `src=`.
+- **Acceptable as-is**: The cards work without any photos at all — each has a distinct gradient, initial, name, and role. If the Unsplash photos fail to load (their CDN sometimes blocks hotlinks), you'll see the styled fallback, which still looks intentional.
+
+### 5. The service card images
+Three small accompanying images on the Mental Health / Mediation / Response cards. Same swap rules as above — these are also Unsplash hot-links with a graceful fallback if they fail to load.
+
+### 5. The anonymised case study
+Section 04 ("From a conversation to a vehicle in the driveway") contains a 7-minute response case. Read it, sanity-check it, and either approve it or swap it for a real anonymised case Maryke or Ella is comfortable with.
+
+---
+
+## Brand reference (already baked in)
+
+| Token | Value | Where it's used |
+|---|---|---|
+| Navy | `#0E1E3A` | Primary background, body text on light sections |
+| Lime | `#8BC53F` | Accent, semicolon, highlights, primary CTA |
+| Ivory | `#FAF7F2` | Content backgrounds |
+| Coral | `#FF5C39` | Urgency / response moments only |
+| Display font | **Fraunces** (variable serif) | Headlines |
+| Body font | **Outfit** | Paragraphs, UI |
+| Mono | **JetBrains Mono** | Metadata, eyebrows, governance language |
+
+---
+
+## Image attribution
+
+All photos hot-linked from [Unsplash](https://unsplash.com). The Unsplash License grants free use, including commercial — see [unsplash.com/license](https://unsplash.com/license). No attribution required, but appreciated.
+
+---
+
+## Questions?
+
+This site is intentionally **one file**. No frameworks, no build step, no dependencies beyond Google Fonts and Unsplash. That means it'll still work in five years and any developer can pick it up in ten minutes.
+
+If you want a second page (e.g. a dedicated "For Insurers" page using the same design system), it's a copy of `index.html` with the body content swapped — happy to build that next.
