@@ -77,7 +77,7 @@
 
   /* ─── NAV ─── */
   nav.top {
-    position: fixed; top: 0; left: 0; right: 0;
+    position: fixed; top: 36px; left: 0; right: 0;
     padding: 22px clamp(20px, 4vw, 56px);
     z-index: 100;
     display: flex;
@@ -145,6 +145,7 @@
   .nav-cta:hover { background: var(--lime-bright); transform: translateY(-1px); }
 
   .burger { display: none; }
+  @media (max-width: 720px) { nav.top { top: 32px; } }
   @media (max-width: 880px) {
     .nav-links, .nav-cta { display: none; }
     .burger {
@@ -1062,17 +1063,247 @@
   /* utility */
   .container { max-width: 1400px; margin: 0 auto; }
 
+  /* ─── CRISIS STRIP (persistent, above nav) ─── */
+  .crisis {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 102;
+    background: #2b0a0a;
+    color: var(--ivory);
+    padding: 8px clamp(16px, 4vw, 56px);
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255,92,57,0.35);
+  }
+  .crisis .label { color: var(--coral-soft); display: inline-flex; align-items: center; gap: 8px; }
+  .crisis .label::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--coral);
+    box-shadow: 0 0 8px rgba(255,92,57,0.6);
+  }
+  .crisis a {
+    color: var(--ivory);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(250,247,242,0.45);
+    padding-bottom: 1px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .crisis a:hover { color: var(--lime); border-bottom-color: var(--lime); }
+  .crisis strong { color: var(--ivory); font-weight: 700; margin-right: 4px; }
+  @media (max-width: 720px) {
+    .crisis { gap: 14px; font-size: 10px; padding: 7px 12px; min-height: 32px; letter-spacing: 0.1em; }
+    .crisis .label { display: none; }
+  }
+
+  /* ─── SITUATIONS (entry-point tiles, replaces old paths) ─── */
+  .situations { background: var(--ivory-warm); color: var(--navy); }
+  .situations-head { max-width: 1200px; margin: 0 auto 50px; }
+  .situations-title {
+    font-family: var(--display);
+    font-weight: 360;
+    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-top: 14px;
+  }
+  .situations-title em { font-style: italic; color: var(--lime); }
+  .situations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 1100px) { .situations-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+  @media (max-width: 560px)  { .situations-grid { grid-template-columns: 1fr; } }
+  .situation-card {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: 28px 24px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 240px;
+    text-decoration: none;
+  }
+  .situation-card:hover { transform: translateY(-5px); }
+  .situation-card::after {
+    content: "";
+    position: absolute;
+    right: -25%; bottom: -25%;
+    width: 70%; aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 197, 63, 0.18), transparent 70%);
+    pointer-events: none;
+  }
+  .situation-card:nth-child(3)::after { background: radial-gradient(circle, rgba(255, 92, 57, 0.22), transparent 70%); }
+  .situation-head-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .situation-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    opacity: 0.75;
+  }
+  .situation-arrow {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(250, 247, 242, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--hairline);
+    transition: background 0.3s, transform 0.3s, border-color 0.3s;
+    flex-shrink: 0;
+  }
+  .situation-card:hover .situation-arrow { background: var(--lime); border-color: var(--lime); transform: rotate(-45deg); }
+  .situation-arrow svg { width: 14px; height: 14px; }
+  .situation-arrow svg path { stroke: var(--ivory); stroke-width: 1.8; fill: none; transition: stroke 0.3s; }
+  .situation-card:hover .situation-arrow svg path { stroke: var(--navy); }
+  .situation-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+  }
+  .situation-title em { font-style: italic; color: var(--lime); }
+  .situation-desc { font-size: 14px; line-height: 1.45; opacity: 0.78; position: relative; z-index: 1; }
+
+  /* ─── CREDENTIALS LINE (inside .human-card) ─── */
+  .human-card .credential {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ivory);
+    opacity: 0.65;
+    margin-top: 6px;
+  }
+  .human-card .credential a {
+    color: var(--lime);
+    border-bottom: 1px dotted rgba(139,197,63,0.45);
+    padding-bottom: 1px;
+    transition: opacity 0.2s, border-bottom-color 0.2s;
+  }
+  .human-card .credential a:hover { opacity: 1; border-bottom-color: var(--lime); }
+
+  /* ─── HOWSTART (what happens when you reach out) ─── */
+  .howstart { background: var(--ivory); color: var(--navy); padding: clamp(70px, 10vh, 110px) clamp(20px, 4vw, 56px); }
+  .howstart-inner { max-width: 1200px; margin: 0 auto; }
+  .howstart-head { text-align: center; max-width: 720px; margin: 0 auto 60px; }
+  .howstart-title {
+    font-family: var(--display);
+    font-weight: 360;
+    font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 1;
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-top: 14px;
+  }
+  .howstart-title em { font-style: italic; color: var(--lime); }
+  .howstart-sub { font-size: 16px; line-height: 1.55; color: rgba(14,30,58,0.7); margin-top: 18px; }
+  .howstart-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 880px) { .howstart-grid { grid-template-columns: 1fr; } }
+  .howstart-step {
+    background: var(--ivory-warm);
+    border: 1px solid var(--hairline-dark);
+    border-radius: 18px;
+    padding: 32px 28px;
+    position: relative;
+  }
+  .howstart-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--lime);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .howstart-step-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: 26px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-top: 12px;
+  }
+  .howstart-step-title em { font-style: italic; color: var(--navy); }
+  .howstart-step-desc { font-size: 14.5px; line-height: 1.55; color: rgba(14,30,58,0.72); margin-top: 14px; }
+
+  /* ─── QUICK EXIT (privacy escape, fixed bottom-right) ─── */
+  .quickexit {
+    position: fixed;
+    bottom: 18px; right: 18px;
+    z-index: 200;
+    background: var(--navy);
+    color: var(--ivory);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 10px 16px 10px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .quickexit:hover, .quickexit:focus-visible { background: var(--coral); color: var(--navy); transform: translateY(-2px); border-color: var(--coral); outline: none; }
+  .quickexit svg { width: 14px; height: 14px; }
+  .quickexit kbd {
+    background: rgba(250,247,242,0.08);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--ivory);
+  }
+  @media (max-width: 560px) {
+    .quickexit { padding: 9px 13px 9px 12px; font-size: 10px; bottom: 14px; right: 14px; }
+    .quickexit kbd { display: none; }
+  }
+
 </style>
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════════════ CRISIS STRIP (persistent) -->
+<aside class="crisis" role="region" aria-label="Crisis support — South Africa">
+  <span class="label">If you need help right now</span>
+  <span><strong>SADAG</strong><a href="tel:0800567567">0800 567 567</a></span>
+  <span><strong>Lifeline SA</strong><a href="tel:0861322322">0861 322 322</a></span>
+</aside>
+
 <nav class="top" id="topnav">
   <a href="#" class="logo">the.talking point<span class="semi">;</span></a>
   <div class="nav-links">
+    <a href="#paths">Where to start</a>
     <a href="#manifesto">What we believe</a>
     <a href="#listenup">ListenUp</a>
     <a href="#services">Services</a>
-    <a href="#paths">For you / For business</a>
   </div>
   <a href="#cta" class="nav-cta">Start the conversation →</a>
   <div class="burger"><span></span><span></span><span></span></div>
@@ -1121,6 +1352,54 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════ SITUATIONS / entry points -->
+<section class="situations" id="paths">
+  <div class="container">
+    <div class="situations-head">
+      <span class="eyebrow dark"><span class="marker"></span>Where do you start? / 01</span>
+      <h2 class="situations-title">Pick the door that <em>fits</em>.</h2>
+    </div>
+
+    <div class="situations-grid">
+      <a href="#cta" class="situation-card">
+        <div class="situation-head-row">
+          <span class="situation-tag">For yourself</span>
+          <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <p class="situation-desc">You're going through something. You don't need a brochure. You need someone to pick up.</p>
+        <h3 class="situation-title">I need to <em>talk</em> to someone.</h3>
+      </a>
+
+      <a href="#cta" class="situation-card">
+        <div class="situation-head-row">
+          <span class="situation-tag">For someone you love</span>
+          <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <p class="situation-desc">A partner, child, parent, colleague. You can see they're struggling — you don't know what to do next.</p>
+        <h3 class="situation-title">Someone I love is <em>struggling</em>.</h3>
+      </a>
+
+      <a href="#services" class="situation-card">
+        <div class="situation-head-row">
+          <span class="situation-tag">For workplaces &amp; HR</span>
+          <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <p class="situation-desc">A trauma at work — hijacking, fatality, retrenchment, conflict. Real people on-site, not a wellness pamphlet.</p>
+        <h3 class="situation-title">There's been an <em>incident</em> at work.</h3>
+      </a>
+
+      <a href="#services" class="situation-card">
+        <div class="situation-head-row">
+          <span class="situation-tag">For families &amp; disputes</span>
+          <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <p class="situation-desc">Conversations have stopped. Lawyers feel like the wrong answer. You need a third human in the room.</p>
+        <h3 class="situation-title">We need <em>mediation</em>.</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════════════ REAL HUMANS STRIP -->
 <!--
   IMAGES NOTE: photos are hot-linked from images.unsplash.com (free Unsplash license).
@@ -1136,6 +1415,16 @@
     <p class="humans-sub">A national network of qualified counsellors, mediators, social workers and case managers — across all nine provinces.</p>
   </div>
 
+  <!--
+    PLACEHOLDER CREDENTIALS — these reg numbers (all zeros) are placeholders so the UI/layout is locked in.
+    When TTP sends real names + registration numbers, find each card and swap:
+      ‣ .name        — first name + initial
+      ‣ .role        — role · province
+      ‣ .credential  — registration body + real reg number
+    Bodies: HPCSA (psychologists, counsellors) → https://www.hpcsa.co.za/?contentId=312&menuSubId=66
+            SACSSP (social workers)            → https://www.sacssp.co.za
+            MASA / DiSAC (mediators)           → https://disac.co.za
+  -->
   <div class="humans-strip">
     <div class="human-card">
       <img class="photo" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
@@ -1144,6 +1433,7 @@
         <div>
           <p class="name">Nomvula M.</p>
           <p class="role"><span class="green">●</span> Case manager · Cape Town</p>
+          <p class="credential">HPCSA · <a href="https://www.hpcsa.co.za/?contentId=312&menuSubId=66" target="_blank" rel="noopener">REG 000000</a></p>
         </div>
       </div>
     </div>
@@ -1154,6 +1444,7 @@
         <div>
           <p class="name">Lerato D.</p>
           <p class="role"><span class="green">●</span> Counsellor · Gauteng</p>
+          <p class="credential">HPCSA · <a href="https://www.hpcsa.co.za/?contentId=312&menuSubId=66" target="_blank" rel="noopener">REG 000000</a></p>
         </div>
       </div>
     </div>
@@ -1164,6 +1455,7 @@
         <div>
           <p class="name">Thando K.</p>
           <p class="role"><span class="green">●</span> Mediator · KZN</p>
+          <p class="credential">DiSAC accredited · <a href="https://disac.co.za" target="_blank" rel="noopener">REG 000000</a></p>
         </div>
       </div>
     </div>
@@ -1174,6 +1466,7 @@
         <div>
           <p class="name">Ayesha P.</p>
           <p class="role"><span class="green">●</span> Trauma specialist · Western Cape</p>
+          <p class="credential">HPCSA · <a href="https://www.hpcsa.co.za/?contentId=312&menuSubId=66" target="_blank" rel="noopener">PS 0000000</a></p>
         </div>
       </div>
     </div>
@@ -1184,6 +1477,7 @@
         <div>
           <p class="name">Sipho N.</p>
           <p class="role"><span class="green">●</span> Social worker · Eastern Cape</p>
+          <p class="credential">SACSSP · <a href="https://www.sacssp.co.za" target="_blank" rel="noopener">10 00000</a></p>
         </div>
       </div>
     </div>
@@ -1390,38 +1684,6 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ SPLIT PATH -->
-<section class="paths" id="paths">
-  <div class="container">
-    <span class="eyebrow dark"><span class="marker"></span>Where do you start? / 05</span>
-    <h2 class="section-title">Pick the door that <em>fits</em>.</h2>
-
-    <div class="path-grid">
-      <a href="#cta" class="path-card">
-        <div style="display: flex; justify-content: space-between; align-items: start;">
-          <span class="path-tag">For individuals & families</span>
-          <span class="path-arrow">
-            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </div>
-        <p class="path-desc">You're going through something. You don't need a brochure. You need someone to pick up. Tap, message, talk.</p>
-        <h3 class="path-title">I need to <em>talk</em><br/>to someone.</h3>
-      </a>
-
-      <a href="#cta" class="path-card alt">
-        <div style="display: flex; justify-content: space-between; align-items: start;">
-          <span class="path-tag">For business & insurers</span>
-          <span class="path-arrow">
-            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </div>
-        <p class="path-desc">Mental health as underwriting risk management — not as a wellness perk. Three-layer commercial model. PMPM-friendly. Built for scale.</p>
-        <h3 class="path-title">I need to <em>protect</em><br/>my book.</h3>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- ═══════════════════════════════════════════════ TRUST -->
 <div class="trust">
   <div class="trust-inner container">
@@ -1436,6 +1698,35 @@
     </div>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════ HOWSTART (what happens when you reach out) -->
+<section class="howstart">
+  <div class="howstart-inner">
+    <div class="howstart-head">
+      <span class="eyebrow dark"><span class="marker"></span>What happens when you reach out / 06</span>
+      <h2 class="howstart-title">No forms. No queue.<br/>A real <em>human</em> picks up.</h2>
+      <p class="howstart-sub">You don't have to explain everything up front. You don't have to be ready. You just have to send one message.</p>
+    </div>
+
+    <div class="howstart-grid">
+      <div class="howstart-step">
+        <span class="howstart-num">Step 01</span>
+        <h3 class="howstart-step-title">You <em>reach out</em>.</h3>
+        <p class="howstart-step-desc">Send a WhatsApp to ListenUp, or call the line. No forms. No questionnaires. No diagnostic checklist before you can speak.</p>
+      </div>
+      <div class="howstart-step">
+        <span class="howstart-num">Step 02</span>
+        <h3 class="howstart-step-title">A real human <em>answers</em>.</h3>
+        <p class="howstart-step-desc">Usually within a few minutes. 24/7/365 — including 3am, Sundays, public holidays. In your language, on your terms.</p>
+      </div>
+      <div class="howstart-step">
+        <span class="howstart-num">Step 03</span>
+        <h3 class="howstart-step-title">We <em>walk it</em> with you.</h3>
+        <p class="howstart-step-desc">A confidential conversation with a qualified counsellor, mediator, or trauma specialist — in-person, by phone, or video. We figure out the right next step together.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════ CTA -->
 <section class="cta" id="cta">
@@ -1511,9 +1802,17 @@
     <div class="footer-bottom">
       <span>© The Talking Point Group (Pty) Ltd · 2017/519926/07</span>
       <span>Cape Town · Joburg · all 9 provinces</span>
+      <span>Visiting in private? Use Incognito (Chrome) or Private (Safari) — your visit won't show in browser history.</span>
     </div>
   </div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════ QUICK EXIT (privacy escape) -->
+<button class="quickexit" id="quickexit" type="button" aria-label="Quick exit — leave this site immediately" title="Press Esc to leave instantly">
+  Quick exit
+  <kbd>Esc</kbd>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M14 10l7-7M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
+</button>
 
 <script>
   // ─── Nav scroll state ───
@@ -1533,6 +1832,13 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ─── Quick exit (privacy escape) ───
+  // Click the floating button OR press Esc to leave the site instantly.
+  // Uses location.replace so the back button can't return to the TTP page.
+  const quickExit = () => { window.location.replace('https://www.bbc.com/weather'); };
+  document.getElementById('quickexit')?.addEventListener('click', quickExit);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') quickExit(); });
 </script>
 
 </body>

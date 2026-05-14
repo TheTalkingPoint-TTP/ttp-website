@@ -78,6 +78,24 @@ If you later want to use `thetalkingpoint.co.za` instead, that's a DNS change at
 
 ## What to update before showing this to the world
 
+### 0. Crisis support numbers (new — top strip)
+The persistent dark-red strip above the nav shows two crisis lines:
+- **SADAG** — `0800 567 567`
+- **Lifeline SA** — `0861 322 322`
+
+If TTP wants different numbers (e.g. their own after-hours line, or a province-specific Lifeline branch), search `index.html` for `0800 567 567` and `0861 322 322` and swap.
+
+### 0b. Real credentials (new — placeholder reg numbers)
+Each of the 5 team cards now shows a registration body + placeholder number (all zeros, clearly fake):
+- HPCSA · REG 000000 / PS 0000000  → swap for real HPCSA reg numbers
+- DiSAC accredited · REG 000000     → swap for real DiSAC accreditation number
+- SACSSP · 10 00000                 → swap for real SACSSP registration
+
+Reg-body links are wired to the respective lookup pages (HPCSA iRegister, SACSSP, DiSAC). When real numbers arrive, find each `.credential` block in `index.html` and swap the number + link's display text.
+
+### 0c. Quick-exit button (new — privacy escape)
+A floating "Quick exit" button bottom-right of every page. Clicking it (or pressing **Esc**) redirects to `bbc.com/weather` and clears the page from browser history. Useful for DV-mediation and sensitive-case visitors. If TTP wants the exit URL changed, search for `'https://www.bbc.com/weather'` in the inline `<script>`.
+
 ### 1. Social media links
 All four social icons in the footer are already wired:
 - LinkedIn → `linkedin.com/company/the-talking-point`
