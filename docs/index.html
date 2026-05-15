@@ -83,14 +83,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: background 0.4s var(--ease-out), backdrop-filter 0.4s, border-color 0.4s;
-    border-bottom: 1px solid transparent;
-  }
-  nav.top.scrolled {
-    background: rgba(14, 30, 58, 0.72);
+    /* Always-solid nav so the logo reads clearly from page-load (was previously
+       transparent on-load and only solidified on scroll). */
+    background: rgba(14, 30, 58, 0.92);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border-bottom: 1px solid var(--hairline);
+    transition: background 0.3s var(--ease-out);
+  }
+  nav.top.scrolled {
+    background: var(--navy);
   }
   .logo {
     font-family: var(--display);
@@ -220,7 +222,7 @@
     font-family: var(--display);
     font-weight: 380;
     font-variation-settings: "opsz" 60;
-    font-size: clamp(46px, 8vw, 128px);
+    font-size: clamp(41px, 7.2vw, 115px);
     line-height: 1.0;
     letter-spacing: -0.028em;
     color: var(--ivory);
@@ -572,7 +574,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(40px, 6vw, 80px);
-    align-items: start;
+    align-items: center;
     position: relative;
   }
   @media (max-width: 880px) { .listenup-grid { grid-template-columns: 1fr; } }
