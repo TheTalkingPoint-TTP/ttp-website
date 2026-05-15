@@ -99,8 +99,20 @@
     letter-spacing: -0.02em;
     font-variation-settings: "opsz" 60;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 1px;
+    line-height: 0;
+  }
+  .logo img {
+    display: block;
+    height: 38px;
+    width: auto;
+    /* Logo wordmark is dark grey on transparent — boost slightly so it reads on navy nav.
+       The lime accents (the "talking" word + semicolon) stay clearly visible. */
+    filter: brightness(1.35) contrast(0.95);
+  }
+  @media (max-width: 720px) {
+    .logo img { height: 30px; }
   }
   .logo .semi {
     color: var(--lime);
@@ -1607,7 +1619,9 @@
 </aside>
 
 <nav class="top" id="topnav">
-  <a href="#" class="logo">the.talking point<span class="semi">;</span></a>
+  <a href="#" class="logo" aria-label="The Talking Point — home">
+    <img src="assets/img/ttp-logo.png" alt="The Talking Point" />
+  </a>
   <div class="nav-links">
     <a href="#paths">Where to start</a>
     <a href="#manifesto">What we believe</a>
