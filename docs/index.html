@@ -600,12 +600,12 @@
     background: var(--lime);
   }
 
-  /* Phone mockup — the iPhone image with the WhatsApp chat baked into it */
+  /* Phone mockup — transparent PNG, WhatsApp chat baked into the screen */
   .phone-wrap { display: flex; justify-content: center; }
   .phone {
     position: relative;
     width: 100%;
-    max-width: 480px;
+    max-width: 280px;
     margin: 0 auto;
     transition: transform 0.4s var(--ease-out);
   }
@@ -1237,7 +1237,21 @@
     pointer-events: none;
     z-index: 0;
   }
-  .hero::before        { background-image: url("assets/img/counselling.png"); background-position: center; background-size: cover; background-repeat: no-repeat; opacity: 0.3; filter: none; }
+  /* Hero hands image — contained in the upper-right, not a full-bleed background.
+     The rest of the hero is pure navy so the logo and headline can breathe. */
+  .hero::before {
+    inset: auto;
+    top: 7%;
+    right: 4%;
+    width: 38%;
+    height: 56%;
+    background-image: url("assets/img/hands-clasping.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.55;
+    filter: none;
+  }
   .testimonial::before { background-image: url("assets/img/pebbles.jpg");        background-position: center 40%; opacity: 0.16; }
   .cta::after          { background-image: url("assets/img/hands-baby.jpg");     background-position: center 40%; opacity: 0.14; filter: grayscale(0.5) contrast(0.95); }
 
@@ -1915,7 +1929,7 @@
 
       <div class="phone-wrap">
         <div class="phone">
-          <img class="phone-img" src="assets/img/iphone.jpeg" alt="iPhone showing a ListenUp WhatsApp conversation" />
+          <img class="phone-img" src="assets/img/iphone.png" alt="iPhone showing a ListenUp WhatsApp conversation" />
         </div>
       </div>
     </div>
