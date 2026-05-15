@@ -107,9 +107,10 @@
     display: block;
     height: 50px;
     width: auto;
-    /* Logo wordmark is dark grey on transparent — strong brightness boost so it reads
-       on the navy nav. Lime accents ("talking" + semicolon) stay vivid via saturate. */
-    filter: brightness(1.95) saturate(1.1) contrast(0.92);
+    /* Logo wordmark is dark grey on transparent. Moderate brightness lifts the grey
+       toward off-white; the saturate boost keeps the lime accents matching the site's
+       lime instead of drifting toward yellow. */
+    filter: brightness(1.5) saturate(1.35);
   }
   @media (max-width: 720px) {
     .logo img { height: 40px; }
@@ -1234,32 +1235,7 @@
   .result-btn.ghost { background: transparent; border: 1px solid var(--hairline-dark); color: var(--navy); }
   .checkin-result.severe .result-btn.ghost { border-color: var(--hairline); color: var(--ivory); }
 
-  /* ─── PHOTO INTERLUDE (small contained image between sections — breaks navy gently) ─── */
-  /* NOT full-width. A rounded "frame" centered on the navy section background,
-     so each photo reads as editorial punctuation, not a banner takeover.
-     If the image file doesn't exist yet, the section auto-collapses (onerror). */
-  .photo-interlude {
-    background: var(--navy);
-    padding: clamp(36px, 6vh, 64px) clamp(20px, 4vw, 56px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .photo-interlude img {
-    max-width: 720px;
-    width: 100%;
-    height: clamp(220px, 30vh, 300px);
-    object-fit: cover;
-    border-radius: 22px;
-    filter: grayscale(0.08) contrast(1.04);
-    display: block;
-  }
-  @media (max-width: 720px) {
-    .photo-interlude { padding: 28px 16px; }
-    .photo-interlude img { height: 200px; border-radius: 18px; }
-  }
-
-  /* ─── PHOTO BANNER (smaller version of the same idea, used inside a section) ─── */
+  /* ─── PHOTO BANNER (contained image, used inside Voices section) ─── */
   .photo-banner {
     width: 100%;
     max-width: 720px;
@@ -1279,6 +1255,34 @@
   @media (max-width: 720px) {
     .photo-banner { height: 200px; margin-bottom: 32px; border-radius: 16px; }
   }
+
+  /* ─── SECTION BACKGROUND PHOTOS (subtle texture behind navy sections) ─── */
+  /* Each section gets a single B&W photo behind its content, washed back with
+     a strong navy overlay. The photo adds human warmth without competing with
+     the type — felt more than seen. */
+  .hero::before,
+  .listenup::after,
+  .testimonial::before,
+  .cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(0.4) contrast(0.92);
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero::before        { background-image: url("assets/img/hands-clasping.png"); background-position: center 30%; }
+  .listenup::after     { background-image: url("assets/img/counselling.png");    background-position: center 35%; }
+  .testimonial::before { background-image: url("assets/img/pebbles.jpg");        background-position: center 40%; opacity: 0.16; }
+  .cta::after          { background-image: url("assets/img/hands-baby.jpg");     background-position: center 40%; opacity: 0.14; filter: grayscale(0.5) contrast(0.95); }
+
+  /* Ensure section content sits above the background photo */
+  .listenup, .testimonial, .cta { position: relative; overflow: hidden; }
+  .listenup > *, .testimonial > *, .cta > * { position: relative; z-index: 1; }
 
   /* ─── ACCESSIBILITY — honour OS-level reduced-motion preference ─── */
   /* For anyone who has vestibular sensitivity OR is in a high-distress state, */
@@ -1674,13 +1678,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════ PHOTO INTERLUDE — pebbles (calm/balance) -->
-<!-- Drop the pebble-cairn image at: docs/assets/img/pebbles.jpg
-     Until then this section auto-collapses (onerror handler on the img). -->
-<section class="photo-interlude" aria-hidden="true">
-  <img src="assets/img/pebbles.jpg" alt="" loading="lazy" onerror="this.parentElement.style.display='none'" />
-</section>
-
 <!-- ═══════════════════════════════════════════════ LANGUAGE BAND -->
 <!-- Confirm with TTP which of SA's 11 official languages the team actually
      answers in. If a language isn't covered, remove it. Honesty > comprehensiveness. -->
@@ -1875,12 +1872,6 @@
       </ol>
     </div>
   </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════ PHOTO INTERLUDE — hands holding baby's hand (tenderness) -->
-<!-- Drop the adult-hand-holding-baby image at: docs/assets/img/hands-baby.jpg -->
-<section class="photo-interlude" aria-hidden="true">
-  <img src="assets/img/hands-baby.jpg" alt="" loading="lazy" onerror="this.parentElement.style.display='none'" />
 </section>
 
 <!-- ═══════════════════════════════════════════════ LISTENUP -->
@@ -2080,12 +2071,6 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ PHOTO INTERLUDE — counselling (real conversation) -->
-<!-- Drop the two-people-in-counselling image at: docs/assets/img/counselling.png -->
-<section class="photo-interlude" aria-hidden="true">
-  <img src="assets/img/counselling.png" alt="" loading="lazy" onerror="this.parentElement.style.display='none'" />
-</section>
-
 <!-- ═══════════════════════════════════════════════ RESPONSE / GOLDEN EGG -->
 <section class="response">
   <div class="container">
@@ -2159,12 +2144,6 @@
       </article>
     </div>
   </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════ PHOTO INTERLUDE — hands clasping (reaching, lifeline) -->
-<!-- Drop the hands-clasping-forearm image at: docs/assets/img/hands-clasping.png -->
-<section class="photo-interlude" aria-hidden="true">
-  <img src="assets/img/hands-clasping.png" alt="" loading="lazy" onerror="this.parentElement.style.display='none'" />
 </section>
 
 <!-- ═══════════════════════════════════════════════ TESTIMONIAL / QUOTE -->
