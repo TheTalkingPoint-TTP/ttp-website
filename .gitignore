@@ -21,3 +21,13 @@ Desktop.ini
 node_modules/
 .npm
 package-lock.json
+
+# ─── Root-level working files (brand originals, logos, blog drafts, etc.) ───
+# Only /docs is deployed to GitHub Pages. Everything else at the project root
+# (logos, photo originals, blog/, feed.xml, the saved live-site backup, .OLD files)
+# stays local — not tracked, not deployed. The 5 photos USED by the site live inside
+# docs/assets/img/ and ARE tracked.
+/*
+!/.gitignore
+!/README.md
+!/docs/
