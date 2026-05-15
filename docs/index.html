@@ -105,15 +105,17 @@
   }
   .logo img {
     display: block;
-    height: 50px;
+    height: 100px;
     width: auto;
-    /* Logo wordmark is dark grey on transparent. Moderate brightness lifts the grey
-       toward off-white; the saturate boost keeps the lime accents matching the site's
-       lime instead of drifting toward yellow. */
-    filter: brightness(1.5) saturate(1.35);
+    /* Logo wordmark is dark grey + lime green on transparent.
+       invert(1) flips dark grey → light grey/white. The hue-rotate(180deg) rotates
+       colours back through the wheel so lime (inverted to magenta) returns close to
+       lime. brightness(1.05) nudges grey closer to pure white; saturate(1.3) keeps
+       the lime vivid and matching the site's --lime token. */
+    filter: invert(1) hue-rotate(180deg) brightness(1.05) saturate(1.3);
   }
   @media (max-width: 720px) {
-    .logo img { height: 40px; }
+    .logo img { height: 80px; }
   }
   .logo .semi {
     color: var(--lime);
