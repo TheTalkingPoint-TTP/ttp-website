@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tonight — The Talking Point</title>
+<meta name="description" content="If you're not okay tonight, this page is for you. Four things you can do in the next five minutes." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #0E1E3A;
+    --navy-90: #14254a;
+    --lime: #8BC53F;
+    --ivory: #FAF7F2;
+    --coral: #FF5C39;
+    --hairline: rgba(250, 247, 242, 0.14);
+    --display: "Newsreader", "Source Serif Pro", serif;
+    --body: "Outfit", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--navy);
+    color: var(--ivory);
+    font-family: var(--body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 24px clamp(16px, 4vw, 48px);
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .head {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(250,247,242,0.55);
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .head a { border-bottom: 1px dotted rgba(250,247,242,0.3); padding-bottom: 1px; }
+
+  .lede {
+    font-family: var(--display);
+    font-weight: 360;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 16px 0 8px;
+    max-width: 22ch;
+  }
+  .lede em { font-style: italic; color: var(--lime); font-weight: 360; }
+  .sub {
+    font-size: 15px;
+    color: rgba(250,247,242,0.7);
+    max-width: 44ch;
+    margin-bottom: 32px;
+    line-height: 1.55;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    flex: 1;
+    min-height: 0;
+  }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+
+  .tile {
+    background: var(--navy-90);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 150px;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    cursor: pointer;
+  }
+  .tile:hover, .tile:focus-visible { background: #1c2f5a; border-color: var(--lime); transform: translateY(-2px); outline: none; }
+  .tile.primary { background: var(--lime); color: var(--navy); border-color: var(--lime); }
+  .tile.primary:hover { background: #a4dc4e; border-color: #a4dc4e; }
+  .tile.coral { border-color: rgba(255,92,57,0.4); }
+  .tile.coral .num { color: var(--coral); }
+
+  .tile .num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--lime);
+    opacity: 0.85;
+  }
+  .tile.primary .num { color: var(--navy); opacity: 0.7; }
+  .tile .title {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.1;
+    margin-top: 8px;
+    letter-spacing: -0.02em;
+  }
+  .tile .title em { font-style: italic; color: var(--lime); font-weight: 400; }
+  .tile.primary .title em { color: var(--navy); }
+  .tile .meta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-top: 16px;
+  }
+
+  /* Breathing animation circle */
+  .breathe {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 8px;
+    vertical-align: -2px;
+    animation: breathe 5.5s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(0.5); opacity: 0.4; }
+    50% { transform: scale(1.4); opacity: 1; }
+  }
+
+  .foot {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.55);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .foot a { border-bottom: 1px dotted rgba(250,247,242,0.3); padding-bottom: 1px; }
+  .foot a:hover { color: var(--lime); border-color: var(--lime); }
+
+  /* Quick exit — same component as the main site */
+  .quickexit {
+    position: fixed; bottom: 16px; right: 16px;
+    background: var(--navy-90);
+    color: var(--ivory);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 10px 16px 10px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .quickexit:hover { background: var(--coral); color: var(--navy); border-color: var(--coral); }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <span><a href="index.html">← the.talking point</a></span>
+  <span>For you, right now</span>
+</div>
+
+<h1 class="lede">If you're not okay <em>tonight</em>, this page is for you.</h1>
+<p class="sub">Four things you can do in the next five minutes. You don't have to do them in order. You don't have to do all of them. Just one is enough.</p>
+
+<div class="grid">
+
+  <a href="https://wa.me/27829089319?text=I%27m%20not%20okay%20tonight." class="tile primary">
+    <div>
+      <span class="num">Option 01</span>
+      <h2 class="title">Talk to a real human <em>right now</em>.</h2>
+    </div>
+    <span class="meta">WhatsApp ListenUp · 24/7 →</span>
+  </a>
+
+  <a href="tel:0800567567" class="tile coral">
+    <div>
+      <span class="num">Option 02</span>
+      <h2 class="title">Call <em>SADAG</em> — they're trained for this.</h2>
+    </div>
+    <span class="meta">0800 567 567 · 24-hour line →</span>
+  </a>
+
+  <a href="#breathe" class="tile" id="breatheTile">
+    <div>
+      <span class="num">Option 03</span>
+      <h2 class="title"><span class="breathe"></span>Breathe with me.</h2>
+    </div>
+    <span class="meta">90 seconds · in 4, hold 4, out 6 →</span>
+  </a>
+
+  <a href="#tonight-plan" class="tile" id="planTile">
+    <div>
+      <span class="num">Option 04</span>
+      <h2 class="title">Make it through <em>tonight</em>.</h2>
+    </div>
+    <span class="meta">6 small steps · stay alive until morning →</span>
+  </a>
+
+</div>
+
+<div class="foot">
+  <span>You are not a burden.</span>
+  <span><a href="index.html">← back to the.talking point</a></span>
+</div>
+
+<!-- Breathing overlay (opens on Option 03 click) -->
+<div id="breatheOverlay" style="display:none; position:fixed; inset:0; background:var(--navy); z-index:300; padding:32px 24px; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+  <p style="font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,247,242,0.55); margin-bottom:24px;">Breathe with me</p>
+  <div style="width: clamp(140px, 30vw, 220px); aspect-ratio:1; border-radius:50%; background: radial-gradient(circle, rgba(139,197,63,0.4) 0%, rgba(139,197,63,0.05) 70%); margin-bottom: 32px; animation: breathe-big 14s ease-in-out infinite;"></div>
+  <p id="breathePhase" style="font-family:var(--display); font-size: clamp(28px, 6vw, 48px); font-weight:380; letter-spacing:-0.02em;">Breathe in…</p>
+  <p style="font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,247,242,0.55); margin-top:36px;">In 4 · hold 4 · out 6</p>
+  <button onclick="document.getElementById('breatheOverlay').style.display='none'" style="margin-top:32px; background:transparent; color:var(--ivory); border:1px solid var(--hairline); padding:10px 24px; border-radius:999px; font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">Close</button>
+</div>
+<style>
+  @keyframes breathe-big {
+    0%, 100% { transform: scale(0.7); }
+    28%      { transform: scale(1.3); }
+    57%      { transform: scale(1.3); }
+    100%     { transform: scale(0.7); }
+  }
+</style>
+
+<!-- Tonight plan overlay (opens on Option 04 click) -->
+<div id="planOverlay" style="display:none; position:fixed; inset:0; background:var(--navy); z-index:300; padding:40px 24px; overflow-y:auto;">
+  <div style="max-width:560px; margin: 24px auto;">
+    <p style="font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,247,242,0.55); margin-bottom: 20px;">Tonight · 6 small steps</p>
+    <h2 style="font-family:var(--display); font-size:clamp(26px, 4vw, 38px); font-weight:380; letter-spacing:-0.02em; line-height:1.1; margin-bottom: 28px;">You don't have to fix anything. You just have to <em style="color:var(--lime); font-style:italic;">make it to morning</em>.</h2>
+    <ol style="list-style:none; padding:0; counter-reset: step;">
+      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
+        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:var(--lime);">01</span>
+        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Tell one person.</strong>
+        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">Anyone. A friend. A sibling. ListenUp on WhatsApp. The line above. You don't have to explain — just "I'm not okay tonight."</span>
+      </li>
+      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
+        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:var(--lime);">02</span>
+        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Put space between you and means of harm.</strong>
+        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">Give pills, ropes, knives, firearms to someone else for tonight. Lock them in the car. Hand them to a neighbour. Just for tonight.</span>
+      </li>
+      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
+        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:var(--lime);">03</span>
+        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Eat something small.</strong>
+        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">Toast. A banana. Yoghurt. Blood sugar matters more than you think when everything feels final.</span>
+      </li>
+      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
+        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:var(--lime);">04</span>
+        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Sit somewhere safe.</strong>
+        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">A friend's couch. The lounge with the TV on. A 24/7 garage forecourt. Not alone in the dark if you don't have to be.</span>
+      </li>
+      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
+        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:var(--lime);">05</span>
+        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Don't decide anything tonight.</strong>
+        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">Big decisions — leaving, ending, signing, sending — none of them have to happen tonight. They can wait. You can wait.</span>
+      </li>
+      <li style="counter-increment: step; padding: 18px 0 18px 48px; position:relative;">
+        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:var(--lime);">06</span>
+        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">When morning comes, message us.</strong>
+        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">You don't have to be okay. You just have to be reachable. <a href="https://wa.me/27829089319" style="color:var(--lime); border-bottom: 1px dotted rgba(139,197,63,0.5);">WhatsApp ListenUp</a> — we'll take it from there.</span>
+      </li>
+    </ol>
+    <button onclick="document.getElementById('planOverlay').style.display='none'" style="margin-top:32px; background:transparent; color:var(--ivory); border:1px solid var(--hairline); padding:10px 24px; border-radius:999px; font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">Close</button>
+  </div>
+</div>
+
+<button class="quickexit" id="quickexit" type="button" aria-label="Quick exit">
+  Quick exit
+  <svg style="width:14px;height:14px;vertical-align:-2px;margin-left:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M14 10l7-7M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
+</button>
+
+<script>
+  // Quick exit
+  const quickExit = () => window.location.replace('https://www.bbc.com/weather');
+  document.getElementById('quickexit').addEventListener('click', quickExit);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') quickExit(); });
+
+  // Breathing overlay
+  document.getElementById('breatheTile').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('breatheOverlay').style.display = 'flex';
+    let phases = ['Breathe in…', 'Hold…', 'Breathe out…'];
+    let durations = [4000, 4000, 6000];
+    let i = 0;
+    const phaseEl = document.getElementById('breathePhase');
+    phaseEl.textContent = phases[0];
+    const tick = () => {
+      if (document.getElementById('breatheOverlay').style.display === 'none') return;
+      i = (i + 1) % 3;
+      phaseEl.textContent = phases[i];
+      setTimeout(tick, durations[i]);
+    };
+    setTimeout(tick, durations[0]);
+  });
+
+  // Plan overlay
+  document.getElementById('planTile').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('planOverlay').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

@@ -1061,6 +1061,167 @@
   /* utility */
   .container { max-width: 1400px; margin: 0 auto; }
 
+  /* ─── LANGUAGE BAND (we answer in your language) ─── */
+  .langband { background: var(--ivory); color: var(--navy); padding: 36px clamp(20px, 4vw, 56px); border-top: 1px solid var(--hairline-dark); border-bottom: 1px solid var(--hairline-dark); }
+  .langband-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .langband-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mute-dark); flex-shrink: 0; }
+  .langband-list { display: flex; gap: 22px; flex-wrap: wrap; font-family: var(--display); font-size: clamp(15px, 1.6vw, 19px); font-weight: 400; letter-spacing: -0.01em; line-height: 1.3; }
+  .langband-list span { white-space: nowrap; }
+  .langband-list em { font-style: italic; color: var(--lime); }
+  @media (max-width: 720px) { .langband-list { gap: 14px; font-size: 14px; } }
+
+  /* ─── VOICES (real client quotes — placeholders until Maryke sends real ones) ─── */
+  .voices { background: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
+  .voices-inner { max-width: 1300px; margin: 0 auto; }
+  .voices-head { max-width: 760px; margin: 0 auto 60px; text-align: center; }
+  .voices-title {
+    font-family: var(--display);
+    font-weight: 360;
+    font-variation-settings: "opsz" 60;
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-top: 14px;
+  }
+  .voices-title em { font-style: italic; color: var(--lime); }
+  .voices-sub { font-size: 15px; line-height: 1.55; color: var(--mute); margin-top: 16px; }
+  .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 1000px) { .voices-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px)  { .voices-grid { grid-template-columns: 1fr; } }
+  .voice-card {
+    background: var(--navy-90);
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+  }
+  .voice-card::before {
+    content: "";
+    position: absolute;
+    top: 22px; left: 28px;
+    width: 28px; height: 4px;
+    background: var(--lime);
+    border-radius: 4px;
+  }
+  .voice-quote {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 60;
+    font-size: 19px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: var(--ivory);
+    margin-top: 20px;
+  }
+  .voice-quote em { font-style: italic; color: var(--lime); }
+  .voice-attr {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mute);
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+    margin-top: auto;
+  }
+
+  /* ─── CHECK-IN (5-question warmth-led self-screen, never diagnostic) ─── */
+  .checkin { background: var(--ivory-warm); color: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
+  .checkin-inner { max-width: 780px; margin: 0 auto; }
+  .checkin-head { text-align: center; margin-bottom: 48px; }
+  .checkin-title {
+    font-family: var(--display);
+    font-weight: 360;
+    font-variation-settings: "opsz" 60;
+    font-size: clamp(30px, 4.2vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-top: 14px;
+  }
+  .checkin-title em { font-style: italic; color: var(--lime); }
+  .checkin-sub { font-size: 15.5px; line-height: 1.55; color: rgba(14,30,58,0.7); margin-top: 16px; max-width: 60ch; margin-left: auto; margin-right: auto; }
+
+  .checkin-form { display: flex; flex-direction: column; gap: 22px; }
+  .checkin-q { background: var(--ivory); border: 1px solid var(--hairline-dark); border-radius: 16px; padding: 22px 24px; }
+  .checkin-q.safety { border: 1.5px solid var(--coral); background: #fff8f5; }
+  .checkin-q-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); font-weight: 600; }
+  .checkin-q.safety .checkin-q-label { color: var(--coral); }
+  .checkin-q-text { font-family: var(--display); font-weight: 400; font-size: 19px; line-height: 1.35; margin-top: 6px; letter-spacing: -0.01em; }
+  .checkin-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
+  @media (max-width: 560px) { .checkin-options { grid-template-columns: 1fr 1fr; } }
+  .checkin-options label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 8px;
+    background: var(--ivory-warm);
+    border: 1px solid var(--hairline-dark);
+    border-radius: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(14,30,58,0.65);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    user-select: none;
+    line-height: 1.3;
+    min-height: 44px;
+  }
+  .checkin-options input { position: absolute; opacity: 0; pointer-events: none; }
+  .checkin-options label:hover { border-color: var(--lime); color: var(--navy); }
+  .checkin-options input:checked + label,
+  .checkin-options label.checked { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
+  .checkin-q.safety .checkin-options label.checked { background: var(--coral); border-color: var(--coral); color: var(--navy); }
+
+  .checkin-submit {
+    background: var(--navy);
+    color: var(--ivory);
+    border: none;
+    padding: 16px 28px;
+    border-radius: 999px;
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .checkin-submit:hover { background: var(--navy-90); transform: translateY(-2px); }
+  .checkin-submit:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  .checkin-skip { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(14,30,58,0.55); text-align: center; margin-top: 12px; }
+  .checkin-skip a { color: var(--navy); border-bottom: 1px dotted rgba(14,30,58,0.4); }
+
+  /* Results panel (hidden until form submitted) */
+  .checkin-result { display: none; background: var(--ivory); border-radius: 20px; padding: 36px 32px; border: 1px solid var(--hairline-dark); }
+  .checkin-result.severe { background: var(--navy); color: var(--ivory); border-color: var(--coral); }
+  .checkin-result.show { display: block; animation: fadeIn 0.6s ease-out; }
+  .result-eyebrow { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lime); font-weight: 600; }
+  .result-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 10px 0 16px;
+  }
+  .result-title em { font-style: italic; color: var(--lime); }
+  .result-body { font-size: 15.5px; line-height: 1.55; color: rgba(14,30,58,0.78); }
+  .checkin-result.severe .result-body { color: rgba(250,247,242,0.85); }
+  .result-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .result-btn { padding: 12px 22px; border-radius: 999px; font-family: var(--body); font-size: 14px; font-weight: 500; transition: transform 0.15s, background 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+  .result-btn.primary { background: var(--lime); color: var(--navy); }
+  .result-btn.primary:hover { background: var(--lime-bright); transform: translateY(-2px); }
+  .result-btn.coral { background: var(--coral); color: var(--navy); }
+  .result-btn.coral:hover { transform: translateY(-2px); }
+  .result-btn.ghost { background: transparent; border: 1px solid var(--hairline-dark); color: var(--navy); }
+  .checkin-result.severe .result-btn.ghost { border-color: var(--hairline); color: var(--ivory); }
+
   /* ─── ACCESSIBILITY — honour OS-level reduced-motion preference ─── */
   /* For anyone who has vestibular sensitivity OR is in a high-distress state, */
   /* the OS "reduce motion" setting disables every animation and transition on this site. */
@@ -1331,6 +1492,7 @@
   <span class="label">If you need help right now</span>
   <span><strong>SADAG</strong><a href="tel:0800567567">0800 567 567</a></span>
   <span><strong>Lifeline SA</strong><a href="tel:0861322322">0861 322 322</a></span>
+  <span><a href="tonight.html" style="color: var(--lime); border-bottom-color: rgba(139,197,63,0.5);">Tonight ↗</a></span>
 </aside>
 
 <nav class="top" id="topnav">
@@ -1388,6 +1550,28 @@
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════ LANGUAGE BAND -->
+<!-- Confirm with TTP which of SA's 11 official languages the team actually
+     answers in. If a language isn't covered, remove it. Honesty > comprehensiveness. -->
+<div class="langband" aria-label="Languages we answer in">
+  <div class="langband-inner">
+    <span class="langband-label">We answer in your <em style="font-style: italic; color: var(--navy);">language</em></span>
+    <div class="langband-list">
+      <span>Afrikaans</span>
+      <span>English</span>
+      <span>isiNdebele</span>
+      <span>isiXhosa</span>
+      <span>isiZulu</span>
+      <span>Sepedi</span>
+      <span>Sesotho</span>
+      <span>Setswana</span>
+      <span>siSwati</span>
+      <span>Tshivenda</span>
+      <span>Xitsonga</span>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════════════════════ SITUATIONS / entry points -->
 <section class="situations" id="paths">
   <div class="container">
@@ -1397,7 +1581,7 @@
     </div>
 
     <div class="situations-grid">
-      <a href="#cta" class="situation-card">
+      <a href="#checkin" class="situation-card">
         <div class="situation-head-row">
           <span class="situation-tag">For yourself</span>
           <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -1606,6 +1790,94 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ CHECK-IN (5-question warmth-led self-screen) -->
+<!--
+  This is NOT a clinical diagnostic instrument. It's a 5-question warmth-led check-in
+  designed to be safe and routing-only:
+    • Q4 is the safety question. Any answer above "Not at all" routes immediately to SADAG + TTP urgent.
+    • Otherwise, total score (Q1+Q2+Q3+Q5 inverted) decides the routing tone.
+    • Results NEVER label the person, NEVER claim diagnosis.
+  If TTP wants to swap in a validated instrument (PHQ-9, DASS-21), the framework stays the same.
+-->
+<section class="checkin" id="checkin">
+  <div class="checkin-inner">
+    <div class="checkin-head">
+      <span class="eyebrow dark"><span class="marker"></span>A short check-in / 04</span>
+      <h2 class="checkin-title">Not sure if you should <em>reach out</em>?</h2>
+      <p class="checkin-sub">Five questions. Two minutes. We won't store anything — your answers don't leave your browser. We just want to help you decide what to do next.</p>
+    </div>
+
+    <form class="checkin-form" id="checkinForm" onsubmit="event.preventDefault(); scoreCheckin();">
+
+      <div class="checkin-q">
+        <span class="checkin-q-label">Question 01</span>
+        <p class="checkin-q-text">In the past two weeks, has it been hard to find joy in things you usually enjoy?</p>
+        <div class="checkin-options" data-q="q1">
+          <input type="radio" name="q1" value="0" id="q1-0" required><label for="q1-0">Not at all</label>
+          <input type="radio" name="q1" value="1" id="q1-1"><label for="q1-1">Some days</label>
+          <input type="radio" name="q1" value="2" id="q1-2">         <label for="q1-2">Most days</label>
+          <input type="radio" name="q1" value="3" id="q1-3"><label for="q1-3">Nearly every day</label>
+        </div>
+      </div>
+
+      <div class="checkin-q">
+        <span class="checkin-q-label">Question 02</span>
+        <p class="checkin-q-text">Have you felt down, hopeless, or like there's a weight you can't shake?</p>
+        <div class="checkin-options" data-q="q2">
+          <input type="radio" name="q2" value="0" id="q2-0" required><label for="q2-0">Not at all</label>
+          <input type="radio" name="q2" value="1" id="q2-1"><label for="q2-1">Some days</label>
+          <input type="radio" name="q2" value="2" id="q2-2"><label for="q2-2">Most days</label>
+          <input type="radio" name="q2" value="3" id="q2-3"><label for="q2-3">Nearly every day</label>
+        </div>
+      </div>
+
+      <div class="checkin-q">
+        <span class="checkin-q-label">Question 03</span>
+        <p class="checkin-q-text">Has your sleep changed — too little, too much, or restless?</p>
+        <div class="checkin-options" data-q="q3">
+          <input type="radio" name="q3" value="0" id="q3-0" required><label for="q3-0">Not at all</label>
+          <input type="radio" name="q3" value="1" id="q3-1"><label for="q3-1">Some days</label>
+          <input type="radio" name="q3" value="2" id="q3-2"><label for="q3-2">Most days</label>
+          <input type="radio" name="q3" value="3" id="q3-3"><label for="q3-3">Nearly every day</label>
+        </div>
+      </div>
+
+      <div class="checkin-q safety">
+        <span class="checkin-q-label">Question 04 — safety</span>
+        <p class="checkin-q-text">Have you had thoughts about hurting yourself, or that the world might be better off without you?</p>
+        <div class="checkin-options" data-q="q4">
+          <input type="radio" name="q4" value="0" id="q4-0" required><label for="q4-0">Not at all</label>
+          <input type="radio" name="q4" value="1" id="q4-1"><label for="q4-1">Some days</label>
+          <input type="radio" name="q4" value="2" id="q4-2"><label for="q4-2">Most days</label>
+          <input type="radio" name="q4" value="3" id="q4-3"><label for="q4-3">Nearly every day</label>
+        </div>
+      </div>
+
+      <div class="checkin-q">
+        <span class="checkin-q-label">Question 05</span>
+        <p class="checkin-q-text">Have you been able to talk to anyone about how you're feeling?</p>
+        <div class="checkin-options" data-q="q5">
+          <input type="radio" name="q5" value="3" id="q5-0" required><label for="q5-0">Not at all</label>
+          <input type="radio" name="q5" value="2" id="q5-1"><label for="q5-1">A little</label>
+          <input type="radio" name="q5" value="1" id="q5-2"><label for="q5-2">Some</label>
+          <input type="radio" name="q5" value="0" id="q5-3"><label for="q5-3">Yes, freely</label>
+        </div>
+      </div>
+
+      <button type="submit" class="checkin-submit">Show me what to do →</button>
+      <p class="checkin-skip">Not ready to answer questions? <a href="#cta">Skip straight to WhatsApp ListenUp</a></p>
+    </form>
+
+    <!-- Results panel (populated by JS) -->
+    <div class="checkin-result" id="checkinResult" role="region" aria-live="polite">
+      <span class="result-eyebrow" id="resultEyebrow">Result</span>
+      <h3 class="result-title" id="resultTitle"></h3>
+      <div class="result-body" id="resultBody"></div>
+      <div class="result-actions" id="resultActions"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════════════ SERVICES -->
 <section class="services" id="services">
   <div class="container">
@@ -1704,6 +1976,40 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ VOICES (real, anonymised client quotes) -->
+<!--
+  ALL FOUR QUOTES BELOW ARE PLACEHOLDERS written in TTP's voice.
+  Before launch, ask Maryke for 3-4 real anonymised client quotes (with permission).
+  Format kept consistent: short, specific, outcome-led. Attribute by first initial + age/role + city,
+  or fully anonymous. Never use a full name. Never use a photo of the actual client.
+-->
+<section class="voices">
+  <div class="voices-inner">
+    <div class="voices-head">
+      <span class="eyebrow"><span class="marker"></span>Voices / 05</span>
+      <h2 class="voices-title">Real people, on the <em>worst day</em>, who reached out.</h2>
+      <p class="voices-sub">Quotes shared anonymously, with permission. We've changed nothing about what they said — just removed anything that could identify them.</p>
+    </div>
+
+    <div class="voices-grid">
+      <article class="voice-card">
+        <p class="voice-quote">"My husband died on a Tuesday. I sent the message on Wednesday at 11pm. They answered in three minutes. I'm still here a year later."</p>
+        <p class="voice-attr">D. · 41 · Cape Town · 2024 — <strong>placeholder</strong></p>
+      </article>
+
+      <article class="voice-card">
+        <p class="voice-quote">"I didn't think I'd make it to Christmas. The case manager kept WhatsApping me every day for two weeks until I felt safe to keep going."</p>
+        <p class="voice-attr">M. · 28 · Joburg · 2024 — <strong>placeholder</strong></p>
+      </article>
+
+      <article class="voice-card">
+        <p class="voice-quote">"After the incident at work, three of my staff couldn't sleep. TTP came on-site within 24 hours. They didn't lecture — they listened. We're still a team."</p>
+        <p class="voice-attr">HR manager · Eastern Cape · 2024 — <strong>placeholder</strong></p>
+      </article>
     </div>
   </div>
 </section>
@@ -1910,6 +2216,79 @@
   const quickExit = () => { window.location.replace('https://www.bbc.com/weather'); };
   document.getElementById('quickexit')?.addEventListener('click', quickExit);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') quickExit(); });
+
+  // ─── Check-in (5-question warmth-led self-screen, never diagnostic) ───
+  // Routing rules:
+  //   • Q4 (safety) ≥ 1 → SEVERE route (SADAG + TTP urgent, regardless of other scores)
+  //   • Else if total ≥ 9 → MODERATE-SEVERE (suggested to reach out this week)
+  //   • Else if total ≥ 5 → MODERATE (talking could help)
+  //   • Else                → MILD (you don't have to be in crisis to reach out)
+  // Q5 is inverted: "Yes, freely" = 0, "Not at all" = 3 (lack of support increases the score)
+  // Answers never leave the browser. No fetch, no analytics, no storage.
+  document.querySelectorAll('.checkin-options label').forEach(lbl => {
+    lbl.addEventListener('click', () => {
+      const group = lbl.parentElement;
+      group.querySelectorAll('label').forEach(l => l.classList.remove('checked'));
+      lbl.classList.add('checked');
+    });
+  });
+
+  function scoreCheckin() {
+    const form = document.getElementById('checkinForm');
+    const data = new FormData(form);
+    const q1 = +data.get('q1'), q2 = +data.get('q2'), q3 = +data.get('q3'),
+          q4 = +data.get('q4'), q5 = +data.get('q5');
+    const total = q1 + q2 + q3 + q5;
+    let level;
+    if (q4 >= 1)        level = 'severe';
+    else if (total >= 9) level = 'mod-severe';
+    else if (total >= 5) level = 'moderate';
+    else                 level = 'mild';
+    renderCheckinResult(level);
+  }
+
+  function renderCheckinResult(level) {
+    const panel = document.getElementById('checkinResult');
+    const form  = document.getElementById('checkinForm');
+    const eye   = document.getElementById('resultEyebrow');
+    const title = document.getElementById('resultTitle');
+    const body  = document.getElementById('resultBody');
+    const acts  = document.getElementById('resultActions');
+
+    panel.classList.remove('severe', 'show');
+
+    const whatsappBtn = '<a href="https://wa.me/27829089319" class="result-btn primary">WhatsApp ListenUp now →</a>';
+    const callOffice = '<a href="tel:+27213002053" class="result-btn ghost">Call 021 300 2053</a>';
+    const callSADAG  = '<a href="tel:0800567567" class="result-btn coral">Call SADAG · 0800 567 567 →</a>';
+    const tonight    = '<a href="tonight.html" class="result-btn ghost">Open the Tonight page</a>';
+
+    if (level === 'severe') {
+      panel.classList.add('severe');
+      eye.textContent = 'Thank you for being honest';
+      title.innerHTML = 'What you described is <em>serious</em>. You deserve a real human in the next hour.';
+      body.innerHTML  = '<p>SADAG (0800 567 567) is a free, 24-hour line trained for exactly this — they will not hang up, they will not rush you. Or send TTP a WhatsApp message — we answer within minutes, day and night.</p><p style="margin-top:14px;">You are not a burden. Reaching out is not dramatic. We want you here.</p>';
+      acts.innerHTML  = callSADAG + whatsappBtn + tonight;
+    } else if (level === 'mod-severe') {
+      eye.textContent = 'A reflection, not a diagnosis';
+      title.innerHTML = 'It sounds like you\'ve been carrying <em>a lot</em>.';
+      body.innerHTML  = '<p>What you described — feeling down most days, hard to sleep, struggling to find joy — is real, and it adds up. Talking to a qualified human this week could change the trajectory. You don\'t need to wait until it gets worse.</p>';
+      acts.innerHTML  = whatsappBtn + callOffice;
+    } else if (level === 'moderate') {
+      eye.textContent = 'A reflection, not a diagnosis';
+      title.innerHTML = 'Some of this is <em>worth talking about</em>.';
+      body.innerHTML  = '<p>You don\'t have to be in crisis for talking to help. A single conversation with someone trained for this can shift things in ways friends and family sometimes can\'t. No commitment — just a message.</p>';
+      acts.innerHTML  = whatsappBtn + callOffice;
+    } else {
+      eye.textContent = 'A reflection, not a diagnosis';
+      title.innerHTML = 'You don\'t have to be in <em>crisis</em> to reach out.';
+      body.innerHTML  = '<p>If you came to this page, something brought you here. That\'s reason enough. TTP is here for the conversation before the crisis, not just the one after it.</p>';
+      acts.innerHTML  = whatsappBtn + callOffice;
+    }
+
+    form.style.display = 'none';
+    panel.classList.add('show');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 </script>
 
 </body>

@@ -76,6 +76,37 @@ If you later want to use `thetalkingpoint.co.za` instead, that's a DNS change at
 
 ---
 
+## Tier 1 lifesaver additions (May 2026)
+
+Four save-a-life-first additions built on top of the structural foundation:
+
+### A. `tonight.html` — the 3am crisis page
+A separate stripped-down page at `/tonight.html` for someone in active crisis right now. Single screen, four tap targets, no scrolling, no marketing. Linked from the persistent crisis strip ("Tonight ↗"). Includes:
+- Big WhatsApp button (Option 01)
+- Big SADAG call button (Option 02)
+- "Breathe with me" — 90-second guided box-breathing overlay (Option 03)
+- "Make it through tonight" — 6-step stay-alive-until-morning overlay (Option 04)
+
+The 6 steps in Option 04 (tell one person / put space between you and means of harm / eat something / sit somewhere safe / don't decide anything tonight / message us in the morning) are evidence-informed but written in plain language. **Review with Maryke** to confirm framing matches TTP's clinical voice before launch.
+
+### B. Voices section (placeholder quotes on `index.html`)
+Three anonymised quote cards in TTP's voice — clearly marked `<strong>placeholder</strong>` in the attribution line. **Before launch:** Maryke supplies 3-4 real anonymised client quotes (with permission); we replace the placeholders. Format kept consistent (short, specific, outcome-led). Never use a full name. Never use a real photo of the actual client.
+
+### C. Language band (after the marquee)
+Names all 11 official SA languages TTP claims to answer in. **Confirm with TTP** which the team *actually* covers. If a language isn't covered, remove it — honesty beats comprehensiveness for this audience.
+
+### D. 5-question check-in (`#checkin` anchor, after ListenUp)
+TTP-specific warmth-led self-screen — NOT a clinical diagnostic instrument. Routing rules baked in:
+- **Q4 is the safety question.** Any answer above "Not at all" routes the visitor immediately to SADAG + TTP urgent — regardless of other scores.
+- Otherwise: total (Q1+Q2+Q3+Q5) decides the *tone* of the recommendation. Never labels the person, never claims diagnosis.
+- Answers never leave the browser. No fetch, no analytics, no storage.
+
+If TTP wants to swap in a validated instrument (PHQ-9, DASS-21) with clinical sign-off, the framework + routing stays the same — just swap the question wording and adjust scoring thresholds.
+
+The "For yourself" situation tile on the homepage now routes here (`#checkin`) instead of directly to the CTA — giving people who said *"I need to talk to someone"* an opt-in middle step before the WhatsApp leap.
+
+---
+
 ## Design principle: this site needs to be safe to land on at 3am
 
 TTP's audience includes people having suicidal thoughts. The visual and motion choices on this site are deliberately calmer than a standard marketing site:
