@@ -600,17 +600,31 @@
     background: var(--lime);
   }
 
-  /* Phone mockup — transparent PNG, WhatsApp chat baked into the screen */
+  /* Phone mockup — transparent PNG, WhatsApp chat baked into the screen.
+     The PNG's chat background is semi-transparent cream, so we sit the phone
+     on a soft ivory backplate to stop the navy bleeding through. */
   .phone-wrap { display: flex; justify-content: center; }
   .phone {
     position: relative;
     width: 100%;
     max-width: 280px;
     margin: 0 auto;
+    padding: 28px 22px;
+    border-radius: 28px;
+    background: rgba(250, 247, 242, 0.06);
+    box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55);
     transition: transform 0.4s var(--ease-out);
   }
+  .phone::before {
+    content: "";
+    position: absolute;
+    inset: 28px 22px;
+    border-radius: 36px;
+    background: #FAF7F2;
+    z-index: 0;
+  }
   .phone:hover { transform: translateY(-4px); }
-  .phone-img { display: block; width: 100%; height: auto; }
+  .phone-img { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
 
   /* ─── SERVICES ─── */
   .services { background: var(--ivory); color: var(--navy); }
@@ -1238,7 +1252,9 @@
     z-index: 0;
   }
   /* Hero hands image — contained in the upper-right, not a full-bleed background.
-     The rest of the hero is pure navy so the logo and headline can breathe. */
+     The rest of the hero is pure navy so the logo and headline can breathe.
+     Radial mask fades the edges into the navy so the image doesn't sit as a
+     visible rectangle. */
   .hero::before {
     inset: auto;
     top: 7%;
@@ -1249,8 +1265,10 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.55;
+    opacity: 0.7;
     filter: none;
+    -webkit-mask-image: radial-gradient(ellipse 70% 75% at center, #000 35%, rgba(0,0,0,0.5) 65%, transparent 100%);
+            mask-image: radial-gradient(ellipse 70% 75% at center, #000 35%, rgba(0,0,0,0.5) 65%, transparent 100%);
   }
   .testimonial::before { background-image: url("assets/img/pebbles.jpg");        background-position: center 40%; opacity: 0.16; }
   .cta::after          { background-image: url("assets/img/hands-baby.jpg");     background-position: center 40%; opacity: 0.14; filter: grayscale(0.5) contrast(0.95); }
