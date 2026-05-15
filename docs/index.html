@@ -570,7 +570,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(40px, 6vw, 80px);
-    align-items: center;
+    align-items: start;
     position: relative;
   }
   @media (max-width: 880px) { .listenup-grid { grid-template-columns: 1fr; } }
@@ -1275,7 +1275,7 @@
     pointer-events: none;
     z-index: 0;
   }
-  .hero::before        { background-image: url("assets/img/hands-clasping.png"); background-position: center 30%; opacity: 1; filter: none; }
+  .hero::before        { background-image: url("assets/img/hands-clasping.png"); background-position: center; background-size: contain; background-repeat: no-repeat; opacity: 0.5; filter: none; }
   .listenup::after     { background-image: url("assets/img/counselling.png");    background-position: center 35%; }
   .testimonial::before { background-image: url("assets/img/pebbles.jpg");        background-position: center 40%; opacity: 0.16; }
   .cta::after          { background-image: url("assets/img/hands-baby.jpg");     background-position: center 40%; opacity: 0.14; filter: grayscale(0.5) contrast(0.95); }
