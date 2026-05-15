@@ -177,7 +177,7 @@
   /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
-    padding: 140px clamp(20px, 4vw, 56px) 80px;
+    padding: 180px clamp(20px, 4vw, 56px) 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1251,24 +1251,38 @@
     pointer-events: none;
     z-index: 0;
   }
-  /* Hero hands image — contained in the upper-right, not a full-bleed background.
-     The rest of the hero is pure navy so the logo and headline can breathe.
-     Radial mask fades the edges into the navy so the image doesn't sit as a
-     visible rectangle. */
-  .hero::before {
-    inset: auto;
-    top: 7%;
-    right: 4%;
-    width: 38%;
-    height: 56%;
-    background-image: url("assets/img/hands-clasping.png");
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.7;
-    filter: none;
-    -webkit-mask-image: radial-gradient(ellipse 70% 75% at center, #000 35%, rgba(0,0,0,0.5) 65%, transparent 100%);
-            mask-image: radial-gradient(ellipse 70% 75% at center, #000 35%, rgba(0,0,0,0.5) 65%, transparent 100%);
+  /* Hero now uses a video on the right side of the section instead of a corner
+     image. The ::before rule is intentionally a no-op so the navy stays pure. */
+  .hero::before { display: none; }
+
+  /* Hero video — desktop: absolutely positioned on the right, top aligned with
+     the headline, bottom near the buttons row. Mobile: falls back to inline
+     between headline and hero-foot. Muted/looping/playsinline so iOS autoplays;
+     paused under prefers-reduced-motion via JS at the bottom of the file. */
+  .hero-video {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55);
+    background: rgba(250, 247, 242, 0.04);
+    margin: 32px auto 0;
+  }
+  @media (min-width: 881px) {
+    .hero-video {
+      position: absolute;
+      top: clamp(200px, 26vh, 300px);
+      right: clamp(20px, 4vw, 56px);
+      bottom: clamp(240px, 30vh, 340px);
+      width: clamp(280px, 36%, 460px);
+      max-width: none;
+      aspect-ratio: auto;
+      height: auto;
+      margin: 0;
+      z-index: 1;
+    }
   }
   .testimonial::before { background-image: url("assets/img/pebbles.jpg");        background-position: center 40%; opacity: 0.16; }
   .cta::after          { background-image: url("assets/img/hands-baby.jpg");     background-position: center 40%; opacity: 0.14; filter: grayscale(0.5) contrast(0.95); }
@@ -1708,6 +1722,10 @@
       </span>.
     </span>
   </h1>
+
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="assets/ttp-video.mp4" type="video/mp4" />
+  </video>
 
   <div class="hero-foot">
     <p class="hero-sub">
@@ -2536,6 +2554,16 @@
     panel.classList.add('show');
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
+  // Pause the hero video when the visitor prefers reduced motion.
+  (function () {
+    const v = document.querySelector('.hero-video');
+    if (!v) return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const apply = () => { if (mq.matches) { v.pause(); v.removeAttribute('autoplay'); } };
+    apply();
+    mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
+  })();
 </script>
 
 </body>
