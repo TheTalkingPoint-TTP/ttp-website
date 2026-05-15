@@ -76,6 +76,28 @@ If you later want to use `thetalkingpoint.co.za` instead, that's a DNS change at
 
 ---
 
+## Visual breathing room — 5 photo placements
+
+To break up the navy-heavy stretches and add emotional warmth, the site has 5 placement slots wired up. Each references a specific filename in `docs/assets/img/`. Drop each photo into that folder with **exactly** the filename below — until you do, each slot auto-collapses (no broken-image icons, no empty boxes).
+
+| # | Filename | Where it appears | The image |
+|---|---|---|---|
+| 1 | `pebbles.jpg` | Right after the marquee, before the language band — "breath moment" | Black-and-white stack of balanced pebbles |
+| 2 | `hands-baby.jpg` | Between Manifesto and ListenUp — tenderness transition | Adult hand holding a baby's hand |
+| 3 | `counselling.jpg` | Between Services and Response case study | Two people in counselling, hands gesturing |
+| 4 | `hands-clasping.jpg` | Between Response case study and Testimonial | Two hands clasping at the forearm — lifeline |
+| 5 | `group-hands.jpg` | Banner at the top of the Voices section | Group of hands together — community |
+
+**To save them:**
+1. Open Finder → navigate to `~/Downloads/ttp-website/docs/assets/img/`
+2. Drag each of the 5 images into that folder
+3. Right-click → "Rename" each one to match the filename above (case-sensitive, lowercase, hyphens not spaces)
+4. Commit and push — they'll appear automatically on next refresh
+
+All 5 are styled identically: full-width, 440px tall (260px on mobile), with a slight grayscale + contrast filter to fit the brand. The 5th (`group-hands.jpg`) sits inside the Voices section as a rounded banner instead of full-width.
+
+---
+
 ## Tier 1 lifesaver additions (May 2026)
 
 Four save-a-life-first additions built on top of the structural foundation:
