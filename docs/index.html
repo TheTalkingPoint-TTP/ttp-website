@@ -1282,11 +1282,13 @@
   .hero-video {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 18px;
     box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55);
     background: rgba(250, 247, 242, 0.04);
+    align-self: center;
   }
   @media (max-width: 880px) {
     .hero-video {
