@@ -1284,6 +1284,65 @@
   .listenup, .testimonial, .cta { position: relative; overflow: hidden; }
   .listenup > *, .testimonial > *, .cta > * { position: relative; z-index: 1; }
 
+  /* ─── FAQ (practical friction-removers — calm, hairline-divided list) ─── */
+  .faq { background: var(--ivory); color: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
+  .faq-inner { max-width: 760px; margin: 0 auto; }
+  .faq-head { text-align: center; margin-bottom: 56px; }
+  .faq-title {
+    font-family: var(--display);
+    font-weight: 360;
+    font-variation-settings: "opsz" 60;
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-top: 14px;
+  }
+  .faq-title em { font-style: italic; color: var(--lime); }
+  .faq-list { list-style: none; padding: 0; margin: 0; }
+  .faq-list li { padding: 28px 0; border-top: 1px solid var(--hairline-dark); }
+  .faq-list li:last-child { border-bottom: 1px solid var(--hairline-dark); }
+  .faq-q {
+    font-family: var(--display);
+    font-weight: 420;
+    font-size: clamp(18px, 2.2vw, 22px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    color: var(--navy);
+  }
+  .faq-a { font-size: 15px; line-height: 1.65; color: rgba(14,30,58,0.74); margin: 0; }
+  .faq-a a { color: var(--navy); border-bottom: 1px dotted rgba(14,30,58,0.4); }
+  .faq-a a:hover { border-bottom-color: var(--navy); }
+
+  /* ─── HONEST LIMITS (we're not the right fit if…) ─── */
+  .limits { background: var(--ivory-warm); color: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
+  .limits-inner { max-width: 880px; margin: 0 auto; }
+  .limits-head { text-align: center; margin-bottom: 56px; }
+  .limits-title {
+    font-family: var(--display);
+    font-weight: 360;
+    font-variation-settings: "opsz" 60;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-top: 14px;
+  }
+  .limits-title em { font-style: italic; color: var(--coral); }
+  .limits-sub { font-size: 15px; line-height: 1.6; color: rgba(14,30,58,0.7); margin: 18px auto 0; max-width: 56ch; }
+  .limits-list { display: grid; gap: 20px; list-style: none; padding: 0; margin: 0; }
+  .limits-item { background: var(--ivory); border: 1px solid var(--hairline-dark); border-radius: 16px; padding: 26px 28px; }
+  .limits-item-title {
+    font-family: var(--display);
+    font-weight: 420;
+    font-size: 19px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+  }
+  .limits-item-body { font-size: 14.5px; line-height: 1.6; color: rgba(14,30,58,0.72); margin: 0; }
+  .limits-item-body a { color: var(--navy); border-bottom: 1px dotted rgba(14,30,58,0.4); font-weight: 500; }
+  .limits-item-body a:hover { border-bottom-color: var(--navy); }
+
   /* ─── ACCESSIBILITY — honour OS-level reduced-motion preference ─── */
   /* For anyone who has vestibular sensitivity OR is in a high-distress state, */
   /* the OS "reduce motion" setting disables every animation and transition on this site. */
@@ -2230,6 +2289,77 @@
         <p class="howstart-step-desc">If you need ongoing support, we match you with the right qualified professional — counsellor, mediator, or trauma specialist — in your province.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FAQ (practical friction-removers) -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <span class="eyebrow dark"><span class="marker"></span>Questions you might be holding / 07</span>
+      <h2 class="faq-title">The things people <em>worry about</em> before reaching out.</h2>
+    </div>
+    <ul class="faq-list">
+      <li>
+        <h3 class="faq-q">Will this show up on my phone bill?</h3>
+        <p class="faq-a">No. WhatsApp messages and calls don't itemise on phone bills as "TTP." If you're using a shared phone, open this page in Incognito or Private mode — and the <strong>Quick Exit</strong> button bottom-right clears it from your browsing history.</p>
+      </li>
+      <li>
+        <h3 class="faq-q">Is it really anonymous?</h3>
+        <p class="faq-a">Yes. You can WhatsApp us with no name, no ID, no medical aid. The only information we hold is what you choose to share. Records stay confidential under HPCSA and POPIA — even from family, employers, or insurers, unless you ask us otherwise.</p>
+      </li>
+      <li>
+        <h3 class="faq-q">What if I'm not in crisis, just struggling?</h3>
+        <p class="faq-a">You don't have to be in crisis to reach out. Some of our most important work happens in the conversation <em>before</em> the crisis. If you came to this page, that's reason enough.</p>
+      </li>
+      <li>
+        <h3 class="faq-q">How long until I see someone in person?</h3>
+        <p class="faq-a">Non-urgent: usually within a few days. Urgent on-site (workplace incident, family crisis): same day, in any of the nine provinces. <a href="https://wa.me/27829089319">WhatsApp ListenUp</a> is answered within minutes, 24/7.</p>
+      </li>
+      <li>
+        <h3 class="faq-q">Do you work with medical aids?</h3>
+        <p class="faq-a">Yes — we work with most South African medical aid schemes. We can bill direct, or you can claim back. Specific costs are discussed at first contact rather than posted publicly.</p>
+      </li>
+      <li>
+        <h3 class="faq-q">What if I don't speak English well?</h3>
+        <p class="faq-a">Just write or call in whichever language you think in. We answer in all 11 official South African languages and will match you to a case manager who speaks yours.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ HONEST LIMITS (we're not the right fit if…) -->
+<!--
+  PLACEHOLDER FOR CLINICAL REVIEW: the wording of each limit should be reviewed and
+  approved by Maryke / TTP's clinical lead before launch. The four items below are
+  drafted from general SA mental-health practice limits but Maryke may add, soften,
+  or sharpen any of them to match TTP's actual scope.
+-->
+<section class="limits" id="limits">
+  <div class="limits-inner">
+    <div class="limits-head">
+      <span class="eyebrow dark"><span class="marker"></span>Honest about limits / 08</span>
+      <h2 class="limits-title">We're not the right call <em>if…</em></h2>
+      <p class="limits-sub">The strongest practitioners are honest about what they don't do. Here's where we'll point you somewhere better — and stay with you until you get there.</p>
+    </div>
+    <ul class="limits-list">
+      <li class="limits-item">
+        <h3 class="limits-item-title">You're in immediate physical danger right now.</h3>
+        <p class="limits-item-body">If someone is hurting you, or is about to, please call <a href="tel:10111">SAPS · 10111</a> or the <a href="tel:0800150150">GBV Command Centre · 0800 150 150</a>. They can dispatch help. We can hold the conversation after.</p>
+      </li>
+      <li class="limits-item">
+        <h3 class="limits-item-title">You need inpatient psychiatric care or active medication management.</h3>
+        <p class="limits-item-body">Acute psychiatric crises requiring 24-hour monitoring need a psychiatric facility — not us. <a href="tel:0800567567">SADAG · 0800 567 567</a> can help you find the nearest one. We'll be here when you're discharged.</p>
+      </li>
+      <li class="limits-item">
+        <h3 class="limits-item-title">You need a medical certificate, scripting, or forensic assessment.</h3>
+        <p class="limits-item-body">We're counsellors, social workers, and mediators — not medical doctors or forensic psychiatrists. For those, we'll refer you to a registered GP, psychiatrist, or specialist.</p>
+      </li>
+      <li class="limits-item">
+        <h3 class="limits-item-title">You're under 18 without a parent or guardian.</h3>
+        <p class="limits-item-body">We can listen and offer immediate support, but ongoing work usually needs a guardian or another responsible adult involved. <a href="tel:0800567567">SADAG's youth line · 0800 567 567</a> is open directly to under-18s any time.</p>
+      </li>
+    </ul>
   </div>
 </section>
 
