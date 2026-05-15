@@ -598,29 +598,41 @@
     background: var(--lime);
   }
 
-  /* Phone mockup */
-  .phone-wrap { display: flex; justify-content: center; perspective: 1200px; }
+  /* Phone mockup — iPhone photo frame with the WhatsApp chat overlaid on the screen */
+  .phone-wrap { display: flex; justify-content: center; }
   .phone {
-    width: 280px; height: 480px;
-    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-    border-radius: 44px;
-    padding: 12px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.08);
-    transform: rotateY(-8deg) rotateX(4deg);
-    transition: transform 0.6s var(--ease-out);
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    transition: transform 0.4s var(--ease-out);
   }
-  .phone:hover { transform: rotateY(0) rotateX(0); }
-  .phone-screen { width: 100%; height: 100%; background: #ECE5DD; border-radius: 32px; overflow: hidden; position: relative; }
+  .phone:hover { transform: translateY(-4px); }
+  .phone-img { display: block; width: 100%; height: auto; }
+  /* The screen-area overlay — positioned over the actual phone screen in the photo.
+     The iphone.jpg is 577×433; the screen sits roughly at ~38% in from L/R, ~9.5%
+     from top, ~12.5% from bottom. Tweak these if the WhatsApp UI doesn't sit exactly
+     on the screen. */
+  .phone-screen {
+    position: absolute;
+    top: 9.5%; bottom: 12.5%;
+    left: 37.5%; right: 37.5%;
+    background: #ECE5DD;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
   .phone-header {
     background: #075E54;
-    padding: 14px 16px 12px;
+    padding: 6px 8px;
     color: white;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
+    flex-shrink: 0;
   }
   .phone-avatar {
-    width: 36px; height: 36px;
+    width: 18px; height: 18px;
     border-radius: 50%;
     background: var(--lime);
     color: var(--navy);
@@ -629,16 +641,17 @@
     justify-content: center;
     font-family: var(--display);
     font-weight: 600;
-    font-size: 18px;
+    font-size: 10px;
+    flex-shrink: 0;
   }
-  .phone-name { font-family: var(--body); font-size: 14px; font-weight: 600; line-height: 1.2; }
-  .phone-status { font-family: var(--body); font-size: 11px; opacity: 0.8; }
-  .phone-status .live { display: inline-block; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; margin-right: 4px; animation: pulse 2s infinite; }
-  .phone-messages { padding: 16px 12px; display: flex; flex-direction: column; gap: 8px; }
-  .msg { max-width: 80%; padding: 8px 12px; border-radius: 12px; font-size: 13px; line-height: 1.35; color: #111; font-family: var(--body); animation: msgIn 0.5s var(--ease-out) backwards; }
-  .msg.in { background: white; border-top-left-radius: 4px; align-self: flex-start; }
-  .msg.out { background: #DCF8C6; border-top-right-radius: 4px; align-self: flex-end; }
-  .msg .time { display: block; font-size: 9px; color: #555; text-align: right; margin-top: 3px; }
+  .phone-name { font-family: var(--body); font-size: 10px; font-weight: 600; line-height: 1.1; }
+  .phone-status { font-family: var(--body); font-size: 7.5px; opacity: 0.8; line-height: 1.1; }
+  .phone-status .live { display: inline-block; width: 4px; height: 4px; background: #4ade80; border-radius: 50%; margin-right: 3px; }
+  .phone-messages { padding: 6px 6px 8px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; flex: 1; }
+  .msg { max-width: 85%; padding: 4px 6px; border-radius: 8px; font-size: 8px; line-height: 1.3; color: #111; font-family: var(--body); animation: msgIn 0.5s var(--ease-out) backwards; }
+  .msg.in { background: white; border-top-left-radius: 2px; align-self: flex-start; }
+  .msg.out { background: #DCF8C6; border-top-right-radius: 2px; align-self: flex-end; }
+  .msg .time { display: block; font-size: 6px; color: #555; text-align: right; margin-top: 1px; }
   .msg:nth-child(1) { animation-delay: 0.2s; }
   .msg:nth-child(2) { animation-delay: 0.6s; }
   .msg:nth-child(3) { animation-delay: 1.0s; }
@@ -1956,6 +1969,7 @@
 
       <div class="phone-wrap">
         <div class="phone">
+          <img class="phone-img" src="assets/img/iphone.jpg" alt="iPhone showing WhatsApp ListenUp conversation" />
           <div class="phone-screen">
             <div class="phone-header">
               <div class="phone-avatar">L</div>
