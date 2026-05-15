@@ -258,13 +258,31 @@
   }
   @keyframes scribble { to { stroke-dashoffset: 0; } }
 
-  .hero-foot {
+  /* Hero body — 2-col grid that fills the space between meta and the section
+     bottom. Left: headline + sub-copy. Right: video on top, buttons below.
+     This keeps the video and buttons in the same column so they can never
+     overlap — no absolute positioning required. */
+  .hero-body {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    align-items: end;
-    gap: 40px;
+    gap: clamp(24px, 4vw, 56px);
+    flex: 1;
+    min-height: 0;
     z-index: 2;
     position: relative;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 0;
   }
   .hero-sub {
     font-family: var(--body);
@@ -313,8 +331,9 @@
   }
   .btn-ghost:hover { border-color: var(--ivory); background: rgba(250, 247, 242, 0.04); }
 
-  @media (max-width: 720px) {
-    .hero-foot { grid-template-columns: 1fr; }
+  @media (max-width: 880px) {
+    .hero-body { grid-template-columns: 1fr; }
+    .hero-left, .hero-right { gap: 24px; }
     .hero-actions { justify-content: flex-start; }
   }
 
@@ -1251,37 +1270,29 @@
     pointer-events: none;
     z-index: 0;
   }
-  /* Hero now uses a video on the right side of the section instead of a corner
-     image. The ::before rule is intentionally a no-op so the navy stays pure. */
+  /* Hero now uses a video in the right column instead of a corner image.
+     The ::before rule is intentionally a no-op so the navy stays pure. */
   .hero::before { display: none; }
 
-  /* Hero video — desktop: absolutely positioned on the right, top aligned with
-     the headline, bottom near the buttons row. Mobile: falls back to inline
-     between headline and hero-foot. Muted/looping/playsinline so iOS autoplays;
-     paused under prefers-reduced-motion via JS at the bottom of the file. */
+  /* Hero video — sits at the top of .hero-right, stretching down toward the
+     buttons. Muted/looping/playsinline so iOS autoplays; paused under
+     prefers-reduced-motion via JS at the bottom of the file. */
   .hero-video {
     display: block;
     width: 100%;
-    max-width: 460px;
-    aspect-ratio: 16 / 10;
+    flex: 1;
+    min-height: 0;
     object-fit: cover;
     border-radius: 18px;
     box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55);
     background: rgba(250, 247, 242, 0.04);
-    margin: 32px auto 0;
   }
-  @media (min-width: 881px) {
+  @media (max-width: 880px) {
     .hero-video {
-      position: absolute;
-      top: clamp(200px, 26vh, 300px);
-      right: clamp(20px, 4vw, 56px);
-      bottom: clamp(240px, 30vh, 340px);
-      width: clamp(280px, 36%, 460px);
-      max-width: none;
-      aspect-ratio: auto;
-      height: auto;
-      margin: 0;
-      z-index: 1;
+      flex: none;
+      aspect-ratio: 4 / 5;
+      max-width: 360px;
+      margin: 0 auto;
     }
   }
   .testimonial::before { background-image: url("assets/img/pebbles.jpg");        background-position: center 40%; opacity: 0.16; }
@@ -1710,33 +1721,35 @@
     <span>Est. 2017 / All 9 provinces</span>
   </div>
 
-  <h1 class="hero-headline">
-    <span class="line1 line">Let's talk</span><br/>
-    <span class="line2 line">about what</span><br/>
-    <span class="line3 line">no one says
-      <span class="underline-scribble">
-        <em>out loud</em>
-        <svg viewBox="0 0 600 40" preserveAspectRatio="none">
-          <path d="M 8 28 Q 80 6, 160 22 T 320 18 T 480 24 T 592 16" />
-        </svg>
-      </span>.
-    </span>
-  </h1>
-
-  <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-    <source src="assets/ttp-video.mp4" type="video/mp4" />
-  </video>
-
-  <div class="hero-foot">
-    <p class="hero-sub">
-      Mental health, trauma response, and mediation that actually works. <strong>Real humans</strong>, on the other end of a WhatsApp message, at 3am, in your language — when you don't know what else to do.
-    </p>
-    <div class="hero-actions">
-      <a href="#cta" class="btn-primary">
-        Start the conversation
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#manifesto" class="btn-ghost">See what we're about</a>
+  <div class="hero-body">
+    <div class="hero-left">
+      <h1 class="hero-headline">
+        <span class="line1 line">Let's talk</span><br/>
+        <span class="line2 line">about what</span><br/>
+        <span class="line3 line">no one says
+          <span class="underline-scribble">
+            <em>out loud</em>
+            <svg viewBox="0 0 600 40" preserveAspectRatio="none">
+              <path d="M 8 28 Q 80 6, 160 22 T 320 18 T 480 24 T 592 16" />
+            </svg>
+          </span>.
+        </span>
+      </h1>
+      <p class="hero-sub">
+        Mental health, trauma response, and mediation that actually works. <strong>Real humans</strong>, on the other end of a WhatsApp message, at 3am, in your language — when you don't know what else to do.
+      </p>
+    </div>
+    <div class="hero-right">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="assets/ttp-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">
+          Start the conversation
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#manifesto" class="btn-ghost">See what we're about</a>
+      </div>
     </div>
   </div>
 </section>
