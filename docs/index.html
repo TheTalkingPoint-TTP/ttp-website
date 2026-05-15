@@ -1297,9 +1297,11 @@
   .testimonial::before { background-image: url("assets/img/pebbles.jpg");        background-position: center 40%; opacity: 0.16; }
   .cta::after          { background-image: url("assets/img/hands-baby.jpg");     background-position: center 40%; opacity: 0.14; filter: grayscale(0.5) contrast(0.95); }
 
-  /* Ensure section content sits above the background photo */
+  /* Ensure section content sits above the background photo.
+     Exclude .listenup-bg — it's intentionally absolute and would otherwise be
+     forced to relative, taking layout space and pushing real content down. */
   .listenup, .testimonial, .cta { position: relative; overflow: hidden; }
-  .listenup > *, .testimonial > *, .cta > * { position: relative; z-index: 1; }
+  .listenup > *:not(.listenup-bg), .testimonial > *, .cta > * { position: relative; z-index: 1; }
 
   /* ─── FAQ (practical friction-removers — calm, hairline-divided list) ─── */
   .faq { background: var(--ivory); color: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
