@@ -76,6 +76,22 @@ If you later want to use `thetalkingpoint.co.za` instead, that's a DNS change at
 
 ---
 
+## Design principle: this site needs to be safe to land on at 3am
+
+TTP's audience includes people having suicidal thoughts. The visual and motion choices on this site are deliberately calmer than a standard marketing site:
+
+- **Display font: Newsreader** (warm, calm serif — was Fraunces, which is too literary/quirky for a crisis-context site)
+- **Crisis strip is deep navy**, not red — visible but not anxiety-spiking
+- **Minimal motion** — pulse animations on dots removed, scroll-reveals are gentler (14px translate, 1.1s ease, no slide-from-distance)
+- **`prefers-reduced-motion` honoured** — anyone with the OS setting enabled sees no animation at all
+- **Hero headline is smaller** than max-bombast — greets, doesn't shout
+- **Marquee runs ~40% slower** and the most graphic items (specific hijacking, specific funeral) were removed; the gentler-but-still-real ones stayed
+- **Grain overlay opacity halved** — less visual noise for an already-overloaded brain
+
+Any future edits should pass the same test: *Would this make a person quietly googling "I can't keep doing this" feel safer, or more agitated?* If unsure, default to calmer.
+
+---
+
 ## What to update before showing this to the world
 
 ### 0. Crisis support numbers (new — top strip)
