@@ -144,15 +144,39 @@
     60%  { opacity: 0; }
     100% { transform: scale(1.85); opacity: 0; }
   }
-  .nav-breathe svg {
+  .nav-breathe svg:not(.ring-text) {
     width: 100%; height: 100%;
     position: relative; z-index: 1;
     transform-origin: center;
     animation: nav-heart-pulse 5.5s ease-in-out infinite;
   }
-  .nav-breathe:hover svg,
+  .nav-breathe .ring-text {
+    position: absolute;
+    width: 180%; height: 180%;
+    top: -40%; left: -40%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+    animation: nav-heart-label 2.6s ease-out infinite;
+  }
+  .nav-breathe .ring-text text {
+    fill: currentColor;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  @keyframes nav-heart-label {
+    0%   { opacity: 0.75; }
+    55%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  .nav-breathe:hover svg:not(.ring-text),
+  .nav-breathe:hover .ring-text,
   .nav-breathe:hover::before,
   .nav-breathe:hover::after { animation-play-state: paused; }
+  .nav-breathe:hover .ring-text { opacity: 0.85; }
   @keyframes nav-heart-pulse {
     0%, 100% { transform: scale(0.92); opacity: 0.88; }
     50%      { transform: scale(1.06); opacity: 1; }
@@ -570,7 +594,7 @@
   </div>
   <div class="nav-actions">
     <button type="button" class="nav-breathe" data-breathe-trigger aria-label="Take 90 seconds to breathe with us" title="Take 90 seconds to breathe">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <svg class="ring-text" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="navHeartRing" d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none"/></defs><text><textPath href="#navHeartRing" startOffset="25%">click and breathe · </textPath></text></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
     </button>
     <a href="https://wa.me/27829089319?text=I%27m%20worried%20about%20someone%20I%20love%20and%20I%20don%27t%20know%20what%20to%20do." class="nav-cta">Start the conversation →</a>
   </div>
