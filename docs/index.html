@@ -992,7 +992,7 @@
   .trust { background: var(--ivory); padding: 48px clamp(20px, 4vw, 56px); border-top: 1px solid var(--hairline-dark); border-bottom: 1px solid var(--hairline-dark); }
   .trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
   .trust-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mute-dark); }
-  .trust-items { display: flex; gap: 36px; flex-wrap: wrap; }
+  .trust-items { display: flex; gap: 36px; flex-wrap: wrap; align-items: center; }
   .trust-items span {
     font-family: var(--display);
     font-weight: 480;
@@ -1000,6 +1000,27 @@
     color: var(--navy);
     font-variation-settings: "opsz" 60;
     letter-spacing: -0.01em;
+  }
+  /* Membership-body logos: visible-but-quiet at rest, full opacity on hover.
+     Click target opens the relevant body's site so credentials can be verified. */
+  .trust-items.memberships { gap: 28px; }
+  .trust-items.memberships .badge {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    opacity: 0.65;
+    transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+  }
+  .trust-items.memberships .badge:hover { opacity: 1; transform: translateY(-1px); }
+  .trust-items.memberships .badge img {
+    height: 100%;
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .trust-items.memberships .badge { height: 36px; }
   }
 
   /* ─── CTA ─── */
@@ -2381,28 +2402,17 @@
 <!-- ═══════════════════════════════════════════════ TRUST -->
 <div class="trust">
   <div class="trust-inner container">
-    <!--
-      MEMBERSHIPS ROW — text badges as placeholders. Closer to launch, swap these
-      <span class="badge">…</span> elements for inline SVG/IMG logos when TTP supplies them.
-      Body name → likely link target (for future logo + click-through):
-        ASCHP   → https://www.aschp.net/
-        DiSAC   → https://disac.co.za/
-        FAMAC   → https://famac.co.za/
-        SACSSP  → https://www.sacssp.co.za/
-        HPCSA   → https://www.hpcsa.co.za/
-        NABFAM  → https://nabfam.org.za/
-        SAAM    → https://www.saam.org.za/
-    -->
+    <!-- Membership-body logos link to each body's site so credentials can be verified. -->
     <div class="trust-row">
       <span class="trust-label">Memberships</span>
       <div class="trust-items memberships">
-        <span class="badge">ASCHP</span>
-        <span class="badge">DiSAC</span>
-        <span class="badge">FAMAC</span>
-        <span class="badge">SACSSP</span>
-        <span class="badge">HPCSA</span>
-        <span class="badge">NABFAM</span>
-        <span class="badge">SAAM</span>
+        <a class="badge" href="https://www.aschp.net/"  target="_blank" rel="noopener" aria-label="ASCHP — Association for Supportive Counsellors and Holistic Practitioners"><img src="assets/logos/aschp.png"  alt="ASCHP" loading="lazy" /></a>
+        <a class="badge" href="https://disac.co.za/"    target="_blank" rel="noopener" aria-label="DiSAC — Dispute Settlement Accreditation Council"><img src="assets/logos/disac.png"  alt="DiSAC" loading="lazy" /></a>
+        <a class="badge" href="https://famac.co.za/"    target="_blank" rel="noopener" aria-label="FAMAC — Family Mediators Association of the Cape"><img src="assets/logos/famac.png"  alt="FAMAC" loading="lazy" /></a>
+        <a class="badge" href="https://www.sacssp.co.za/" target="_blank" rel="noopener" aria-label="SACSSP — South African Council for Social Service Professions"><img src="assets/logos/sacssp.png" alt="SACSSP" loading="lazy" /></a>
+        <a class="badge" href="https://www.hpcsa.co.za/"  target="_blank" rel="noopener" aria-label="HPCSA — Health Professions Council of South Africa"><img src="assets/logos/hpcsa.png"  alt="HPCSA" loading="lazy" /></a>
+        <a class="badge" href="https://nabfam.org.za/"   target="_blank" rel="noopener" aria-label="NABFAM — National Accreditation Board for Family Mediators"><img src="assets/logos/nabfam.png" alt="NABFAM" loading="lazy" /></a>
+        <a class="badge" href="https://www.saam.org.za/"  target="_blank" rel="noopener" aria-label="SAAM — South African Association of Mediators"><img src="assets/logos/saam.png"   alt="SAAM" loading="lazy" /></a>
       </div>
     </div>
     <div class="trust-row">
