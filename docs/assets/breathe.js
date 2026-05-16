@@ -89,17 +89,37 @@
       margin-bottom: 24px;
     }
     .breathe-overlay .circle {
-      width: clamp(140px, 30vw, 220px);
+      width: clamp(160px, 32vw, 260px);
       aspect-ratio: 1;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(139, 197, 63, 0.4) 0%, rgba(139, 197, 63, 0.05) 70%);
+      background: radial-gradient(
+        circle,
+        rgba(164, 220, 78, 0.75) 0%,
+        rgba(139, 197, 63, 0.35) 38%,
+        rgba(139, 197, 63, 0.08) 72%,
+        transparent 100%
+      );
       margin-bottom: 32px;
       animation: breathe-overlay-big 14s ease-in-out infinite;
     }
+    /* Scale + outer glow + brightness all pulse together so the green reads
+       as actively pulsating, not just resizing. */
     @keyframes breathe-overlay-big {
-      0%, 100% { transform: scale(0.7); }
-      28%      { transform: scale(1.3); }
-      57%      { transform: scale(1.3); }
+      0%, 100% {
+        transform: scale(0.62);
+        box-shadow: 0 0 30px rgba(139, 197, 63, 0.18);
+        filter: brightness(0.85);
+      }
+      28% {
+        transform: scale(1.3);
+        box-shadow: 0 0 110px rgba(139, 197, 63, 0.6);
+        filter: brightness(1.18);
+      }
+      57% {
+        transform: scale(1.3);
+        box-shadow: 0 0 110px rgba(139, 197, 63, 0.6);
+        filter: brightness(1.18);
+      }
     }
     .breathe-overlay .phase {
       font-family: "Newsreader", "Source Serif Pro", serif;
