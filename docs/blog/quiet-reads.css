@@ -121,9 +121,9 @@ nav.top .nav-links a:hover { opacity: 1; }
   border: 2px solid var(--lime);
   pointer-events: none;
   opacity: 0;
-  animation: nav-heart-ripple 2.6s ease-out infinite;
+  animation: nav-heart-ripple 13s ease-out infinite;
 }
-.nav-breathe::after { animation-delay: 1.3s; }
+.nav-breathe::after { animation-delay: 6.5s; }
 @keyframes nav-heart-ripple {
   0%   { transform: scale(1);    opacity: 0.55; }
   60%  { opacity: 0; }
@@ -142,7 +142,7 @@ nav.top .nav-links a:hover { opacity: 1; }
   pointer-events: none;
   z-index: 0;
   overflow: visible;
-  animation: nav-heart-label 2.6s ease-out infinite;
+  animation: nav-heart-label 13s ease-out infinite;
 }
 .nav-breathe .ring-text text {
   fill: currentColor;
