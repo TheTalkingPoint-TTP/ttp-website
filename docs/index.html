@@ -2536,7 +2536,17 @@
 
     panel.classList.remove('severe', 'show');
 
-    const whatsappBtn = '<a href="https://wa.me/27829089319" class="result-btn primary">WhatsApp ListenUp now →</a>';
+    // Pre-fill the WhatsApp message based on severity so the case manager
+    // sees the user's tone before they say anything else — and the user
+    // doesn't have to write the first sentence from a cold start.
+    const waOpeners = {
+      'severe':     "I just did the check-in. I'm not okay tonight.",
+      'mod-severe': "I just did the check-in and it suggested I reach out. Can we talk?",
+      'moderate':   "Hi — I did the check-in. Can I just talk?",
+      'mild':       "Hi — I'm not in crisis, just wanted to reach out."
+    };
+    const waLink = 'https://wa.me/27829089319?text=' + encodeURIComponent(waOpeners[level] || waOpeners['mild']);
+    const whatsappBtn = '<a href="' + waLink + '" class="result-btn primary">WhatsApp ListenUp now →</a>';
     const callOffice = '<a href="tel:+27213002053" class="result-btn ghost">Call 021 300 2053</a>';
     const callSADAG  = '<a href="tel:0800567567" class="result-btn coral">Call SADAG · 0800 567 567 →</a>';
     const tonight    = '<a href="tonight.html" class="result-btn ghost">Open the Tonight page</a>';
