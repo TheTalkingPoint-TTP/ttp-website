@@ -1041,6 +1041,30 @@
     text-transform: uppercase;
   }
 
+  /* ─── FOOTER POLICY STRIP ─── */
+  .footer-policies {
+    padding: 22px 0 4px;
+    margin-top: 8px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .footer-policies a {
+    color: rgba(250, 247, 242, 0.78);
+    border-bottom: 1px dotted rgba(250, 247, 242, 0.25);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .footer-policies a:hover { color: var(--lime); border-bottom-color: var(--lime); }
+  .footer-policies .sep { opacity: 0.4; }
+
   /* ─── REVEAL ANIMATIONS ─── */
   .reveal {
     opacity: 0;
@@ -2445,6 +2469,13 @@
           <li><a href="https://wa.me/27829089319">WhatsApp ListenUp</a></li>
         </ul>
       </div>
+    </div>
+    <div class="footer-policies">
+      <a href="assets/policies/cookie-policy.pdf" target="_blank" rel="noopener">Cookie Policy</a>
+      <span class="sep">·</span>
+      <a href="assets/policies/privacy-policy.pdf" target="_blank" rel="noopener">Privacy Policy</a>
+      <span class="sep">·</span>
+      <a href="assets/policies/usage-policy.pdf" target="_blank" rel="noopener">Usage Policy</a>
     </div>
     <div class="footer-bottom">
       <span>© The Talking Point Group (Pty) Ltd · 2017/519926/07</span>
