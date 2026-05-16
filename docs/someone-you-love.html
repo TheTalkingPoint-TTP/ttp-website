@@ -100,8 +100,8 @@
   }
   nav.top.scrolled { background: var(--navy); }
   .logo { display: flex; align-items: center; }
-  .logo img { height: 100px; width: auto; }
-  @media (max-width: 720px) { .logo img { height: 80px; } }
+  .logo img, .logo svg.logo-svg { height: 100px; width: auto; display: block; }
+  @media (max-width: 720px) { .logo img, .logo svg.logo-svg { height: 80px; } }
   .nav-links { display: flex; gap: 36px; font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
   .nav-links a {
     position: relative; padding: 6px 0;
@@ -584,7 +584,15 @@
 <!-- ═══════════════════════════════════════════════ NAV -->
 <nav class="top" id="topnav">
   <a href="index.html" class="logo" aria-label="The Talking Point — home">
-    <img src="assets/img/ttp-logo.png" alt="The Talking Point" />
+    <svg class="logo-svg" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Talking Point">
+      <ellipse cx="215" cy="58" rx="58" ry="44" fill="#FAF7F2"/>
+      <path d="M 188 92 Q 178 116 168 118 Q 188 102 208 84 Z" fill="#FAF7F2"/>
+      <circle cx="215" cy="44" r="10" fill="#8BC53F"/>
+      <path d="M 206 64 q -2 22 -10 30 q 16 -2 22 -16 q 4 -10 -2 -14 z" fill="#8BC53F"/>
+      <text x="6" y="34" font-family="Outfit, system-ui, sans-serif" font-size="32" font-weight="800" fill="#FAF7F2" letter-spacing="-1px">the</text>
+      <text x="6" y="84" font-family="Outfit, system-ui, sans-serif" font-size="50" font-weight="800" fill="#8BC53F" letter-spacing="-1.6px">talking</text>
+      <text x="6" y="130" font-family="Outfit, system-ui, sans-serif" font-size="40" font-weight="800" fill="#FAF7F2" letter-spacing="-1.4px">point</text>
+    </svg>
   </a>
   <div class="nav-links">
     <a href="index.html#paths">Where to start</a>
