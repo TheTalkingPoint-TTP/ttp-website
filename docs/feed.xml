@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>The Talking Point — Quiet reads</title>
+    <link>https://thetalkingpoint.co.za/blog/quiet-reads.html</link>
+    <atom:link href="https://thetalkingpoint.co.za/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Short pieces written for someone in pain, not about mental health. Notes from The Talking Point Group's clinical and case management team.</description>
+    <language>en-za</language>
+    <copyright>© The Talking Point Group (Pty) Ltd</copyright>
+    <managingEditor>info@thetalkingpoint.co.za (The Talking Point)</managingEditor>
+    <webMaster>info@thetalkingpoint.co.za (The Talking Point)</webMaster>
+    <lastBuildDate>Fri, 16 May 2026 12:00:00 +0200</lastBuildDate>
+    <pubDate>Fri, 16 May 2026 12:00:00 +0200</pubDate>
+    <ttl>1440</ttl>
+
+    <!--
+      ═════════════════════════════════════════════════════════════
+      NOTE: All four items below are DRAFTS. Each post has
+      <meta name="robots" content="noindex"> in its <head>, so they
+      will not be indexed by Google. They are listed in this feed
+      so that a feed reader subscribing in advance can see the
+      structure. Remove this comment + lift the noindex tag on each
+      file once Maryke has rewritten / approved the copy.
+      ═════════════════════════════════════════════════════════════
+    -->
+
+    <item>
+      <title>How to sit with someone who can't talk</title>
+      <link>https://thetalkingpoint.co.za/blog/posts/how-to-sit-with-someone-who-cant-talk.html</link>
+      <guid isPermaLink="true">https://thetalkingpoint.co.za/blog/posts/how-to-sit-with-someone-who-cant-talk.html</guid>
+      <pubDate>Fri, 16 May 2026 12:00:00 +0200</pubDate>
+      <author>info@thetalkingpoint.co.za (The Talking Point)</author>
+      <category>Quiet reads</category>
+      <description>DRAFT — When the person you love has gone silent. A guide for staying in the room without asking anything of them.</description>
+    </item>
+
+    <item>
+      <title>Grief in the body</title>
+      <link>https://thetalkingpoint.co.za/blog/posts/grief-in-the-body.html</link>
+      <guid isPermaLink="true">https://thetalkingpoint.co.za/blog/posts/grief-in-the-body.html</guid>
+      <pubDate>Fri, 16 May 2026 12:00:00 +0200</pubDate>
+      <author>info@thetalkingpoint.co.za (The Talking Point)</author>
+      <category>Quiet reads</category>
+      <description>DRAFT — Why grief breaks sleep, takes appetite, hurts in the chest — and what to actually do for the body that is carrying it.</description>
+    </item>
+
+    <item>
+      <title>The Tuesday after</title>
+      <link>https://thetalkingpoint.co.za/blog/posts/the-tuesday-after.html</link>
+      <guid isPermaLink="true">https://thetalkingpoint.co.za/blog/posts/the-tuesday-after.html</guid>
+      <pubDate>Fri, 16 May 2026 12:00:00 +0200</pubDate>
+      <author>info@thetalkingpoint.co.za (The Talking Point)</author>
+      <category>Quiet reads</category>
+      <description>DRAFT — For the morning when the world has gone back to normal and yours hasn't.</description>
+    </item>
+
+    <item>
+      <title>When the 3am thoughts come</title>
+      <link>https://thetalkingpoint.co.za/blog/posts/when-the-3am-thoughts-come.html</link>
+      <guid isPermaLink="true">https://thetalkingpoint.co.za/blog/posts/when-the-3am-thoughts-come.html</guid>
+      <pubDate>Fri, 16 May 2026 12:00:00 +0200</pubDate>
+      <author>info@thetalkingpoint.co.za (The Talking Point)</author>
+      <category>Quiet reads</category>
+      <description>DRAFT — For the hours when the mind won't stop and the world is asleep. Why your thoughts feel so final at this time — and what you can do until morning.</description>
+    </item>
+
+  </channel>
+</rss>
