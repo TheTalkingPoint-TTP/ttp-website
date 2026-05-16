@@ -140,15 +140,20 @@
   styleEl.textContent = css;
   document.head.appendChild(styleEl);
 
-  // ── Inject FAB ──
-  const fab = document.createElement('button');
-  fab.id = 'breatheFab';
-  fab.className = 'breathe-fab';
-  fab.type = 'button';
-  fab.setAttribute('aria-label', 'Take 90 seconds to breathe with us');
-  fab.title = 'Take 90 seconds to breathe';
-  fab.innerHTML = '<span class="dot" aria-hidden="true"></span>Breathe';
-  document.body.appendChild(fab);
+  // ── Inject FAB (only if the page doesn't already expose another trigger,
+  // e.g. a nav heart). One breathe affordance per page is enough. ──
+  const hasExistingTrigger = document.querySelector('[data-breathe-trigger]');
+  let fab = null;
+  if (!hasExistingTrigger) {
+    fab = document.createElement('button');
+    fab.id = 'breatheFab';
+    fab.className = 'breathe-fab';
+    fab.type = 'button';
+    fab.setAttribute('aria-label', 'Take 90 seconds to breathe with us');
+    fab.title = 'Take 90 seconds to breathe';
+    fab.innerHTML = '<span class="dot" aria-hidden="true"></span>Breathe';
+    document.body.appendChild(fab);
+  }
 
   // ── Inject overlay ──
   const overlay = document.createElement('div');
@@ -191,7 +196,7 @@
     if (timer) { clearTimeout(timer); timer = null; }
   }
 
-  fab.addEventListener('click', open);
+  if (fab) fab.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
 
   // Any element with [data-breathe-trigger] (e.g. the nav heart on the home
