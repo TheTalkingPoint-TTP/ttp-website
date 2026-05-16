@@ -205,7 +205,7 @@
     display: inline-block;
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: var(--lime);
+    background: rgba(250, 247, 242, 0.5);
     margin-right: 8px;
     vertical-align: middle;
   }
@@ -229,7 +229,6 @@
   .hero-headline em {
     font-style: italic;
     font-weight: 350;
-    color: var(--lime);
     font-variation-settings: "opsz" 60;
   }
   .hero-headline .underline-scribble {
@@ -357,7 +356,7 @@
     line-height: 1;
   }
   .marquee-track span { display: flex; align-items: center; gap: 48px; }
-  .marquee-track .dot { width: 10px; height: 10px; background: var(--lime); border-radius: 50%; flex-shrink: 0; }
+  .marquee-track .dot { width: 8px; height: 8px; background: rgba(14, 30, 58, 0.25); border-radius: 50%; flex-shrink: 0; }
   @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
   /* ─── REAL HUMANS STRIP ─── */
@@ -389,7 +388,7 @@
     line-height: 0.98;
     letter-spacing: -0.035em;
   }
-  .humans-title em { font-style: italic; color: var(--lime); font-variation-settings: "opsz" 60; }
+  .humans-title em { font-style: italic; font-variation-settings: "opsz" 60; }
   .humans-sub {
     font-size: 16px;
     color: rgba(14, 30, 58, 0.65);
@@ -496,7 +495,7 @@
     opacity: 0.85;
   }
   .human-card .role .green {
-    color: var(--lime);
+    color: rgba(14, 30, 58, 0.4);
     display: inline-block;
     margin-right: 5px;
   }
@@ -522,7 +521,7 @@
     color: var(--mute);
     margin-bottom: 32px;
   }
-  .eyebrow .marker { width: 8px; height: 8px; background: var(--lime); border-radius: 50%; }
+  .eyebrow .marker { width: 6px; height: 6px; background: currentColor; border-radius: 50%; opacity: 0.5; }
   .eyebrow.dark { color: var(--mute-dark); }
   .section-title {
     font-family: var(--display);
@@ -534,7 +533,7 @@
     margin-bottom: 32px;
     max-width: 18ch;
   }
-  .section-title em { font-style: italic; color: var(--lime); font-variation-settings: "opsz" 60; }
+  .section-title em { font-style: italic; font-variation-settings: "opsz" 60; }
 
   /* ─── MANIFESTO ─── */
   .manifesto { background: var(--ivory); color: var(--navy); }
@@ -572,7 +571,7 @@
   }
   .manifesto-text strong {
     font-weight: 600;
-    background: linear-gradient(180deg, transparent 60%, rgba(139, 197, 63, 0.35) 60%);
+    background: linear-gradient(180deg, transparent 65%, rgba(14, 30, 58, 0.08) 65%);
     padding: 0 4px;
   }
 
@@ -612,7 +611,7 @@
     position: absolute;
     left: 0; top: 11px;
     width: 14px; height: 1.5px;
-    background: var(--lime);
+    background: rgba(250, 247, 242, 0.5);
   }
 
   /* Phone mockup — transparent PNG, WhatsApp chat baked into the screen.
@@ -785,7 +784,7 @@
     font-weight: 380;
     font-size: 44px;
     line-height: 1;
-    color: var(--lime);
+    color: var(--navy);
     letter-spacing: -0.02em;
   }
   .stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mute); margin-top: 8px; }
@@ -834,7 +833,7 @@
     letter-spacing: -0.03em;
     margin-top: auto;
   }
-  .path-title em { font-style: italic; color: var(--lime); }
+  .path-title em { font-style: italic; }
   .path-card.alt .path-title em { color: var(--navy); font-weight: 500; }
   .path-desc { font-size: 15px; line-height: 1.5; opacity: 0.8; max-width: 32ch; }
   .path-arrow {
@@ -869,7 +868,7 @@
     color: var(--ivory);
     margin-bottom: 32px;
   }
-  .quote em { font-style: italic; color: var(--lime); }
+  .quote em { font-style: italic; }
   .quote-attr {
     font-family: var(--mono);
     font-size: 12px;
@@ -1072,7 +1071,7 @@
   .langband-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mute-dark); flex-shrink: 0; }
   .langband-list { display: flex; gap: 22px; flex-wrap: wrap; font-family: var(--display); font-size: clamp(15px, 1.6vw, 19px); font-weight: 400; letter-spacing: -0.01em; line-height: 1.3; }
   .langband-list span { white-space: nowrap; }
-  .langband-list em { font-style: italic; color: var(--lime); }
+  .langband-list em { font-style: italic; }
   @media (max-width: 720px) { .langband-list { gap: 14px; font-size: 14px; } }
 
   /* ─── VOICES (real client quotes — placeholders until Ella sends real ones) ─── */
@@ -1088,7 +1087,7 @@
     letter-spacing: -0.025em;
     margin-top: 14px;
   }
-  .voices-title em { font-style: italic; color: var(--lime); }
+  .voices-title em { font-style: italic; }
   .voices-sub { font-size: 15px; line-height: 1.55; color: var(--mute); margin-top: 16px; }
   .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   @media (max-width: 1000px) { .voices-grid { grid-template-columns: 1fr 1fr; } }
@@ -1108,7 +1107,7 @@
     position: absolute;
     top: 22px; left: 28px;
     width: 28px; height: 4px;
-    background: var(--lime);
+    background: rgba(250, 247, 242, 0.3);
     border-radius: 4px;
   }
   .voice-quote {
@@ -1121,7 +1120,7 @@
     color: var(--ivory);
     margin-top: 20px;
   }
-  .voice-quote em { font-style: italic; color: var(--lime); }
+  .voice-quote em { font-style: italic; }
   .voice-attr {
     font-family: var(--mono);
     font-size: 10.5px;
@@ -1146,13 +1145,13 @@
     letter-spacing: -0.025em;
     margin-top: 14px;
   }
-  .checkin-title em { font-style: italic; color: var(--lime); }
+  .checkin-title em { font-style: italic; }
   .checkin-sub { font-size: 15.5px; line-height: 1.55; color: rgba(14,30,58,0.7); margin-top: 16px; max-width: 60ch; margin-left: auto; margin-right: auto; }
 
   .checkin-form { display: flex; flex-direction: column; gap: 22px; }
   .checkin-q { background: var(--ivory); border: 1px solid var(--hairline-dark); border-radius: 16px; padding: 22px 24px; }
   .checkin-q.safety { border: 1.5px solid var(--coral); background: #fff8f5; }
-  .checkin-q-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); font-weight: 600; }
+  .checkin-q-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(14, 30, 58, 0.55); font-weight: 600; }
   .checkin-q.safety .checkin-q-label { color: var(--coral); }
   .checkin-q-text { font-family: var(--display); font-weight: 400; font-size: 19px; line-height: 1.35; margin-top: 6px; letter-spacing: -0.01em; }
   .checkin-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
@@ -1206,7 +1205,7 @@
   .checkin-result { display: none; background: var(--ivory); border-radius: 20px; padding: 36px 32px; border: 1px solid var(--hairline-dark); }
   .checkin-result.severe { background: var(--navy); color: var(--ivory); border-color: var(--coral); }
   .checkin-result.show { display: block; animation: fadeIn 0.6s ease-out; }
-  .result-eyebrow { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lime); font-weight: 600; }
+  .result-eyebrow { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(14, 30, 58, 0.55); font-weight: 600; }
   .result-title {
     font-family: var(--display);
     font-weight: 380;
@@ -1215,7 +1214,7 @@
     letter-spacing: -0.02em;
     margin: 10px 0 16px;
   }
-  .result-title em { font-style: italic; color: var(--lime); }
+  .result-title em { font-style: italic; }
   .result-body { font-size: 15.5px; line-height: 1.55; color: rgba(14,30,58,0.78); }
   .checkin-result.severe .result-body { color: rgba(250,247,242,0.85); }
   .result-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
@@ -1316,7 +1315,7 @@
     letter-spacing: -0.025em;
     margin-top: 14px;
   }
-  .faq-title em { font-style: italic; color: var(--lime); }
+  .faq-title em { font-style: italic; }
   .faq-list { list-style: none; padding: 0; margin: 0; }
   .faq-list li { padding: 28px 0; border-top: 1px solid var(--hairline-dark); }
   .faq-list li:last-child { border-bottom: 1px solid var(--hairline-dark); }
@@ -1490,7 +1489,7 @@
     letter-spacing: -0.03em;
     margin-top: 14px;
   }
-  .situations-title em { font-style: italic; color: var(--lime); }
+  .situations-title em { font-style: italic; }
   .situations-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1559,7 +1558,7 @@
     position: relative;
     z-index: 1;
   }
-  .situation-title em { font-style: italic; color: var(--lime); }
+  .situation-title em { font-style: italic; }
   .situation-desc { font-size: 14px; line-height: 1.45; opacity: 0.78; position: relative; z-index: 1; }
 
   /* ─── CREDENTIALS LINE (inside .human-card) ─── */
@@ -1593,7 +1592,7 @@
     letter-spacing: -0.03em;
     margin-top: 14px;
   }
-  .howstart-title em { font-style: italic; color: var(--lime); }
+  .howstart-title em { font-style: italic; }
   .howstart-sub { font-size: 16px; line-height: 1.55; color: rgba(14,30,58,0.7); margin-top: 18px; }
   .howstart-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   @media (max-width: 1100px) { .howstart-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
@@ -1632,7 +1631,7 @@
   .howstart-num {
     font-family: var(--mono);
     font-size: 11px;
-    color: var(--lime);
+    color: rgba(14, 30, 58, 0.55);
     letter-spacing: 0.16em;
     text-transform: uppercase;
     font-weight: 600;
