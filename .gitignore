@@ -30,4 +30,5 @@ package-lock.json
 /*
 !/.gitignore
 !/README.md
+!/PRE-LAUNCH-CHECKLIST.md
 !/docs/
