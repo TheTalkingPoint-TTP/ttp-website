@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Someone you love is struggling — The Talking Point</title>
+<meta name="description" content="A worried partner, parent, sibling or friend. The signs to look for, what to say, what not to say, and how to reach The Talking Point on someone else's behalf." />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #0E1E3A;
+    --navy-90: #14254a;
+    --lime: #8BC53F;
+    --lime-bright: #a4dc4e;
+    --ivory: #FAF7F2;
+    --ivory-warm: #F5EFE4;
+    --coral: #FF5C39;
+    --mute: rgba(250, 247, 242, 0.55);
+    --mute-dark: rgba(14, 30, 58, 0.55);
+    --hairline: rgba(250, 247, 242, 0.14);
+    --hairline-dark: rgba(14, 30, 58, 0.14);
+    --display: "Newsreader", "Source Serif Pro", serif;
+    --body: "Outfit", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--ivory);
+    font-family: var(--body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ─── CRISIS STRIP (persistent, above nav) ─── */
+  .crisis {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 102;
+    background: var(--navy-90);
+    color: var(--ivory);
+    padding: 8px clamp(16px, 4vw, 56px);
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .crisis .label { color: rgba(250,247,242,0.75); display: inline-flex; align-items: center; gap: 8px; }
+  .crisis .label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
+  .crisis a {
+    color: var(--ivory);
+    border-bottom: 1px dotted rgba(250,247,242,0.45);
+    padding-bottom: 1px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .crisis a:hover { color: var(--lime); border-bottom-color: var(--lime); }
+  .crisis strong { color: var(--ivory); font-weight: 700; margin-right: 4px; }
+  .crisis a.tonight-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--lime); color: var(--navy);
+    padding: 4px 12px; border-radius: 999px;
+    border-bottom: none; font-weight: 700; letter-spacing: 0.14em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .crisis a.tonight-link:hover { background: var(--lime-bright); transform: translateY(-1px); }
+  @media (max-width: 720px) {
+    .crisis { gap: 14px; font-size: 10px; padding: 7px 12px; min-height: 32px; letter-spacing: 0.1em; }
+    .crisis .label { display: none; }
+    .crisis a.tonight-link { padding: 3px 10px; font-size: 10px; }
+  }
+
+  /* ─── NAV ─── */
+  nav.top {
+    position: fixed; top: 36px; left: 0; right: 0;
+    padding: 22px clamp(20px, 4vw, 56px);
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(14, 30, 58, 0.92);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-bottom: 1px solid var(--hairline);
+    transition: background 0.3s var(--ease-out);
+  }
+  nav.top.scrolled { background: var(--navy); }
+  .logo { display: flex; align-items: center; }
+  .logo img { height: 100px; width: auto; }
+  @media (max-width: 720px) { .logo img { height: 80px; } }
+  .nav-links { display: flex; gap: 36px; font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
+  .nav-links a {
+    position: relative; padding: 6px 0;
+    color: var(--ivory); transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--lime); }
+  .nav-cta {
+    background: var(--lime); color: var(--navy);
+    padding: 12px 22px; border-radius: 999px;
+    font-weight: 600; font-size: 13.5px;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.3s var(--ease-out), transform 0.3s;
+  }
+  .nav-cta:hover { background: var(--lime-bright); transform: translateY(-1px); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 22px; height: 1.5px; background: var(--ivory); }
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .burger { display: flex; }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); position: relative; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute);
+    margin-bottom: 28px;
+  }
+  .eyebrow.dark { color: var(--mute-dark); }
+  .eyebrow .marker { width: 8px; height: 8px; background: var(--ivory); border-radius: 50%; opacity: 0.6; }
+
+  .section-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 60;
+    font-size: clamp(34px, 4.8vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.028em;
+    margin-bottom: 24px;
+    max-width: 22ch;
+  }
+  .section-title em { font-style: italic; font-weight: 350; }
+  .section-lede {
+    font-family: var(--body);
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.55;
+    color: rgba(250,247,242,0.78);
+    max-width: 56ch;
+    margin-bottom: 40px;
+  }
+  .section-lede strong { color: var(--ivory); font-weight: 600; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 76vh;
+    padding: 180px clamp(20px, 4vw, 56px) 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 30%, rgba(139, 197, 63, 0.06), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(255, 92, 57, 0.05), transparent 60%);
+  }
+  .hero-meta {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--mute);
+    margin-bottom: 36px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .hero-meta::before { content: ""; width: 8px; height: 8px; background: var(--ivory); opacity: 0.5; border-radius: 50%; }
+  .hero-headline {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 60;
+    font-size: clamp(38px, 5.6vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    color: var(--ivory);
+    margin-bottom: 28px;
+    max-width: 22ch;
+  }
+  .hero-headline em { font-style: italic; font-weight: 350; }
+  .hero-sub {
+    font-family: var(--body);
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.5;
+    color: rgba(250, 247, 242, 0.78);
+    max-width: 52ch;
+    margin-bottom: 36px;
+  }
+  .hero-sub strong { color: var(--ivory); font-weight: 600; }
+
+  /* ─── BUTTONS ─── */
+  .btn-primary {
+    background: var(--lime); color: var(--navy);
+    padding: 16px 28px; border-radius: 999px;
+    font-weight: 600; font-size: 15px;
+    display: inline-flex; align-items: center; gap: 12px;
+    transition: transform 0.3s var(--ease-out), background 0.3s;
+    border: none; cursor: pointer;
+    font-family: var(--body);
+  }
+  .btn-primary:hover { background: var(--lime-bright); transform: translateY(-2px); }
+  .btn-primary svg { width: 16px; height: 16px; transition: transform 0.3s var(--ease-out); }
+  .btn-primary:hover svg { transform: translateX(4px); }
+  .btn-ghost {
+    color: var(--ivory);
+    padding: 16px 28px; border-radius: 999px;
+    border: 1px solid var(--hairline);
+    font-weight: 500; font-size: 15px;
+    background: transparent;
+    transition: border-color 0.3s, background 0.3s;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--body);
+  }
+  .btn-ghost:hover { border-color: var(--ivory); background: rgba(250, 247, 242, 0.04); }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ─── ALTERNATING SECTION BACKGROUNDS ─── */
+  .section-ivory { background: var(--ivory); color: var(--navy); }
+  .section-ivory .section-lede { color: rgba(14,30,58,0.7); }
+  .section-ivory .section-lede strong { color: var(--navy); }
+  .section-warm { background: var(--ivory-warm); color: var(--navy); }
+  .section-warm .section-lede { color: rgba(14,30,58,0.7); }
+  .section-warm .section-lede strong { color: var(--navy); }
+
+  /* ─── SIGNS / LISTS ─── */
+  .sign-list, .say-list, .dont-list, .care-list {
+    list-style: none;
+    display: grid;
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .sign-list li, .care-list li {
+    padding: 22px 24px;
+    border: 1px solid var(--hairline-dark);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.4);
+  }
+  .sign-list .sign-head, .care-list .sign-head {
+    font-family: var(--display);
+    font-size: 19px; font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+  .sign-list .sign-body, .care-list .sign-body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(14,30,58,0.72);
+  }
+
+  /* SAY / DON'T SAY two-column */
+  .say-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 56px);
+    margin-top: 8px;
+  }
+  @media (max-width: 800px) { .say-grid { grid-template-columns: 1fr; } }
+  .say-col h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: var(--mute);
+  }
+  .section-ivory .say-col h3, .section-warm .say-col h3 { color: var(--mute-dark); }
+  .say-col h3 .pip { display: inline-block; width: 8px; height: 8px; border-radius: 50%; vertical-align: 1px; margin-right: 8px; }
+  .say-col.do h3 .pip { background: var(--lime); }
+  .say-col.dont h3 .pip { background: var(--coral); }
+  .say-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .say-col li {
+    font-family: var(--display);
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.45;
+    padding: 16px 18px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.5);
+    color: var(--navy);
+    border-left: 3px solid transparent;
+  }
+  .say-col.do li { border-left-color: var(--lime); }
+  .say-col.dont li { border-left-color: var(--coral); text-decoration: line-through; text-decoration-color: rgba(255,92,57,0.5); text-decoration-thickness: 1.5px; }
+  .say-col li small {
+    display: block;
+    font-family: var(--body);
+    font-size: 13px;
+    text-decoration: none;
+    color: rgba(14,30,58,0.6);
+    margin-top: 6px;
+    font-style: normal;
+    line-height: 1.45;
+  }
+
+  /* ─── CALLING TTP — numbered steps ─── */
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    display: grid;
+    gap: 18px;
+    margin-top: 16px;
+  }
+  .steps li {
+    counter-increment: step;
+    padding: 22px 24px 22px 70px;
+    border: 1px solid var(--hairline-dark);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.4);
+    position: relative;
+  }
+  .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 24px; top: 22px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--navy);
+    opacity: 0.5;
+  }
+  .steps .step-head {
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+  .steps .step-body {
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(14,30,58,0.72);
+  }
+  .steps .step-body strong { color: var(--navy); font-weight: 600; }
+
+  /* What TTP can / can't do */
+  .canlist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  @media (max-width: 800px) { .canlist { grid-template-columns: 1fr; } }
+  .canlist > div {
+    padding: 22px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--hairline-dark);
+    background: rgba(255,255,255,0.4);
+  }
+  .canlist h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .canlist .can h4 { color: var(--navy); }
+  .canlist .cant h4 { color: rgba(14,30,58,0.55); }
+  .canlist ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .canlist li { font-size: 15px; line-height: 1.5; padding-left: 16px; position: relative; color: rgba(14,30,58,0.78); }
+  .canlist .can li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 1.5px; background: var(--navy); }
+  .canlist .cant li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 1.5px; background: rgba(14,30,58,0.4); }
+
+  /* ─── TONIGHT BAND (last section) ─── */
+  .tonight-band {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px);
+  }
+  .tonight-band .section-lede { color: rgba(250,247,242,0.78); }
+  .tonight-band .section-lede strong { color: var(--ivory); }
+  .tonight-cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: var(--ivory);
+    padding: 80px clamp(20px, 4vw, 56px) 32px;
+    border-top: 1px solid var(--hairline);
+  }
+  .footer-inner { max-width: 1400px; margin: 0 auto; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 350;
+    font-size: 34px;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+  }
+  .footer-brand em { color: var(--lime); font-style: italic; }
+  .footer-tagline { font-size: 15px; color: rgba(250, 247, 242, 0.6); max-width: 30ch; line-height: 1.5; margin-bottom: 28px; }
+  .footer-col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mute);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { font-size: 14px; color: rgba(250, 247, 242, 0.85); transition: color 0.3s; }
+  .footer-col a:hover { color: var(--lime); }
+  .footer-bottom {
+    border-top: 1px solid var(--hairline);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--mute);
+    text-transform: uppercase;
+  }
+
+  /* ─── TONIGHT FAB ─── */
+  .tonight-fab {
+    position: fixed; bottom: 18px; left: 18px; z-index: 200;
+    background: var(--lime); color: var(--navy);
+    border: 1px solid var(--lime);
+    border-radius: 999px;
+    padding: 11px 18px 11px 14px;
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transition: background 0.2s, transform 0.15s;
+  }
+  .tonight-fab:hover { background: var(--lime-bright); transform: translateY(-2px); }
+  .tonight-fab .heart {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--navy); color: var(--lime);
+    font-size: 11px; line-height: 1;
+  }
+  .tonight-fab svg { width: 13px; height: 13px; }
+  @media (max-width: 720px) {
+    .tonight-fab { padding: 11px 16px 11px 14px; font-size: 10.5px; bottom: 14px; left: 14px; }
+    .tonight-fab .heart { width: 18px; height: 18px; }
+  }
+
+  /* ─── QUICK EXIT ─── */
+  .quickexit {
+    position: fixed; bottom: 18px; right: 18px; z-index: 200;
+    background: var(--navy-90); color: var(--ivory);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 10px 16px 10px 14px;
+    font-family: var(--mono);
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s, border-color 0.2s, color 0.2s;
+  }
+  .quickexit:hover, .quickexit:focus-visible {
+    background: var(--coral); color: var(--navy); border-color: var(--coral);
+    transform: translateY(-2px); outline: none;
+  }
+  .quickexit svg { width: 14px; height: 14px; }
+  .quickexit kbd {
+    font-family: var(--mono); font-size: 9.5px;
+    padding: 2px 6px; border-radius: 4px;
+    background: rgba(250,247,242,0.08); border: 1px solid var(--hairline);
+  }
+  @media (max-width: 720px) {
+    .quickexit { padding: 9px 13px 9px 12px; font-size: 10px; bottom: 14px; right: 14px; }
+    .quickexit kbd { display: none; }
+  }
+
+  /* ─── REDUCED MOTION ─── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ CRISIS STRIP -->
+<aside class="crisis" role="region" aria-label="Crisis support — South Africa">
+  <span class="label">If you need help right now</span>
+  <span><strong>SADAG</strong><a href="tel:0800567567">0800 567 567</a></span>
+  <span><strong>Lifeline SA</strong><a href="tel:0861322322">0861 322 322</a></span>
+  <span><a href="tonight.html" class="tonight-link">Help tonight ↗</a></span>
+</aside>
+
+<!-- ═══════════════════════════════════════════════ NAV -->
+<nav class="top" id="topnav">
+  <a href="index.html" class="logo" aria-label="The Talking Point — home">
+    <img src="assets/img/ttp-logo.png" alt="The Talking Point" />
+  </a>
+  <div class="nav-links">
+    <a href="index.html#paths">Where to start</a>
+    <a href="index.html#manifesto">What we believe</a>
+    <a href="index.html#listenup">ListenUp</a>
+    <a href="index.html#services">Services</a>
+  </div>
+  <a href="https://wa.me/27829089319?text=I%27m%20worried%20about%20someone%20I%20love%20and%20I%20don%27t%20know%20what%20to%20do." class="nav-cta">Start the conversation →</a>
+  <div class="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-meta">For partners, parents, siblings, friends</div>
+    <h1 class="hero-headline">Someone you love is struggling. <em>You don't know what to do.</em></h1>
+    <p class="hero-sub">
+      You're not the one in crisis — but you're the one staying up at 3am wondering if you missed something, if you're saying the wrong thing, if today is the day to push or the day to wait. This page is for you.
+    </p>
+    <div class="hero-actions">
+      <a href="#signs" class="btn-primary">
+        Where to start
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#call-ttp" class="btn-ghost">Reach TTP on their behalf</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ WARNING SIGNS -->
+<section class="section-ivory" id="signs">
+  <div class="container">
+    <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>The signs / 01</span>
+    <h2 class="section-title">The things to <em>actually</em> watch for.</h2>
+    <p class="section-lede">
+      Not the textbook list. The quieter, more easily-missed shifts that real people describe when they look back at the weeks before someone they loved stopped being okay.
+    </p>
+
+    <ul class="sign-list">
+      <li>
+        <p class="sign-head">Their sleep changes.</p>
+        <p class="sign-body">Either it disappears — they're awake at 3am every night, scrolling, pacing — or it takes over: they sleep 12 hours and still wake up exhausted. Both are signals.</p>
+      </li>
+      <li>
+        <p class="sign-head">They start dropping out of things they used to love.</p>
+        <p class="sign-body">The weekly run. The book club. The chat group they used to lead. They give vague reasons. They stop being the person who shows up.</p>
+      </li>
+      <li>
+        <p class="sign-head">Their language shifts toward "no point".</p>
+        <p class="sign-body">"What's the point." "Nothing's going to change." "I'm a burden." "Everyone would be better off." These sentences sound dramatic — but they are not figures of speech. Take them at face value.</p>
+      </li>
+      <li>
+        <p class="sign-head">They start giving things away.</p>
+        <p class="sign-body">A favourite jacket to a sibling. A guitar to a friend. Mailing back a book they borrowed. Tidying things up that don't usually get tidied. This is the one most often missed in hindsight.</p>
+      </li>
+      <li>
+        <p class="sign-head">A sudden calm after a long low patch.</p>
+        <p class="sign-body">If they've been visibly low for weeks and then one day they seem peaceful, relieved, "lighter" — this is sometimes the moment a decision has been made internally. Do not assume the storm has passed. Lean in.</p>
+      </li>
+      <li>
+        <p class="sign-head">They stop fighting back when you check in.</p>
+        <p class="sign-body">Before, they would brush you off, get irritated, tell you to leave it. Now they just nod. They don't argue. That isn't agreement — it's exhaustion.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ WHAT TO SAY / NOT SAY -->
+<section class="section-warm">
+  <div class="container">
+    <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>What to say / 02</span>
+    <h2 class="section-title">What to say. And what <em>not</em> to.</h2>
+    <p class="section-lede">
+      There's no perfect sentence. But there are sentences that open the door — and sentences that quietly close it. Use the left column. Avoid the right.
+    </p>
+
+    <div class="say-grid">
+      <div class="say-col do">
+        <h3><span class="pip"></span>Say this</h3>
+        <ul>
+          <li>"I've noticed you haven't been yourself lately. Are you okay?"
+            <small>Names what you're seeing. Doesn't accuse. Doesn't diagnose.</small>
+          </li>
+          <li>"I'm not going anywhere. You don't have to be okay for me to stay."
+            <small>Removes the pressure to perform wellness for your sake.</small>
+          </li>
+          <li>"You don't have to explain it. I'm just here."
+            <small>Many people can't explain what's happening to them. This frees them.</small>
+          </li>
+          <li>"Is it okay if I just sit with you?"
+            <small>Asks permission. Treats them like an adult. Lowers the temperature.</small>
+          </li>
+          <li>"Have you had thoughts of hurting yourself, or not being here?"
+            <small>Asking directly does NOT plant the idea. It saves lives. Ask plainly.</small>
+          </li>
+          <li>"What would help right now — even something small?"
+            <small>Hands them agency without putting them in charge of the rescue.</small>
+          </li>
+        </ul>
+      </div>
+
+      <div class="say-col dont">
+        <h3><span class="pip"></span>Don't say this</h3>
+        <ul>
+          <li>"Snap out of it."
+            <small>Implies it's a choice. It isn't. This sentence makes people stop telling you the truth.</small>
+          </li>
+          <li>"Others have it much worse."
+            <small>Shame is not motivating. They already think this and it's part of why they're struggling.</small>
+          </li>
+          <li>"Have you tried yoga / running / a green smoothie?"
+            <small>Premature solution-mode. Sit with them first. Solutions later, if asked.</small>
+          </li>
+          <li>"You have so much to live for."
+            <small>Well-meant, but it tells them their pain doesn't make sense. It makes them feel further from you.</small>
+          </li>
+          <li>"It's going to be fine."
+            <small>You don't know that. They know you don't know that. Premature reassurance breaks trust.</small>
+          </li>
+          <li>"You're being dramatic."
+            <small>Even said gently, this is the sentence people remember decades later. Never use it.</small>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ HOW TO CALL TTP ON THEIR BEHALF -->
+<section class="section-ivory" id="call-ttp">
+  <div class="container">
+    <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>Reaching us for them / 03</span>
+    <h2 class="section-title">How to call us on someone else's behalf.</h2>
+    <p class="section-lede">
+      You don't need their permission to ask for advice. You don't need their permission to call. The case manager will treat the conversation as confidential, and will help you figure out what comes next.
+    </p>
+
+    <ol class="steps">
+      <li>
+        <p class="step-head">Open WhatsApp ListenUp first if you can.</p>
+        <p class="step-body">It's quieter than a phone call, you can write it out in your own time, and the case manager has it in writing. <a href="https://wa.me/27829089319?text=I%27m%20worried%20about%20someone%20I%20love.%20Can%20we%20talk%20about%20what%20to%20do%3F" style="color:var(--navy); border-bottom:1px dotted rgba(14,30,58,0.4); padding-bottom:1px; font-weight:500;">Open WhatsApp</a>. If it's urgent or you need a voice, call <strong>072 565 9255</strong>.</p>
+      </li>
+      <li>
+        <p class="step-head">Lead with what you've actually noticed.</p>
+        <p class="step-body">Not your fears, not your interpretations — just what you've observed. "She hasn't slept properly in three weeks." "He's stopped answering his children." "She said yesterday she's a burden." Concrete observations are what the case manager works from.</p>
+      </li>
+      <li>
+        <p class="step-head">Say whether they know you're reaching out.</p>
+        <p class="step-body">Both are okay. If they do know, we can talk about how to bring them in. If they don't, we'll talk about whether and when that conversation should happen — and how to have it without breaking their trust in you.</p>
+      </li>
+      <li>
+        <p class="step-head">Tell us if there's immediate danger.</p>
+        <p class="step-body">If they've said something specific tonight, if you know they have access to means, if they're alone and unreachable — say so. We have a clinical escalation pathway, including armed and medical response when it's needed.</p>
+      </li>
+      <li>
+        <p class="step-head">Ask what TTP can do, and what we can't.</p>
+        <p class="step-body">Below is the honest version. The case manager will walk through it with you on the call.</p>
+      </li>
+    </ol>
+
+    <div class="canlist">
+      <div class="can">
+        <h4>What TTP can do without their consent</h4>
+        <ul>
+          <li>Coach you through what to say, and what to avoid</li>
+          <li>Stay on the line with you while you talk to them</li>
+          <li>Help you write a message you can send them</li>
+          <li>Be on standby for the moment they decide to reach out</li>
+          <li>Trigger clinical escalation if there is immediate, present danger</li>
+        </ul>
+      </div>
+      <div class="cant">
+        <h4>What we can't do without their consent</h4>
+        <ul>
+          <li>Open a clinical case in their name</li>
+          <li>Contact them directly without their knowledge in non-emergency cases</li>
+          <li>Share what they've told us, with anyone — including you</li>
+          <li>Force them into treatment</li>
+          <li>Promise an outcome. We can promise the conversation. Not the answer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ LOOKING AFTER YOURSELF -->
+<section class="section-warm">
+  <div class="container">
+    <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>You, too / 04</span>
+    <h2 class="section-title">Looking after yourself <em>while you carry this</em>.</h2>
+    <p class="section-lede">
+      Supporting someone in pain is its own kind of slow exhaustion. If you don't tend to yourself, you will not have anything left to give them. This is not selfish. This is the maths.
+    </p>
+
+    <ul class="care-list">
+      <li>
+        <p class="sign-head">You are not their therapist.</p>
+        <p class="sign-body">You are their person. Those are not the same role, and trying to be both is one of the fastest paths to burnout. Let us be the therapist. You be the person.</p>
+      </li>
+      <li>
+        <p class="sign-head">Have one person you can tell the truth to.</p>
+        <p class="sign-body">Not a group chat. One person — a sibling, an old friend, your own counsellor, ListenUp. Someone who knows what you're carrying. You need a place to say the hard sentences out loud.</p>
+      </li>
+      <li>
+        <p class="sign-head">Notice when you're using their crisis as a way to avoid your own life.</p>
+        <p class="sign-body">It's easy to disappear into someone else's pain. Keep going to work. Keep showing up for your kids. Keep the small structures of your day. The structure protects them, too.</p>
+      </li>
+      <li>
+        <p class="sign-head">It's okay to step back.</p>
+        <p class="sign-body">If you've become the only person between them and the edge, that's not sustainable for either of you. Tell us. We will help widen the circle so you're not the single point of failure.</p>
+      </li>
+      <li>
+        <p class="sign-head">You will say something wrong at some point.</p>
+        <p class="sign-body">It will not be the thing that breaks them. Being there imperfectly is the work. Try, fail, apologise, stay.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ TONIGHT (if it's tonight) -->
+<section class="tonight-band">
+  <div class="container">
+    <span class="eyebrow"><span class="marker"></span>Tonight, if it's tonight / 05</span>
+    <h2 class="section-title">If they're not safe <em>tonight</em>.</h2>
+    <p class="section-lede">
+      If something they said today scared you. If they've gone quiet in a way that doesn't feel right. If you're sitting up reading this at 2am because you don't know what else to do — here's what to do next.
+    </p>
+    <p class="section-lede">
+      <strong>Stay with them, or get someone to.</strong> Don't leave them alone tonight if you can help it. Sit on the same couch. Make tea. The lights on. The TV on low. Don't try to fix anything tonight — just be in the room.
+    </p>
+    <p class="section-lede">
+      <strong>Quietly remove means of harm.</strong> Pills, ropes, knives, firearms. Lock them in the car. Give them to a neighbour. Just for tonight. You don't have to ask permission.
+    </p>
+    <p class="section-lede">
+      <strong>Open the tonight page with them, or open it for them.</strong> It was written for the person in crisis, not for you — but tonight, you are also the person it was written for.
+    </p>
+    <div class="tonight-cta-row">
+      <a href="tonight.html" class="btn-primary">
+        Open the tonight page
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:0800567567" class="btn-ghost">SADAG 24h · 0800 567 567</a>
+      <a href="https://wa.me/27829089319?text=I%27m%20with%20someone%20who%20is%20not%20safe%20tonight.%20I%20need%20to%20talk%20to%20a%20case%20manager%20now." class="btn-ghost">WhatsApp ListenUp now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <h3 class="footer-brand">the.talking point<em>;</em></h3>
+        <p class="footer-tagline">Real humans. Real support. 24/7. Mental health, mediation, and response across all nine provinces of South Africa.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#listenup">ListenUp platform</a></li>
+          <li><a href="index.html#services">Counselling &amp; trauma</a></li>
+          <li><a href="index.html#services">Mediation</a></li>
+          <li><a href="index.html#services">Workplace conflict</a></li>
+          <li><a href="index.html#services">Schools</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>If you're worried</h4>
+        <ul>
+          <li><a href="someone-you-love.html">Someone you love</a></li>
+          <li><a href="tonight.html">Not okay tonight</a></li>
+          <li><a href="index.html#paths">Where to start</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reach us</h4>
+        <ul>
+          <li><a href="tel:+27213002053">+27 (0) 21 300 2053</a> <span style="opacity:0.5; font-size:12px;">· office</span></li>
+          <li><a href="tel:+27725659255">072 565 9255</a> <span style="opacity:0.5; font-size:12px;">· 24/7 line</span></li>
+          <li><a href="mailto:bianca@thetalkingpoint.co.za">bianca@thetalkingpoint.co.za</a></li>
+          <li><a href="https://wa.me/27829089319">WhatsApp ListenUp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© The Talking Point Group (Pty) Ltd · 2017/519926/07</span>
+      <span>Cape Town · Joburg · all 9 provinces</span>
+      <span>Visiting in private? Use Incognito (Chrome) or Private (Safari) — your visit won't show in browser history.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════ TONIGHT FAB -->
+<a href="tonight.html" class="tonight-fab" aria-label="Not okay tonight? Open the help-tonight page">
+  <span class="heart" aria-hidden="true">♡</span>
+  Not okay tonight?
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+</a>
+
+<!-- ═══════════════════════════════════════════════ QUICK EXIT -->
+<button class="quickexit" id="quickexit" type="button" aria-label="Quick exit — leave this site immediately" title="Press Esc to leave instantly">
+  Quick exit
+  <kbd>Esc</kbd>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M14 10l7-7M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
+</button>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('topnav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Quick exit (replace history so back button can't return)
+  const quickExit = () => window.location.replace('https://www.weathersa.co.za/');
+  document.getElementById('quickexit').addEventListener('click', quickExit);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') quickExit(); });
+</script>
+
+</body>
+</html>
