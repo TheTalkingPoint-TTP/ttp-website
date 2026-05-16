@@ -194,6 +194,12 @@
   fab.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
 
+  // Any element with [data-breathe-trigger] (e.g. the nav heart on the home
+  // page) opens the same overlay. Lets other UI affordances reuse this one.
+  document.querySelectorAll('[data-breathe-trigger]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); open(); });
+  });
+
   // Escape closes the breathing overlay first (if open) — before
   // the page's Quick Exit handler can fire and redirect away.
   // Use capture phase + stopImmediatePropagation to win the race.
