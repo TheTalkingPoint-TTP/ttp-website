@@ -1001,26 +1001,26 @@
     font-variation-settings: "opsz" 60;
     letter-spacing: -0.01em;
   }
-  /* Membership-body logos: visible-but-quiet at rest, full opacity on hover.
-     Click target opens the relevant body's site so credentials can be verified. */
-  .trust-items.memberships { gap: 28px; }
+  /* Membership-body logos: shown at full opacity so the brand marks read
+     clearly. Hover subtly lifts. Click target opens the relevant body's site
+     so credentials can be verified. */
+  .trust-items.memberships { gap: 32px; }
   .trust-items.memberships .badge {
     display: inline-flex;
     align-items: center;
-    height: 44px;
-    opacity: 0.65;
-    transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+    height: 64px;
+    transition: transform 0.25s var(--ease-out);
   }
-  .trust-items.memberships .badge:hover { opacity: 1; transform: translateY(-1px); }
+  .trust-items.memberships .badge:hover { transform: translateY(-2px); }
   .trust-items.memberships .badge img {
     height: 100%;
     width: auto;
-    max-width: 120px;
+    max-width: 160px;
     object-fit: contain;
     display: block;
   }
   @media (max-width: 720px) {
-    .trust-items.memberships .badge { height: 36px; }
+    .trust-items.memberships .badge { height: 48px; }
   }
 
   /* ─── CTA ─── */
