@@ -157,13 +157,30 @@
   }
   .nav-cta:hover { background: var(--lime-bright); transform: translateY(-1px); }
 
-  /* Group the heart + Start-the-conversation so adding the heart doesn't break
-     nav's flex `space-between` spacing. */
+  /* Ghost-styled twin to .nav-cta — used for 'See what we're about' so the
+     hero can drop its CTA row entirely. */
+  .nav-ghost {
+    background: transparent;
+    color: var(--ivory);
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--hairline);
+    font-weight: 500;
+    font-size: 13.5px;
+    display: inline-flex;
+    align-items: center;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .nav-ghost:hover { border-color: var(--ivory); background: rgba(250, 247, 242, 0.04); }
+
+  /* Heart + ghost + lime CTA. Heart gets extra margin-right (~1cm) so it sits
+     visibly apart from the button cluster. */
   .nav-actions {
     display: inline-flex;
     align-items: center;
     gap: 10px;
   }
+  .nav-actions .nav-breathe { margin-right: 28px; }
   .nav-breathe {
     position: relative;
     display: inline-flex;
@@ -246,7 +263,7 @@
   .burger { display: none; }
   @media (max-width: 720px) { nav.top { top: 32px; } }
   @media (max-width: 880px) {
-    .nav-links, .nav-cta, .nav-breathe { display: none; }
+    .nav-links, .nav-cta, .nav-ghost, .nav-breathe { display: none; }
     .burger {
       display: flex; flex-direction: column; gap: 5px;
       padding: 8px; cursor: pointer;
@@ -374,10 +391,16 @@
   }
   .hero-sub strong { color: var(--ivory); font-weight: 600; }
   .hero-actions {
-    display: flex;
+    /* Hidden on desktop — the heart, the ghost button and the lime CTA all live
+       in the top nav now. Restored below the video on small screens, where the
+       nav drops them. */
+    display: none;
     gap: 16px;
     justify-content: flex-end;
     flex-wrap: wrap;
+  }
+  @media (max-width: 880px) {
+    .hero-actions { display: flex; }
   }
   .btn-primary {
     background: var(--lime);
@@ -1388,7 +1411,9 @@
     display: block;
     width: 100%;
     max-width: 500px;
-    aspect-ratio: 1 / 1;
+    /* 4/5 portrait — gives ~125px (≈3cm) more height than the previous 1/1
+       square, filling the space the CTA row used to occupy below it. */
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     border-radius: 18px;
     box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55);
@@ -1822,6 +1847,7 @@
     <button type="button" class="nav-breathe" data-breathe-trigger aria-label="Take 90 seconds to breathe with us" title="Take 90 seconds to breathe">
       <svg class="ring-text" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="navHeartRing" d="M 2,50 A 48,48 0 0,1 98,50" fill="none"/></defs><text><textPath href="#navHeartRing">click and breathe</textPath></text></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
     </button>
+    <a href="#manifesto" class="nav-ghost">See what we're about</a>
     <a href="#cta" class="nav-cta">Start the conversation →</a>
   </div>
   <div class="burger"><span></span><span></span><span></span></div>
