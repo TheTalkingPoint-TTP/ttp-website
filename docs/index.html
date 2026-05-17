@@ -1237,6 +1237,100 @@
   .langband-list em { font-style: italic; }
   @media (max-width: 720px) { .langband-list { gap: 14px; font-size: 14px; } }
 
+  /* ─── FIELD REPORTS (anonymised case stories ported from old site) ─── */
+  .field-reports { background: var(--ivory); color: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
+  .field-reports-inner { max-width: 1300px; margin: 0 auto; }
+  .field-reports-head { max-width: 760px; margin: 0 auto 60px; }
+  .field-reports-title {
+    font-family: var(--display);
+    font-weight: 380;
+    font-variation-settings: "opsz" 60;
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    color: var(--navy);
+    margin-top: 18px;
+    max-width: 22ch;
+  }
+  .field-reports-title em { font-style: italic; }
+  .field-reports-sub {
+    font-family: var(--body);
+    font-size: clamp(16px, 1.3vw, 18px);
+    line-height: 1.55;
+    color: rgba(14, 30, 58, 0.65);
+    max-width: 56ch;
+    margin-top: 24px;
+  }
+  .reports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 1100px) { .reports-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 720px)  { .reports-grid { grid-template-columns: 1fr; gap: 22px; } }
+  .report-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--navy);
+    box-shadow: 0 2px 12px rgba(14, 30, 58, 0.06);
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  }
+  .report-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(14, 30, 58, 0.12);
+  }
+  .report-card .report-img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+  }
+  .report-card .report-body {
+    padding: 26px 24px 28px;
+    display: flex; flex-direction: column;
+  }
+  .report-card .report-tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(14, 30, 58, 0.55);
+    margin-bottom: 12px;
+  }
+  .report-card .report-title {
+    font-family: var(--display);
+    font-weight: 420;
+    font-variation-settings: "opsz" 36;
+    font-size: clamp(22px, 2vw, 26px);
+    line-height: 1.15;
+    letter-spacing: -0.018em;
+    margin-bottom: 10px;
+  }
+  .report-card .report-deck {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 18;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(14, 30, 58, 0.65);
+    margin-bottom: 18px;
+  }
+  .report-card .report-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .report-card:hover .report-link { color: var(--lime); }
+
   /* ─── VOICES (real client quotes — placeholders until Ella sends real ones) ─── */
   .voices { background: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
   .voices-inner { max-width: 1300px; margin: 0 auto; }
@@ -2378,6 +2472,53 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FIELD REPORTS -->
+<!-- Three anonymised case stories ported from the old TTP site.
+     All three carry a DRAFT banner + noindex pending Ella's sign-off. -->
+<section class="field-reports" id="field-reports">
+  <div class="field-reports-inner">
+    <div class="field-reports-head">
+      <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>Field reports / 03</span>
+      <h2 class="field-reports-title">Stories from the <em>work</em>.</h2>
+      <p class="field-reports-sub">
+        Anonymised case files — moments where TTP was called in and a real life turned. Names and identifying details have been changed; the work and its outcomes have not.
+      </p>
+    </div>
+
+    <div class="reports-grid">
+      <a href="blog/posts/high-school-tragedy.html" class="report-card">
+        <img class="report-img" src="assets/img/stories/high-school-tragedy.png" alt="High school students walking together" loading="lazy" />
+        <div class="report-body">
+          <span class="report-tag">For schools &amp; educators</span>
+          <h3 class="report-title">High School Tragedy.</h3>
+          <p class="report-deck">Two students. Twenty-four hours apart. We moved our practice on-site for three months.</p>
+          <span class="report-link">Read the story →</span>
+        </div>
+      </a>
+
+      <a href="blog/posts/security-guard.html" class="report-card">
+        <img class="report-img" src="assets/img/stories/security-guard.png" alt="Security personnel in uniform" loading="lazy" />
+        <div class="report-body">
+          <span class="report-tag">For workplaces &amp; HR</span>
+          <h3 class="report-title">The Security Guard.</h3>
+          <p class="report-deck">A workplace incident pulled long-buried trauma to the surface. Treating the symptom wasn't enough.</p>
+          <span class="report-link">Read the story →</span>
+        </div>
+      </a>
+
+      <a href="blog/posts/forgotten-boy.html" class="report-card">
+        <img class="report-img" src="assets/img/stories/forgotten-boy.jpg" alt="A cross under a tree in a quiet forest" loading="lazy" />
+        <div class="report-body">
+          <span class="report-tag">For families &amp; disputes</span>
+          <h3 class="report-title">The Forgotten Boy.</h3>
+          <p class="report-deck">A divorce that had stalled for years. The dispute, it turned out, was never about the house.</p>
+          <span class="report-link">Read the story →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
