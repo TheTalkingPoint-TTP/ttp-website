@@ -1689,16 +1689,19 @@
     pointer-events: none;
   }
   .situation-card:nth-child(3)::after { background: radial-gradient(circle, rgba(255, 92, 57, 0.22), transparent 70%); }
-  .situation-head-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-  .situation-meta { display: flex; flex-direction: column; gap: 6px; }
+  /* Each card now sits inside a .situation-cell so the door-number can live
+     OUTSIDE the card, navy on ivory, drawing the eye to the entrance. */
+  .situation-cell { display: flex; flex-direction: column; gap: 14px; }
   .situation-num {
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 14px;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--ivory);
-    opacity: 0.5;
+    letter-spacing: 0.18em;
+    color: var(--navy);
+    font-weight: 600;
+    padding-left: 4px;
   }
+  .situation-head-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
   .situation-tag {
     font-family: var(--mono);
     font-size: 10px;
@@ -1984,53 +1987,53 @@
     </div>
 
     <div class="situations-grid">
-      <a href="#checkin" class="situation-card">
-        <div class="situation-head-row">
-          <div class="situation-meta">
-            <span class="situation-num">01 / 04</span>
+      <div class="situation-cell">
+        <span class="situation-num">01 / 04</span>
+        <a href="#checkin" class="situation-card">
+          <div class="situation-head-row">
             <span class="situation-tag">For yourself</span>
+            <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
-          <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
-        <p class="situation-desc">You're going through something. You don't need a brochure. You need someone to pick up.</p>
-        <h3 class="situation-title">I need to <em>talk</em> to someone.</h3>
-      </a>
+          <p class="situation-desc">You're going through something. You don't need a brochure. You need someone to pick up.</p>
+          <h3 class="situation-title">I need to <em>talk</em> to someone.</h3>
+        </a>
+      </div>
 
-      <a href="someone-you-love.html" class="situation-card">
-        <div class="situation-head-row">
-          <div class="situation-meta">
-            <span class="situation-num">02 / 04</span>
+      <div class="situation-cell">
+        <span class="situation-num">02 / 04</span>
+        <a href="someone-you-love.html" class="situation-card">
+          <div class="situation-head-row">
             <span class="situation-tag">For someone you love</span>
+            <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
-          <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
-        <p class="situation-desc">A partner, child, parent, colleague. You can see they're struggling — you don't know what to do next.</p>
-        <h3 class="situation-title">Someone I love is <em>struggling</em>.</h3>
-      </a>
+          <p class="situation-desc">A partner, child, parent, colleague. You can see they're struggling — you don't know what to do next.</p>
+          <h3 class="situation-title">Someone I love is <em>struggling</em>.</h3>
+        </a>
+      </div>
 
-      <a href="#services" class="situation-card">
-        <div class="situation-head-row">
-          <div class="situation-meta">
-            <span class="situation-num">03 / 04</span>
+      <div class="situation-cell">
+        <span class="situation-num">03 / 04</span>
+        <a href="#services" class="situation-card">
+          <div class="situation-head-row">
             <span class="situation-tag">For workplaces &amp; HR</span>
+            <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
-          <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
-        <p class="situation-desc">A trauma at work — hijacking, fatality, retrenchment, conflict. Real people on-site, not a wellness pamphlet.</p>
-        <h3 class="situation-title">There's been an <em>incident</em> at work.</h3>
-      </a>
+          <p class="situation-desc">A trauma at work — hijacking, fatality, retrenchment, conflict. Real people on-site, not a wellness pamphlet.</p>
+          <h3 class="situation-title">There's been an <em>incident</em> at work.</h3>
+        </a>
+      </div>
 
-      <a href="#services" class="situation-card">
-        <div class="situation-head-row">
-          <div class="situation-meta">
-            <span class="situation-num">04 / 04</span>
+      <div class="situation-cell">
+        <span class="situation-num">04 / 04</span>
+        <a href="#services" class="situation-card">
+          <div class="situation-head-row">
             <span class="situation-tag">For families &amp; disputes</span>
+            <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
-          <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
-        <p class="situation-desc">Conversations have stopped. Lawyers feel like the wrong answer. You need a third human in the room.</p>
-        <h3 class="situation-title">We need <em>mediation</em>.</h3>
-      </a>
+          <p class="situation-desc">Conversations have stopped. Lawyers feel like the wrong answer. You need a third human in the room.</p>
+          <h3 class="situation-title">We need <em>mediation</em>.</h3>
+        </a>
+      </div>
     </div>
   </div>
 </section>
