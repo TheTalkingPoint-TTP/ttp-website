@@ -764,6 +764,9 @@
   }
   @media (max-width: 880px) { .service-grid { grid-template-columns: 1fr; } }
   .service-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
     padding: 0 0 40px;
     border-right: 1px solid var(--hairline-dark);
     border-bottom: 1px solid var(--hairline-dark);
@@ -799,13 +802,26 @@
   .service-card:hover .service-img { filter: grayscale(0) contrast(1); }
   .service-body { padding: 0 32px; }
   .service-body.no-image-pad { padding-top: 40px; }
+  .service-meta {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
   .service-num {
     font-family: var(--mono);
     font-size: 11px;
     color: var(--navy);
-    opacity: 0.5;
+    opacity: 0.45;
     letter-spacing: 0.14em;
-    margin-bottom: 24px;
+  }
+  .service-name {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 36;
+    font-size: 22px;
+    font-weight: 460;
+    letter-spacing: -0.012em;
+    color: var(--navy);
   }
   .service-title {
     font-family: var(--display);
@@ -2388,10 +2404,13 @@
     </div>
 
     <div class="service-grid">
-      <article class="service-card reveal">
+      <a class="service-card reveal" href="services/mental-health.html">
         <img class="service-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.add('no-image-pad');" />
         <div class="service-body">
-          <div class="service-num">01 / Mental Health</div>
+          <div class="service-meta">
+            <span class="service-num">01</span>
+            <span class="service-name">Mental Health</span>
+          </div>
           <h3 class="service-title">When the inside is louder than the outside.</h3>
           <p class="service-desc">Wellness, family & bereavement counselling. Trauma debriefing within 72 hours. Parenting support. PTSD-informed care.</p>
           <ul class="service-tags">
@@ -2402,12 +2421,15 @@
             <li>Parenting</li>
           </ul>
         </div>
-      </article>
+      </a>
 
-      <article class="service-card reveal reveal-delay-1">
+      <a class="service-card reveal reveal-delay-1" href="services/mediation.html">
         <img class="service-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.add('no-image-pad');" />
         <div class="service-body">
-          <div class="service-num">02 / Mediation</div>
+          <div class="service-meta">
+            <span class="service-num">02</span>
+            <span class="service-name">Mediation</span>
+          </div>
           <h3 class="service-title">When the conversation has stopped.</h3>
           <p class="service-desc">Family & divorce mediation. Workplace conflict before it hits the CCMA. Legal coaching that respects your wallet and your sanity.</p>
           <ul class="service-tags">
@@ -2418,12 +2440,15 @@
             <li>Rule 41A</li>
           </ul>
         </div>
-      </article>
+      </a>
 
-      <article class="service-card reveal reveal-delay-2">
+      <a class="service-card reveal reveal-delay-2" href="services/response.html">
         <img class="service-img" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.classList.add('no-image-pad');" />
         <div class="service-body">
-          <div class="service-num">03 / Response</div>
+          <div class="service-meta">
+            <span class="service-num">03</span>
+            <span class="service-name">Response</span>
+          </div>
           <h3 class="service-title">When the moment becomes an emergency.</h3>
           <p class="service-desc">Bundled armed and medical response, dispatched on a clinical decision — not a guess. Nationwide, every province, 24/7.</p>
           <ul class="service-tags">
@@ -2434,7 +2459,7 @@
             <li>SLA-backed</li>
           </ul>
         </div>
-      </article>
+      </a>
     </div>
   </div>
 </section>

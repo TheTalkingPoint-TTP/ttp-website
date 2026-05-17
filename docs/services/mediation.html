@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════
+  Service detail page — content ported from the previous TTP site
+  with light tone editing for consistency with the new site voice.
+  Ella to verify clinical claims + service scope before launch.
+═══════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mediation — The Talking Point</title>
+<meta name="description" content="Family, workplace and commercial disputes — resolved with a qualified neutral third party, not a courtroom." />
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../blog/quiet-reads.css" />
+<style>
+  /* Sub-service card grid for the service detail pages. */
+  .service-detail {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 60px clamp(20px, 5vw, 32px) 80px;
+  }
+  .service-detail-hero {
+    margin-bottom: 64px;
+    max-width: 720px;
+  }
+  .service-detail-hero .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute-dark);
+    margin-bottom: 22px;
+    display: inline-block;
+  }
+  .service-detail-hero h1 {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 380;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    color: var(--navy);
+    margin-bottom: 24px;
+  }
+  .service-detail-hero p {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 60;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.5;
+    color: rgba(14, 30, 58, 0.72);
+    max-width: 56ch;
+  }
+
+  .sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 720px) { .sub-grid { grid-template-columns: 1fr; } }
+  .sub-card {
+    padding: 28px 30px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(14, 30, 58, 0.06);
+  }
+  .sub-card h2 {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 36;
+    font-weight: 460;
+    font-size: clamp(22px, 2.1vw, 26px);
+    line-height: 1.15;
+    letter-spacing: -0.018em;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .sub-card p {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 18;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(14, 30, 58, 0.72);
+  }
+
+  .service-cta {
+    margin-top: 80px;
+    padding: 40px 32px;
+    border-top: 1px solid var(--hairline-dark);
+    text-align: center;
+  }
+  .service-cta p {
+    font-family: var(--body);
+    font-size: 15px;
+    color: rgba(14, 30, 58, 0.72);
+    margin-bottom: 22px;
+  }
+  .service-cta .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<aside class="crisis" role="region" aria-label="Crisis support — South Africa">
+  <span><strong>SADAG</strong><a href="tel:0800567567">0800 567 567</a></span>
+  <span><strong>ListenUp</strong><a href="https://wa.me/27829089319?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20to%20someone.">WhatsApp · 24/7</a></span>
+  <span><a href="../tonight.html">Help tonight ↗</a></span>
+</aside>
+
+<nav class="top">
+  <a href="../index.html" class="logo">the.talking point<em>;</em></a>
+  <div class="nav-links">
+    <a href="../index.html#paths">Where to start</a>
+    <a href="../index.html#services">Services</a>
+    <a href="../blog/quiet-reads.html">Quiet reads</a>
+    <a href="../index.html">Home</a>
+  </div>
+  <button type="button" class="nav-breathe" data-breathe-trigger aria-label="Take 90 seconds to breathe with us" title="Take 90 seconds to breathe"><svg class="ring-text" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="navHeartRing" d="M 2,50 A 48,48 0 0,1 98,50" fill="none"/></defs><text textLength="146" lengthAdjust="spacing"><textPath href="#navHeartRing">click and breathe</textPath></text></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+</nav>
+
+<div class="service-detail">
+
+  <a href="../index.html#services" class="back">Back to services</a>
+
+  <div class="service-detail-hero">
+    <span class="eyebrow">Services / Mediation</span>
+    <h1>Mediation.</h1>
+    <p>Family, workplace and commercial disputes — resolved with a qualified neutral third party, not a courtroom.</p>
+  </div>
+
+  <div class="sub-grid">
+    <div class="sub-card">
+      <h2>Divorce & Family Mediation</h2>
+      <p>A time- and cost-effective legal alternative whereby parties to a dispute can appoint a qualified neutral third party to act as mediator and facilitate an agreed settlement — divorce, maintenance, parenting, elder, education or family dispute. The mediator clarifies issues and explores areas of compromise so the dispute resolves without battling it out in court.</p>
+    </div>
+    <div class="sub-card">
+      <h2>Workplace Mediation</h2>
+      <p>An alternative, voluntary legal process companies use to resolve labour conflict before it escalates. Workplace disputes and negotiations at every level can be formally mediated by an experienced mediator and stay within the labour process — 'end the problem, not the relationship'.</p>
+    </div>
+    <div class="sub-card">
+      <h2>Commercial Mediation</h2>
+      <p>In South Africa there is substantial scope for commercial mediation as a key resolution mechanism for business disputes. The mediation process offers parties the chance to resolve disputes while preserving the business relationship — and saving the legal costs of litigation.</p>
+    </div>
+  </div>
+
+  <div class="service-cta">
+    <p>This service is delivered by qualified clinicians and case managers across all nine provinces. To talk to someone about whether it's the right fit, message ListenUp — a real human, within minutes.</p>
+    <div class="actions">
+      <a href="https://wa.me/27829089319?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20to%20someone%20about%20mediation." class="btn-quiet primary">WhatsApp ListenUp →</a>
+      <a href="../index.html#services" class="btn-quiet">Other services</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site">
+  <div class="row">
+    <span>© The Talking Point Group · <a href="../index.html">the.talking point</a></span>
+  </div>
+</footer>
+
+<a href="../tonight.html" class="tonight-fab" aria-label="Not okay tonight? Open the help-tonight page">
+  <span class="heart" aria-hidden="true">♡</span>
+  Not okay tonight?
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+</a>
+
+<button class="quickexit" id="quickexit" type="button" aria-label="Quick exit — leave this site immediately" title="Press Esc to leave instantly">
+  Quick exit
+  <kbd>Esc</kbd>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M14 10l7-7M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
+</button>
+
+<script>
+  const quickExit = () => window.location.replace('https://www.weathersa.co.za/');
+  document.getElementById('quickexit').addEventListener('click', quickExit);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') quickExit(); });
+</script>
+
+<script defer src="../assets/breathe.js"></script>
+
+</body>
+</html>
