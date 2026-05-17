@@ -1690,6 +1690,15 @@
   }
   .situation-card:nth-child(3)::after { background: radial-gradient(circle, rgba(255, 92, 57, 0.22), transparent 70%); }
   .situation-head-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .situation-meta { display: flex; flex-direction: column; gap: 6px; }
+  .situation-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ivory);
+    opacity: 0.5;
+  }
   .situation-tag {
     font-family: var(--mono);
     font-size: 10px;
@@ -1977,7 +1986,10 @@
     <div class="situations-grid">
       <a href="#checkin" class="situation-card">
         <div class="situation-head-row">
-          <span class="situation-tag">For yourself</span>
+          <div class="situation-meta">
+            <span class="situation-num">01 / 04</span>
+            <span class="situation-tag">For yourself</span>
+          </div>
           <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
         <p class="situation-desc">You're going through something. You don't need a brochure. You need someone to pick up.</p>
@@ -1986,7 +1998,10 @@
 
       <a href="someone-you-love.html" class="situation-card">
         <div class="situation-head-row">
-          <span class="situation-tag">For someone you love</span>
+          <div class="situation-meta">
+            <span class="situation-num">02 / 04</span>
+            <span class="situation-tag">For someone you love</span>
+          </div>
           <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
         <p class="situation-desc">A partner, child, parent, colleague. You can see they're struggling — you don't know what to do next.</p>
@@ -1995,7 +2010,10 @@
 
       <a href="#services" class="situation-card">
         <div class="situation-head-row">
-          <span class="situation-tag">For workplaces &amp; HR</span>
+          <div class="situation-meta">
+            <span class="situation-num">03 / 04</span>
+            <span class="situation-tag">For workplaces &amp; HR</span>
+          </div>
           <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
         <p class="situation-desc">A trauma at work — hijacking, fatality, retrenchment, conflict. Real people on-site, not a wellness pamphlet.</p>
@@ -2004,7 +2022,10 @@
 
       <a href="#services" class="situation-card">
         <div class="situation-head-row">
-          <span class="situation-tag">For families &amp; disputes</span>
+          <div class="situation-meta">
+            <span class="situation-num">04 / 04</span>
+            <span class="situation-tag">For families &amp; disputes</span>
+          </div>
           <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
         <p class="situation-desc">Conversations have stopped. Lawyers feel like the wrong answer. You need a third human in the room.</p>
