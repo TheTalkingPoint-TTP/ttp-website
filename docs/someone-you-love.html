@@ -123,18 +123,18 @@
     width: 56px; height: 56px;
     padding: 12px;
     background: transparent; border: none; border-radius: 50%;
-    cursor: pointer; color: var(--lime);
+    cursor: pointer; color: var(--coral);
     transition: background 0.2s, transform 0.2s;
   }
   .nav-breathe:hover, .nav-breathe:focus-visible {
-    background: rgba(139, 197, 63, 0.12);
+    background: rgba(255, 92, 57, 0.12);
     transform: translateY(-1px); outline: none;
   }
   .nav-breathe::before,
   .nav-breathe::after {
     content: ""; position: absolute; inset: 0;
     border-radius: 50%;
-    border: 2px solid var(--lime);
+    border: 2px solid var(--coral);
     pointer-events: none; opacity: 0;
     animation: nav-heart-ripple 13s ease-out infinite;
   }
