@@ -104,11 +104,11 @@ nav.top .nav-links a:hover { opacity: 1; }
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  color: var(--coral);
+  color: var(--lime);
   transition: background 0.2s, transform 0.2s;
 }
 .nav-breathe:hover, .nav-breathe:focus-visible {
-  background: rgba(255, 92, 57, 0.12);
+  background: rgba(139, 197, 63, 0.12);
   transform: translateY(-1px);
   outline: none;
 }
@@ -118,7 +118,7 @@ nav.top .nav-links a:hover { opacity: 1; }
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 2px solid var(--coral);
+  border: 2px solid var(--lime);
   pointer-events: none;
   opacity: 0;
   animation: nav-heart-ripple 13s ease-out infinite;
