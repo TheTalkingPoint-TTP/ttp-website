@@ -15,7 +15,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -34,9 +34,9 @@
     --hairline: rgba(250, 247, 242, 0.14);
     --hairline-dark: rgba(14, 30, 58, 0.12);
 
-    --display: "Open Sans", system-ui, sans-serif;
-    --body: "Open Sans", system-ui, sans-serif;
-    --mono: "Open Sans", system-ui, sans-serif;
+    --display: "Newsreader", "Source Serif Pro", "Times New Roman", serif;
+    --body: "Outfit", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
 
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -109,11 +109,11 @@
      old 250x133 PNG was being upscaled and pixelating on 2x screens. */
   .logo img, .logo svg.logo-svg {
     display: block;
-    height: 50px;
+    height: 100px;
     width: auto;
   }
   @media (max-width: 720px) {
-    .logo img, .logo svg.logo-svg { height: 40px; }
+    .logo img, .logo svg.logo-svg { height: 80px; }
   }
   .logo .semi {
     color: var(--lime);
@@ -2003,7 +2003,18 @@
 
 <nav class="top" id="topnav">
   <a href="#" class="logo" aria-label="The Talking Point — home">
-    <img class="logo-svg" src="assets/img/ttp-logo-new.png.png" alt="The Talking Point" />
+    <svg class="logo-svg" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Talking Point">
+      <!-- Speech bubble (ivory) with a soft tail down-left -->
+      <ellipse cx="215" cy="58" rx="58" ry="44" fill="#FAF7F2"/>
+      <path d="M 176 88 Q 168 122 158 126 Q 198 106 218 76 Z" fill="#FAF7F2"/>
+      <!-- Stylized lime semicolon inside the bubble -->
+      <circle cx="215" cy="44" r="10" fill="#8BC53F"/>
+      <path d="M 206 64 q -2 22 -10 30 q 16 -2 22 -16 q 4 -10 -2 -14 z" fill="#8BC53F"/>
+      <!-- Stacked wordmark — Outfit Bold; 'talking' carries the brand colour -->
+      <text x="6" y="34" font-family="Outfit, system-ui, sans-serif" font-size="32" font-weight="800" fill="#FAF7F2" letter-spacing="-1px">the</text>
+      <text x="6" y="84" font-family="Outfit, system-ui, sans-serif" font-size="50" font-weight="800" fill="#8BC53F" letter-spacing="-1.6px">talking</text>
+      <text x="6" y="130" font-family="Outfit, system-ui, sans-serif" font-size="40" font-weight="800" fill="#FAF7F2" letter-spacing="-1.4px">point</text>
+    </svg>
   </a>
   <div class="nav-links">
     <a href="#paths">Where to start</a>
