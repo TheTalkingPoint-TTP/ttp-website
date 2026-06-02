@@ -2749,7 +2749,7 @@
     <ul class="faq-list">
       <li>
         <h3 class="faq-q">Will this show up on my phone bill?</h3>
-        <p class="faq-a">No. WhatsApp messages and calls don't itemise on phone bills as "TTP." If you're using a shared phone, open this page in Incognito or Private mode and the <strong>Quick Exit</strong> button bottom-right clears it from your browsing history.</p>
+        <p class="faq-a">No. WhatsApp messages and calls don't itemise on phone bills as "TTP." If you're using a shared phone, open this page in Incognito or Private mode and the <strong>Quick Exit</strong> button bottom-right clears your session and takes you straight to a news page.</p>
       </li>
       <li>
         <h3 class="faq-q">Is it really anonymous?</h3>
@@ -2936,8 +2936,22 @@
 
   // ─── Quick exit (privacy escape) ───
   // Click the floating button OR press Esc to leave the site instantly.
-  // Uses location.replace so the back button can't return to the TTP page.
-  const quickExit = () => { window.location.replace('https://www.weathersa.co.za/'); };
+  // Clears session/local storage, replaces ALL history entries with the safe
+  // page so the back button cannot return to TTP, then redirects.
+  const quickExit = () => {
+    try {
+      // Clear any stored session/local data
+      sessionStorage.clear();
+      localStorage.clear();
+      // Overwrite every history entry we can reach so back button leads to ENCA
+      const steps = window.history.length;
+      for (let i = 0; i < steps; i++) {
+        window.history.pushState(null, '', 'https://www.enca.com/');
+      }
+    } catch(e) {}
+    // Replace current entry and redirect — back button now stays on ENCA
+    window.location.replace('https://www.enca.com/');
+  };
   document.getElementById('quickexit')?.addEventListener('click', quickExit);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') quickExit(); });
 
