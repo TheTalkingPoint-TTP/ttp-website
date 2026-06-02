@@ -1550,11 +1550,9 @@
   .hero-video {
     display: block;
     width: 100%;
-    max-width: 500px;
-    /* 4/5 portrait gives ~125px (≈3cm) more height than the previous 1/1
-       square, filling the space the CTA row used to occupy below it. */
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
+    max-width: 640px;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
     border-radius: 18px;
     box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55);
     background: rgba(250, 247, 242, 0.04);
@@ -1563,8 +1561,8 @@
   }
   @media (max-width: 880px) {
     .hero-video {
-      aspect-ratio: 4 / 5;
-      max-width: 360px;
+      aspect-ratio: 16 / 9;
+      max-width: 480px;
       align-self: center;
     }
   }
