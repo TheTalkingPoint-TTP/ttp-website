@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Talking Point — Real humans. Real support. 24/7.</title>
+<title>The Talking Point Real humans. Real support. 24/7.</title>
 <meta name="description" content="The Talking Point Group. Mental health, trauma response, and mediation that actually works. Real humans. Real support. 24/7. Across all nine provinces of South Africa." />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
 <!-- Open Graph / social preview -->
-<meta property="og:title" content="The Talking Point — Real humans. Real support. 24/7." />
+<meta property="og:title" content="The Talking Point Real humans. Real support. 24/7." />
 <meta property="og:description" content="Mental health, trauma response, and mediation that actually works. Across all nine provinces of South Africa." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thetalkingpoint.co.za" />
@@ -157,7 +157,7 @@
   }
   .nav-cta:hover { background: var(--lime-bright); transform: translateY(-1px); }
 
-  /* Ghost-styled twin to .nav-cta — used for 'See what we're about' so the
+  /* Ghost-styled twin to .nav-cta used for 'See what we're about' so the
      hero can drop its CTA row entirely. */
   .nav-ghost {
     background: transparent;
@@ -352,10 +352,10 @@
   }
   @keyframes scribble { to { stroke-dashoffset: 0; } }
 
-  /* Hero body — 2-col grid that fills the space between meta and the section
+  /* Hero body 2-col grid that fills the space between meta and the section
      bottom. Left: headline + sub-copy. Right: video on top, buttons below.
      This keeps the video and buttons in the same column so they can never
-     overlap — no absolute positioning required. */
+     overlap no absolute positioning required. */
   .hero-body {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -387,7 +387,7 @@
   }
   .hero-sub strong { color: var(--ivory); font-weight: 600; }
   .hero-actions {
-    /* Hidden on desktop — the heart, the ghost button and the lime CTA all live
+    /* Hidden on desktop the heart, the ghost button and the lime CTA all live
        in the top nav now. Restored below the video on small screens, where the
        nav drops them. */
     display: none;
@@ -546,7 +546,7 @@
     z-index: 1;
   }
   .human-card:hover .photo { filter: grayscale(0) contrast(1); transform: scale(1.03); }
-  /* Gradient overlay for legibility — also sits on top of photo when present */
+  /* Gradient overlay for legibility also sits on top of photo when present */
   .human-card::after {
     content: "";
     position: absolute;
@@ -719,7 +719,7 @@
     background: rgba(250, 247, 242, 0.5);
   }
 
-  /* Phone mockup — transparent PNG, WhatsApp chat baked into the screen.
+  /* Phone mockup transparent PNG, WhatsApp chat baked into the screen.
      The PNG's chat background is semi-transparent cream, so we sit the phone
      on a soft ivory backplate to stop the navy bleeding through. */
   .phone-wrap { display: flex; justify-content: center; align-self: center; }
@@ -1347,7 +1347,7 @@
   }
   .report-card:hover .report-link { color: var(--lime); }
 
-  /* ─── VOICES (real client quotes — placeholders until Ella sends real ones) ─── */
+  /* ─── VOICES (real client quotes placeholders until Ella sends real ones) ─── */
   .voices { background: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
   .voices-inner { max-width: 1300px; margin: 0 auto; }
   .voices-head { max-width: 760px; margin: 0 auto 60px; text-align: center; }
@@ -1523,7 +1523,7 @@
   /* ─── SECTION BACKGROUND PHOTOS (subtle texture behind navy sections) ─── */
   /* Each section gets a single B&W photo behind its content, washed back with
      a strong navy overlay. The photo adds human warmth without competing with
-     the type — felt more than seen. */
+     the type felt more than seen. */
   .hero::before,
   .testimonial::before,
   .cta::after {
@@ -1542,7 +1542,7 @@
      The ::before rule is intentionally a no-op so the navy stays pure. */
   .hero::before { display: none; }
 
-  /* Hero video — sits at the top of .hero-right. Sized by aspect ratio (not
+  /* Hero video sits at the top of .hero-right. Sized by aspect ratio (not
      stretched to fill) so it sits roughly half the column height, with buttons
      pinned to the bottom by .hero-right's space-between.
      Muted/looping/playsinline so iOS autoplays; paused under
@@ -1551,7 +1551,7 @@
     display: block;
     width: 100%;
     max-width: 500px;
-    /* 4/5 portrait — gives ~125px (≈3cm) more height than the previous 1/1
+    /* 4/5 portrait gives ~125px (≈3cm) more height than the previous 1/1
        square, filling the space the CTA row used to occupy below it. */
     aspect-ratio: 4 / 5;
     object-fit: cover;
@@ -1572,12 +1572,12 @@
   .cta::after          { background-image: url("assets/img/hands-baby.jpg");     background-position: center 40%; opacity: 0.14; filter: grayscale(0.5) contrast(0.95); }
 
   /* Ensure section content sits above the background photo.
-     Exclude .listenup-bg — it's intentionally absolute and would otherwise be
+     Exclude .listenup-bg it's intentionally absolute and would otherwise be
      forced to relative, taking layout space and pushing real content down. */
   .listenup, .testimonial, .cta { position: relative; overflow: hidden; }
   .listenup > *:not(.listenup-bg), .testimonial > *, .cta > * { position: relative; z-index: 1; }
 
-  /* ─── FAQ (practical friction-removers — calm, hairline-divided list) ─── */
+  /* ─── FAQ (practical friction-removers calm, hairline-divided list) ─── */
   .faq { background: var(--ivory); color: var(--navy); padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); }
   .faq-inner { max-width: 760px; margin: 0 auto; }
   .faq-head { text-align: center; margin-bottom: 56px; }
@@ -1636,7 +1636,7 @@
   .limits-item-body a { color: var(--navy); border-bottom: 1px dotted rgba(14,30,58,0.4); font-weight: 500; }
   .limits-item-body a:hover { border-bottom-color: var(--navy); }
 
-  /* ─── ACCESSIBILITY — honour OS-level reduced-motion preference ─── */
+  /* ─── ACCESSIBILITY honour OS-level reduced-motion preference ─── */
   /* For anyone who has vestibular sensitivity OR is in a high-distress state, */
   /* the OS "reduce motion" setting disables every animation and transition on this site. */
   @media (prefers-reduced-motion: reduce) {
@@ -1649,7 +1649,7 @@
   }
 
   /* ─── CRISIS STRIP (persistent, above nav) ─── */
-  /* Calmer than the typical red emergency banner — deep navy with a small coral dot.
+  /* Calmer than the typical red emergency banner deep navy with a small coral dot.
      Goal: always visible, never anxiety-spiking. Numbers stay plain text, not behind a button. */
   .crisis {
     position: fixed; top: 0; left: 0; right: 0;
@@ -1683,7 +1683,7 @@
   }
   .crisis a:hover { color: var(--lime); border-bottom-color: var(--lime); }
   .crisis strong { color: var(--ivory); font-weight: 700; margin-right: 4px; }
-  /* Crisis-strip Tonight button — small but clearly button-styled inside the strip. */
+  /* Crisis-strip Tonight button small but clearly button-styled inside the strip. */
   .crisis a.tonight-link {
     display: inline-flex;
     align-items: center;
@@ -1706,7 +1706,7 @@
 
   /* ─── TONIGHT FAB (persistent "Not okay tonight?" button, bottom-left) ─── */
   /* Mirror of the quick-exit button at bottom-right. The most findable "I need help" */
-  /* affordance on the page — always visible while scrolling. Calm lime, not red. */
+  /* affordance on the page always visible while scrolling. Calm lime, not red. */
   .tonight-fab {
     position: fixed;
     bottom: 18px; left: 18px;
@@ -1994,7 +1994,7 @@
 <body>
 
 <!-- ═══════════════════════════════════════════════ CRISIS STRIP (persistent) -->
-<aside class="crisis" role="region" aria-label="Crisis support — South Africa">
+<aside class="crisis" role="region" aria-label="Crisis support South Africa">
   <span class="label">If you need help right now</span>
   <span><strong>SADAG</strong><a href="tel:0800567567">0800 567 567</a></span>
   <span><strong>Lifeline SA</strong><a href="tel:0861322322">0861 322 322</a></span>
@@ -2002,7 +2002,7 @@
 </aside>
 
 <nav class="top" id="topnav">
-  <a href="#" class="logo" aria-label="The Talking Point — home">
+  <a href="#" class="logo" aria-label="The Talking Point home">
     <svg class="logo-svg" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Talking Point">
       <!-- Speech bubble (ivory) with a soft tail down-left -->
       <ellipse cx="215" cy="58" rx="58" ry="44" fill="#FAF7F2"/>
@@ -2010,7 +2010,7 @@
       <!-- Stylized lime semicolon inside the bubble -->
       <circle cx="215" cy="44" r="10" fill="#8BC53F"/>
       <path d="M 206 64 q -2 22 -10 30 q 16 -2 22 -16 q 4 -10 -2 -14 z" fill="#8BC53F"/>
-      <!-- Stacked wordmark — Outfit Bold; 'talking' carries the brand colour -->
+      <!-- Stacked wordmark Outfit Bold; 'talking' carries the brand colour -->
       <text x="6" y="34" font-family="Outfit, system-ui, sans-serif" font-size="32" font-weight="800" fill="#FAF7F2" letter-spacing="-1px">the</text>
       <text x="6" y="84" font-family="Outfit, system-ui, sans-serif" font-size="50" font-weight="800" fill="#8BC53F" letter-spacing="-1.6px">talking</text>
       <text x="6" y="130" font-family="Outfit, system-ui, sans-serif" font-size="40" font-weight="800" fill="#FAF7F2" letter-spacing="-1.4px">point</text>
@@ -2038,7 +2038,7 @@
   <div class="hero-bg"></div>
 
   <div class="hero-meta">
-    <span><span class="dot"></span>Real humans answering, right now — 24/7</span>
+    <span><span class="dot"></span>Real humans answering, right now 24/7</span>
     <span>Est. 2017 / All 9 provinces</span>
   </div>
 
@@ -2057,7 +2057,7 @@
         </span>
       </h1>
       <p class="hero-sub">
-        Mental health, trauma response, and mediation that actually works. <strong>Real humans</strong>, on the other end of a WhatsApp message, at 3am, in your language — when you don't know what else to do.
+        Mental health, trauma response, and mediation that actually works. <strong>Real humans</strong>, on the other end of a WhatsApp message, at 3am, in your language when you don't know what else to do.
       </p>
     </div>
     <div class="hero-right">
@@ -2132,7 +2132,7 @@
             <span class="situation-tag">For someone you love</span>
             <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
-          <p class="situation-desc">A partner, child, parent, colleague. You can see they're struggling — you don't know what to do next.</p>
+          <p class="situation-desc">A partner, child, parent, colleague. You can see they're struggling you don't know what to do next.</p>
           <h3 class="situation-title">Someone I love is <em>struggling</em>.</h3>
         </a>
       </div>
@@ -2144,7 +2144,7 @@
             <span class="situation-tag">For workplaces &amp; HR</span>
             <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
-          <p class="situation-desc">A trauma at work — hijacking, fatality, retrenchment, conflict. Real people on-site, not a wellness pamphlet.</p>
+          <p class="situation-desc">A trauma at work hijacking, fatality, retrenchment, conflict. Real people on-site, not a wellness pamphlet.</p>
           <h3 class="situation-title">There's been an <em>incident</em> at work.</h3>
         </a>
       </div>
@@ -2176,15 +2176,15 @@
 <section class="humans">
   <div class="humans-head">
     <h2 class="humans-title">Real humans.<br/>Not <em>bots</em>. Not scripts.</h2>
-    <p class="humans-sub">A national network of qualified counsellors, mediators, social workers and case managers — across all nine provinces.</p>
+    <p class="humans-sub">A national network of qualified counsellors, mediators, social workers and case managers across all nine provinces.</p>
   </div>
 
   <!--
-    PLACEHOLDER CREDENTIALS — these reg numbers (all zeros) are placeholders so the UI/layout is locked in.
+    PLACEHOLDER CREDENTIALS these reg numbers (all zeros) are placeholders so the UI/layout is locked in.
     When TTP sends real names + registration numbers, find each card and swap:
-      ‣ .name        — first name + initial
-      ‣ .role        — role · province
-      ‣ .credential  — registration body + real reg number
+      ‣ .name        first name + initial
+      ‣ .role        role · province
+      ‣ .credential  registration body + real reg number
     Bodies: HPCSA (psychologists, counsellors) → https://www.hpcsa.co.za/?contentId=312&menuSubId=66
             SACSSP (social workers)            → https://www.sacssp.co.za
             MASA / DiSAC (mediators)           → https://disac.co.za
@@ -2256,7 +2256,7 @@
         <span class="eyebrow dark"><span class="marker"></span>What we believe / 01</span>
         <h2 class="section-title">This isn't a wellness <em>app</em>.</h2>
         <p style="font-size:17px; line-height:1.55; color: rgba(14,30,58,0.7); max-width: 40ch; margin-top: 16px;">
-          It's the medical that keeps us alive. It's the talking that lets us live. We've been doing this since 2017 — quietly, properly, with real people on the other end of the line.
+          It's the medical that keeps us alive. It's the talking that lets us live. We've been doing this since 2017 quietly, properly, with real people on the other end of the line.
         </p>
       </div>
 
@@ -2283,7 +2283,7 @@
         </li>
         <li class="manifesto-item reveal reveal-delay-4">
           <span class="manifesto-num">06 / 06</span>
-          <p class="manifesto-text">We do <strong>show up</strong>. Clinically, professionally, every single time — backed by HPCSA-registered professionals across all nine provinces.</p>
+          <p class="manifesto-text">We do <strong>show up</strong>. Clinically, professionally, every single time backed by HPCSA-registered professionals across all nine provinces.</p>
         </li>
       </ol>
     </div>
@@ -2299,11 +2299,11 @@
         <span class="eyebrow"><span class="marker"></span>The platform / 02</span>
         <h2 class="section-title">A WhatsApp message<br/>that <em>actually</em> gets answered.</h2>
         <p>
-          ListenUp is our 24/7 confidential, one-on-one WhatsApp support service. End-to-end encrypted. No queue. No bot. No script. Just a qualified case manager — and behind them, a national network of professionals ready to escalate the moment they're needed.
+          ListenUp is our 24/7 confidential, one-on-one WhatsApp support service. End-to-end encrypted. No queue. No bot. No script. Just a qualified case manager and behind them, a national network of professionals ready to escalate the moment they're needed.
         </p>
         <ul class="listenup-features">
-          <li>24/7/365 — real humans, every hour</li>
-          <li>End-to-end encrypted WhatsApp — no app to download</li>
+          <li>24/7/365 real humans, every hour</li>
+          <li>End-to-end encrypted WhatsApp no app to download</li>
           <li>Multilingual professional network across all nine provinces</li>
           <li>Clinical escalation to armed and medical response when required</li>
         </ul>
@@ -2332,7 +2332,7 @@
     <div class="checkin-head">
       <span class="eyebrow dark"><span class="marker"></span>A short check-in / 04</span>
       <h2 class="checkin-title">Not sure if you should <em>reach out</em>?</h2>
-      <p class="checkin-sub">Five questions. Two minutes. We won't store anything — your answers don't leave your browser. We just want to help you decide what to do next.</p>
+      <p class="checkin-sub">Five questions. Two minutes. We won't store anything your answers don't leave your browser. We just want to help you decide what to do next.</p>
     </div>
 
     <form class="checkin-form" id="checkinForm" onsubmit="event.preventDefault(); scoreCheckin();">
@@ -2361,7 +2361,7 @@
 
       <div class="checkin-q">
         <span class="checkin-q-label">Question 03</span>
-        <p class="checkin-q-text">Has your sleep changed — too little, too much, or restless?</p>
+        <p class="checkin-q-text">Has your sleep changed too little, too much, or restless?</p>
         <div class="checkin-options" data-q="q3">
           <input type="radio" name="q3" value="0" id="q3-0" required><label for="q3-0">Not at all</label>
           <input type="radio" name="q3" value="1" id="q3-1"><label for="q3-1">Some days</label>
@@ -2371,7 +2371,7 @@
       </div>
 
       <div class="checkin-q safety">
-        <span class="checkin-q-label">Question 04 — safety</span>
+        <span class="checkin-q-label">Question 04 safety</span>
         <p class="checkin-q-text">Have you had thoughts about hurting yourself, or that the world might be better off without you?</p>
         <div class="checkin-options" data-q="q4">
           <input type="radio" name="q4" value="0" id="q4-0" required><label for="q4-0">Not at all</label>
@@ -2415,7 +2415,7 @@
         <h2 class="section-title">Three pillars.<br/>One <em>human-first</em> ecosystem.</h2>
       </div>
       <p class="services-intro">
-        We work across mental health, mediation, and physical response — clinically supervised, governance-grade, and built for the moments that actually matter.
+        We work across mental health, mediation, and physical response clinically supervised, governance-grade, and built for the moments that actually matter.
       </p>
     </div>
 
@@ -2466,7 +2466,7 @@
             <span class="service-name">Response</span>
           </div>
           <h3 class="service-title">When the moment becomes an emergency.</h3>
-          <p class="service-desc">Bundled armed and medical response, dispatched on a clinical decision — not a guess. Nationwide, every province, 24/7.</p>
+          <p class="service-desc">Bundled armed and medical response, dispatched on a clinical decision not a guess. Nationwide, every province, 24/7.</p>
           <ul class="service-tags">
             <li>Armed response</li>
             <li>Medical</li>
@@ -2493,7 +2493,7 @@
       </div>
 
       <div class="response-callout">
-        <span class="label"><span class="dot"></span>Live case — anonymised</span>
+        <span class="label"><span class="dot"></span>Live case anonymised</span>
         <h3>"They got there before he did."</h3>
         <p>
           A woman messaged at 11pm: ex-partner was on his way to the house, she was alone with the kids, she had no plan. Within seven minutes our case manager had assessed risk, clinically triggered dispatch, and stayed on WhatsApp with her until the response unit arrived in the driveway. She is alive. Her kids slept through it.
@@ -2526,7 +2526,7 @@
       <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>Field reports / 03</span>
       <h2 class="field-reports-title">Stories from the <em>work</em>.</h2>
       <p class="field-reports-sub">
-        Anonymised case files — moments where TTP was called in and a real life turned. Names and identifying details have been changed; the work and its outcomes have not.
+        Anonymised case files moments where TTP was called in and a real life turned. Names and identifying details have been changed; the work and its outcomes have not.
       </p>
     </div>
 
@@ -2573,30 +2573,30 @@
 -->
 <section class="voices">
   <div class="voices-inner">
-    <!-- Photo banner — drop image at: docs/assets/img/group-hands.jpg -->
+    <!-- Photo banner drop image at: docs/assets/img/group-hands.jpg -->
     <div class="photo-banner" aria-hidden="true">
       <img src="assets/img/group-hands.jpg" alt="" loading="lazy" onerror="this.parentElement.style.display='none'" />
     </div>
     <div class="voices-head">
       <span class="eyebrow"><span class="marker"></span>Voices / 05</span>
       <h2 class="voices-title">Real people, on the <em>worst day</em>, who reached out.</h2>
-      <p class="voices-sub">Quotes shared anonymously, with permission. We've changed nothing about what they said — just removed anything that could identify them.</p>
+      <p class="voices-sub">Quotes shared anonymously, with permission. We've changed nothing about what they said just removed anything that could identify them.</p>
     </div>
 
     <div class="voices-grid">
       <article class="voice-card">
         <p class="voice-quote">"My husband died on a Tuesday. I sent the message on Wednesday at 11pm. They answered in three minutes. I'm still here a year later."</p>
-        <p class="voice-attr">D. · 41 · Cape Town · 2024 — <strong>placeholder</strong></p>
+        <p class="voice-attr">D. · 41 · Cape Town · 2024 <strong>placeholder</strong></p>
       </article>
 
       <article class="voice-card">
         <p class="voice-quote">"I didn't think I'd make it to Christmas. The case manager kept WhatsApping me every day for two weeks until I felt safe to keep going."</p>
-        <p class="voice-attr">M. · 28 · Joburg · 2024 — <strong>placeholder</strong></p>
+        <p class="voice-attr">M. · 28 · Joburg · 2024 <strong>placeholder</strong></p>
       </article>
 
       <article class="voice-card">
-        <p class="voice-quote">"After the incident at work, three of my staff couldn't sleep. TTP came on-site within 24 hours. They didn't lecture — they listened. We're still a team."</p>
-        <p class="voice-attr">HR manager · Eastern Cape · 2024 — <strong>placeholder</strong></p>
+        <p class="voice-quote">"After the incident at work, three of my staff couldn't sleep. TTP came on-site within 24 hours. They didn't lecture they listened. We're still a team."</p>
+        <p class="voice-attr">HR manager · Eastern Cape · 2024 <strong>placeholder</strong></p>
       </article>
     </div>
   </div>
@@ -2621,13 +2621,13 @@
     <div class="trust-row">
       <span class="trust-label">Memberships</span>
       <div class="trust-items memberships">
-        <a class="badge" href="https://www.aschp.net/"  target="_blank" rel="noopener" aria-label="ASCHP — Association for Supportive Counsellors and Holistic Practitioners"><img src="assets/logos/aschp.png"  alt="ASCHP" loading="lazy" /></a>
-        <a class="badge" href="https://disac.co.za/"    target="_blank" rel="noopener" aria-label="DiSAC — Dispute Settlement Accreditation Council"><img src="assets/logos/disac.png"  alt="DiSAC" loading="lazy" /></a>
-        <a class="badge" href="https://famac.co.za/"    target="_blank" rel="noopener" aria-label="FAMAC — Family Mediators Association of the Cape"><img src="assets/logos/famac.png"  alt="FAMAC" loading="lazy" /></a>
-        <a class="badge" href="https://www.sacssp.co.za/" target="_blank" rel="noopener" aria-label="SACSSP — South African Council for Social Service Professions"><img src="assets/logos/sacssp.png" alt="SACSSP" loading="lazy" /></a>
-        <a class="badge" href="https://www.hpcsa.co.za/"  target="_blank" rel="noopener" aria-label="HPCSA — Health Professions Council of South Africa"><img src="assets/logos/hpcsa.png"  alt="HPCSA" loading="lazy" /></a>
-        <a class="badge" href="https://nabfam.org.za/"   target="_blank" rel="noopener" aria-label="NABFAM — National Accreditation Board for Family Mediators"><img src="assets/logos/nabfam.png" alt="NABFAM" loading="lazy" /></a>
-        <a class="badge" href="https://www.saam.org.za/"  target="_blank" rel="noopener" aria-label="SAAM — South African Association of Mediators"><img src="assets/logos/saam.png"   alt="SAAM" loading="lazy" /></a>
+        <a class="badge" href="https://www.aschp.net/"  target="_blank" rel="noopener" aria-label="ASCHP Association for Supportive Counsellors and Holistic Practitioners"><img src="assets/logos/aschp.png"  alt="ASCHP" loading="lazy" /></a>
+        <a class="badge" href="https://disac.co.za/"    target="_blank" rel="noopener" aria-label="DiSAC Dispute Settlement Accreditation Council"><img src="assets/logos/disac.png"  alt="DiSAC" loading="lazy" /></a>
+        <a class="badge" href="https://famac.co.za/"    target="_blank" rel="noopener" aria-label="FAMAC Family Mediators Association of the Cape"><img src="assets/logos/famac.png"  alt="FAMAC" loading="lazy" /></a>
+        <a class="badge" href="https://www.sacssp.co.za/" target="_blank" rel="noopener" aria-label="SACSSP South African Council for Social Service Professions"><img src="assets/logos/sacssp.png" alt="SACSSP" loading="lazy" /></a>
+        <a class="badge" href="https://www.hpcsa.co.za/"  target="_blank" rel="noopener" aria-label="HPCSA Health Professions Council of South Africa"><img src="assets/logos/hpcsa.png"  alt="HPCSA" loading="lazy" /></a>
+        <a class="badge" href="https://nabfam.org.za/"   target="_blank" rel="noopener" aria-label="NABFAM National Accreditation Board for Family Mediators"><img src="assets/logos/nabfam.png" alt="NABFAM" loading="lazy" /></a>
+        <a class="badge" href="https://www.saam.org.za/"  target="_blank" rel="noopener" aria-label="SAAM South African Association of Mediators"><img src="assets/logos/saam.png"   alt="SAAM" loading="lazy" /></a>
       </div>
     </div>
     <div class="trust-row">
@@ -2658,13 +2658,13 @@
         <div class="howstart-icon"><img src="assets/img/process/first-contact.png" alt="" loading="lazy" /></div>
         <span class="howstart-num">Step 01</span>
         <h3 class="howstart-step-title"><em>First contact</em>.</h3>
-        <p class="howstart-step-desc">WhatsApp, call, or message. No forms. No questionnaires. The door is always open — 3am, Sunday, Christmas Day.</p>
+        <p class="howstart-step-desc">WhatsApp, call, or message. No forms. No questionnaires. The door is always open 3am, Sunday, Christmas Day.</p>
       </div>
       <div class="howstart-step">
         <div class="howstart-icon"><img src="assets/img/process/listenup.png" alt="" loading="lazy" /></div>
         <span class="howstart-num">Step 02</span>
         <h3 class="howstart-step-title"><em>ListenUp</em> answers.</h3>
-        <p class="howstart-step-desc">A real, qualified human picks up — case manager, counsellor, or social worker. End-to-end encrypted. In your language. Usually within minutes.</p>
+        <p class="howstart-step-desc">A real, qualified human picks up case manager, counsellor, or social worker. End-to-end encrypted. In your language. Usually within minutes.</p>
       </div>
       <div class="howstart-step">
         <div class="howstart-icon"><img src="assets/img/process/checking-in.png" alt="" loading="lazy" /></div>
@@ -2676,7 +2676,7 @@
         <div class="howstart-icon"><img src="assets/img/process/meet-experts.png" alt="" loading="lazy" /></div>
         <span class="howstart-num">Step 04</span>
         <h3 class="howstart-step-title">Meet the <em>experts</em>.</h3>
-        <p class="howstart-step-desc">If you need ongoing support, we match you with the right qualified professional — counsellor, mediator, or trauma specialist — in your province.</p>
+        <p class="howstart-step-desc">If you need ongoing support, we match you with the right qualified professional counsellor, mediator, or trauma specialist in your province.</p>
       </div>
     </div>
   </div>
@@ -2692,11 +2692,11 @@
     <ul class="faq-list">
       <li>
         <h3 class="faq-q">Will this show up on my phone bill?</h3>
-        <p class="faq-a">No. WhatsApp messages and calls don't itemise on phone bills as "TTP." If you're using a shared phone, open this page in Incognito or Private mode — and the <strong>Quick Exit</strong> button bottom-right clears it from your browsing history.</p>
+        <p class="faq-a">No. WhatsApp messages and calls don't itemise on phone bills as "TTP." If you're using a shared phone, open this page in Incognito or Private mode and the <strong>Quick Exit</strong> button bottom-right clears it from your browsing history.</p>
       </li>
       <li>
         <h3 class="faq-q">Is it really anonymous?</h3>
-        <p class="faq-a">Yes. You can WhatsApp us with no name, no ID, no medical aid. The only information we hold is what you choose to share. Records stay confidential under HPCSA and POPIA — even from family, employers, or insurers, unless you ask us otherwise.</p>
+        <p class="faq-a">Yes. You can WhatsApp us with no name, no ID, no medical aid. The only information we hold is what you choose to share. Records stay confidential under HPCSA and POPIA even from family, employers, or insurers, unless you ask us otherwise.</p>
       </li>
       <li>
         <h3 class="faq-q">What if I'm not in crisis, just struggling?</h3>
@@ -2708,7 +2708,7 @@
       </li>
       <li>
         <h3 class="faq-q">Do you work with medical aids?</h3>
-        <p class="faq-a">Yes — we work with most South African medical aid schemes. We can bill direct, or you can claim back. Specific costs are discussed at first contact rather than posted publicly.</p>
+        <p class="faq-a">Yes we work with most South African medical aid schemes. We can bill direct, or you can claim back. Specific costs are discussed at first contact rather than posted publicly.</p>
       </li>
       <li>
         <h3 class="faq-q">What if I don't speak English well?</h3>
@@ -2730,7 +2730,7 @@
     <div class="limits-head">
       <span class="eyebrow dark"><span class="marker"></span>Honest about limits / 08</span>
       <h2 class="limits-title">We're not the right call <em>if…</em></h2>
-      <p class="limits-sub">The strongest practitioners are honest about what they don't do. Here's where we'll point you somewhere better — and stay with you until you get there.</p>
+      <p class="limits-sub">The strongest practitioners are honest about what they don't do. Here's where we'll point you somewhere better and stay with you until you get there.</p>
     </div>
     <ul class="limits-list">
       <li class="limits-item">
@@ -2739,11 +2739,11 @@
       </li>
       <li class="limits-item">
         <h3 class="limits-item-title">You need inpatient psychiatric care or active medication management.</h3>
-        <p class="limits-item-body">Acute psychiatric crises requiring 24-hour monitoring need a psychiatric facility — not us. <a href="tel:0800567567">SADAG · 0800 567 567</a> can help you find the nearest one. We'll be here when you're discharged.</p>
+        <p class="limits-item-body">Acute psychiatric crises requiring 24-hour monitoring need a psychiatric facility not us. <a href="tel:0800567567">SADAG · 0800 567 567</a> can help you find the nearest one. We'll be here when you're discharged.</p>
       </li>
       <li class="limits-item">
         <h3 class="limits-item-title">You need a medical certificate, scripting, or forensic assessment.</h3>
-        <p class="limits-item-body">We're counsellors, social workers, and mediators — not medical doctors or forensic psychiatrists. For those, we'll refer you to a registered GP, psychiatrist, or specialist.</p>
+        <p class="limits-item-body">We're counsellors, social workers, and mediators not medical doctors or forensic psychiatrists. For those, we'll refer you to a registered GP, psychiatrist, or specialist.</p>
       </li>
       <li class="limits-item">
         <h3 class="limits-item-title">You're under 18 without a parent or guardian.</h3>
@@ -2838,7 +2838,7 @@
     <div class="footer-bottom">
       <span>© The Talking Point Group (Pty) Ltd · 2017/519926/07</span>
       <span>Cape Town · Joburg · all 9 provinces</span>
-      <span>Visiting in private? Use Incognito (Chrome) or Private (Safari) — your visit won't show in browser history.</span>
+      <span>Visiting in private? Use Incognito (Chrome) or Private (Safari) your visit won't show in browser history.</span>
     </div>
   </div>
 </footer>
@@ -2852,7 +2852,7 @@
 </a>
 
 <!-- ═══════════════════════════════════════════════ QUICK EXIT (privacy escape) -->
-<button class="quickexit" id="quickexit" type="button" aria-label="Quick exit — leave this site immediately" title="Press Esc to leave instantly">
+<button class="quickexit" id="quickexit" type="button" aria-label="Quick exit leave this site immediately" title="Press Esc to leave instantly">
   Quick exit
   <kbd>Esc</kbd>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M14 10l7-7M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
@@ -2925,13 +2925,13 @@
     panel.classList.remove('severe', 'show');
 
     // Pre-fill the WhatsApp message based on severity so the case manager
-    // sees the user's tone before they say anything else — and the user
+    // sees the user's tone before they say anything else and the user
     // doesn't have to write the first sentence from a cold start.
     const waOpeners = {
       'severe':     "I just did the check-in. I'm not okay tonight.",
       'mod-severe': "I just did the check-in and it suggested I reach out. Can we talk?",
-      'moderate':   "Hi — I did the check-in. Can I just talk?",
-      'mild':       "Hi — I'm not in crisis, just wanted to reach out."
+      'moderate':   "Hi I did the check-in. Can I just talk?",
+      'mild':       "Hi I'm not in crisis, just wanted to reach out."
     };
     const waLink = 'https://wa.me/27829089319?text=' + encodeURIComponent(waOpeners[level] || waOpeners['mild']);
     const whatsappBtn = '<a href="' + waLink + '" class="result-btn primary">WhatsApp ListenUp now →</a>';
@@ -2943,17 +2943,17 @@
       panel.classList.add('severe');
       eye.textContent = 'Thank you for being honest';
       title.innerHTML = 'What you described is <em>serious</em>. You deserve a real human in the next hour.';
-      body.innerHTML  = '<p>SADAG (0800 567 567) is a free, 24-hour line trained for exactly this — they will not hang up, they will not rush you. Or send TTP a WhatsApp message — we answer within minutes, day and night.</p><p style="margin-top:14px;">You are not a burden. Reaching out is not dramatic. We want you here.</p>';
+      body.innerHTML  = '<p>SADAG (0800 567 567) is a free, 24-hour line trained for exactly this they will not hang up, they will not rush you. Or send TTP a WhatsApp message we answer within minutes, day and night.</p><p style="margin-top:14px;">You are not a burden. Reaching out is not dramatic. We want you here.</p>';
       acts.innerHTML  = callSADAG + whatsappBtn + tonight;
     } else if (level === 'mod-severe') {
       eye.textContent = 'A reflection, not a diagnosis';
       title.innerHTML = 'It sounds like you\'ve been carrying <em>a lot</em>.';
-      body.innerHTML  = '<p>What you described — feeling down most days, hard to sleep, struggling to find joy — is real, and it adds up. Talking to a qualified human this week could change the trajectory. You don\'t need to wait until it gets worse.</p>';
+      body.innerHTML  = '<p>What you described feeling down most days, hard to sleep, struggling to find joy is real, and it adds up. Talking to a qualified human this week could change the trajectory. You don\'t need to wait until it gets worse.</p>';
       acts.innerHTML  = whatsappBtn + callOffice;
     } else if (level === 'moderate') {
       eye.textContent = 'A reflection, not a diagnosis';
       title.innerHTML = 'Some of this is <em>worth talking about</em>.';
-      body.innerHTML  = '<p>You don\'t have to be in crisis for talking to help. A single conversation with someone trained for this can shift things in ways friends and family sometimes can\'t. No commitment — just a message.</p>';
+      body.innerHTML  = '<p>You don\'t have to be in crisis for talking to help. A single conversation with someone trained for this can shift things in ways friends and family sometimes can\'t. No commitment just a message.</p>';
       acts.innerHTML  = whatsappBtn + callOffice;
     } else {
       eye.textContent = 'A reflection, not a diagnosis';
