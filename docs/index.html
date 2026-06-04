@@ -111,19 +111,24 @@
     width: auto;
   }
   .logo-tagline {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
     font-family: var(--body);
     font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--lime);
-    margin-top: 4px;
+    border-left: 2px solid rgba(139, 197, 63, 0.5);
+    padding-left: 14px;
+    margin-left: 16px;
     white-space: nowrap;
   }
   @media (max-width: 720px) {
     .logo img, .logo svg.logo-svg { height: 70px; }
-    .logo-tagline { font-size: 9px; letter-spacing: 0.12em; }
+    .logo-tagline { font-size: 8.5px; letter-spacing: 0.12em; padding-left: 10px; margin-left: 10px; }
   }
   .logo .semi {
     color: var(--lime);
@@ -2072,7 +2077,11 @@
 <nav class="top" id="topnav">
   <a href="#" class="logo" aria-label="The Talking Point home">
     <img class="logo-svg" src="assets/img/ttp-logo-new.png" alt="The Talking Point" />
-    <span class="logo-tagline">Mental Health · Mediation · Wellbeing</span>
+    <span class="logo-tagline">
+      <span>Mental Health</span>
+      <span>Mediation</span>
+      <span>Wellbeing</span>
+    </span>
   </a>
   <div class="nav-links">
     <a href="#paths">Where to start</a>
