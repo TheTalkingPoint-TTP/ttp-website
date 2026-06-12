@@ -582,12 +582,12 @@
   }
   .humans-strip {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 12px;
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
   }
-  @media (max-width: 880px) {
+  @media (max-width: 1100px) {
     .humans-strip { grid-template-columns: repeat(3, 1fr); }
     .humans-strip > *:nth-child(n+4) { display: none; }
   }
@@ -609,6 +609,7 @@
   .human-card:nth-child(3) { background: linear-gradient(160deg, #14254a 0%, #1c2f5a 50%, #0E1E3A 100%); }
   .human-card:nth-child(4) { background: linear-gradient(160deg, #0E1E3A 0%, #1c2f5a 70%, #FF5C39 220%); }
   .human-card:nth-child(5) { background: linear-gradient(160deg, #1c2f5a 0%, #0E1E3A 100%); }
+  .human-card:nth-child(6) { background: linear-gradient(160deg, #0E1E3A 0%, #14254a 50%, #8BC53F 200%); }
 
   .human-card:hover { transform: translateY(-6px); }
 
@@ -685,8 +686,10 @@
   .human-card:nth-child(2):hover { transform: translateY(14px); }
   .human-card:nth-child(4) { transform: translateY(12px); }
   .human-card:nth-child(4):hover { transform: translateY(6px); }
+  .human-card:nth-child(6) { transform: translateY(18px); }
+  .human-card:nth-child(6):hover { transform: translateY(12px); }
   @media (max-width: 720px) {
-    .human-card:nth-child(2), .human-card:nth-child(4) { transform: none; }
+    .human-card:nth-child(2), .human-card:nth-child(4), .human-card:nth-child(6) { transform: none; }
   }
 
   /* ─── SECTIONS ─── */
@@ -2240,68 +2243,74 @@
   </div>
 
   <!--
-    PLACEHOLDER CREDENTIALS these reg numbers (all zeros) are placeholders so the UI/layout is locked in.
-    When TTP sends real names + registration numbers, find each card and swap:
-      ‣ .name        first name + initial
-      ‣ .role        role · province
-      ‣ .credential  registration body + real reg number
-    Bodies: HPCSA (psychologists, counsellors) → https://www.hpcsa.co.za/?contentId=312&menuSubId=66
-            SACSSP (social workers)            → https://www.sacssp.co.za
-            MASA / DiSAC (mediators)           → https://disac.co.za
+    REAL TEAM (6 humans). Names, roles, provinces from team-submitted photos.
+    Credentials line is intentionally OMITTED on cards 2-6 — registration bodies
+    and reg numbers to be filled in once team confirms. Card 1 (Nomakhosazana)
+    has SACSSP credential confirmed. Bodies for reference:
+      HPCSA (psychologists, counsellors) → https://www.hpcsa.co.za/?contentId=312&menuSubId=66
+      SACSSP (social workers)            → https://www.sacssp.co.za
+      ASCHP (life coaches, companion)    → https://aschp.net
+      MASA / DiSAC (mediators)           → https://disac.co.za
   -->
   <div class="humans-strip">
     <div class="human-card">
-      <img class="photo" src="assets/img/Nomakhosazana .jpg.jpeg" alt="Nomakhosazana Silinga" loading="lazy" onerror="this.style.display='none'" />
+      <img class="photo" src="assets/img/nomakhosazana-silinga.jpg" alt="Nomakhosazana Silinga" loading="lazy" onerror="this.style.display='none'" />
       <div class="card-inner">
         <span class="initial">N</span>
         <div>
           <p class="name">Nomakhosazana Silinga</p>
-          <p class="role"><span class="green">●</span> Social Worker · Cape Town</p>
+          <p class="role"><span class="green">●</span> Social Worker · Western Cape</p>
           <p class="credential">SACSSP</p>
         </div>
       </div>
     </div>
     <div class="human-card">
-      <img class="photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <img class="photo" src="assets/img/lindelani-magubane.jpg" alt="Lindelani Magubane" loading="lazy" onerror="this.style.display='none'" />
       <div class="card-inner">
         <span class="initial">L</span>
         <div>
-          <p class="name">Lerato D.</p>
-          <p class="role"><span class="green">●</span> Counsellor · Gauteng</p>
-          <p class="credential">HPCSA · <a href="https://www.hpcsa.co.za/?contentId=312&menuSubId=66" target="_blank" rel="noopener">REG 000000</a></p>
+          <p class="name">Lindelani Magubane</p>
+          <p class="role"><span class="green">●</span> Registered Counsellor · Gauteng</p>
         </div>
       </div>
     </div>
     <div class="human-card">
-      <img class="photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <img class="photo" src="assets/img/paddy-venner.jpg" alt="Paddy Venner" loading="lazy" onerror="this.style.display='none'" />
+      <div class="card-inner">
+        <span class="initial">P</span>
+        <div>
+          <p class="name">Paddy Venner</p>
+          <p class="role"><span class="green">●</span> Registered Life Coach · Western Cape</p>
+        </div>
+      </div>
+    </div>
+    <div class="human-card">
+      <img class="photo" src="assets/img/elzette-fritz.jpg" alt="Dr Elzette Fritz" loading="lazy" onerror="this.style.display='none'" />
+      <div class="card-inner">
+        <span class="initial">E</span>
+        <div>
+          <p class="name">Dr Elzette Fritz</p>
+          <p class="role"><span class="green">●</span> Educational Psychologist · Western Cape</p>
+        </div>
+      </div>
+    </div>
+    <div class="human-card">
+      <img class="photo" src="assets/img/thobeka-siduko.jpg" alt="Thobeka Siduko" loading="lazy" onerror="this.style.display='none'" />
       <div class="card-inner">
         <span class="initial">T</span>
         <div>
-          <p class="name">Thando K.</p>
-          <p class="role"><span class="green">●</span> Mediator · KZN</p>
-          <p class="credential">DiSAC accredited · <a href="https://disac.co.za" target="_blank" rel="noopener">REG 000000</a></p>
+          <p class="name">Thobeka Siduko</p>
+          <p class="role"><span class="green">●</span> Companion Counsellor · North West</p>
         </div>
       </div>
     </div>
     <div class="human-card">
-      <img class="photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <img class="photo" src="assets/img/bianca-lawrence.jpg" alt="Bianca Lawrence" loading="lazy" onerror="this.style.display='none'" />
       <div class="card-inner">
-        <span class="initial">A</span>
+        <span class="initial">B</span>
         <div>
-          <p class="name">Ayesha P.</p>
-          <p class="role"><span class="green">●</span> Trauma specialist · Western Cape</p>
-          <p class="credential">HPCSA · <a href="https://www.hpcsa.co.za/?contentId=312&menuSubId=66" target="_blank" rel="noopener">PS 0000000</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="human-card">
-      <img class="photo" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">S</span>
-        <div>
-          <p class="name">Sipho N.</p>
-          <p class="role"><span class="green">●</span> Social worker · Eastern Cape</p>
-          <p class="credential">SACSSP · <a href="https://www.sacssp.co.za" target="_blank" rel="noopener">10 00000</a></p>
+          <p class="name">Bianca Lawrence</p>
+          <p class="role"><span class="green">●</span> Registered Counsellor · Western Cape</p>
         </div>
       </div>
     </div>
