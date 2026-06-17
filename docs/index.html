@@ -581,21 +581,29 @@
     .humans-sub { text-align: left; }
   }
   .humans-strip {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
     max-width: 1600px;
     margin: 0 auto;
   }
-  @media (max-width: 1100px) {
-    .humans-strip { grid-template-columns: repeat(3, 1fr); }
-    .humans-strip > *:nth-child(n+4) { display: none; }
+  .humans-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: humans-scroll 35s linear infinite;
   }
-  @media (max-width: 480px) {
-    .humans-strip { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .humans-strip > *:nth-child(n+3) { display: none; }
+  .humans-strip:hover .humans-track { animation-play-state: paused; }
+  @keyframes humans-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (max-width: 720px) {
+    .humans-track { gap: 10px; }
   }
   .human-card {
+    width: 240px;
+    flex-shrink: 0;
     aspect-ratio: 3 / 4;
     border-radius: 12px;
     overflow: hidden;
@@ -680,16 +688,6 @@
     color: rgba(14, 30, 58, 0.4);
     display: inline-block;
     margin-right: 5px;
-  }
-  /* staggered heights for kinetic feel */
-  .human-card:nth-child(2) { transform: translateY(20px); }
-  .human-card:nth-child(2):hover { transform: translateY(14px); }
-  .human-card:nth-child(4) { transform: translateY(12px); }
-  .human-card:nth-child(4):hover { transform: translateY(6px); }
-  .human-card:nth-child(6) { transform: translateY(18px); }
-  .human-card:nth-child(6):hover { transform: translateY(12px); }
-  @media (max-width: 720px) {
-    .human-card:nth-child(2), .human-card:nth-child(4), .human-card:nth-child(6) { transform: none; }
   }
 
   /* ─── SECTIONS ─── */
@@ -2253,92 +2251,71 @@
       MASA / DiSAC (mediators)           → https://disac.co.za
   -->
   <div class="humans-strip">
-    <div class="human-card">
-      <img class="photo" src="assets/img/lindelani-magubane.jpg" alt="Lindelani Magubane" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">L</span>
-        <div>
-          <p class="name">Lindelani Magubane</p>
-          <p class="role">Registered Counsellor</p>
-          <p class="role">Gauteng</p>
-        </div>
+    <div class="humans-track" id="humansTrack">
+      <div class="human-card">
+        <img class="photo" src="assets/img/lindelani-magubane.jpg" alt="Lindelani Magubane" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">L</span><div><p class="name">Lindelani Magubane</p><p class="role">Registered Counsellor</p><p class="role">Gauteng</p></div></div>
       </div>
-    </div>
-    <div class="human-card">
-      <img class="photo" src="assets/img/bianca-lawrence.jpg" alt="Bianca Lawrence" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">B</span>
-        <div>
-          <p class="name">Bianca Lawrence</p>
-          <p class="role">Registered Counsellor</p>
-          <p class="role">Western Cape</p>
-        </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/bianca-lawrence.jpg" alt="Bianca Lawrence" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">B</span><div><p class="name">Bianca Lawrence</p><p class="role">Registered Counsellor</p><p class="role">Western Cape</p></div></div>
       </div>
-    </div>
-    <div class="human-card">
-      <img class="photo" src="assets/img/thobeka-siduko.jpg" alt="Thobeka Siduko" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">T</span>
-        <div>
-          <p class="name">Thobeka Siduko</p>
-          <p class="role">Counselling Support Companion</p>
-          <p class="role">North West</p>
-        </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/thobeka-siduko.jpg" alt="Thobeka Siduko" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">T</span><div><p class="name">Thobeka Siduko</p><p class="role">Counselling Support Companion</p><p class="role">North West</p></div></div>
       </div>
-    </div>
-    <div class="human-card">
-      <img class="photo" src="assets/img/nomakhosazana-silinga.jpg" alt="Nomakhosazana Silinga" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">N</span>
-        <div>
-          <p class="name">Nomakhosazana Silinga</p>
-          <p class="role">Registered Social Worker</p>
-          <p class="role">Gauteng</p>
-        </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/nomakhosazana-silinga.jpg" alt="Nomakhosazana Silinga" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">N</span><div><p class="name">Nomakhosazana Silinga</p><p class="role">Registered Social Worker</p><p class="role">Gauteng</p></div></div>
       </div>
-    </div>
-    <div class="human-card">
-      <img class="photo" src="assets/img/elzabe-opperman.jpeg" alt="Elzabe Opperman" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">E</span>
-        <div>
-          <p class="name">Elzabe Opperman</p>
-          <p class="role">Registered Family Law Mediator</p>
-          <p class="role">Gauteng &amp; Western Cape</p>
-        </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/elzabe-opperman.jpeg" alt="Elzabe Opperman" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">E</span><div><p class="name">Elzabe Opperman</p><p class="role">Registered Family Law Mediator</p><p class="role">Gauteng &amp; Western Cape</p></div></div>
       </div>
-    </div>
-    <div class="human-card">
-      <img class="photo" src="assets/img/elzette-fritz.jpg" alt="Dr. Elzette Fritz" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">E</span>
-        <div>
-          <p class="name">Dr. Elzette Fritz</p>
-          <p class="role">Educational Psychologist</p>
-          <p class="role">Gauteng &amp; Western Cape</p>
-        </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/elzette-fritz.jpg" alt="Dr. Elzette Fritz" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">E</span><div><p class="name">Dr. Elzette Fritz</p><p class="role">Educational Psychologist</p><p class="role">Gauteng &amp; Western Cape</p></div></div>
       </div>
-    </div>
-    <div class="human-card">
-      <img class="photo" src="assets/img/paddy-venner.jpg" alt="Paddy Venter" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">P</span>
-        <div>
-          <p class="name">Paddy Venter</p>
-          <p class="role">Life Coach &amp; Professional Development</p>
-          <p class="role">Western Cape</p>
-        </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/paddy-venner.jpg" alt="Paddy Venter" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">P</span><div><p class="name">Paddy Venter</p><p class="role">Life Coach &amp; Professional Development</p><p class="role">Western Cape</p></div></div>
       </div>
-    </div>
-    <div class="human-card">
-      <img class="photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80&auto=format&fit=crop" alt="Adri Grobler" loading="lazy" onerror="this.style.display='none'" />
-      <div class="card-inner">
-        <span class="initial">A</span>
-        <div>
-          <p class="name">Adri Grobler</p>
-          <p class="role">Commercial Mediator &amp; NLP Practitioner</p>
-          <p class="role">Western Cape</p>
-        </div>
+      <div class="human-card">
+        <img class="photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80&auto=format&fit=crop" alt="Adri Grobler" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">A</span><div><p class="name">Adri Grobler</p><p class="role">Commercial Mediator &amp; NLP Practitioner</p><p class="role">Western Cape</p></div></div>
+      </div>
+      <!-- Duplicates for seamless loop -->
+      <div class="human-card">
+        <img class="photo" src="assets/img/lindelani-magubane.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">L</span><div><p class="name">Lindelani Magubane</p><p class="role">Registered Counsellor</p><p class="role">Gauteng</p></div></div>
+      </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/bianca-lawrence.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">B</span><div><p class="name">Bianca Lawrence</p><p class="role">Registered Counsellor</p><p class="role">Western Cape</p></div></div>
+      </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/thobeka-siduko.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">T</span><div><p class="name">Thobeka Siduko</p><p class="role">Counselling Support Companion</p><p class="role">North West</p></div></div>
+      </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/nomakhosazana-silinga.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">N</span><div><p class="name">Nomakhosazana Silinga</p><p class="role">Registered Social Worker</p><p class="role">Gauteng</p></div></div>
+      </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/elzabe-opperman.jpeg" alt="" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">E</span><div><p class="name">Elzabe Opperman</p><p class="role">Registered Family Law Mediator</p><p class="role">Gauteng &amp; Western Cape</p></div></div>
+      </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/elzette-fritz.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">E</span><div><p class="name">Dr. Elzette Fritz</p><p class="role">Educational Psychologist</p><p class="role">Gauteng &amp; Western Cape</p></div></div>
+      </div>
+      <div class="human-card">
+        <img class="photo" src="assets/img/paddy-venner.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">P</span><div><p class="name">Paddy Venter</p><p class="role">Life Coach &amp; Professional Development</p><p class="role">Western Cape</p></div></div>
+      </div>
+      <div class="human-card">
+        <img class="photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" onerror="this.style.display='none'" />
+        <div class="card-inner"><span class="initial">A</span><div><p class="name">Adri Grobler</p><p class="role">Commercial Mediator &amp; NLP Practitioner</p><p class="role">Western Cape</p></div></div>
       </div>
     </div>
   </div>
