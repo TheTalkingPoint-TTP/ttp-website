@@ -2321,6 +2321,226 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ TEAM MEMBER MODAL
+     Clicking any .human-card opens this modal populated with that person's
+     info. Data lives in the teamMembers object at the bottom of this file.
+     Populated dynamically; ARIA/keyboard-accessible; ESC + backdrop-click
+     close. Add "quote" fields to teamMembers once Ella confirms real
+     "why I do this work" copy from each person. -->
+<div class="team-modal" id="teamModal" role="dialog" aria-modal="true" aria-labelledby="teamModalName" aria-hidden="true">
+  <div class="team-modal-backdrop" data-team-close></div>
+  <div class="team-modal-card" role="document">
+    <button type="button" class="team-modal-close" aria-label="Close" data-team-close>
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="team-modal-photo">
+      <img id="teamModalPhoto" src="" alt="" />
+    </div>
+    <div class="team-modal-body">
+      <span class="team-modal-eyebrow">Meet · a real human</span>
+      <h3 class="team-modal-name" id="teamModalName">—</h3>
+      <p class="team-modal-role" id="teamModalRole">—</p>
+      <p class="team-modal-cred" id="teamModalCred"></p>
+      <div class="team-modal-quote" id="teamModalQuote" hidden>
+        <span class="team-modal-quote-mark" aria-hidden="true">&ldquo;</span>
+        <p id="teamModalQuoteText"></p>
+      </div>
+      <div class="team-modal-actions">
+        <a class="team-modal-cta" id="teamModalWhatsapp" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.9 11.9 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 6L0 24l6.18-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a10 10 0 01-5.1-1.4l-.36-.21-3.67.96.98-3.58-.24-.37A9.98 9.98 0 1122 12c0 5.52-4.48 10-10 10zm5.47-7.52c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07-1.26-.46-2.4-1.48c-.89-.79-1.49-1.77-1.66-2.07s-.02-.46.13-.6c.13-.13.3-.35.45-.52s.2-.3.3-.5.05-.37-.02-.52-.67-1.62-.92-2.22c-.24-.58-.49-.5-.67-.51H8c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.16 4.56.72.31 1.29.5 1.73.64.73.23 1.39.2 1.91.12.58-.09 1.77-.72 2.02-1.42s.25-1.3.18-1.42c-.07-.12-.27-.2-.57-.35z"/></svg>
+          <span>Book with <span id="teamModalFirst">them</span></span>
+          <svg class="arr" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <button type="button" class="team-modal-secondary" data-team-close>Back to the team</button>
+      </div>
+      <p class="team-modal-fine">via ListenUp · a real human answers within minutes</p>
+    </div>
+  </div>
+</div>
+<style>
+  .team-modal {
+    position: fixed; inset: 0; z-index: 400;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: clamp(12px, 3vw, 32px);
+  }
+  .team-modal[aria-hidden="false"] { display: flex; }
+  .team-modal-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(14, 30, 58, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: team-fade 200ms ease-out;
+  }
+  @keyframes team-fade { from { opacity: 0; } to { opacity: 1; } }
+  .team-modal-card {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    width: 100%;
+    max-height: calc(100vh - 32px);
+    overflow: auto;
+    background: var(--ivory, #FAF7F2);
+    color: var(--navy, #0E1E3A);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 42%) minmax(0, 58%);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    animation: team-rise 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes team-rise {
+    from { opacity: 0; transform: translateY(14px) scale(0.985); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (max-width: 720px) {
+    .team-modal-card { grid-template-columns: 1fr; max-width: 480px; }
+  }
+  .team-modal-close {
+    position: absolute; top: 14px; right: 14px;
+    z-index: 2;
+    background: rgba(14, 30, 58, 0.06);
+    color: var(--navy, #0E1E3A);
+    border: none;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .team-modal-close:hover { background: rgba(14, 30, 58, 0.12); }
+  .team-modal-photo {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--navy, #0E1E3A);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  .team-modal-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.1) contrast(1.03);
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .team-modal-photo { aspect-ratio: 16 / 10; border-radius: 20px 20px 0 0; }
+  }
+  .team-modal-body {
+    padding: clamp(28px, 4vw, 44px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .team-modal-eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(14, 30, 58, 0.55);
+    margin-bottom: 6px;
+  }
+  .team-modal-name {
+    font-family: "Newsreader", "Source Serif Pro", serif;
+    font-variation-settings: "opsz" 60;
+    font-weight: 400;
+    font-size: clamp(28px, 3.4vw, 34px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 4px;
+    color: var(--navy, #0E1E3A);
+  }
+  .team-modal-role {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-size: 14.5px;
+    color: rgba(14, 30, 58, 0.72);
+    margin: 0;
+  }
+  .team-modal-cred {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(14, 30, 58, 0.55);
+    margin: 4px 0 0;
+    min-height: 1em;
+  }
+  .team-modal-cred:empty { display: none; }
+  .team-modal-quote {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(14, 30, 58, 0.12);
+    position: relative;
+  }
+  .team-modal-quote-mark {
+    position: absolute;
+    top: 8px; left: -6px;
+    font-family: "Newsreader", serif;
+    font-size: 48px;
+    line-height: 1;
+    color: rgba(139, 197, 63, 0.4);
+  }
+  .team-modal-quote p {
+    font-family: "Newsreader", serif;
+    font-variation-settings: "opsz" 24;
+    font-style: italic;
+    font-weight: 380;
+    font-size: 17px;
+    line-height: 1.5;
+    color: rgba(14, 30, 58, 0.85);
+    margin: 0;
+    padding-left: 8px;
+  }
+  .team-modal-actions {
+    margin-top: 26px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .team-modal-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #8BC53F;
+    color: var(--navy, #0E1E3A);
+    padding: 13px 20px;
+    border-radius: 999px;
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .team-modal-cta:hover { background: #a4dc4e; transform: translateY(-1px); }
+  .team-modal-cta .arr { margin-left: 2px; }
+  .team-modal-secondary {
+    background: transparent;
+    color: rgba(14, 30, 58, 0.7);
+    border: none;
+    padding: 10px 6px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    border-bottom: 1px dotted transparent;
+  }
+  .team-modal-secondary:hover { border-bottom-color: rgba(14, 30, 58, 0.4); }
+  .team-modal-fine {
+    margin-top: 18px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(14, 30, 58, 0.5);
+  }
+  /* Card gets a subtle cursor + focus outline (was static before) */
+  .human-card { cursor: pointer; }
+  .human-card:focus-visible {
+    outline: 2px solid #8BC53F;
+    outline-offset: 4px;
+  }
+  /* Lock body scroll when modal is open */
+  body.team-modal-open { overflow: hidden; }
+</style>
+
 <!-- ═══════════════════════════════════════════════ MANIFESTO -->
 <section class="manifesto" id="manifesto">
   <div class="container">
@@ -3092,6 +3312,133 @@
     const apply = () => { if (mq.matches) { v.pause(); v.removeAttribute('autoplay'); } };
     apply();
     mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
+  })();
+</script>
+
+<script>
+  /* ═══════════════════ TEAM MEMBER MODAL ═══════════════════
+     Wires up the 6 .human-card elements in the Real Humans strip so
+     clicking (or Enter/Space on) a card opens the shared modal
+     (#teamModal) populated from teamMembers below. Add "quote" to
+     any entry once Ella confirms real "why I do this work" copy. */
+  (function () {
+    const LISTENUP_NUMBER = '27829089319';
+
+    // Keyed by the card's .name text (must match exactly)
+    const teamMembers = {
+      'Nomakhosazana Silinga': {
+        first: 'Nomakhosazana',
+        role: 'Social Worker',
+        province: 'Western Cape',
+        credential: 'SACSSP',
+        photo: 'assets/img/nomakhosazana-silinga.jpg'
+        // quote: TBC — add real copy here once Ella confirms
+      },
+      'Lindelani Magubane': {
+        first: 'Lindelani',
+        role: 'Registered Counsellor',
+        province: 'Gauteng',
+        credential: '',
+        photo: 'assets/img/lindelani-magubane.jpg'
+      },
+      'Paddy Venner': {
+        first: 'Paddy',
+        role: 'Registered Life Coach',
+        province: 'Western Cape',
+        credential: '',
+        photo: 'assets/img/paddy-venner.jpg'
+      },
+      'Dr Elzette Fritz': {
+        first: 'Elzette',
+        role: 'Educational Psychologist',
+        province: 'Western Cape',
+        credential: '',
+        photo: 'assets/img/elzette-fritz.jpg'
+      },
+      'Thobeka Siduko': {
+        first: 'Thobeka',
+        role: 'Companion Counsellor',
+        province: 'North West',
+        credential: '',
+        photo: 'assets/img/thobeka-siduko.jpg'
+      },
+      'Bianca Lawrence': {
+        first: 'Bianca',
+        role: 'Registered Counsellor',
+        province: 'Western Cape',
+        credential: '',
+        photo: 'assets/img/bianca-lawrence.jpg'
+      }
+    };
+
+    const modal   = document.getElementById('teamModal');
+    if (!modal) return;
+    const nameEl  = document.getElementById('teamModalName');
+    const roleEl  = document.getElementById('teamModalRole');
+    const credEl  = document.getElementById('teamModalCred');
+    const photoEl = document.getElementById('teamModalPhoto');
+    const firstEl = document.getElementById('teamModalFirst');
+    const waEl    = document.getElementById('teamModalWhatsapp');
+    const qWrap   = document.getElementById('teamModalQuote');
+    const qText   = document.getElementById('teamModalQuoteText');
+    let lastOpener = null;
+
+    function open(cardEl) {
+      const key = cardEl.querySelector('.name')?.textContent.trim();
+      const data = teamMembers[key];
+      if (!data) return;
+      lastOpener = cardEl;
+      nameEl.textContent  = key;
+      roleEl.textContent  = data.role + ' · ' + data.province;
+      credEl.textContent  = data.credential || '';
+      photoEl.src         = data.photo;
+      photoEl.alt         = key;
+      firstEl.textContent = data.first;
+      waEl.href = 'https://wa.me/' + LISTENUP_NUMBER + '?text=' +
+        encodeURIComponent('Hi — I’d like to book a session with ' + key + '.');
+      if (data.quote) {
+        qText.textContent = data.quote;
+        qWrap.hidden = false;
+      } else {
+        qWrap.hidden = true;
+      }
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('team-modal-open');
+      // Focus the close button so keyboard users have a way out
+      setTimeout(() => modal.querySelector('.team-modal-close')?.focus(), 40);
+    }
+
+    function close() {
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('team-modal-open');
+      if (lastOpener) lastOpener.focus();
+    }
+
+    // Wire each human-card as a button
+    document.querySelectorAll('.humans-strip .human-card').forEach(card => {
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      const name = card.querySelector('.name')?.textContent.trim();
+      if (name) card.setAttribute('aria-label', 'Meet ' + name);
+      card.addEventListener('click', (e) => {
+        // Ignore clicks on links inside the card (credential body link)
+        if (e.target.closest('a')) return;
+        open(card);
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); }
+      });
+    });
+
+    // Close on backdrop / X / secondary
+    modal.querySelectorAll('[data-team-close]').forEach(el => {
+      el.addEventListener('click', close);
+    });
+
+    // Global ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') close();
+    });
   })();
 </script>
 
