@@ -2124,6 +2124,44 @@
           </span>.
         </span>
       </h1>
+      <p class="hero-rotate" aria-live="polite" aria-label="Topics we talk about with you">
+        <span class="hero-rotate-em">—</span>
+        <span id="heroRotateWord" class="hero-rotate-word">fear</span>
+        <span class="hero-rotate-punct">.</span>
+      </p>
+      <style>
+        .hero-rotate {
+          margin: 14px 0 34px;
+          font-family: "Newsreader", "Source Serif Pro", serif;
+          font-variation-settings: "opsz" 60;
+          font-weight: 380;
+          font-size: clamp(24px, 3.2vw, 38px);
+          line-height: 1;
+          letter-spacing: -0.02em;
+          color: #8BC53F;
+          min-height: 1.2em;
+          display: flex;
+          align-items: baseline;
+          gap: 12px;
+        }
+        .hero-rotate-em { color: rgba(139, 197, 63, 0.45); font-weight: 380; }
+        .hero-rotate-word {
+          font-style: italic;
+          display: inline-block;
+          will-change: transform, opacity;
+        }
+        .hero-rotate-word.rotating { animation: heroRotateWord 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes heroRotateWord {
+          0%   { opacity: 1; transform: translateY(0); }
+          38%  { opacity: 0; transform: translateY(-10px); }
+          62%  { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .hero-rotate-punct { color: rgba(139, 197, 63, 0.75); font-style: normal; }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-rotate-word.rotating { animation: none; }
+        }
+      </style>
       <button type="button" class="hero-breathe" data-breathe-trigger aria-label="Take 90 seconds to breathe with us" title="Take 90 seconds to breathe">
         <svg class="ring-text" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="heroHeartRing" d="M 2,50 A 48,48 0 0,1 98,50" fill="none"/></defs><text textLength="146" lengthAdjust="spacing"><textPath href="#heroHeartRing">click and breathe</textPath></text></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
       </button>
@@ -2175,7 +2213,7 @@
 
     <div class="situations-grid">
       <div class="situation-cell">
-        <span class="situation-num">01 / 04</span>
+        <span class="situation-num">01 / 05</span>
         <a href="#checkin" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For yourself</span>
@@ -2187,7 +2225,7 @@
       </div>
 
       <div class="situation-cell">
-        <span class="situation-num">02 / 04</span>
+        <span class="situation-num">02 / 05</span>
         <a href="someone-you-love.html" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For someone you love</span>
@@ -2199,7 +2237,7 @@
       </div>
 
       <div class="situation-cell">
-        <span class="situation-num">03 / 04</span>
+        <span class="situation-num">03 / 05</span>
         <a href="#services" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For workplaces &amp; HR</span>
@@ -2211,7 +2249,7 @@
       </div>
 
       <div class="situation-cell">
-        <span class="situation-num">04 / 04</span>
+        <span class="situation-num">04 / 05</span>
         <a href="#services" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For families &amp; disputes</span>
@@ -2219,6 +2257,18 @@
           </div>
           <p class="situation-desc">Conversations have stopped. Lawyers feel like the wrong answer. You need a third human in the room.</p>
           <h3 class="situation-title">We need <em>mediation</em>.</h3>
+        </a>
+      </div>
+
+      <div class="situation-cell">
+        <span class="situation-num">05 / 05</span>
+        <a href="schools.html" class="situation-card">
+          <div class="situation-head-row">
+            <span class="situation-tag">For schools</span>
+            <span class="situation-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <p class="situation-desc">You've noticed a child pulling away, or a whole class carrying too much. Kids, teens, and the teachers who see it first.</p>
+          <h3 class="situation-title">We're a <em>school</em>.</h3>
         </a>
       </div>
     </div>
@@ -2623,7 +2673,7 @@
 <section class="checkin" id="checkin">
   <div class="checkin-inner">
     <div class="checkin-head">
-      <span class="eyebrow dark"><span class="marker"></span>A short check-in / 04</span>
+      <span class="eyebrow dark"><span class="marker"></span>A short check-in / 05
       <h2 class="checkin-title">Not sure if you should <em>reach out</em>?</h2>
       <p class="checkin-sub">Five questions. Two minutes. We won't store anything your answers don't leave your browser. We just want to help you decide what to do next.</p>
     </div>
@@ -2778,7 +2828,7 @@
   <div class="container">
     <div class="response-grid">
       <div>
-        <span class="eyebrow"><span class="marker"></span>The thing nobody else does / 04</span>
+        <span class="eyebrow"><span class="marker"></span>The thing nobody else does / 05
         <h2 class="section-title">From a <em>conversation</em><br/>to a vehicle in the driveway.</h2>
         <p style="font-size: 18px; line-height: 1.55; color: rgba(250, 247, 242, 0.7); max-width: 50ch; margin-top: 24px;">
           When a ListenUp conversation flags real and present danger, our clinical team can trigger an armed and medical response unit to the caller's location. The decision is clinical. The dispatch is national. The liability stays where it belongs.
@@ -3439,6 +3489,34 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') close();
     });
+  })();
+
+  /* ═══════════════════ HERO ROTATING WORD ═══════════════════
+     Cycles the sage word beneath the hero headline through the
+     hard/soft things TTP is for. Word swap happens at the invisible
+     midpoint of the CSS keyframe animation so the transition reads as
+     one continuous gesture. Respects prefers-reduced-motion via CSS. */
+  (function () {
+    const el = document.getElementById('heroRotateWord');
+    if (!el) return;
+    const words = ['fear', 'grief', 'shame', 'silence', 'loss', 'joy', 'tomorrow', 'love'];
+    let i = 0;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setInterval(() => {
+      if (reduce) {
+        i = (i + 1) % words.length;
+        el.textContent = words[i];
+        return;
+      }
+      el.classList.add('rotating');
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        el.textContent = words[i];
+      }, 320);
+      setTimeout(() => {
+        el.classList.remove('rotating');
+      }, 720);
+    }, 3500);
   })();
 </script>
 
