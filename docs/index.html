@@ -2214,7 +2214,6 @@
 
     <div class="situations-grid">
       <div class="situation-cell">
-        <span class="situation-num">01 / 05</span>
         <a href="#checkin" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For yourself</span>
@@ -2226,7 +2225,6 @@
       </div>
 
       <div class="situation-cell">
-        <span class="situation-num">02 / 05</span>
         <a href="someone-you-love.html" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For someone you love</span>
@@ -2238,7 +2236,6 @@
       </div>
 
       <div class="situation-cell">
-        <span class="situation-num">03 / 05</span>
         <a href="#services" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For workplaces &amp; HR</span>
@@ -2250,7 +2247,6 @@
       </div>
 
       <div class="situation-cell">
-        <span class="situation-num">04 / 05</span>
         <a href="#services" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For families &amp; disputes</span>
@@ -2262,7 +2258,6 @@
       </div>
 
       <div class="situation-cell">
-        <span class="situation-num">05 / 05</span>
         <a href="schools.html" class="situation-card">
           <div class="situation-head-row">
             <span class="situation-tag">For schools</span>
@@ -2861,16 +2856,19 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ FIELD REPORTS -->
-<!-- Three anonymised case stories ported from the old TTP site.
-     All three carry a DRAFT banner + noindex pending Ella's sign-off. -->
-<section class="field-reports" id="field-reports">
+<!-- ═══════════════════════════════════════════════ REAL STORIES (merged: Field Reports + Voices)
+     Combined 2026-07-20 per Bianca's Point 8 — both sections carried real-people
+     content and read as duplicated intent. Case studies stay at top (anonymised,
+     link to blog post drafts marked noindex pending Ella sign-off). Short quotes
+     sit below as a testimonial band. All quotes are still placeholders — Ella
+     to source 3-4 real anonymised client quotes with permission before launch. -->
+<section class="field-reports" id="real-stories">
   <div class="field-reports-inner">
     <div class="field-reports-head">
-      <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>Field reports / 03</span>
-      <h2 class="field-reports-title">Real stories of <em>success</em>.</h2>
+      <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>Real people · real stories</span>
+      <h2 class="field-reports-title">Real work. Real <em>lives that turned</em>.</h2>
       <p class="field-reports-sub">
-        Anonymised case files moments where TTP was called in and a real life turned. Names and identifying details have been changed; the work and its outcomes have not.
+        Case files and voices from the people TTP has worked with. Anonymised, permission-given nothing changed except what could identify them.
       </p>
     </div>
 
@@ -2905,29 +2903,13 @@
         </div>
       </a>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════════════ VOICES (real, anonymised client quotes) -->
-<!--
-  ALL FOUR QUOTES BELOW ARE PLACEHOLDERS written in TTP's voice.
-  Before launch, ask Ella for 3-4 real anonymised client quotes (with permission).
-  Format kept consistent: short, specific, outcome-led. Attribute by first initial + age/role + city,
-  or fully anonymous. Never use a full name. Never use a photo of the actual client.
--->
-<section class="voices">
-  <div class="voices-inner">
-    <!-- Photo banner drop image at: docs/assets/img/group-hands.jpg -->
-    <div class="photo-banner" aria-hidden="true">
-      <img src="assets/img/group-hands.jpg" alt="" loading="lazy" onerror="this.parentElement.style.display='none'" />
-    </div>
-    <div class="voices-head">
-      <span class="eyebrow"><span class="marker"></span>Voices / 05</span>
-      <h2 class="voices-title">Real people, on the <em>worst day</em>, who reached out.</h2>
-      <p class="voices-sub">Quotes shared anonymously, with permission. We've changed nothing about what they said just removed anything that could identify them.</p>
-    </div>
-
-    <div class="voices-grid">
+    <!-- Voices — short quote band (merged in from removed standalone section).
+         All quotes are PLACEHOLDERS in TTP voice. Before launch ask Ella for
+         3-4 real anonymised client quotes with permission. Format: short,
+         specific, outcome-led. Attribute by first initial + city + year.
+         Never a full name. Never a photo of the client. -->
+    <div class="voices-grid" style="margin-top: clamp(56px, 7vw, 88px); padding-top: clamp(48px, 5vw, 72px); border-top: 1px solid rgba(14,30,58,0.10);">
       <article class="voice-card">
         <p class="voice-quote">"My husband died on a Tuesday. I sent the message on Wednesday at 11pm. They answered in three minutes. I'm still here a year later."</p>
         <p class="voice-attr">Cape Town · 2024</p>
@@ -3330,7 +3312,7 @@
       panel.classList.add('severe');
       eye.textContent = 'Thank you for being honest';
       title.innerHTML = 'What you described is <em>serious</em>. You deserve a real human in the next hour.';
-      body.innerHTML  = '<p>SADAG (0800 567 567) is a free, 24-hour line trained for exactly this they will not hang up, they will not rush you. Or send TTP a WhatsApp message we answer within minutes, day and night.</p><p style="margin-top:14px;">You are not a burden. Reaching out is not dramatic. We want you here.</p>';
+      body.innerHTML  = '<p>SADAG (0800 567 567) is a free, 24-hour line trained for exactly this they will not hang up, they will not rush you. Or send TTP a WhatsApp message we answer within minutes, day and night.</p><p style="margin-top:14px;"><strong>Under 18?</strong> Childline SA (0800 055 555) is a free 24-hour line for young people same rules: no rush, no hang-up.</p><p style="margin-top:14px;">You are not a burden. Reaching out is not dramatic. We want you here.</p>';
       acts.innerHTML  = callSADAG + whatsappBtn + tonight;
     } else if (level === 'mod-severe') {
       eye.textContent = 'A reflection, not a diagnosis';
