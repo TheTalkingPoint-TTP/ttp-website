@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>TTP homepage — board decision</title>
+<style>
+  /* ═════════════ TOKENS ═════════════ */
+  :root {
+    --paper: #FAF7F2;
+    --paper-2: #F4EEE0;
+    --paper-3: #EDE5D1;
+    --ink: #0E1E3A;
+    --ink-soft: rgba(14, 30, 58, 0.72);
+    --ink-mute: rgba(14, 30, 58, 0.50);
+    --hairline: rgba(14, 30, 58, 0.12);
+    --hairline-strong: rgba(14, 30, 58, 0.22);
+    --sage: #6BA930;
+    --sage-bright: #8BC53F;
+    --sage-tint: rgba(139, 197, 63, 0.12);
+    --coral: #D93F1A;
+    --coral-tint: rgba(217, 63, 26, 0.08);
+    --sun: #E0A800;
+    --navy-deep: #0E1E3A;
+    --navy-soft: #14254a;
+    --warm-1: #E8D9BF;
+    --warm-2: #D4B896;
+    --warm-3: #B08968;
+    --sky-warm: #F2D28C;
+
+    --display: "Iowan Old Style", "Newsreader", Georgia, "Times New Roman", serif;
+    --body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0E1E3A;
+      --paper-2: #14254a;
+      --paper-3: #1c2f5a;
+      --ink: #FAF7F2;
+      --ink-soft: rgba(250, 247, 242, 0.78);
+      --ink-mute: rgba(250, 247, 242, 0.48);
+      --hairline: rgba(250, 247, 242, 0.14);
+      --hairline-strong: rgba(250, 247, 242, 0.28);
+      --sage: #a4dc4e;
+      --sage-tint: rgba(139, 197, 63, 0.18);
+      --coral: #FF7A54;
+      --coral-tint: rgba(255, 92, 57, 0.12);
+      --sun: #FFC93C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0E1E3A;
+    --paper-2: #14254a;
+    --paper-3: #1c2f5a;
+    --ink: #FAF7F2;
+    --ink-soft: rgba(250, 247, 242, 0.78);
+    --ink-mute: rgba(250, 247, 242, 0.48);
+    --hairline: rgba(250, 247, 242, 0.14);
+    --hairline-strong: rgba(250, 247, 242, 0.28);
+    --sage: #a4dc4e;
+    --sage-tint: rgba(139, 197, 63, 0.18);
+    --coral: #FF7A54;
+    --coral-tint: rgba(255, 92, 57, 0.12);
+    --sun: #FFC93C;
+  }
+  :root[data-theme="light"] {
+    --paper: #FAF7F2;
+    --paper-2: #F4EEE0;
+    --paper-3: #EDE5D1;
+    --ink: #0E1E3A;
+    --ink-soft: rgba(14, 30, 58, 0.72);
+    --ink-mute: rgba(14, 30, 58, 0.50);
+    --hairline: rgba(14, 30, 58, 0.12);
+    --hairline-strong: rgba(14, 30, 58, 0.22);
+    --sage: #6BA930;
+    --sage-tint: rgba(139, 197, 63, 0.12);
+    --coral: #D93F1A;
+    --coral-tint: rgba(217, 63, 26, 0.08);
+    --sun: #E0A800;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+  }
+
+  .doc {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: clamp(32px, 5vw, 72px) clamp(20px, 4vw, 40px) 96px;
+  }
+
+  /* ═════════════ HEADER ═════════════ */
+  .doc-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    font-weight: 600;
+  }
+  .doc-eyebrow::before {
+    content: "";
+    width: 40px; height: 1px; background: currentColor;
+  }
+  .doc h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 60px);
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    color: var(--ink);
+    margin-bottom: 26px;
+    max-width: 22ch;
+  }
+  .doc h1 em { font-style: italic; font-weight: 500; color: var(--sage); }
+  .lead {
+    font-family: var(--display);
+    font-size: clamp(18px, 2.1vw, 22px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    max-width: 60ch;
+  }
+  .dateline {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 56px;
+  }
+
+  /* ═════════════ SECTION ═════════════ */
+  section.block { margin-bottom: 72px; scroll-margin-top: 24px; }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: block;
+    margin-bottom: 14px;
+  }
+  section.block h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(28px, 3.6vw, 40px);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    text-wrap: balance;
+    max-width: 24ch;
+  }
+  section.block h2 em { font-style: italic; font-weight: 500; color: var(--sage); }
+  .block > p {
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .block > p strong { color: var(--ink); font-weight: 600; }
+  .block > p em { font-style: italic; color: var(--ink); }
+
+  /* ═════════════ 4-OPTION GRID ═════════════ */
+  .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  @media (max-width: 720px) { .options { grid-template-columns: 1fr; } }
+  .opt {
+    background: var(--paper-2);
+    border-radius: 14px;
+    padding: 24px 26px;
+    border-left: 3px solid var(--hairline-strong);
+  }
+  .opt.recommended { border-left-color: var(--sage); background: var(--sage-tint); }
+  .opt .opt-num {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .opt.recommended .opt-num { color: var(--sage); }
+  .opt h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .opt p {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+  .opt .rec-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--sage);
+    color: var(--paper);
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-left: 8px;
+    font-weight: 700;
+    vertical-align: 3px;
+  }
+
+  /* ═════════════ MOCKUP CANVAS ═════════════ */
+  .mock {
+    background: var(--paper-2);
+    border-radius: 20px;
+    padding: 8px;
+    margin-top: 28px;
+    box-shadow: 0 20px 60px rgba(14, 30, 58, 0.14);
+    overflow: hidden;
+    position: relative;
+  }
+  .mock::before {
+    content: "PROPOSED · MOCK-UP";
+    position: absolute;
+    top: 22px; right: 22px;
+    z-index: 5;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    opacity: 0.85;
+  }
+  .mock-inner {
+    background: var(--paper);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  /* ── mock chrome ── */
+  .m-crisis {
+    background: var(--coral-tint);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 600;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .m-crisis .m-crisis-icon {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--coral);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--paper);
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .m-crisis a-mock { color: var(--coral); text-decoration: underline; }
+  .m-nav {
+    padding: 18px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--hairline);
+    flex-wrap: wrap;
+  }
+  .m-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .m-logo::before {
+    content: "";
+    width: 20px; height: 20px;
+    background: var(--sage);
+    border-radius: 50%;
+  }
+  .m-nav-links {
+    display: flex;
+    gap: 22px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .m-nav-links .active { color: var(--coral); font-weight: 600; }
+  .m-nav-right {
+    display: flex;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ── mock hero ── */
+  .m-hero {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 32px;
+    padding: 40px 26px 52px;
+    align-items: center;
+  }
+  @media (max-width: 720px) { .m-hero { grid-template-columns: 1fr; } }
+  .m-hero-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    padding: 6px 12px;
+    border: 1px solid var(--sage);
+    border-radius: 999px;
+    margin-bottom: 22px;
+    font-weight: 600;
+  }
+  .m-hero-live::before {
+    content: "";
+    width: 8px; height: 8px;
+    background: var(--sage);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  .m-hero h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(30px, 5vw, 52px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+  .m-hero h2 em { font-style: italic; color: var(--sage); font-weight: 500; }
+  .m-hero-sub {
+    font-family: var(--display);
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    max-width: 42ch;
+  }
+  .m-hero-actions { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  .m-btn-primary, .m-btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: default;
+  }
+  .m-btn-primary { background: var(--sage); color: var(--paper); }
+  .m-btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--hairline-strong); }
+  .m-hero-fine {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+
+  /* Portrait placeholder — SVG-styled warm-light impression */
+  .m-portrait {
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    background: linear-gradient(160deg,
+      #F2C795 0%,
+      #E8A66B 30%,
+      #B08968 60%,
+      #6B4E3A 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  .m-portrait::before {
+    content: "";
+    position: absolute;
+    right: 12%;
+    top: 8%;
+    width: 40%;
+    height: 55%;
+    border-radius: 50% 50% 46% 54% / 55% 55% 40% 40%;
+    background: linear-gradient(155deg, #3D2818 0%, #6B4E3A 60%, #8B6844 100%);
+    filter: blur(0.5px);
+  }
+  .m-portrait::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(107, 78, 58, 0.6), transparent);
+  }
+  .m-portrait-badge {
+    position: relative;
+    z-index: 2;
+    background: rgba(250, 247, 242, 0.94);
+    color: var(--ink);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .m-portrait-badge::before {
+    content: "";
+    width: 12px; height: 12px;
+    background: var(--sage);
+    border-radius: 3px;
+  }
+
+  /* ═════════════ DOORS MOCKUP ═════════════ */
+  .m-doors {
+    padding: 48px 26px 52px;
+    background: var(--paper-2);
+  }
+  .m-doors-head {
+    margin-bottom: 32px;
+  }
+  .m-doors-eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .m-doors-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(24px, 3.4vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin-bottom: 10px;
+    max-width: 20ch;
+  }
+  .m-doors-title em { font-style: italic; }
+  .m-doors-sub {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.55;
+    max-width: 44ch;
+  }
+  .m-doors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 720px) { .m-doors-grid { grid-template-columns: 1fr 1fr; } }
+  .m-door {
+    background: var(--paper);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px;
+    color: var(--paper);
+  }
+  .m-door.warm { background: linear-gradient(155deg, #6B4E3A 0%, #3D2818 100%); }
+  .m-door.sun { background: linear-gradient(165deg, #F2D28C 0%, #E0A05C 55%, #6B4E3A 100%); }
+  .m-door.city { background: linear-gradient(150deg, #4A6B7A 0%, #2A4050 60%, #1A2836 100%); }
+  .m-door.library { background: linear-gradient(160deg, #8B7355 0%, #4A3A2A 100%); }
+  .m-door.classroom { background: linear-gradient(155deg, #556B44 0%, #2C3A22 100%); }
+  .m-door.soft {
+    background: var(--navy-deep);
+    color: var(--paper);
+    padding: 22px 20px;
+    justify-content: space-between;
+  }
+  .m-door-tag {
+    align-self: flex-start;
+    background: rgba(250, 247, 242, 0.94);
+    color: var(--ink);
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .m-door-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.15;
+    color: var(--paper);
+    margin: 0;
+  }
+  .m-door-desc {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: rgba(250, 247, 242, 0.85);
+    margin-top: 6px;
+  }
+  .m-door.soft .m-door-tag { background: var(--sage); color: var(--navy-deep); }
+  .m-door.soft .m-door-desc { color: rgba(250, 247, 242, 0.75); }
+  .m-door.soft .m-door-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sage);
+    color: var(--navy-deep);
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 13px;
+    align-self: flex-start;
+    margin-top: 14px;
+  }
+
+  /* ═════════════ SITE MAP DIAGRAMS ═════════════ */
+  .maps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  @media (max-width: 720px) { .maps { grid-template-columns: 1fr; } }
+  .map {
+    background: var(--paper-2);
+    border-radius: 14px;
+    padding: 22px 22px 28px;
+  }
+  .map-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .map h4 {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.15;
+  }
+  .map-count {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+  }
+  .map-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stack-row {
+    padding: 5px 10px;
+    background: var(--paper);
+    border-radius: 5px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+  }
+  .stack-row.hero { background: var(--sage-tint); color: var(--sage); font-weight: 600; }
+  .stack-row.crisis { background: var(--coral-tint); color: var(--coral); font-weight: 600; }
+  .stack-row.footer { background: var(--paper-3); color: var(--ink-mute); }
+  .stack-row .n {
+    font-size: 9px;
+    color: var(--ink-mute);
+    font-weight: 400;
+  }
+
+  /* ═════════════ TRADE-OFF TABLE ═════════════ */
+  .tradeoffs-wrap { overflow-x: auto; margin-top: 24px; }
+  table.tradeoffs {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 520px;
+  }
+  table.tradeoffs th, table.tradeoffs td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--hairline);
+  }
+  table.tradeoffs th {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
+  table.tradeoffs td {
+    color: var(--ink-soft);
+  }
+  table.tradeoffs .rec {
+    background: var(--sage-tint);
+    color: var(--sage);
+    font-weight: 600;
+    font-family: var(--display);
+    font-style: italic;
+  }
+  table.tradeoffs td.good { color: var(--sage); font-weight: 600; }
+  table.tradeoffs td.mid { color: var(--sun); font-weight: 600; }
+  table.tradeoffs td.poor { color: var(--coral); font-weight: 600; }
+
+  /* ═════════════ PHASED PLAN ═════════════ */
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+  @media (max-width: 720px) { .phases { grid-template-columns: 1fr; } }
+  .phase {
+    background: var(--paper-2);
+    border-radius: 14px;
+    padding: 22px 22px;
+    border-top: 3px solid var(--sage);
+  }
+  .phase-num {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .phase h4 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .phase ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .phase li {
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding: 6px 0 6px 18px;
+    position: relative;
+  }
+  .phase li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    color: var(--sage);
+    font-weight: 700;
+  }
+
+  /* ═════════════ TRADE-CALLOUT ═════════════ */
+  .trade-call {
+    background: var(--coral-tint);
+    border-left: 3px solid var(--coral);
+    padding: 26px 28px;
+    border-radius: 12px;
+    margin-top: 28px;
+  }
+  .trade-call-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .trade-call p {
+    color: var(--ink);
+    font-size: 15.5px;
+    line-height: 1.6;
+    font-family: var(--display);
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* ═════════════ FOOTER ═════════════ */
+  .doc-foot {
+    margin-top: 96px;
+    padding-top: 40px;
+    border-top: 1px solid var(--hairline);
+    text-align: center;
+  }
+  .doc-foot p {
+    color: var(--ink-soft);
+    font-family: var(--display);
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.5;
+    max-width: 44ch;
+    margin: 0 auto 14px;
+  }
+  .doc-foot .signoff {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-style: normal;
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; color: black; }
+    .doc { max-width: none; padding: 20px; }
+    .mock { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+    section.block { page-break-inside: avoid; }
+  }
+</style>
+
+</head>
+<body>
+<main class="doc">
+
+  <header>
+    <div class="doc-eyebrow">For the board · The Talking Point Group</div>
+    <h1>The homepage: four directions, <em>one recommendation</em>.</h1>
+    <p class="lead">Our current site is beautifully written but too dense for the person it was built for. This document presents four structural directions the board can choose from, one recommendation, and what shipping looks like in each case.</p>
+    <p class="dateline">Prepared for the board · The Talking Point Group</p>
+  </header>
+
+  <!-- ═══════════════════ THE PROBLEM ═══════════════════ -->
+  <section class="block" id="problem">
+    <span class="section-eyebrow">Section 01 · The problem, honestly stated</span>
+    <h2>Our current homepage <em>doesn't serve the person it was built for</em>.</h2>
+    <p>The website we've built is editorial, warm and well-crafted. Every section rewards a reader who scrolls — funders, school administrators, HR directors. That reader exists. But that reader is not the person we exist for.</p>
+    <p>The person we exist for is someone whose executive function is impaired by depression, anxiety, trauma or grief — someone whose brain is in fog, who scrolls once and has already spent their capacity. Our homepage currently has <strong>eighteen sections stacked vertically</strong>. For that visitor, every section is a cost. It's not a design preference — it's a clinical concern. Cognitive overload for someone at the edge is real.</p>
+    <p>This document is the answer to: what should the front door of TTP look like, so the person who most needs us finds their way to help in the fewest possible clicks — without losing the trust signals a funder or school buyer needs to see?</p>
+  </section>
+
+  <!-- ═══════════════════ FOUR OPTIONS ═══════════════════ -->
+  <section class="block" id="options">
+    <span class="section-eyebrow">Section 02 · The four structural directions considered</span>
+    <h2>Four ways the front door <em>could work</em>.</h2>
+    <p>Each option is a distinct philosophy — not a variation on the same theme. Each has a clear front-door metaphor, a real trade-off, and a precedent (or the lack of one) in the mental-health sector.</p>
+
+    <div class="options">
+      <div class="opt recommended">
+        <div class="opt-num">Option 01 <span class="rec-badge">Recommended</span></div>
+        <h3>The Triage</h3>
+        <p>Homepage is a decision the visitor makes in three seconds. One line. Three-to-six doors. Editorial content lives below the fold — visible only if the visitor chooses "learn more". Model: 988 Lifeline, Samaritans.</p>
+      </div>
+      <div class="opt">
+        <div class="opt-num">Option 02</div>
+        <h3>The Conversation</h3>
+        <p>The site is a WhatsApp thread. Reading the site is reading messages from TTP. No traditional sections at all. Radical, and requires deciding upfront who replies when someone types something serious.</p>
+      </div>
+      <div class="opt">
+        <div class="opt-num">Option 03</div>
+        <h3>The Small Book</h3>
+        <p>Nothing scrolls forever. Everything is a page you turn — bite-sized chapters, one idea per screen, deep calm by design. Preserves editorial voice. Slower for someone in acute crisis unless paired with a persistent help layer.</p>
+      </div>
+      <div class="opt">
+        <div class="opt-num">Option 04</div>
+        <h3>The Choice</h3>
+        <p>Two parallel sites behind one door. On arrival: "I'm here for me" (crisis-safe, minimal) or "I'm here to learn about TTP" (full editorial). Serves both audiences perfectly, but doubles the build.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ THE RECOMMENDATION ═══════════════════ -->
+  <section class="block" id="recommendation">
+    <span class="section-eyebrow">Section 03 · Our recommendation</span>
+    <h2>Ship <em>The Triage</em> — with Small Book pacing on interior pages and a persistent crisis layer on every page.</h2>
+    <p>What this feels like — a mock-up of the recommended homepage above the fold:</p>
+
+    <!-- HERO MOCKUP -->
+    <div class="mock">
+      <div class="mock-inner">
+        <div class="m-crisis">
+          <span class="m-crisis-icon">!</span>
+          Not okay right now? · Go to Tonight · SADAG 0800 567 567
+        </div>
+        <div class="m-nav">
+          <div class="m-logo">The Talking Point</div>
+          <div class="m-nav-links">
+            <span>Where to start</span>
+            <span>Someone I love</span>
+            <span>Schools</span>
+            <span class="active">Tonight</span>
+          </div>
+          <div class="m-nav-right">
+            <span>🌐 Language</span>
+            <span>⤴ Quick exit</span>
+          </div>
+        </div>
+        <div class="m-hero">
+          <div>
+            <div class="m-hero-live">Live now · Answered in under 5 minutes</div>
+            <h2>You're <em>not</em> alone.</h2>
+            <p class="m-hero-sub">Real humans. No bots. A trained listener answers your WhatsApp in minutes — in your language, any hour — and stays with you until you're safe.</p>
+            <div class="m-hero-actions">
+              <span class="m-btn-primary">💬 WhatsApp ListenUp</span>
+              <span class="m-btn-outline">Find your door</span>
+            </div>
+            <p class="m-hero-fine">24/7 · All 11 official languages · POPIA · HPCSA governed</p>
+          </div>
+          <div class="m-portrait">
+            <span class="m-portrait-badge">Private · HPCSA governed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px;"><strong>The visitor in crisis has one clear path to a human — one button, one tap.</strong> The visitor evaluating TTP as a partner has the trust markers (live badge, governance line, warm portrait) in the same view. No one has to scroll to be served.</p>
+
+    <p>Below the fold, the site does <em>not</em> collapse into eighteen sections. It collapses into six:</p>
+
+    <!-- DOORS MOCKUP -->
+    <div class="mock">
+      <div class="mock-inner">
+        <div class="m-doors">
+          <div class="m-doors-head">
+            <span class="m-doors-eyebrow">Find your door</span>
+            <h3 class="m-doors-title">Wherever you're coming from, <em>someone is here</em>.</h3>
+            <p class="m-doors-sub">Choose the door that fits. You won't be asked to explain everything first.</p>
+          </div>
+          <div class="m-doors-grid">
+            <div class="m-door warm">
+              <span class="m-door-tag">I need to talk</span>
+              <p class="m-door-title">For you, right now</p>
+            </div>
+            <div class="m-door sun">
+              <span class="m-door-tag">Someone I love</span>
+              <p class="m-door-title">For someone you love</p>
+            </div>
+            <div class="m-door city">
+              <span class="m-door-tag">Workplace</span>
+              <p class="m-door-title">For your workplace</p>
+            </div>
+            <div class="m-door library">
+              <span class="m-door-tag">Mediation</span>
+              <p class="m-door-title">When it has to be fair</p>
+            </div>
+            <div class="m-door classroom">
+              <span class="m-door-tag">Schools</span>
+              <p class="m-door-title">For your school</p>
+            </div>
+            <div class="m-door soft">
+              <div>
+                <span class="m-door-tag">Not sure which?</span>
+                <p class="m-door-title" style="margin-top: 6px;">That's fine.<br/>Just say hello.</p>
+                <p class="m-door-desc">We'll figure out the rest together.</p>
+              </div>
+              <span class="m-door-cta">💬 Say hello →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px;">Below the doors, the site keeps the strongest existing sections — trust, real humans, one case story, one closing call — and cuts the rest. Nothing precious is lost. It's just <strong>edited</strong>.</p>
+
+    <p><strong>The sixth "Just say hello" door is the single most important addition.</strong> It's for the visitor who cannot decide which category they are — which is the visitor in the worst cognitive state. A door that removes the need to categorise your own crisis before you can ask for help.</p>
+  </section>
+
+  <!-- ═══════════════════ BEFORE/AFTER SITE MAP ═══════════════════ -->
+  <section class="block" id="maps">
+    <span class="section-eyebrow">Section 04 · Before vs. after — the whole homepage at a glance</span>
+    <h2>From <em>eighteen sections</em> to six.</h2>
+    <p>The current homepage stacks 18 sections vertically. The proposed homepage collapses those into six meaningful blocks. Nothing important is deleted — most content is either merged, moved to interior pages, or lives inside the "Learn more" flow.</p>
+
+    <div class="maps">
+      <div class="map">
+        <div class="map-label">Current site</div>
+        <h4>Editorial magazine</h4>
+        <div class="map-count">18 stacked sections</div>
+        <div class="map-stack">
+          <div class="stack-row crisis">Crisis strip</div>
+          <div class="stack-row">Nav</div>
+          <div class="stack-row">Hero + rotating word</div>
+          <div class="stack-row">Marquee</div>
+          <div class="stack-row">Language band</div>
+          <div class="stack-row">Situations grid (5 doors)</div>
+          <div class="stack-row">Manifesto</div>
+          <div class="stack-row">Services</div>
+          <div class="stack-row">Real humans (6 modals)</div>
+          <div class="stack-row">ListenUp</div>
+          <div class="stack-row">How it works (4 steps)</div>
+          <div class="stack-row">Life anchor</div>
+          <div class="stack-row">FAQ</div>
+          <div class="stack-row">Real stories</div>
+          <div class="stack-row">Testimonial quote</div>
+          <div class="stack-row">Trust / partner logos</div>
+          <div class="stack-row">Check-in questionnaire</div>
+          <div class="stack-row">Start the conversation</div>
+          <div class="stack-row footer">Footer</div>
+        </div>
+      </div>
+      <div class="map">
+        <div class="map-label">Proposed</div>
+        <h4>Triage-first hybrid</h4>
+        <div class="map-count">6 meaningful blocks</div>
+        <div class="map-stack">
+          <div class="stack-row crisis">Persistent crisis strip</div>
+          <div class="stack-row hero">Hero · WhatsApp CTA · live badge</div>
+          <div class="stack-row">Six doors (incl. "Just say hello")</div>
+          <div class="stack-row">Trust · humans · one case story</div>
+          <div class="stack-row">A private check-in</div>
+          <div class="stack-row">Close · "Whenever you're ready"</div>
+          <div class="stack-row footer">Footer with emergency lines</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TRADE-OFF TABLE ═══════════════════ -->
+  <section class="block" id="tradeoffs">
+    <span class="section-eyebrow">Section 05 · Scored honestly</span>
+    <h2>The four options, <em>scored honestly</em>.</h2>
+    <p>How each option performs against the criteria that matter most for TTP: the crisis visitor, the funder, the build cost, the clinical decisions required, and precedent.</p>
+
+    <div class="tradeoffs-wrap">
+      <table class="tradeoffs">
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th class="rec">1. Triage</th>
+            <th>2. Conversation</th>
+            <th>3. Small Book</th>
+            <th>4. Choice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cognitive load for crisis visitor</td>
+            <td class="good">Low</td>
+            <td class="good">Low</td>
+            <td class="mid">Medium</td>
+            <td class="good">Low</td>
+          </tr>
+          <tr>
+            <td>Editorial voice preserved</td>
+            <td class="mid">Moved below fold</td>
+            <td class="poor">Replaced</td>
+            <td class="good">Amplified</td>
+            <td class="good">Preserved</td>
+          </tr>
+          <tr>
+            <td>Funder / buyer first impression</td>
+            <td class="mid">One extra click</td>
+            <td class="poor">Polarising</td>
+            <td class="good">Distinctive</td>
+            <td class="good">Preserved</td>
+          </tr>
+          <tr>
+            <td>Build effort from current site</td>
+            <td class="good">Medium</td>
+            <td class="poor">Large</td>
+            <td class="poor">Large</td>
+            <td class="poor">Largest</td>
+          </tr>
+          <tr>
+            <td>Clinical decisions required</td>
+            <td class="good">Low</td>
+            <td class="poor">High</td>
+            <td class="mid">Medium</td>
+            <td class="good">Low</td>
+          </tr>
+          <tr>
+            <td>Precedent in mental-health sector</td>
+            <td class="good">Standard</td>
+            <td class="poor">None</td>
+            <td class="poor">None</td>
+            <td class="poor">None</td>
+          </tr>
+          <tr>
+            <td>Board-defensibility</td>
+            <td class="good">Easy</td>
+            <td class="mid">Requires vision</td>
+            <td class="mid">Requires taste</td>
+            <td class="mid">Requires patience</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PHASED PLAN ═══════════════════ -->
+  <section class="block" id="plan">
+    <span class="section-eyebrow">Section 06 · What ships, and when</span>
+    <h2>Three phases, four weeks, <em>zero editorial content lost</em>.</h2>
+    <p>Every phase is reversible in one commit. No feature we've already built gets deleted — the editorial content stays live either on the homepage below the fold, or on the interior page it now belongs on.</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-num">Phase 01 · Week 1</div>
+        <h4>Triage front door · persistent crisis layer</h4>
+        <ul>
+          <li>New hero: "You're not alone." + WhatsApp CTA + Find your door</li>
+          <li>Six-door grid including "Just say hello"</li>
+          <li>Persistent "Not okay right now?" strip on every page</li>
+          <li>Sticky WhatsApp + Quick Exit on mobile</li>
+          <li>Live-response badge on hero</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-num">Phase 02 · Week 2–3</div>
+        <h4>Small Book pass on interior pages</h4>
+        <ul>
+          <li>Tonight, Someone-you-love, Schools, Service pages rebuilt one-idea-per-screen</li>
+          <li>No interior page carries more than four stacked sections</li>
+          <li>Language capability tag on every team member card</li>
+          <li>Consolidated trust: HPCSA · POPIA · SLA-bound · Clinical escalation</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-num">Phase 03 · Week 4</div>
+        <h4>Polish · inclusion · accessibility</h4>
+        <ul>
+          <li>11-language switcher on every page</li>
+          <li>Multilingual pre-filled WhatsApp messages</li>
+          <li>Formal WCAG 2.2 accessibility audit and fixes</li>
+          <li>Emergency-lines footer column (SAPS · GBV · SADAG · Ambulance)</li>
+          <li>Performance / load-time pass — critical on mobile networks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ THE TRADE ═══════════════════ -->
+  <section class="block" id="trade">
+    <span class="section-eyebrow">Section 07 · What we are deliberately trading</span>
+    <h2>The trade being made — <em>eyes open</em>.</h2>
+
+    <div class="trade-call">
+      <div class="trade-call-label">The honest trade</div>
+      <p>This recommendation deliberately trades some editorial impact on the homepage for user safety. A first-time funder or school administrator will see a triage screen with clear trust markers, and might scroll to learn more — but they will not land on a full editorial magazine. That is the trade. <strong>It is the right trade</strong> — for a mental-health organisation, the person in crisis has to come first — but the board should agree it is the trade being made.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ THE ASK ═══════════════════ -->
+  <section class="block" id="ask">
+    <span class="section-eyebrow">Section 08 · The ask of the board</span>
+    <h2>Three decisions, in order.</h2>
+    <p><strong>1.</strong> Do we accept the clinical premise? The current homepage is too dense for someone in acute distress, and that is a problem worth solving now.</p>
+    <p><strong>2.</strong> Do we approve <em>The Triage</em> as the direction (Option 01), understanding that Options 02, 03 and 04 remain on the shelf as future possibilities?</p>
+    <p><strong>3.</strong> Do we approve the four-week phased build, understanding that no existing content is lost — only moved, merged or moved to interior pages?</p>
+  </section>
+
+  <footer class="doc-foot">
+    <p>Prepared for the board of The Talking Point Group. Any of the alternative directions can be built to the same standard — this document simply argues why <em>The Triage</em> should be picked first.</p>
+    <p class="signoff">Draft · For board discussion</p>
+  </footer>
+
+</main>
+</body>
+</html>
