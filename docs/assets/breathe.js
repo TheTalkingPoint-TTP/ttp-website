@@ -1,16 +1,20 @@
 /* ═══════════════════════════════════════════════════════════
-   Breathe with me — site-wide persistent FAB.
+   Breathe with me — site-wide persistent FAB + overlay.
 
    Self-contained. Inject this script on any page and it adds:
      1. A small pulsing "Breathe" pill in the bottom-left,
         stacked above the Tonight FAB.
-     2. A full-screen overlay (same design as tonight.html
-        Option 03) that opens on click and runs the 4-4-6
-        breathing cycle until dismissed.
+     2. A full-screen navy overlay that opens on click and
+        runs the 4-4-6 breathing cycle until dismissed.
 
-   Skipped on tonight.html — that page already has its own
-   breathing tile (Option 03) so a second affordance would
-   be redundant.
+   The overlay layout:
+       Breathe with me · Round 1 of 3         (eyebrow)
+       Breathe in / Hold / Breathe out        (phase text — above pulse)
+       (large green pulsing orb)              (with the countdown digit
+                                               centred inside)
+
+   Skipped on tonight.html — that page has its own breathing
+   tile (Option 03) with an identical overlay design.
 
    Honours prefers-reduced-motion via the site-wide media query
    in each page's <style>, which neutralises animation-duration
@@ -18,10 +22,8 @@
    ═══════════════════════════════════════════════════════════ */
 
 (function () {
-  // Don't double-inject if the script loads more than once
   if (document.getElementById('breatheFab')) return;
 
-  // ── Inject styles ──
   const css = `
     .breathe-fab {
       position: fixed;
@@ -68,6 +70,7 @@
       .breathe-fab .dot { width: 7px; height: 7px; }
     }
 
+    /* ── Full-screen navy breathing overlay ── */
     .breathe-overlay {
       display: none;
       position: fixed; inset: 0;
@@ -78,33 +81,54 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      overflow: hidden;
     }
     .breathe-overlay.show { display: flex; }
-    .breathe-overlay .label {
+    .breathe-overlay .eyebrow {
       font-family: "JetBrains Mono", ui-monospace, monospace;
       font-size: 11px;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: rgba(250, 247, 242, 0.55);
-      margin-bottom: 24px;
+      margin: 0 0 40px;
     }
-    .breathe-overlay .circle {
-      width: clamp(160px, 32vw, 260px);
+    .breathe-overlay .eyebrow .sep { margin: 0 10px; color: rgba(139,197,63,0.7); }
+    .breathe-overlay .eyebrow .round strong { color: #8BC53F; font-weight: 500; }
+    .breathe-overlay .phase {
+      font-family: "Newsreader", "Source Serif Pro", serif;
+      font-style: italic;
+      font-weight: 380;
+      font-size: clamp(36px, 6.5vw, 68px);
+      letter-spacing: -0.02em;
+      color: #FAF7F2;
+      margin: 0 0 36px;
+      min-height: 1.1em;
+      font-variation-settings: "opsz" 60;
+      transition: opacity 0.4s ease;
+    }
+    .breathe-overlay .pulse-wrap {
+      position: relative;
+      width: clamp(220px, 40vw, 340px);
       aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+    .breathe-overlay .pulse {
+      position: absolute;
+      inset: 0;
       border-radius: 50%;
       background: radial-gradient(
         circle,
-        rgba(164, 220, 78, 0.75) 0%,
-        rgba(139, 197, 63, 0.35) 38%,
-        rgba(139, 197, 63, 0.08) 72%,
+        rgba(164, 220, 78, 0.85) 0%,
+        rgba(139, 197, 63, 0.45) 42%,
+        rgba(139, 197, 63, 0.1) 74%,
         transparent 100%
       );
-      margin-bottom: 32px;
-      animation: breathe-overlay-big 14s ease-in-out infinite;
+      animation: breathe-pulse 14s ease-in-out infinite;
     }
-    /* Scale + outer glow + brightness all pulse together so the green reads
-       as actively pulsating, not just resizing. */
-    @keyframes breathe-overlay-big {
+    @keyframes breathe-pulse {
       0%, 100% {
         transform: scale(0.62);
         box-shadow: 0 0 30px rgba(139, 197, 63, 0.18);
@@ -121,38 +145,46 @@
         filter: brightness(1.18);
       }
     }
-    .breathe-overlay .phase {
+    .breathe-overlay .count {
+      position: relative;
+      z-index: 2;
       font-family: "Newsreader", "Source Serif Pro", serif;
-      font-size: clamp(28px, 6vw, 48px);
-      font-weight: 380;
-      letter-spacing: -0.02em;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(120px, 20vw, 200px);
+      line-height: 1;
       color: #FAF7F2;
+      letter-spacing: -0.04em;
+      font-variation-settings: "opsz" 72;
+      text-shadow: 0 4px 24px rgba(14, 30, 58, 0.5);
+      min-width: 1ch;
+      text-align: center;
     }
-    .breathe-overlay .rhythm {
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(250, 247, 242, 0.55);
-      margin-top: 36px;
+    .breathe-overlay .count.pop { animation: breathe-count-pop 1s ease-out; }
+    @keyframes breathe-count-pop {
+      0%   { opacity: 0.45; transform: scale(0.78); }
+      22%  { opacity: 1;    transform: scale(1.14); }
+      100% { opacity: 1;    transform: scale(1); }
     }
     .breathe-overlay .close-btn {
-      margin-top: 32px;
+      margin-top: 44px;
       background: transparent;
       color: #FAF7F2;
-      border: 1px solid rgba(250, 247, 242, 0.18);
-      padding: 10px 24px;
+      border: 1px solid rgba(250, 247, 242, 0.22);
+      padding: 11px 26px;
       border-radius: 999px;
       font-family: "JetBrains Mono", ui-monospace, monospace;
       font-size: 11px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
     }
-    .breathe-overlay .close-btn:hover {
+    .breathe-overlay .close-btn:hover,
+    .breathe-overlay .close-btn:focus-visible {
       border-color: #FAF7F2;
-      background: rgba(250, 247, 242, 0.04);
+      background: rgba(250, 247, 242, 0.05);
+      outline: none;
     }
   `;
   const styleEl = document.createElement('style');
@@ -160,8 +192,7 @@
   styleEl.textContent = css;
   document.head.appendChild(styleEl);
 
-  // ── Inject FAB (only if the page doesn't already expose another trigger,
-  // e.g. a nav heart). One breathe affordance per page is enough. ──
+  // FAB (skip if a nav trigger already exists)
   const hasExistingTrigger = document.querySelector('[data-breathe-trigger]');
   let fab = null;
   if (!hasExistingTrigger) {
@@ -175,7 +206,7 @@
     document.body.appendChild(fab);
   }
 
-  // ── Inject overlay ──
+  // Overlay markup — phase text ABOVE the pulse, countdown INSIDE the pulse
   const overlay = document.createElement('div');
   overlay.id = 'breatheOverlay';
   overlay.className = 'breathe-overlay';
@@ -183,51 +214,86 @@
   overlay.setAttribute('aria-modal', 'true');
   overlay.setAttribute('aria-label', 'Breathing exercise');
   overlay.innerHTML = `
-    <p class="label">Breathe with me</p>
-    <div class="circle" aria-hidden="true"></div>
-    <p class="phase" id="breathePhase">Breathe in…</p>
-    <p class="rhythm">In 4 · hold 4 · out 6</p>
+    <p class="eyebrow">
+      Breathe with me<span class="sep">·</span><span class="round">Round <strong id="breatheRound">1</strong> of 3</span>
+    </p>
+    <p class="phase" id="breathePhase">Breathe in</p>
+    <div class="pulse-wrap" aria-hidden="true">
+      <div class="pulse"></div>
+      <div class="count" id="breatheCount">4</div>
+    </div>
     <button class="close-btn" type="button">Close</button>
   `;
   document.body.appendChild(overlay);
 
-  // ── Wire up ──
   const phaseEl = overlay.querySelector('#breathePhase');
+  const countEl = overlay.querySelector('#breatheCount');
+  const roundEl = overlay.querySelector('#breatheRound');
   const closeBtn = overlay.querySelector('.close-btn');
-  const phases = ['Breathe in…', 'Hold…', 'Breathe out…'];
+  const phases = ['Breathe in', 'Hold', 'Breathe out'];
   const durations = [4000, 4000, 6000];
   let i = 0;
-  let timer = null;
+  let round = 1;
+  let phaseTimer = null;
+  let countTimer = null;
+
+  function setCount(n) {
+    countEl.textContent = String(n);
+    countEl.classList.remove('pop');
+    void countEl.offsetWidth;
+    countEl.classList.add('pop');
+  }
+
+  function startCountdown(durMs) {
+    if (countTimer) clearInterval(countTimer);
+    let n = Math.round(durMs / 1000);
+    setCount(n);
+    countTimer = setInterval(function () {
+      n -= 1;
+      if (n < 1) { clearInterval(countTimer); countTimer = null; return; }
+      setCount(n);
+    }, 1000);
+  }
+
+  function stopTimers() {
+    if (phaseTimer) { clearTimeout(phaseTimer); phaseTimer = null; }
+    if (countTimer) { clearInterval(countTimer); countTimer = null; }
+  }
 
   function tick() {
     if (!overlay.classList.contains('show')) return;
     i = (i + 1) % 3;
+    if (i === 0) {
+      round += 1;
+      if (round > 3) { close(); return; }
+      roundEl.textContent = String(round);
+    }
     phaseEl.textContent = phases[i];
-    timer = setTimeout(tick, durations[i]);
+    startCountdown(durations[i]);
+    phaseTimer = setTimeout(tick, durations[i]);
   }
+
   function open() {
     i = 0;
+    round = 1;
+    roundEl.textContent = '1';
     phaseEl.textContent = phases[0];
     overlay.classList.add('show');
-    timer = setTimeout(tick, durations[0]);
+    startCountdown(durations[0]);
+    phaseTimer = setTimeout(tick, durations[0]);
   }
   function close() {
     overlay.classList.remove('show');
-    if (timer) { clearTimeout(timer); timer = null; }
+    stopTimers();
   }
 
   if (fab) fab.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
 
-  // Any element with [data-breathe-trigger] (e.g. the nav heart on the home
-  // page) opens the same overlay. Lets other UI affordances reuse this one.
   document.querySelectorAll('[data-breathe-trigger]').forEach(function (el) {
     el.addEventListener('click', function (e) { e.preventDefault(); open(); });
   });
 
-  // Escape closes the breathing overlay first (if open) — before
-  // the page's Quick Exit handler can fire and redirect away.
-  // Use capture phase + stopImmediatePropagation to win the race.
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && overlay.classList.contains('show')) {
       e.stopImmediatePropagation();
