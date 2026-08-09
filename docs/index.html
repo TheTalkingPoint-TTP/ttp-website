@@ -471,21 +471,27 @@
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     z-index: 2;
     box-shadow:
       0 1px 0 rgba(255,255,255,0.6) inset,
       0 6px 16px -8px rgba(14,30,58,0.35);
     border: 1px solid rgba(255,255,255,0.5);
   }
-  .door-tag::before {
+  .door-num {
+    color: var(--sage);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .door-num::after {
     content: "";
-    width: 6px;
-    height: 6px;
+    width: 3px;
+    height: 3px;
     border-radius: 50%;
-    background: var(--sage-bright);
-    box-shadow: 0 0 0 3px rgba(139,197,63,0.22);
-    flex-shrink: 0;
+    background: rgba(14,30,58,0.35);
   }
   .door-body {
     padding: 22px 24px 26px;
@@ -1393,7 +1399,7 @@
     <div class="doors-grid">
       <a href="tonight.html" class="door">
         <div class="door-photo">
-          <span class="door-tag">I need to talk</span>
+          <span class="door-tag"><span class="door-num">01</span>I need to talk</span>
           <img src="assets/img/moments/1-reach.jpg" alt="Two hands gripping each other by the wrists — someone reaching, someone catching." />
         </div>
         <div class="door-body">
@@ -1405,7 +1411,7 @@
 
       <a href="someone-you-love.html" class="door">
         <div class="door-photo">
-          <span class="door-tag">Someone I love</span>
+          <span class="door-tag"><span class="door-num">02</span>Someone I love</span>
           <img src="assets/img/moments/4-hold.jpg" alt="An adult hand cradling a tiny closed fist — the quiet weight of caring for someone." />
         </div>
         <div class="door-body">
@@ -1417,7 +1423,7 @@
 
       <a href="services/response.html" class="door">
         <div class="door-photo">
-          <span class="door-tag">Workplace incident</span>
+          <span class="door-tag"><span class="door-num">03</span>Workplace incident</span>
           <img src="assets/img/moments/2-listen.jpg" alt="A counsellor's open hands facing a client's clasped hands mid-conversation." />
         </div>
         <div class="door-body">
@@ -1429,7 +1435,7 @@
 
       <a href="services/mediation.html" class="door">
         <div class="door-photo">
-          <span class="door-tag">Mediation</span>
+          <span class="door-tag"><span class="door-num">04</span>Mediation</span>
           <img src="assets/img/moments/5-steady.jpg" alt="Five river stones balanced in a cairn — evenly weighted, quietly steady." />
         </div>
         <div class="door-body">
@@ -1441,7 +1447,7 @@
 
       <a href="schools.html" class="door">
         <div class="door-photo">
-          <span class="door-tag">School</span>
+          <span class="door-tag"><span class="door-num">05</span>School</span>
           <img src="assets/img/moments/3-circle.jpg" alt="A group of young people, hands joined in the middle." />
         </div>
         <div class="door-body">
