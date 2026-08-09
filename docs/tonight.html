@@ -287,61 +287,416 @@
   <span><a href="index.html">← back to the.talking point</a></span>
 </div>
 
-<!-- Breathing overlay (opens on Option 03 click) -->
-<div id="breatheOverlay" style="display:none; position:fixed; inset:0; background:var(--navy); z-index:300; padding:32px 24px; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
-  <p style="font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,247,242,0.55); margin-bottom:24px;">Breathe with me</p>
-  <div style="width: clamp(140px, 30vw, 220px); aspect-ratio:1; border-radius:50%; background: radial-gradient(circle, rgba(139,197,63,0.4) 0%, rgba(139,197,63,0.05) 70%); margin-bottom: 32px; animation: breathe-big 14s ease-in-out infinite;"></div>
-  <p id="breathePhase" style="font-family:var(--display); font-size: clamp(28px, 6vw, 48px); font-weight:380; letter-spacing:-0.02em;">Breathe in…</p>
-  <p style="font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,247,242,0.55); margin-top:36px;">In 4 · hold 4 · out 6</p>
-  <button onclick="document.getElementById('breatheOverlay').style.display='none'" style="margin-top:32px; background:transparent; color:var(--ivory); border:1px solid var(--hairline); padding:10px 24px; border-radius:999px; font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">Close</button>
-</div>
 <style>
-  @keyframes breathe-big {
-    0%, 100% { transform: scale(0.7); }
-    28%      { transform: scale(1.3); }
-    57%      { transform: scale(1.3); }
-    100%     { transform: scale(0.7); }
+  /* Shared overlay chrome */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    z-index: 300;
+  }
+  .overlay.is-open { display: flex; }
+  .overlay-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: rgba(250,247,242,0.75);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    z-index: 12;
+  }
+  .overlay-close:hover, .overlay-close:focus-visible {
+    border-color: var(--lime);
+    color: var(--lime);
+    outline: none;
+  }
+  .overlay-close svg { width: 14px; height: 14px; stroke-width: 1.6; }
+
+  /* ---------- Breathing overlay ---------- */
+  #breatheOverlay {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+  }
+  .breathe-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.5);
+    margin-bottom: 44px;
+  }
+  .breathe-eyebrow .sep {
+    display: inline-block;
+    margin: 0 8px;
+    opacity: 0.5;
+  }
+  .breathe-eyebrow .round { color: rgba(250,247,242,0.85); }
+
+  .breathe-rings {
+    position: relative;
+    width: clamp(240px, 44vw, 340px);
+    aspect-ratio: 1;
+    margin: 0 auto 48px;
+    display: grid;
+    place-items: center;
+  }
+  .breathe-rings svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transform-origin: center;
+    animation: ring-breathe 14s ease-in-out infinite;
+  }
+  .breathe-rings circle {
+    fill: none;
+    stroke: rgba(139, 197, 63, 0.6);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    transform-origin: center;
+  }
+  .breathe-rings circle.r1 { stroke-opacity: 0.9; }
+  .breathe-rings circle.r2 { stroke-opacity: 0.55; }
+  .breathe-rings circle.r3 { stroke-opacity: 0.32; }
+  .breathe-rings circle.r4 { stroke-opacity: 0.16; }
+  .breathe-rings .core {
+    fill: rgba(139,197,63,0.14);
+    stroke: none;
+  }
+  @keyframes ring-breathe {
+    0%     { transform: scale(0.55); }
+    28.57% { transform: scale(1.02); }  /* end of 4s inhale */
+    57.14% { transform: scale(1.02); }  /* end of 4s hold */
+    100%   { transform: scale(0.55); }  /* end of 6s exhale */
+  }
+
+  .breathe-phase {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 320;
+    font-size: clamp(36px, 6.6vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ivory);
+    min-height: 1.15em;
+    font-variation-settings: "opsz" 60;
+  }
+  .breathe-rhythm {
+    margin-top: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 18px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.55);
+    background: rgba(250,247,242,0.02);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .breathe-rings svg { animation: none; transform: scale(0.9); }
+  }
+
+  /* ---------- Plan overlay ---------- */
+  #planOverlay {
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 40px 24px 96px;
+  }
+  .plan-container {
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 16px;
+    position: relative;
+  }
+  .plan-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.5);
+    margin-bottom: 22px;
+  }
+  .plan-eyebrow .sep {
+    display: inline-block;
+    margin: 0 8px;
+    opacity: 0.5;
+  }
+  .plan-title {
+    font-family: var(--display);
+    font-weight: 340;
+    font-size: clamp(28px, 4.6vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+    margin: 0 0 48px;
+    color: var(--ivory);
+    max-width: 22ch;
+    font-variation-settings: "opsz" 60;
+  }
+  .plan-title em {
+    font-style: italic;
+    font-weight: 340;
+    color: rgba(250,247,242,0.98);
+  }
+
+  .plan-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+  /* sage vertical accent through the list */
+  .plan-list::before {
+    content: "";
+    position: absolute;
+    left: 22px;
+    top: 22px;
+    bottom: 22px;
+    width: 1px;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(139,197,63,0.35) 12%,
+      rgba(139,197,63,0.35) 88%,
+      transparent 100%);
+  }
+  .plan-step {
+    position: relative;
+    padding: 30px 0 30px 84px;
+    border-top: 1px solid var(--hairline);
+  }
+  .plan-step:first-child { border-top: 1px solid var(--hairline); }
+  .plan-step .num {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    width: 52px;
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: 34px;
+    line-height: 1;
+    color: var(--ivory);
+    letter-spacing: -0.02em;
+    text-align: right;
+    padding-right: 14px;
+    font-variation-settings: "opsz" 60;
+  }
+  .plan-step h3 {
+    font-family: var(--display);
+    font-weight: 460;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: -0.012em;
+    margin: 0 0 10px;
+    color: var(--ivory);
+  }
+  .plan-step p {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(250,247,242,0.72);
+    margin: 0;
+  }
+
+  /* Final step — sage-tinted card */
+  .plan-morning {
+    margin-top: 36px;
+    padding: 30px 32px 32px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(139,197,63,0.09), rgba(139,197,63,0.03));
+    border: 1px solid rgba(139,197,63,0.3);
+    position: relative;
+  }
+  .plan-morning .num {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: 34px;
+    line-height: 1;
+    color: var(--lime);
+    letter-spacing: -0.02em;
+    display: block;
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 60;
+  }
+  .plan-morning h3 {
+    font-family: var(--display);
+    font-weight: 460;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+    margin: 0 0 12px;
+    color: var(--ivory);
+  }
+  .plan-morning p {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(250,247,242,0.78);
+    margin: 0 0 22px;
+    max-width: 46ch;
+  }
+  .plan-morning-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--lime);
+    color: var(--navy);
+    padding: 13px 22px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .plan-morning-cta:hover, .plan-morning-cta:focus-visible {
+    background: #a4dc4e;
+    transform: translateY(-1px);
+    outline: none;
+  }
+  .plan-morning-cta svg { width: 14px; height: 14px; stroke-width: 2; }
+
+  /* Right-side scroll progress dots */
+  .plan-progress {
+    position: fixed;
+    right: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    z-index: 305;
+    padding: 14px 10px;
+    pointer-events: none;
+  }
+  .plan-progress .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(250,247,242,0.2);
+    transition: background 0.35s ease, transform 0.35s ease, width 0.35s ease, height 0.35s ease;
+  }
+  .plan-progress .dot.active {
+    background: var(--lime);
+    width: 8px;
+    height: 8px;
+  }
+  .plan-progress .label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.4);
+    writing-mode: vertical-rl;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 720px) {
+    .plan-progress { display: none; }
+    .plan-step { padding: 24px 0 24px 68px; }
+    .plan-step .num { font-size: 28px; width: 44px; padding-right: 10px; top: 24px; }
+    .plan-list::before { left: 18px; }
+    .plan-morning { padding: 26px 22px 26px; }
   }
 </style>
 
+<!-- Breathing overlay (opens on Option 03 click) -->
+<div id="breatheOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="breathePhase">
+  <button class="overlay-close" type="button" data-close="breatheOverlay" aria-label="Close breathing exercise">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+
+  <p class="breathe-eyebrow">
+    Breathe with me<span class="sep">·</span><span class="round">Round <span id="breatheRound">1</span> of 3</span>
+  </p>
+
+  <div class="breathe-rings" aria-hidden="true">
+    <svg viewBox="-60 -60 120 120" xmlns="http://www.w3.org/2000/svg">
+      <circle class="core" cx="0" cy="0" r="10"/>
+      <circle class="r1" cx="0" cy="0" r="22"/>
+      <circle class="r2" cx="0" cy="0" r="34"/>
+      <circle class="r3" cx="0" cy="0" r="46"/>
+      <circle class="r4" cx="0" cy="0" r="58"/>
+    </svg>
+  </div>
+
+  <p id="breathePhase" class="breathe-phase">Breathe in&hellip;</p>
+
+  <p class="breathe-rhythm">In 4 <span style="opacity:.5;margin:0 8px;">·</span> Hold 4 <span style="opacity:.5;margin:0 8px;">·</span> Out 6</p>
+</div>
+
 <!-- Tonight plan overlay (opens on Option 04 click) -->
-<div id="planOverlay" style="display:none; position:fixed; inset:0; background:var(--navy); z-index:300; padding:40px 24px; overflow-y:auto;">
-  <div style="max-width:560px; margin: 24px auto;">
-    <p style="font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,247,242,0.55); margin-bottom: 20px;">Tonight · 6 small steps</p>
-    <h2 style="font-family:var(--display); font-size:clamp(26px, 4vw, 38px); font-weight:380; letter-spacing:-0.02em; line-height:1.1; margin-bottom: 28px;">You don't have to fix anything. You just have to <em style="font-style:italic;">make it to morning</em>.</h2>
-    <ol style="list-style:none; padding:0; counter-reset: step;">
-      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
-        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:rgba(250,247,242,0.55);">01</span>
-        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Tell one person.</strong>
-        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">Anyone. A friend. A sibling. ListenUp on WhatsApp. The line above. You don't have to explain — just "I'm not okay tonight."</span>
+<div id="planOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="planTitle">
+  <button class="overlay-close" type="button" data-close="planOverlay" aria-label="Close tonight plan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+
+  <nav class="plan-progress" aria-hidden="true">
+    <span class="dot" data-dot="1"></span>
+    <span class="dot" data-dot="2"></span>
+    <span class="dot" data-dot="3"></span>
+    <span class="dot" data-dot="4"></span>
+    <span class="dot" data-dot="5"></span>
+    <span class="dot" data-dot="6"></span>
+  </nav>
+
+  <div class="plan-container">
+    <p class="plan-eyebrow">Tonight<span class="sep">·</span>Six small steps<span class="sep">·</span>Make it to morning</p>
+    <h2 id="planTitle" class="plan-title">You don't have to fix anything. You just have to <em>make it to morning</em>.</h2>
+
+    <ol class="plan-list">
+      <li class="plan-step" data-step="1">
+        <span class="num">01</span>
+        <h3>Tell one person.</h3>
+        <p>Anyone. A friend. A sibling. ListenUp on WhatsApp. The line above. You don't have to explain &mdash; just &ldquo;I'm not okay tonight.&rdquo;</p>
       </li>
-      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
-        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:rgba(250,247,242,0.55);">02</span>
-        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Put space between you and means of harm.</strong>
-        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">Give pills, ropes, knives, firearms to someone else for tonight. Lock them in the car. Hand them to a neighbour. Just for tonight.</span>
+      <li class="plan-step" data-step="2">
+        <span class="num">02</span>
+        <h3>Put space between you and means of harm.</h3>
+        <p>Give pills, ropes, knives, firearms to someone else for tonight. Lock them in the car. Hand them to a neighbour. Just for tonight.</p>
       </li>
-      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
-        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:rgba(250,247,242,0.55);">03</span>
-        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Eat something small.</strong>
-        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">Toast. A banana. Yoghurt. Blood sugar matters more than you think when everything feels final.</span>
+      <li class="plan-step" data-step="3">
+        <span class="num">03</span>
+        <h3>Eat something small.</h3>
+        <p>Toast. A banana. Yoghurt. Blood sugar matters more than you think when everything feels final.</p>
       </li>
-      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
-        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:rgba(250,247,242,0.55);">04</span>
-        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Sit somewhere safe.</strong>
-        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">A friend's couch. The lounge with the TV on. A 24/7 garage forecourt. Not alone in the dark if you don't have to be.</span>
+      <li class="plan-step" data-step="4">
+        <span class="num">04</span>
+        <h3>Sit somewhere safe.</h3>
+        <p>A friend's couch. The lounge with the TV on. A 24/7 garage forecourt. Not alone in the dark if you don't have to be.</p>
       </li>
-      <li style="counter-increment: step; padding: 18px 0 18px 48px; border-bottom: 1px solid var(--hairline); position:relative;">
-        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:rgba(250,247,242,0.55);">05</span>
-        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">Don't decide anything tonight.</strong>
-        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">Big decisions — leaving, ending, signing, sending — none of them have to happen tonight. They can wait. You can wait.</span>
-      </li>
-      <li style="counter-increment: step; padding: 18px 0 18px 48px; position:relative;">
-        <span style="position:absolute; left:0; top:18px; font-family:var(--mono); font-size:11px; letter-spacing:0.14em; color:rgba(250,247,242,0.55);">06</span>
-        <strong style="font-family:var(--display); font-size:19px; font-weight:500; display:block; margin-bottom:6px;">When morning comes, message us.</strong>
-        <span style="color: rgba(250,247,242,0.7); font-size:14.5px;">You don't have to be okay. You just have to be reachable. <a href="https://wa.me/27720740289?text=I%20made%20it%20to%20morning.%20I%27m%20ready%20to%20talk." style="color:var(--lime); border-bottom: 1px dotted rgba(139,197,63,0.5);">WhatsApp ListenUp</a> — we'll take it from there.</span>
+      <li class="plan-step" data-step="5">
+        <span class="num">05</span>
+        <h3>Don't decide anything tonight.</h3>
+        <p>Big decisions &mdash; leaving, ending, signing, sending &mdash; none of them have to happen tonight. They can wait. You can wait.</p>
       </li>
     </ol>
-    <button onclick="document.getElementById('planOverlay').style.display='none'" style="margin-top:32px; background:transparent; color:var(--ivory); border:1px solid var(--hairline); padding:10px 24px; border-radius:999px; font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer;">Close</button>
+
+    <div class="plan-morning" data-step="6">
+      <span class="num">06</span>
+      <h3>When morning comes, message us.</h3>
+      <p>You don't have to be okay. You just have to be reachable. We'll take it from there.</p>
+      <a class="plan-morning-cta" href="https://wa.me/27720740289?text=I%20made%20it%20to%20morning.%20I%27m%20ready%20to%20talk.">
+        Message ListenUp when morning comes
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -356,29 +711,78 @@
   document.getElementById('quickexit').addEventListener('click', quickExit);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') quickExit(); });
 
+  // Overlay close (top-right X buttons)
+  document.querySelectorAll('.overlay-close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-close');
+      document.getElementById(id).classList.remove('is-open');
+    });
+  });
+
   // Breathing overlay
+  const breatheOverlay = document.getElementById('breatheOverlay');
+  const phaseEl = document.getElementById('breathePhase');
+  const roundEl = document.getElementById('breatheRound');
+  const phases = ['Breathe in…', 'Hold…', 'Breathe out…'];
+  const durations = [4000, 4000, 6000];
+  let breatheTimer = null;
+
   document.getElementById('breatheTile').addEventListener('click', (e) => {
     e.preventDefault();
-    document.getElementById('breatheOverlay').style.display = 'flex';
-    let phases = ['Breathe in…', 'Hold…', 'Breathe out…'];
-    let durations = [4000, 4000, 6000];
     let i = 0;
-    const phaseEl = document.getElementById('breathePhase');
+    let round = 1;
+    breatheOverlay.classList.add('is-open');
     phaseEl.textContent = phases[0];
+    roundEl.textContent = String(round);
+
+    if (breatheTimer) clearTimeout(breatheTimer);
+
     const tick = () => {
-      if (document.getElementById('breatheOverlay').style.display === 'none') return;
+      if (!breatheOverlay.classList.contains('is-open')) return;
       i = (i + 1) % 3;
+      // Completing a full cycle when we return to "Breathe in…"
+      if (i === 0) {
+        round += 1;
+        if (round > 3) {
+          breatheOverlay.classList.remove('is-open');
+          return;
+        }
+        roundEl.textContent = String(round);
+      }
       phaseEl.textContent = phases[i];
-      setTimeout(tick, durations[i]);
+      breatheTimer = setTimeout(tick, durations[i]);
     };
-    setTimeout(tick, durations[0]);
+    breatheTimer = setTimeout(tick, durations[0]);
   });
 
   // Plan overlay
+  const planOverlay = document.getElementById('planOverlay');
+  const planTargets = planOverlay.querySelectorAll('[data-step]');
+  const planDots = planOverlay.querySelectorAll('.plan-progress .dot');
+
+  const updatePlanProgress = () => {
+    const anchor = window.innerHeight * 0.42;
+    let activeIdx = 0;
+    planTargets.forEach((el, idx) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= anchor) activeIdx = idx + 1;
+    });
+    planDots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx < activeIdx);
+    });
+  };
+
   document.getElementById('planTile').addEventListener('click', (e) => {
     e.preventDefault();
-    document.getElementById('planOverlay').style.display = 'block';
+    planOverlay.classList.add('is-open');
+    planOverlay.scrollTop = 0;
+    // Prime the first dot as active
+    planDots.forEach((d, i) => d.classList.toggle('active', i < 1));
+    requestAnimationFrame(updatePlanProgress);
   });
+
+  planOverlay.addEventListener('scroll', updatePlanProgress, { passive: true });
+  window.addEventListener('resize', updatePlanProgress);
 </script>
 
 </body>
