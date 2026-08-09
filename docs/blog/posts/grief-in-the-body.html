@@ -33,6 +33,60 @@
   /* On pages that already sit on navy, drop the plate chrome */
   .head .brand .logo-plate, body.on-navy .logo-plate { background: transparent; box-shadow: none; padding: 0; }
 </style>
+<style>
+  /* Persistent WhatsApp bubble — always visible while scrolling */
+  .wa-floater {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 900;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px 14px 16px;
+    background: #25D366;
+    color: #FFFFFF;
+    border-radius: 999px;
+    font-family: "Outfit", -apple-system, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.55), 0 4px 14px rgba(0,0,0,0.18);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .wa-floater:hover, .wa-floater:focus-visible {
+    background: #1EBE5D;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -10px rgba(37, 211, 102, 0.68), 0 6px 18px rgba(0,0,0,0.22);
+    outline: none;
+  }
+  .wa-floater svg { width: 22px; height: 22px; display: block; }
+  .wa-floater .wa-floater-label { line-height: 1; white-space: nowrap; }
+  .wa-floater::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    border: 2px solid rgba(37, 211, 102, 0.45);
+    pointer-events: none;
+    animation: wa-pulse 2.6s ease-out infinite;
+  }
+  @keyframes wa-pulse {
+    0%   { opacity: 0.9; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.35); }
+  }
+  @media (max-width: 560px) {
+    .wa-floater { padding: 12px 16px 12px 14px; font-size: 13px; }
+    .wa-floater .wa-floater-label { display: none; }
+    .wa-floater { padding: 14px; border-radius: 50%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wa-floater::after { animation: none; }
+  }
+  /* Stack above the crisis-page Quick exit which also sits at bottom-right */
+  .wa-floater.wa-floater--stack { bottom: 76px; }
+</style>
 </head>
 <body>
 
@@ -150,6 +204,13 @@
 </script>
 
 <script defer src="../../assets/breathe.js"></script>
+
+
+<!-- Persistent WhatsApp bubble -->
+<a class="wa-floater" href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20to%20someone%20at%20The%20Talking%20Point." target="_blank" rel="noopener" aria-label="Chat to us on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M27.3 4.63A15.86 15.86 0 0 0 16 0C7.16 0 0 7.16 0 16c0 2.82.74 5.56 2.14 7.98L0 32l8.24-2.15A15.9 15.9 0 0 0 16 32c8.84 0 16-7.16 16-16 0-4.27-1.66-8.28-4.7-11.37zM16 29.34a13.34 13.34 0 0 1-6.8-1.86l-.49-.29-4.88 1.27 1.3-4.75-.32-.5A13.36 13.36 0 1 1 29.36 16c0 7.35-5.99 13.34-13.36 13.34zm7.32-9.98c-.4-.2-2.37-1.17-2.74-1.3-.37-.14-.63-.2-.9.2-.27.4-1.03 1.3-1.26 1.56-.23.27-.46.3-.86.1-.4-.2-1.7-.63-3.23-2-1.2-1.07-2-2.39-2.24-2.79-.23-.4-.02-.62.17-.82.18-.18.4-.47.6-.7.2-.23.27-.4.4-.66.14-.27.07-.5-.03-.7-.1-.2-.9-2.17-1.24-2.97-.32-.78-.65-.67-.9-.68-.23-.01-.5-.02-.77-.02-.27 0-.7.1-1.07.5-.37.4-1.4 1.37-1.4 3.34 0 1.97 1.43 3.87 1.63 4.14.2.27 2.82 4.3 6.83 6.03 2.55 1.1 3.55 1.19 4.83 1 .78-.12 2.37-.97 2.7-1.9.34-.94.34-1.74.24-1.9-.1-.17-.37-.27-.77-.47z"/></svg>
+  <span class="wa-floater-label">Chat to us</span>
+</a>
 
 </body>
 </html>
