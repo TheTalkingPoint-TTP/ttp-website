@@ -49,8 +49,8 @@
 
   /* ═════════════ CRISIS STRIP ═════════════ */
   .crisis {
-    background: var(--paper-2);
-    border-bottom: 1px solid var(--hairline);
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
     padding: 12px 32px;
     display: flex;
     align-items: center;
@@ -58,7 +58,7 @@
     gap: 18px;
     font-family: var(--body);
     font-size: 13.5px;
-    color: var(--ink-soft);
+    color: rgba(255, 255, 255, 0.82);
     flex-wrap: wrap;
   }
   .crisis .icon {
@@ -72,9 +72,11 @@
     font-size: 14px;
     font-weight: 700;
   }
-  .crisis strong { color: var(--ink); font-weight: 600; }
-  .crisis a { color: var(--coral); font-weight: 600; }
-  .crisis .sep { color: var(--ink-mute); }
+  .crisis strong { color: #FFFFFF; font-weight: 600; }
+  .crisis > span > strong > a { color: #FFFFFF; }
+  .crisis a { color: var(--sage-bright); font-weight: 600; }
+  .crisis a:hover { color: #FFFFFF; }
+  .crisis .sep { color: rgba(255, 255, 255, 0.35); }
 
   /* ═════════════ NAV ═════════════ */
   .nav {
@@ -87,21 +89,12 @@
     margin: 0 auto;
   }
   .logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 12px;
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--ink);
   }
-  .logo::before {
-    content: "";
-    width: 30px; height: 30px;
-    background: var(--sage-bright);
-    border-radius: 50%;
-    box-shadow: inset -2px -2px 0 rgba(0,0,0,0.05);
-  }
+  .logo img { height: 56px; width: auto; display: block; }
+  .footer-brand .logo img { height: 72px; }
   .nav-links {
     display: flex;
     gap: 30px;
@@ -240,6 +233,74 @@
     max-width: 42ch;
   }
 
+  /* Breathing heart — the signature TTP micro-moment. Sits under the hero-fine
+     line in the left column. Click opens breathe.js overlay (assets/breathe.js). */
+  .hero-breathe {
+    margin-top: 40px;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    border: 1px solid rgba(107, 169, 48, 0.5);
+    background: transparent;
+    color: var(--sage);
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .hero-breathe:hover, .hero-breathe:focus-visible {
+    border-color: var(--sage);
+    transform: scale(1.03);
+    outline: none;
+  }
+  .hero-breathe::before,
+  .hero-breathe::after {
+    content: "";
+    position: absolute; inset: -1px;
+    border-radius: 50%;
+    border: 1px solid rgba(107, 169, 48, 0.35);
+    animation: breathe-pulse 6.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .hero-breathe::after { animation-delay: 3.25s; }
+  @keyframes breathe-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50%      { transform: scale(1.18); opacity: 0; }
+  }
+  .hero-breathe .heart-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--sage-bright);
+    position: relative;
+    z-index: 2;
+    transition: transform 3s ease-in-out;
+  }
+  .hero-breathe:hover .heart-icon { transform: scale(1.08); }
+  .hero-breathe .ring-text {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--sage);
+    fill: currentColor;
+    animation: ring-rotate 30s linear infinite;
+    font-family: var(--body);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  @keyframes ring-rotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-breathe::before, .hero-breathe::after, .hero-breathe .ring-text { animation: none; }
+  }
+
   /* Portrait — rotating stack of team members */
   .portrait {
     position: relative;
@@ -254,6 +315,7 @@
     inset: 0;
     width: 100%; height: 100%;
     object-fit: cover;
+    object-position: 50% 22%;
     opacity: 0;
     transition: opacity 1200ms ease-in-out;
     filter: contrast(1.03) saturate(1.05);
@@ -896,7 +958,7 @@
 
 <!-- Nav -->
 <nav class="nav">
-  <a href="index.html" class="logo">The Talking Point</a>
+  <a href="index.html" class="logo" aria-label="The Talking Point — home"><img src="assets/img/ttp-logo-new.png" alt="The Talking Point" /></a>
   <div class="nav-links">
     <a href="#paths">Where to start</a>
     <a href="someone-you-love.html">Someone I love</a>
@@ -926,6 +988,13 @@
       <a href="#paths" class="btn-outline">Find your door</a>
     </div>
     <p class="hero-fine">24/7 · All 11 official languages · POPIA · HPCSA governed</p>
+    <button type="button" class="hero-breathe" data-breathe-trigger aria-label="Take 90 seconds to breathe with us" title="Take 90 seconds to breathe with us">
+      <svg class="ring-text" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><path id="heroBreatheRing" d="M 50,50 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" fill="none"/></defs>
+        <text><textPath href="#heroBreatheRing" startOffset="0">click and breathe · click and breathe · </textPath></text>
+      </svg>
+      <svg class="heart-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </button>
   </div>
   <!-- Rotating portrait: all 8 team members. Cross-fade every 5s. -->
   <div class="portrait" aria-label="Rotating photos of TTP team members">
@@ -1085,6 +1154,150 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ REAL STORIES — case studies grid -->
+<section class="stories" id="stories">
+  <div class="stories-inner">
+    <span class="stories-eyebrow">Real work · real people</span>
+    <h2 class="stories-title">Real stories. <em>Real lives that turned.</em></h2>
+    <p class="stories-sub">Case files from the work TTP has done. Anonymised, permission-given — nothing changed except what could identify them.</p>
+    <div class="stories-grid">
+      <a href="blog/posts/high-school-tragedy.html" class="story-tile">
+        <div class="story-tile-photo">
+          <img src="assets/img/stories/high-school-tragedy.png" alt="High school students walking together" loading="lazy" />
+          <span class="story-tile-tag">For schools &amp; educators</span>
+        </div>
+        <div class="story-tile-body">
+          <h3 class="story-tile-title">High School Tragedy.</h3>
+          <p class="story-tile-deck">Two students. Twenty-four hours apart. We moved our practice on-site for three months.</p>
+          <span class="story-tile-cta">Read the story →</span>
+        </div>
+      </a>
+      <a href="blog/posts/security-guard.html" class="story-tile">
+        <div class="story-tile-photo">
+          <img src="assets/img/stories/security-guard.png" alt="Security personnel in uniform" loading="lazy" />
+          <span class="story-tile-tag">For workplaces &amp; HR</span>
+        </div>
+        <div class="story-tile-body">
+          <h3 class="story-tile-title">The Security Guard.</h3>
+          <p class="story-tile-deck">A workplace incident triggering long-buried trauma. Treating the symptom wasn't enough.</p>
+          <span class="story-tile-cta">Read the story →</span>
+        </div>
+      </a>
+      <a href="blog/posts/forgotten-boy.html" class="story-tile">
+        <div class="story-tile-photo">
+          <img src="https://images.unsplash.com/photo-1541327050432-73a9b9812047?w=900&q=80&auto=format&fit=crop" alt="A young boy in a quiet contemplative moment" loading="lazy" />
+          <span class="story-tile-tag">For families &amp; disputes</span>
+        </div>
+        <div class="story-tile-body">
+          <h3 class="story-tile-title">The Forgotten Boy.</h3>
+          <p class="story-tile-deck">A divorce that had stalled for years. The dispute, it turned out, was never about the house.</p>
+          <span class="story-tile-cta">Read the story →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+  .stories {
+    padding: 80px 40px;
+    background: var(--paper);
+  }
+  .stories-inner { max-width: 1200px; margin: 0 auto; }
+  .stories-eyebrow {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .stories-title {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 400;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+    max-width: 20ch;
+  }
+  .stories-title em { font-style: italic; color: var(--sage); font-weight: 400; }
+  .stories-sub {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    max-width: 52ch;
+    margin-bottom: 48px;
+  }
+  .stories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 900px) { .stories-grid { grid-template-columns: 1fr; } }
+  .story-tile {
+    background: var(--paper);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .story-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(14, 30, 58, 0.12);
+  }
+  .story-tile-photo {
+    aspect-ratio: 16 / 11;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-tile-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.94);
+  }
+  .story-tile-tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    color: var(--ink);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .story-tile-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+  .story-tile-title {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 36;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .story-tile-deck {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+  .story-tile-cta {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sage);
+  }
+</style>
+
 <!-- ═══════════════════════════════════════════════ TRUST — 4 governance cards -->
 <section class="trust" id="services">
   <div class="trust-inner">
@@ -1197,7 +1410,7 @@
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-col footer-brand">
-      <div class="logo">The Talking Point</div>
+      <div class="logo"><img src="assets/img/ttp-logo-new.png" alt="The Talking Point" /></div>
       <p>Real humans. No bots. No scripts. Holding space across South Africa since 2017.</p>
     </div>
     <div class="footer-col">
@@ -1259,7 +1472,7 @@
       imgs[i].classList.remove('is-active');
       nextImg.classList.add('is-active');
       i = next;
-    }, 5000);
+    }, 4000);
   })();
 
   /* Quick exit — ESC key */
@@ -1267,6 +1480,7 @@
     if (e.key === 'Escape') window.location.replace('https://www.weathersa.co.za/');
   });
 </script>
+<script defer src="assets/breathe.js"></script>
 
 </body>
 </html>
