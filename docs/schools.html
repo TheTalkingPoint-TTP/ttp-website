@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <!--
 ═══════════════════════════════════════════════════════════════════
-  SCHOOLS LANDING PAGE — v2
-  Rewritten 2026-07-19 to merge the best of the ChatGPT prototype
-  (storybook aesthetic for kids, phone mockup for teens, feature
-  list for teachers, "door that fits them" hero framing) with TTP's
-  actual voice (Newsreader typography, SVG icons instead of emoji,
-  no promised products that don't exist yet).
+  SCHOOLS LANDING PAGE — v3
+  Restyled 2026-08-09 to match the new TTP homepage design system:
+  white paper background, sage-on-navy accent language, homepage nav
+  + crisis strip + 4-column footer.
 
-  Three doors stacked vertically. Each routes to a pre-filled
-  WhatsApp intake — no dead links, no toolkit download promise, no
-  fake story-buddy characters until Ella has real content.
+  Page-specific content preserved verbatim from the v2 rewrite:
+  · Hero eyebrow "For schools"
+  · Hero headline "Three doors, built for the age on the other side
+    of them."
+  · Kids storybook panel (sun + cloud SVGs, safeguarding language,
+    "grown-up you trust" line, trained-companion footnote)
+  · Teens door with phone mockup and "a dad who left, pressure you
+    can't say out loud, nights that feel too long"
+  · Teachers door with three feature cards (Spot it early / Know what
+    to say / Hand over safely)
+  · Life-anchor: "Every student matters. Every teacher too."
 
-  Ella to clinically sign off on kids-panel and teens-door copy
-  before this ships. The kids-panel copy is DELIBERATELY marked in
-  the file — do not push to production without her name on it.
-
-  Last touched: 2026-07-19
+  Last touched: 2026-08-09
 ═══════════════════════════════════════════════════════════════════
 -->
 <html lang="en">
@@ -34,136 +36,157 @@
 <style>
   :root {
     --navy: #0E1E3A;
-    --navy-90: #14254a;
-    --navy-70: #1c2f5a;
-    --navy-soft: #16294a;
-    --lime: #8BC53F;
-    --lime-soft: #a4dc4e;
+    --navy-2: #14254a;
+    --paper: #FFFFFF;
+    --paper-2: #FAFAFA;
+    --paper-3: #F2F2F2;
+    --sage: #6BA930;
+    --sage-bright: #8BC53F;
+    --sage-tint: rgba(139, 197, 63, 0.12);
+    --coral: #D93F1A;
+    --coral-tint: rgba(217, 63, 26, 0.08);
+    --ink: #0E1E3A;
+    --ink-soft: rgba(14, 30, 58, 0.72);
+    --ink-mute: rgba(14, 30, 58, 0.50);
+    --hairline: rgba(14, 30, 58, 0.10);
     --ivory: #FAF7F2;
-    --ivory-70: rgba(250, 247, 242, 0.72);
-    --ivory-45: rgba(250, 247, 242, 0.45);
-    --coral: #FF5C39;
-    --mint: #B8E0A6;
     --sun: #FFC93C;
-    --hairline: rgba(250, 247, 242, 0.14);
-    --display: "Newsreader", "Source Serif Pro", serif;
-    --body: "Outfit", system-ui, sans-serif;
+    --display: "Newsreader", Georgia, serif;
+    --body: "Outfit", -apple-system, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, monospace;
   }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; height: auto; display: block; }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { min-height: 100%; }
-  body {
-    background: var(--navy);
-    color: var(--ivory);
-    font-family: var(--body);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    padding-bottom: 80px;
-  }
-  a { color: inherit; text-decoration: none; }
-
-  /* Crisis strip */
+  /* ═════════════ CRISIS STRIP ═════════════ */
   .crisis {
-    background: var(--navy-90);
-    border-bottom: 1px solid var(--hairline);
-    padding: 10px clamp(20px, 4vw, 48px);
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    padding: 12px 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 18px;
+    font-family: var(--body);
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.82);
     flex-wrap: wrap;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(250, 247, 242, 0.75);
   }
-  .crisis a {
-    color: var(--ivory);
-    border-bottom: 1px dotted rgba(250, 247, 242, 0.4);
-    padding-bottom: 1px;
-    margin-left: 8px;
+  .crisis .icon {
+    width: 22px; height: 22px;
+    background: var(--coral);
+    color: var(--paper);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
   }
-  .crisis strong { color: rgba(250, 247, 242, 0.65); font-weight: 500; margin-right: 6px; }
-  .crisis .help-tonight {
-    background: var(--lime);
-    color: var(--navy);
-    border: none;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-weight: 600;
-  }
-  .crisis .help-tonight:hover { background: var(--lime-soft); }
+  .crisis strong { color: #FFFFFF; font-weight: 600; }
+  .crisis > span > strong > a { color: #FFFFFF; }
+  .crisis a { color: var(--sage-bright); font-weight: 600; }
+  .crisis a:hover { color: #FFFFFF; }
+  .crisis .sep { color: rgba(255, 255, 255, 0.35); }
 
-  /* Top nav */
-  .top-nav {
-    padding: 24px clamp(20px, 4vw, 48px);
+  /* ═════════════ NAV ═════════════ */
+  .nav {
+    padding: 22px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    max-width: 1200px;
+    gap: 20px;
+    max-width: 1440px;
     margin: 0 auto;
   }
-  .top-nav .back {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(250, 247, 242, 0.7);
-    border-bottom: 1px dotted rgba(250, 247, 242, 0.3);
-    padding-bottom: 1px;
-  }
-  .top-nav .back:hover { color: var(--lime); border-color: var(--lime); }
-  .top-nav .meta {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(250, 247, 242, 0.5);
-  }
-
-  /* Hero */
-  .hero {
-    padding: clamp(48px, 8vw, 100px) clamp(20px, 4vw, 48px) clamp(56px, 6vw, 88px);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--lime);
+  .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 22px;
+    gap: 12px;
+  }
+  .logo img { height: 56px; width: auto; display: block; }
+  .footer-brand .logo img { height: 72px; }
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .nav-links a.active { color: var(--coral); font-weight: 600; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-right {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    align-items: center;
+  }
+  .nav-right .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .burger { display: none; cursor: pointer; padding: 8px; }
+  .burger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 4px 0; }
+  @media (max-width: 1080px) {
+    .nav-links, .nav-right { display: none; }
+    .burger { display: block; }
+  }
+
+  /* ═════════════ HERO ═════════════ */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(48px, 8vw, 96px) 40px clamp(40px, 5vw, 64px);
+  }
+  @media (max-width: 900px) { .hero { padding: 48px 24px 32px; } }
+
+  .hero-eyebrow {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
   }
   .hero-eyebrow::before {
     content: "";
-    width: 32px; height: 1px;
-    background: var(--lime);
+    width: 28px; height: 1px;
+    background: var(--sage);
   }
   .hero h1 {
     font-family: var(--display);
     font-variation-settings: "opsz" 72;
-    font-weight: 380;
-    font-size: clamp(36px, 5.6vw, 76px);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 76px);
     line-height: 1.02;
-    letter-spacing: -0.028em;
+    letter-spacing: -0.03em;
+    color: var(--ink);
     max-width: 20ch;
-    color: var(--ivory);
   }
   .hero h1 em {
     font-style: italic;
-    font-weight: 380;
-    color: var(--lime);
+    font-weight: 400;
+    color: var(--sage);
   }
   .hero p.sub {
     margin-top: 28px;
@@ -172,33 +195,28 @@
     font-weight: 380;
     font-size: clamp(18px, 2vw, 24px);
     line-height: 1.45;
-    color: rgba(250, 247, 242, 0.78);
-    max-width: 56ch;
+    color: var(--ink-soft);
+    max-width: 58ch;
   }
-  .hero p.sub strong { color: var(--ivory); font-weight: 500; }
+  .hero p.sub strong { color: var(--ink); font-weight: 500; }
 
-  /* ══════════════════════════════ DOORS (stacked) ══════════════════════════════ */
+  /* ═════════════ DOORS (stacked) ═════════════ */
   .doors {
-    padding: 0 clamp(20px, 4vw, 48px);
+    padding: 0 40px 24px;
     max-width: 1200px;
     margin: 0 auto;
   }
+  @media (max-width: 900px) { .doors { padding: 0 24px 16px; } }
 
-  /* Base door — horizontal split, hairline top border */
   .door {
-    border-top: 1px solid var(--hairline);
     padding: clamp(42px, 6vw, 68px) 0;
     display: grid;
     gap: clamp(28px, 4vw, 48px);
     align-items: center;
+    border-top: 1px solid var(--hairline);
   }
-  .door.two-col {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  }
-  @media (max-width: 800px) {
-    .door.two-col { grid-template-columns: 1fr; }
-  }
-  .door:last-of-type { border-bottom: 1px solid var(--hairline); }
+  .door.two-col { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
+  @media (max-width: 800px) { .door.two-col { grid-template-columns: 1fr; } }
 
   .door-head {
     display: flex;
@@ -212,50 +230,50 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 6px 12px;
     border-radius: 999px;
-    background: rgba(139, 197, 63, 0.14);
-    color: var(--lime);
+    background: var(--sage-tint);
+    color: var(--sage);
   }
-  .door-chip.coral { background: rgba(255, 92, 57, 0.16); color: var(--coral); }
+  .door-chip.coral { background: var(--coral-tint); color: var(--coral); }
   .door-chip svg { width: 12px; height: 12px; }
-
   .door-num {
     font-family: var(--mono);
     font-size: 10.5px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--ivory-45);
+    color: var(--ink-mute);
   }
 
   .door-title {
     font-family: var(--display);
     font-variation-settings: "opsz" 60;
     font-weight: 400;
-    font-size: clamp(26px, 3.2vw, 40px);
+    font-size: clamp(28px, 3.4vw, 42px);
     line-height: 1.08;
     letter-spacing: -0.02em;
-    color: var(--ivory);
+    color: var(--ink);
     margin-bottom: 18px;
     max-width: 22ch;
   }
-  .door-title em { font-style: italic; font-weight: 400; color: var(--lime); }
+  .door-title em { font-style: italic; font-weight: 400; color: var(--sage); }
   .door-title em.coral { color: var(--coral); }
 
   .door-body {
     font-family: var(--body);
     font-size: clamp(15px, 1.4vw, 17px);
     line-height: 1.6;
-    color: var(--ivory-70);
+    color: var(--ink-soft);
     margin-bottom: 22px;
-    max-width: 46ch;
+    max-width: 48ch;
   }
-  .door-body strong { color: var(--ivory); font-weight: 500; }
-  .door-body em { font-style: italic; color: rgba(250, 247, 242, 0.9); }
+  .door-body strong { color: var(--ink); font-weight: 500; }
+  .door-body em { font-style: italic; color: var(--ink); }
 
   .door-badges {
     display: flex;
@@ -267,10 +285,10 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--ivory-70);
+    color: var(--ink-soft);
     font-size: 13.5px;
   }
-  .door-badge svg { width: 15px; height: 15px; color: var(--lime); flex-shrink: 0; }
+  .door-badge svg { width: 15px; height: 15px; color: var(--sage); flex-shrink: 0; }
 
   .door-cta-row {
     display: flex;
@@ -282,38 +300,38 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--lime);
+    background: var(--sage-bright);
     color: var(--navy);
-    padding: 13px 22px;
+    padding: 14px 24px;
     border-radius: 999px;
     font-family: var(--body);
     font-weight: 600;
-    font-size: 14.5px;
+    font-size: 15px;
     text-decoration: none;
     transition: background 0.2s, transform 0.15s;
   }
-  .door-cta:hover { background: var(--lime-soft); transform: translateY(-1px); }
-  .door-cta.coral { background: var(--coral); }
-  .door-cta.coral:hover { background: #ff7a54; }
+  .door-cta:hover { background: #a4dc4e; transform: translateY(-1px); }
+  .door-cta.coral { background: var(--coral); color: var(--paper); }
+  .door-cta.coral:hover { background: #e75534; }
   .door-cta svg { width: 15px; height: 15px; }
   .door-cta-secondary {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--ivory);
+    color: var(--ink);
     background: transparent;
-    border: 1px solid rgba(250, 247, 242, 0.3);
-    padding: 12px 20px;
+    border: 1.5px solid var(--hairline);
+    padding: 13px 22px;
     border-radius: 999px;
     font-family: var(--body);
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 14.5px;
+    font-weight: 500;
     text-decoration: none;
-    transition: background 0.2s, border-color 0.2s;
+    transition: border-color 0.2s;
   }
-  .door-cta-secondary:hover { background: rgba(250, 247, 242, 0.06); border-color: rgba(250, 247, 242, 0.5); }
+  .door-cta-secondary:hover { border-color: var(--ink); }
 
-  /* ══════════════════════════════ DOOR 1 — KIDS storybook panel ══════════════════════════════ */
+  /* ═════════════ DOOR 1 — KIDS storybook panel (ivory on white) ═════════════ */
   .door.kids-door { padding-top: 24px; border-top: none; }
   .kids-panel {
     background: var(--ivory);
@@ -322,6 +340,7 @@
     padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 48px) clamp(24px, 3vw, 36px);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 20px 60px rgba(14, 30, 58, 0.10);
   }
   .kids-panel-sun {
     position: absolute;
@@ -337,15 +356,15 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--lime);
+    background: var(--sage-bright);
     color: var(--navy);
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
     padding: 7px 14px;
     border-radius: 999px;
-    font-weight: 600;
     margin-bottom: 18px;
   }
   .kids-panel-chip svg { width: 12px; height: 12px; }
@@ -360,7 +379,7 @@
     margin-bottom: 16px;
     max-width: 18ch;
   }
-  .kids-panel h3 .semi { color: var(--lime); font-weight: 500; }
+  .kids-panel h3 .semi { color: var(--sage); font-weight: 500; }
   .kids-panel-uline {
     position: relative;
     color: var(--coral);
@@ -407,9 +426,10 @@
   .kids-panel-footnote {
     margin-top: 18px;
     text-align: center;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #8a95a5;
     display: flex;
@@ -419,16 +439,24 @@
   }
   .kids-panel-footnote svg { width: 12px; height: 12px; }
 
-  /* ══════════════════════════════ DOOR 2 — PHONE MOCKUP ══════════════════════════════ */
+  /* ═════════════ DOOR 2 — Teens — navy card holds the phone mockup ═════════════ */
+  .phone-card {
+    background: var(--navy);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(14, 30, 58, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .phone-mockup {
-    background: var(--navy-soft);
-    border: 1px solid var(--hairline);
+    background: var(--navy-2);
+    border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 24px;
     padding: 18px 18px 14px;
     width: 100%;
     max-width: 300px;
-    margin: 0 auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   }
   .phone-head {
     display: flex;
@@ -436,11 +464,11 @@
     gap: 10px;
     margin-bottom: 16px;
     padding-bottom: 14px;
-    border-bottom: 1px solid var(--hairline);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
   }
   .phone-avatar {
     width: 34px; height: 34px;
-    background: var(--lime);
+    background: var(--sage-bright);
     color: var(--navy);
     border-radius: 50%;
     display: flex;
@@ -450,17 +478,18 @@
   }
   .phone-avatar svg { width: 18px; height: 18px; }
   .phone-name {
-    color: var(--ivory);
+    color: #FFFFFF;
     font-family: var(--body);
     font-size: 13px;
     font-weight: 600;
     line-height: 1.1;
   }
   .phone-status {
-    color: var(--lime);
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
+    color: var(--sage-bright);
+    font-family: var(--body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -470,7 +499,7 @@
     content: "";
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--lime);
+    background: var(--sage-bright);
     box-shadow: 0 0 0 3px rgba(139, 197, 63, 0.2);
   }
   .phone-bubble-in, .phone-bubble-out {
@@ -483,10 +512,10 @@
   .phone-bubble-in {
     background: var(--navy);
     border-radius: 14px 14px 14px 4px;
-    color: rgba(250, 247, 242, 0.88);
+    color: rgba(255, 255, 255, 0.88);
   }
   .phone-bubble-out {
-    background: var(--lime);
+    background: var(--sage-bright);
     color: var(--navy);
     border-radius: 14px 14px 4px 14px;
     margin-left: auto;
@@ -494,11 +523,12 @@
   }
   .phone-enc {
     text-align: center;
-    font-family: var(--mono);
-    font-size: 9.5px;
-    letter-spacing: 0.12em;
+    font-family: var(--body);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
-    color: rgba(250, 247, 242, 0.4);
+    color: rgba(255, 255, 255, 0.4);
     margin-top: 12px;
     display: flex;
     align-items: center;
@@ -507,7 +537,7 @@
   }
   .phone-enc svg { width: 10px; height: 10px; }
 
-  /* ══════════════════════════════ DOOR 3 — TEACHER FEATURES ══════════════════════════════ */
+  /* ═════════════ DOOR 3 — Teachers — white feature cards on white ═════════════ */
   .features {
     display: flex;
     flex-direction: column;
@@ -517,112 +547,117 @@
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    background: rgba(250, 247, 242, 0.04);
+    background: var(--paper);
     border: 1px solid var(--hairline);
-    border-radius: 14px;
-    padding: 16px 18px;
+    border-radius: 16px;
+    padding: 18px 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(14, 30, 58, 0.08);
   }
   .feature-ic {
-    width: 40px; height: 40px;
+    width: 42px; height: 42px;
     border-radius: 10px;
-    background: rgba(139, 197, 63, 0.16);
-    color: var(--lime);
+    background: var(--sage-tint);
+    color: var(--sage);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
-  .feature-ic svg { width: 18px; height: 18px; }
+  .feature-ic svg { width: 20px; height: 20px; }
   .feature-text b {
     display: block;
-    color: var(--ivory);
-    font-family: var(--body);
+    color: var(--ink);
+    font-family: var(--display);
+    font-variation-settings: "opsz" 24;
     font-weight: 500;
-    font-size: 15px;
-    margin-bottom: 3px;
+    font-size: 17px;
+    margin-bottom: 4px;
+    line-height: 1.2;
   }
   .feature-text span {
-    color: var(--ivory-70);
+    color: var(--ink-soft);
     font-family: var(--body);
-    font-size: 13.5px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
-  /* Life anchor */
+  /* ═════════════ LIFE ANCHOR ═════════════ */
   .life-anchor {
-    padding: clamp(80px, 12vw, 140px) clamp(20px, 5vw, 32px) clamp(64px, 10vw, 120px);
+    padding: clamp(80px, 12vw, 140px) 40px clamp(80px, 12vw, 140px);
     text-align: center;
-    max-width: 1200px;
-    margin: clamp(56px, 8vw, 100px) auto 0;
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
+    background: var(--paper-2);
+    margin-top: clamp(56px, 8vw, 100px);
   }
   .life-anchor p {
     font-family: var(--display);
     font-variation-settings: "opsz" 72;
-    font-weight: 320;
-    font-size: clamp(26px, 4.4vw, 52px);
-    line-height: 1.18;
+    font-weight: 400;
+    font-size: clamp(30px, 4.6vw, 56px);
+    line-height: 1.12;
     letter-spacing: -0.025em;
-    color: rgba(250, 247, 242, 0.95);
+    color: var(--ink);
     max-width: 22ch;
     margin: 0 auto;
   }
-  .life-anchor p em { font-style: italic; font-weight: 320; }
+  .life-anchor p em { font-style: italic; color: var(--sage); font-weight: 400; }
 
-  /* Foot */
-  .foot {
+  /* ═════════════ FOOTER ═════════════ */
+  .footer {
+    background: var(--paper-3);
+    padding: 56px 40px 40px;
+  }
+  .footer-inner {
     max-width: 1200px;
-    margin: 30px auto 0;
-    padding: 24px clamp(20px, 4vw, 48px) 0;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(250, 247, 242, 0.5);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+  .footer-col h5 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; padding: 0; }
+  .footer-col li {
+    padding: 4px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .footer-col li a { color: inherit; }
+  .footer-col li a:hover { color: var(--ink); }
+  .footer-col li a.crisis-link { color: var(--coral); font-weight: 600; }
+  .footer-col li strong { color: var(--ink); font-weight: 600; }
+  .footer-brand p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-top: 12px;
+  }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
     display: flex;
     justify-content: space-between;
-    gap: 16px;
+    font-size: 12.5px;
+    color: var(--ink-mute);
     flex-wrap: wrap;
+    gap: 12px;
   }
-  .foot a {
-    color: rgba(250, 247, 242, 0.7);
-    border-bottom: 1px dotted rgba(250, 247, 242, 0.3);
-    padding-bottom: 1px;
-  }
-  .foot a:hover { color: var(--lime); border-color: var(--lime); }
 
-  /* Fabs */
-  .quickexit {
-    position: fixed; bottom: 16px; right: 16px;
-    background: var(--navy-90);
-    color: var(--ivory);
-    border: 1px solid var(--hairline);
-    border-radius: 999px;
-    padding: 10px 16px 10px 14px;
-    font-family: var(--mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    z-index: 50;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .quickexit:hover { background: var(--coral); color: var(--navy); border-color: var(--coral); }
-  .quickexit kbd {
-    background: rgba(250, 247, 242, 0.1);
-    border-radius: 4px;
-    padding: 2px 5px;
-    font-size: 9.5px;
-    font-family: var(--mono);
-    margin-left: 4px;
-  }
+  /* ═════════════ FABS ═════════════ */
   .tonight-fab {
     position: fixed; bottom: 16px; left: 16px;
-    background: var(--lime);
+    background: var(--sage-bright);
     color: var(--navy);
     border-radius: 999px;
     padding: 10px 18px;
@@ -632,12 +667,42 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 24px rgba(14, 30, 58, 0.18);
     z-index: 50;
     text-decoration: none;
   }
-  .tonight-fab:hover { background: var(--lime-soft); }
+  .tonight-fab:hover { background: #a4dc4e; }
   .tonight-fab .heart { color: var(--navy); }
+  .quickexit {
+    position: fixed; bottom: 16px; right: 16px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 10px 16px 10px 14px;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(14, 30, 58, 0.14);
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .quickexit:hover { background: var(--coral); color: var(--paper); border-color: var(--coral); }
+  .quickexit kbd {
+    background: var(--paper-3);
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 10px;
+    font-family: var(--mono);
+    margin-left: 4px;
+    color: var(--ink);
+  }
+  .quickexit:hover kbd { background: rgba(255,255,255,0.18); color: var(--paper); }
   @media (max-width: 500px) {
     .tonight-fab { font-size: 12px; padding: 8px 12px; }
     .quickexit { padding: 8px 12px; }
@@ -647,17 +712,34 @@
 </head>
 <body>
 
-<aside class="crisis" role="region" aria-label="Crisis support — South Africa">
-  <span><strong>SADAG</strong><a href="tel:0800567567">0800 567 567</a></span>
-  <span><strong>Lifeline SA</strong><a href="tel:0861322322">0861 322 322</a></span>
-  <a href="tonight.html" class="help-tonight">Help tonight ↗</a>
-</aside>
+<!-- Crisis strip -->
+<div class="crisis">
+  <span class="icon">!</span>
+  <strong>Not okay right now?</strong>
+  <a href="tonight.html">Go to Tonight</a>
+  <span class="sep">·</span>
+  <span>SADAG <strong><a href="tel:0800567567" style="color:var(--ink);">0800 567 567</a></strong></span>
+</div>
 
-<nav class="top-nav">
-  <a href="index.html" class="back">← the.talking point</a>
-  <span class="meta">For schools · in all 9 provinces</span>
+<!-- Nav -->
+<nav class="nav">
+  <a href="index.html" class="logo" aria-label="The Talking Point — home"><img src="assets/img/ttp-logo-new.png" alt="The Talking Point" /></a>
+  <div class="nav-links">
+    <a href="index.html#paths">Where to start</a>
+    <a href="someone-you-love.html">Someone I love</a>
+    <a href="index.html#services">Workplace</a>
+    <a href="services/mediation.html">Mediation</a>
+    <a href="schools.html" class="active">School</a>
+    <a href="tonight.html">Tonight</a>
+  </div>
+  <div class="nav-right">
+    <span class="link">🌐 Language</span>
+    <a href="#" class="link" onclick="window.location.replace('https://www.weathersa.co.za/'); return false;">↗ Quick exit</a>
+  </div>
+  <div class="burger"><span></span><span></span><span></span></div>
 </nav>
 
+<!-- ═══════════════════════════════════════════════ HERO -->
 <header class="hero">
   <span class="hero-eyebrow">For schools</span>
   <h1>Three doors, built for the age on the other <em>side of them</em>.</h1>
@@ -666,6 +748,7 @@
   </p>
 </header>
 
+<!-- ═══════════════════════════════════════════════ DOORS -->
 <section class="doors" aria-label="Three doors">
 
   <!-- ══════════════════════════════════════════════════════════
@@ -764,8 +847,8 @@
       </div>
     </div>
 
-    <!-- Phone mockup -->
-    <div>
+    <!-- Phone mockup, held in a navy card so the dark UI reads on white body -->
+    <div class="phone-card">
       <div class="phone-mockup" role="img" aria-label="Sample chat with ListenUp — a real human answering">
         <div class="phone-head">
           <div class="phone-avatar">
@@ -850,15 +933,54 @@
 
 </section>
 
+<!-- ═══════════════════════════════════════════════ LIFE ANCHOR -->
 <aside class="life-anchor" aria-label="A note">
   <p>Every student matters. <em>Every teacher too.</em></p>
 </aside>
 
-<div class="foot">
-  <span>© The Talking Point Group · <a href="index.html">the.talking point</a></span>
-  <span>Since 2017 · All 9 provinces</span>
-</div>
+<!-- ═══════════════════════════════════════════════ FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-brand">
+      <div class="logo"><img src="assets/img/ttp-logo-new.png" alt="The Talking Point" /></div>
+      <p>Real humans. No bots. No scripts. Holding space across South Africa since 2017.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Reach someone</h5>
+      <ul>
+        <li><a href="tonight.html" class="crisis-link">Tonight (crisis)</a></li>
+        <li><a href="index.html#paths">Find your door</a></li>
+        <li><a href="index.html#services">Why people trust us</a></li>
+        <li><a href="someone-you-love.html">Someone you love</a></li>
+        <li><a href="schools.html">For schools</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Emergency lines</h5>
+      <ul>
+        <li>SAPS · <strong><a href="tel:10111">10111</a></strong></li>
+        <li>GBV · <strong><a href="tel:0800428428">0800 428 428</a></strong></li>
+        <li>SADAG · <strong><a href="tel:0800567567">0800 567 567</a></strong></li>
+        <li>Ambulance · <strong><a href="tel:112">112</a></strong></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Governance</h5>
+      <ul>
+        <li>POPIA compliant</li>
+        <li>HPCSA &amp; SACSSP registered</li>
+        <li>SLA-bound clinical escalation</li>
+        <li>Confidential &amp; encrypted</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 The Talking Point Group · <a href="index.html" style="color:inherit;">thetalkingpoint.co.za</a></span>
+    <span>If you're in immediate danger, call <strong style="color:var(--coral);"><a href="tel:10111" style="color:inherit;">10111</a></strong></span>
+  </div>
+</footer>
 
+<!-- Persistent tonight fab + quick-exit -->
 <a href="tonight.html" class="tonight-fab" aria-label="Not okay tonight? Open the help-tonight page">
   <span class="heart" aria-hidden="true">♡</span>
   Not okay tonight?
@@ -876,6 +998,7 @@
   document.getElementById('quickexit').addEventListener('click', quickExit);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') quickExit(); });
 </script>
+<script defer src="assets/breathe.js"></script>
 
 </body>
 </html>
