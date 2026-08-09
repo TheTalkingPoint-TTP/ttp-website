@@ -458,15 +458,16 @@
   .door-tag {
     position: absolute;
     top: 16px; left: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    color: var(--ink);
-    padding: 6px 12px;
+    background: var(--navy);
+    color: #FFFFFF;
+    padding: 8px 14px;
     border-radius: 999px;
     font-family: var(--body);
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 600;
+    letter-spacing: 0.06em;
     z-index: 2;
+    box-shadow: 0 6px 16px -6px rgba(14,30,58,0.5);
   }
   .door-body {
     padding: 22px 24px 26px;
@@ -555,6 +556,261 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin-bottom: 16px;
+  }
+
+  /* ═════════════ LISTENUP PLATFORM ═════════════ */
+  .listenup-platform {
+    background:
+      radial-gradient(ellipse at 8% -10%, rgba(139,197,63,0.16) 0%, transparent 45%),
+      radial-gradient(ellipse at 96% 105%, rgba(139,197,63,0.10) 0%, transparent 42%),
+      var(--navy);
+    color: #FAF7F2;
+    padding: clamp(80px, 10vw, 130px) 40px clamp(70px, 8vw, 110px);
+    overflow: hidden;
+  }
+  @media (max-width: 900px) { .listenup-platform { padding: 72px 24px 60px; } }
+
+  .lp-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(40px, 6vw, 88px);
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .lp-inner { grid-template-columns: 1fr; gap: 56px; }
+  }
+
+  .lp-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(139,197,63,0.95);
+    margin-bottom: 24px;
+  }
+  .lp-eyebrow-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #8BC53F;
+    box-shadow: 0 0 0 4px rgba(139,197,63,0.2);
+    animation: lp-eyebrow-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes lp-eyebrow-pulse {
+    0%,100% { box-shadow: 0 0 0 4px rgba(139,197,63,0.2); }
+    50%     { box-shadow: 0 0 0 8px rgba(139,197,63,0.06); }
+  }
+  .lp-title {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 72;
+    font-weight: 400;
+    font-size: clamp(44px, 6.5vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    color: #FFFFFF;
+    margin: 0 0 24px;
+  }
+  .lp-title em { font-style: italic; color: #8BC53F; font-weight: 400; }
+  .lp-sub {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 24;
+    font-weight: 380;
+    font-size: clamp(17px, 1.9vw, 22px);
+    line-height: 1.55;
+    color: rgba(250,247,242,0.82);
+    max-width: 54ch;
+    margin: 0 0 32px;
+  }
+  .lp-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .lp-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366; color: #FFFFFF;
+    padding: 14px 22px; border-radius: 999px;
+    font-family: var(--body); font-weight: 600; font-size: 14.5px;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 12px 30px -10px rgba(37,211,102,0.55);
+  }
+  .lp-cta:hover, .lp-cta:focus-visible {
+    background: #1EBE5D; transform: translateY(-2px);
+    box-shadow: 0 18px 40px -12px rgba(37,211,102,0.65); outline: none;
+  }
+  .lp-cta-meta {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(250,247,242,0.55);
+  }
+
+  /* Phone mockup */
+  .lp-phone-wrap { display: flex; justify-content: center; }
+  .lp-phone {
+    width: clamp(280px, 32vw, 360px);
+    aspect-ratio: 9 / 18;
+    background: #0a1428;
+    border-radius: 42px; padding: 14px;
+    position: relative;
+    box-shadow:
+      0 40px 80px -20px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(139,197,63,0.14),
+      inset 0 0 0 2px rgba(255,255,255,0.06);
+  }
+  .lp-phone-notch {
+    position: absolute; top: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 24px;
+    background: #0a1428; border-radius: 0 0 16px 16px; z-index: 3;
+  }
+  .lp-phone-screen {
+    background: #111b2d; border-radius: 28px;
+    height: 100%;
+    display: flex; flex-direction: column;
+    overflow: hidden; padding-top: 30px;
+  }
+  .lp-wa-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px;
+    background: rgba(139,197,63,0.10);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .lp-wa-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #8BC53F; color: #0E1E3A;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .lp-wa-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .lp-wa-name {
+    font-family: var(--body); font-size: 13.5px; font-weight: 600;
+    color: #FAF7F2; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .lp-wa-verified {
+    background: #8BC53F; color: #0E1E3A;
+    width: 14px; height: 14px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700;
+  }
+  .lp-wa-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--body); font-size: 10.5px;
+    color: rgba(139,197,63,0.9);
+  }
+  .lp-wa-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #8BC53F;
+    animation: lp-eyebrow-pulse 2.2s ease-in-out infinite;
+  }
+  .lp-wa-body {
+    flex: 1; padding: 14px 12px;
+    display: flex; flex-direction: column; gap: 8px;
+    overflow: hidden;
+  }
+  .lp-wa-day {
+    align-self: center;
+    background: rgba(255,255,255,0.06);
+    color: rgba(250,247,242,0.65);
+    font-family: var(--body); font-size: 10px;
+    padding: 4px 10px; border-radius: 8px; margin-bottom: 4px;
+  }
+  .lp-bubble {
+    max-width: 82%;
+    padding: 8px 12px 6px; border-radius: 12px;
+    font-family: var(--body); font-size: 12.5px; line-height: 1.45;
+    position: relative;
+    animation: lp-bubble-in 0.5s ease-out both;
+  }
+  @keyframes lp-bubble-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .lp-bubble-in { align-self: flex-start; background: rgba(255,255,255,0.08); color: #FAF7F2; border-bottom-left-radius: 4px; }
+  .lp-bubble-out { align-self: flex-end; background: #8BC53F; color: #0E1E3A; border-bottom-right-radius: 4px; font-weight: 500; }
+  .lp-bubble-out:nth-of-type(2) { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+  .lp-bubble-out:nth-of-type(3) { animation-delay: 1.1s; opacity: 0; animation-fill-mode: forwards; }
+  .lp-bubble-time { display: block; font-size: 9px; opacity: 0.55; margin-top: 2px; text-align: right; }
+  .lp-ticks { color: #0E1E3A; letter-spacing: -1px; }
+  .lp-bubble-typing {
+    align-self: flex-start; background: rgba(255,255,255,0.08);
+    padding: 10px 14px; display: inline-flex; gap: 4px; align-items: center;
+    animation-delay: 1.6s; opacity: 0; animation-fill-mode: forwards;
+  }
+  .lp-bubble-typing span {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(250,247,242,0.55);
+    animation: lp-typing 1.4s ease-in-out infinite;
+  }
+  .lp-bubble-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .lp-bubble-typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes lp-typing {
+    0%,60%,100% { transform: translateY(0); opacity: 0.45; }
+    30%         { transform: translateY(-3px); opacity: 1; }
+  }
+  .lp-wa-input {
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--body); font-size: 12px; color: rgba(250,247,242,0.5);
+  }
+  .lp-wa-input .lp-wa-placeholder {
+    background: rgba(255,255,255,0.08);
+    padding: 8px 14px; border-radius: 999px;
+    flex: 1; margin-right: 8px;
+  }
+  .lp-wa-encrypted {
+    text-align: center; padding: 8px 6px 12px; margin: 0;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(250,247,242,0.42);
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  }
+
+  /* Capability grid */
+  .lp-caps {
+    max-width: 1240px;
+    margin: clamp(72px, 8vw, 110px) auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 900px) { .lp-caps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .lp-caps { grid-template-columns: 1fr; } }
+  .lp-cap {
+    background: rgba(250,247,242,0.04);
+    border: 1px solid rgba(250,247,242,0.09);
+    border-radius: 16px;
+    padding: 28px 26px 26px;
+    transition: border-color 0.25s, transform 0.25s, background 0.25s;
+  }
+  .lp-cap:hover {
+    border-color: rgba(139,197,63,0.45);
+    background: rgba(139,197,63,0.06);
+    transform: translateY(-3px);
+  }
+  .lp-cap-glyph {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px; border-radius: 12px;
+    background: rgba(139,197,63,0.14); color: #8BC53F;
+    margin-bottom: 18px;
+  }
+  .lp-cap-glyph svg { width: 22px; height: 22px; }
+  .lp-cap h3 {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 40;
+    font-weight: 460; font-size: 20px; line-height: 1.2;
+    letter-spacing: -0.014em; color: #FFFFFF;
+    margin: 0 0 8px;
+  }
+  .lp-cap p {
+    font-family: var(--body); font-size: 14px; line-height: 1.55;
+    color: rgba(250,247,242,0.7); margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lp-eyebrow-dot, .lp-wa-dot, .lp-bubble, .lp-bubble-typing span { animation: none !important; opacity: 1; }
   }
 
   /* ═════════════ STATS BAND ═════════════ */
@@ -941,6 +1197,22 @@
     line-height: 1.55;
     margin-top: 12px;
   }
+  .footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13.5px;
+  }
+  .footer-contact a {
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .footer-contact a:hover { color: var(--sage); border-color: var(--sage); }
   .footer-bottom {
     max-width: 1200px;
     margin: 40px auto 0;
@@ -1172,6 +1444,109 @@
           Just say hello
         </span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ LISTENUP PLATFORM -->
+<section class="listenup-platform" id="listenup-platform" aria-labelledby="lp-title">
+  <div class="lp-inner">
+    <div class="lp-lede">
+      <span class="lp-eyebrow"><span class="lp-eyebrow-dot" aria-hidden="true"></span>The platform · live now</span>
+      <h2 id="lp-title" class="lp-title">Meet <em>ListenUp</em>.</h2>
+      <p class="lp-sub">The WhatsApp platform behind every human on our team. No app to download. No form. No waiting music. Just a message from you to a real, trained person — in your language, any hour, from any phone.</p>
+      <div class="lp-cta-row">
+        <a class="lp-cta" href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%27d%20like%20to%20try%20ListenUp." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.9 11.9 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 6L0 24l6.18-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52z"/></svg>
+          Try ListenUp on WhatsApp
+        </a>
+        <span class="lp-cta-meta">Answered by a human in under 5 minutes · 24/7</span>
+      </div>
+    </div>
+
+    <div class="lp-phone-wrap" aria-hidden="true">
+      <div class="lp-phone">
+        <div class="lp-phone-notch"></div>
+        <div class="lp-phone-screen">
+          <div class="lp-wa-head">
+            <div class="lp-wa-avatar">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <div class="lp-wa-meta">
+              <div class="lp-wa-name">ListenUp <span class="lp-wa-verified">✓</span></div>
+              <div class="lp-wa-status"><span class="lp-wa-dot"></span>online · replies in minutes</div>
+            </div>
+          </div>
+          <div class="lp-wa-body">
+            <div class="lp-wa-day">Today · 22:47</div>
+            <div class="lp-bubble lp-bubble-in">Hi. I don't really know how to say this but I'm not okay tonight.</div>
+            <div class="lp-bubble lp-bubble-out">
+              I'm here. No rush at all — I'm going to sit with you for as long as you need.
+              <span class="lp-bubble-time">22:47 <span class="lp-ticks">✓✓</span></span>
+            </div>
+            <div class="lp-bubble lp-bubble-out">
+              Can you tell me a bit about what's going on tonight? Even one sentence is enough.
+              <span class="lp-bubble-time">22:47 <span class="lp-ticks">✓✓</span></span>
+            </div>
+            <div class="lp-bubble lp-bubble-typing" aria-label="ListenUp is typing">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="lp-wa-input">
+            <span class="lp-wa-placeholder">Message</span>
+            <span class="lp-wa-mic">🎙</span>
+          </div>
+          <p class="lp-wa-encrypted">
+            <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            end-to-end encrypted · never on your phone bill
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lp-caps">
+    <div class="lp-cap">
+      <span class="lp-cap-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+      <h3>On WhatsApp — no app to download</h3>
+      <p>Works on any phone, any network, any signal. If you can send a message, you can reach us.</p>
+    </div>
+    <div class="lp-cap">
+      <span class="lp-cap-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </span>
+      <h3>End-to-end encrypted</h3>
+      <p>Only you and the human you're speaking to can read the message. POPIA compliant, HPCSA governed.</p>
+    </div>
+    <div class="lp-cap">
+      <span class="lp-cap-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </span>
+      <h3>Human first, AI-assisted</h3>
+      <p>Every message reaches a trained listener. AI helps us route, translate and triage — it never replies for us.</p>
+    </div>
+    <div class="lp-cap">
+      <span class="lp-cap-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+      </span>
+      <h3>Any language, any hour</h3>
+      <p>All eleven official South African languages. 24/7/365 — including public holidays, weekends and 03:00 on a Tuesday.</p>
+    </div>
+    <div class="lp-cap">
+      <span class="lp-cap-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4M8 23h8"/></svg>
+      </span>
+      <h3>Voice notes welcome</h3>
+      <p>Not everyone types well in a hard moment. Speak, send. We listen properly — no transcript sent to a machine.</p>
+    </div>
+    <div class="lp-cap">
+      <span class="lp-cap-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-8-6.5-8-13a8 8 0 0 1 16 0c0 6.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </span>
+      <h3>Clinical escalation built in</h3>
+      <p>When there's risk to life, our protocol moves fast — direct dispatch to armed &amp; medical response across all nine provinces.</p>
     </div>
   </div>
 </section>
@@ -1488,6 +1863,10 @@
     <div class="footer-col footer-brand">
       <div class="logo"><span class="logo-plate"><img src="assets/img/ttp-logo-navy.png" alt="The Talking Point" /></span></div>
       <p>Real humans. No bots. No scripts. Holding space across South Africa since 2017.</p>
+      <ul class="footer-contact">
+        <li><a href="mailto:info@thetalkingpoint.co.za">info@thetalkingpoint.co.za</a></li>
+        <li><a href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20to%20someone." target="_blank" rel="noopener">WhatsApp ListenUp · +27 72 074 0289</a></li>
+      </ul>
     </div>
     <div class="footer-col">
       <h5>Reach someone</h5>
