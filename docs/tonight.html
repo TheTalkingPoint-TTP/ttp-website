@@ -14,14 +14,24 @@
 
 <style>
   :root {
+    --paper: #FFFFFF;
+    --paper-2: #FAFAFA;
+    --paper-3: #F2F2F2;
     --navy: #0E1E3A;
-    --navy-90: #14254a;
-    --lime: #8BC53F;
-    --ivory: #FAF7F2;
-    --coral: #FF5C39;
-    --hairline: rgba(250, 247, 242, 0.14);
-    --display: "Newsreader", "Source Serif Pro", serif;
-    --body: "Outfit", system-ui, sans-serif;
+    --navy-2: #14254a;
+    --ink: #0E1E3A;
+    --ink-soft: rgba(14, 30, 58, 0.72);
+    --ink-mute: rgba(14, 30, 58, 0.50);
+    --hairline: rgba(14, 30, 58, 0.10);
+    --sage: #6BA930;
+    --sage-bright: #8BC53F;
+    --sage-tint: rgba(139, 197, 63, 0.12);
+    --coral: #D93F1A;
+    --coral-tint: rgba(217, 63, 26, 0.08);
+    --amber: #F5B266;
+    --amber-tint: rgba(245, 178, 102, 0.10);
+    --display: "Newsreader", Georgia, serif;
+    --body: "Outfit", -apple-system, system-ui, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, monospace;
   }
 
@@ -32,8 +42,8 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
   body {
-    background: var(--navy);
-    color: var(--ivory);
+    background: var(--paper);
+    color: var(--ink);
     font-family: var(--body);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -49,7 +59,7 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    color: rgba(250,247,242,0.55);
+    color: var(--ink-mute);
     margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
@@ -60,7 +70,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: rgba(250,247,242,0.85);
+    color: var(--ink);
   }
   .head .brand img {
     height: 48px;
@@ -71,10 +81,11 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px dotted rgba(250,247,242,0.3);
+    border-bottom: 1px solid var(--hairline);
     padding-bottom: 1px;
+    color: var(--ink-soft);
   }
-  .head .back:hover { color: var(--lime); border-color: var(--lime); }
+  .head .back:hover { color: var(--sage); border-color: var(--sage); }
   .head .back svg { width: 12px; height: 12px; }
 
   /* ---------- Hero ---------- */
@@ -90,14 +101,14 @@
     font-size: 10.5px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: rgba(250,247,242,0.55);
+    color: var(--ink-mute);
     margin-bottom: 22px;
   }
   .hero-eyebrow::before {
     content: "";
     width: 9px; height: 9px;
     border-radius: 50%;
-    background: #8BC53F;
+    background: var(--sage-bright);
     box-shadow: 0 0 0 4px rgba(139,197,63,0.22);
     animation: hero-pulse 2.4s ease-in-out infinite;
   }
@@ -114,15 +125,16 @@
     margin: 0 0 20px;
     max-width: 20ch;
     font-variation-settings: "opsz" 60;
+    color: var(--ink);
   }
   .lede em {
     font-style: italic;
     font-weight: 360;
-    color: rgba(139,197,63,0.95);
+    color: var(--sage-bright);
   }
   .sub {
     font-size: 16px;
-    color: rgba(250,247,242,0.72);
+    color: var(--ink-soft);
     max-width: 48ch;
     line-height: 1.6;
   }
@@ -136,13 +148,15 @@
   @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
 
   .tile {
-    --tile-accent: rgba(139,197,63,0.5);
-    --tile-glow: rgba(139,197,63,0.14);
+    --tile-accent-solid: #6BA930;
+    --tile-accent: rgba(107,169,48,0.55);
+    --tile-glow: rgba(107,169,48,0.14);
+    --tile-border: var(--hairline);
     position: relative;
     background:
-      radial-gradient(ellipse at 100% 0%, var(--tile-glow) 0%, transparent 60%),
-      linear-gradient(180deg, rgba(30, 47, 82, 0.7), rgba(20, 34, 62, 0.75));
-    border: 1px solid rgba(250, 247, 242, 0.09);
+      radial-gradient(ellipse at 100% 0%, var(--tile-glow) 0%, transparent 62%),
+      #FFFFFF;
+    border: 1px solid var(--tile-border);
     border-radius: 22px;
     padding: 30px 30px 26px;
     display: flex;
@@ -154,13 +168,14 @@
     transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
     cursor: pointer;
     text-decoration: none;
-    color: var(--ivory);
+    color: var(--ink);
     isolation: isolate;
+    box-shadow: 0 20px 60px -30px rgba(14,30,58,0.14);
   }
   .tile:hover, .tile:focus-visible {
     transform: translateY(-3px);
     border-color: var(--tile-accent);
-    box-shadow: 0 30px 70px -34px var(--tile-glow);
+    box-shadow: 0 30px 70px -30px var(--tile-glow), 0 24px 60px -32px rgba(14,30,58,0.18);
     outline: none;
   }
 
@@ -175,16 +190,16 @@
     font-size: 10.5px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(250, 247, 242, 0.48);
+    color: var(--ink-mute);
     line-height: 1.4;
   }
   .tile .num strong {
-    color: rgba(250, 247, 242, 0.85);
+    color: var(--ink);
     font-weight: 500;
   }
   .tile .glyph {
-    color: var(--tile-accent);
-    opacity: 0.85;
+    color: var(--tile-accent-solid);
+    opacity: 0.95;
     transition: opacity 0.28s ease, transform 0.28s ease;
     flex-shrink: 0;
     filter: drop-shadow(0 0 12px var(--tile-glow));
@@ -199,13 +214,14 @@
     font-size: clamp(23px, 3vw, 30px);
     line-height: 1.12;
     letter-spacing: -0.018em;
-    color: var(--ivory);
+    color: var(--ink);
     margin: 0 0 14px;
     max-width: 22ch;
   }
   .tile .title em {
     font-style: italic;
     font-weight: 420;
+    color: var(--tile-accent-solid);
   }
   .tile .meta {
     display: inline-flex;
@@ -215,7 +231,7 @@
     font-size: 10.5px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(250, 247, 242, 0.72);
+    color: var(--ink-soft);
   }
   .tile .meta .arrow {
     display: inline-block;
@@ -226,21 +242,22 @@
     margin: 10px 0 0;
     font-family: var(--body);
     font-size: 13px;
-    color: rgba(250,247,242,0.55);
+    color: var(--ink-mute);
     line-height: 1.5;
   }
 
   /* Sage — WhatsApp (primary) */
   .tile.sage {
-    --tile-accent: rgba(139,197,63,0.72);
-    --tile-glow: rgba(139,197,63,0.24);
+    --tile-accent-solid: #6BA930;
+    --tile-accent: rgba(107,169,48,0.55);
+    --tile-glow: rgba(139,197,63,0.18);
+    --tile-border: rgba(107,169,48,0.35);
     background:
-      radial-gradient(ellipse at 100% 0%, rgba(139,197,63,0.22) 0%, transparent 55%),
-      linear-gradient(180deg, rgba(139,197,63,0.14), rgba(107,169,48,0.06));
-    border-color: rgba(139,197,63,0.32);
+      radial-gradient(ellipse at 100% 0%, rgba(139,197,63,0.16) 0%, transparent 58%),
+      #FFFFFF;
   }
-  .tile.sage .num { color: rgba(139,197,63,0.9); }
-  .tile.sage .num strong { color: #a4dc4e; }
+  .tile.sage .num { color: rgba(107,169,48,0.9); }
+  .tile.sage .num strong { color: var(--sage); }
   .tile.sage .status-pulse {
     display: inline-flex;
     align-items: center;
@@ -249,13 +266,13 @@
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(139,197,63,0.95);
+    color: var(--sage);
   }
   .tile.sage .status-pulse::before {
     content: "";
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: #8BC53F;
+    background: var(--sage-bright);
     box-shadow: 0 0 0 3px rgba(139,197,63,0.35);
     animation: status-pulse 2s ease-in-out infinite;
   }
@@ -266,17 +283,26 @@
 
   /* Coral — SADAG crisis line */
   .tile.coral {
-    --tile-accent: rgba(217,63,26,0.7);
-    --tile-glow: rgba(217,63,26,0.18);
-    border-color: rgba(217,63,26,0.34);
+    --tile-accent-solid: #D93F1A;
+    --tile-accent: rgba(217,63,26,0.55);
+    --tile-glow: rgba(217,63,26,0.16);
+    --tile-border: rgba(217,63,26,0.34);
+    background:
+      radial-gradient(ellipse at 100% 0%, rgba(217,63,26,0.10) 0%, transparent 58%),
+      #FFFFFF;
   }
   .tile.coral .num { color: rgba(217,63,26,0.9); }
-  .tile.coral .num strong { color: #f26a45; }
+  .tile.coral .num strong { color: var(--coral); }
 
   /* Calm — Breathe with me */
   .tile.calm {
-    --tile-accent: rgba(139,197,63,0.55);
-    --tile-glow: rgba(139,197,63,0.14);
+    --tile-accent-solid: #6BA930;
+    --tile-accent: rgba(107,169,48,0.42);
+    --tile-glow: rgba(139,197,63,0.10);
+    --tile-border: var(--hairline);
+    background:
+      radial-gradient(ellipse at 100% 0%, rgba(139,197,63,0.08) 0%, transparent 60%),
+      #FFFFFF;
   }
   .tile.calm .glyph svg circle {
     transform-origin: 16px 16px;
@@ -291,11 +317,16 @@
 
   /* Hope — Make it through tonight */
   .tile.hope {
-    --tile-accent: rgba(245,178,102,0.6);
+    --tile-accent-solid: #C9803A;
+    --tile-accent: rgba(201,128,58,0.42);
     --tile-glow: rgba(245,178,102,0.14);
+    --tile-border: rgba(201,128,58,0.28);
+    background:
+      radial-gradient(ellipse at 100% 0%, rgba(245,178,102,0.14) 0%, transparent 60%),
+      #FFFFFF;
   }
-  .tile.hope .num { color: rgba(245,178,102,0.85); }
-  .tile.hope .num strong { color: #ffcc85; }
+  .tile.hope .num { color: rgba(201,128,58,0.9); }
+  .tile.hope .num strong { color: #C9803A; }
 
   @media (max-width: 560px) {
     .tile { padding: 26px 24px 24px; min-height: 200px; gap: 28px; }
@@ -315,21 +346,21 @@
     font-size: 10.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(250,247,242,0.55);
+    color: var(--ink-mute);
     display: flex;
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
   }
-  .foot a { border-bottom: 1px dotted rgba(250,247,242,0.3); padding-bottom: 1px; }
-  .foot a:hover { color: var(--lime); border-color: var(--lime); }
+  .foot a { border-bottom: 1px solid var(--hairline); padding-bottom: 1px; color: var(--ink-soft); }
+  .foot a:hover { color: var(--sage); border-color: var(--sage); }
 
-  /* Quick exit — same component as the main site */
+  /* Quick exit — outline pill on white */
   .quickexit {
     position: fixed; bottom: 16px; right: 16px;
-    background: var(--navy-90);
-    color: var(--ivory);
-    border: 1px solid var(--hairline);
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid rgba(14,30,58,0.28);
     border-radius: 999px;
     padding: 10px 16px 10px 14px;
     font-family: var(--mono);
@@ -337,18 +368,19 @@
     text-transform: uppercase;
     letter-spacing: 0.12em;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 24px -8px rgba(14,30,58,0.18);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
-  .quickexit:hover { background: var(--coral); color: var(--navy); border-color: var(--coral); }
+  .quickexit:hover { background: var(--coral); color: #FFFFFF; border-color: var(--coral); }
   .logo-text { font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: 22px; color: #0E1E3A; letter-spacing: -0.01em; line-height: 1; white-space: nowrap; }
   .logo-text .semi { font-style: normal; color: #8BC53F; font-size: 1.35em; vertical-align: -3px; margin-left: 1px; font-weight: 700; }
   .footer-brand .logo-text { font-size: 26px; }
-  .head .brand .logo-text { color: rgba(250, 247, 242, 0.95); }
+  .head .brand .logo-text { color: var(--ink); }
   /* Real TTP brand mark — inline, no plate */
   .logo-plate { display: inline-flex; align-items: center; justify-content: center; padding: 0; background: transparent; border-radius: 0; box-shadow: none; }
   .logo-plate img { height: 60px; width: auto; display: block; }
   .footer-brand .logo-plate img { height: 78px; }
-  /* Crisis page keeps the white logo on its navy background */
+  /* Crisis page — navy logo on white background */
   .head .brand .logo-plate img { height: 72px; }
 
 </style>
@@ -411,7 +443,7 @@
 
 <nav class="head" aria-label="Tonight navigation">
   <a class="brand" href="index.html" aria-label="The Talking Point — home">
-    <span class="logo-plate"><img src="assets/img/ttp-logo-new.png" alt="The Talking Point" /></span>
+    <span class="logo-plate"><img src="assets/img/ttp-logo-navy.png" alt="The Talking Point" /></span>
   </a>
   <a class="back" href="index.html">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -495,8 +527,8 @@
      the drafts during review. Individual drafts still carry noindex + the
      visible DRAFT banner; remove those per-article once Ella signs off, and
      before DNS cutover to Xneelo / thetalkingpoint.co.za. -->
-<p style="margin-top: 18px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,247,242,0.55); text-align: center;">
-  Or, if it's a reading kind of night: <a href="blog/quiet-reads.html" style="color: var(--ivory); border-bottom: 1px dotted rgba(250,247,242,0.4);">Quiet reads →</a>
+<p style="margin-top: 18px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); text-align: center;">
+  Or, if it's a reading kind of night: <a href="blog/quiet-reads.html" style="color: var(--ink); border-bottom: 1px solid var(--hairline);">Quiet reads →</a>
 </p>
 
 <aside class="life-anchor" aria-label="A note">
@@ -516,13 +548,14 @@
     font-size: clamp(22px, 3.6vw, 36px);
     line-height: 1.2;
     letter-spacing: -0.022em;
-    color: rgba(250, 247, 242, 0.92);
+    color: var(--ink);
     max-width: 22ch;
     margin: 0 auto;
   }
   .life-anchor p em {
     font-style: italic;
     font-weight: 320;
+    color: var(--sage);
   }
 </style>
 
@@ -537,7 +570,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: var(--navy);
+    background: var(--paper);
     z-index: 300;
   }
   .overlay.is-open { display: flex; }
@@ -548,22 +581,21 @@
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    border: 1px solid var(--hairline);
-    background: rgba(250,247,242,0.02);
-    color: rgba(250,247,242,0.75);
+    border: 1px solid rgba(14,30,58,0.14);
+    background: var(--paper);
+    color: var(--ink);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
     z-index: 12;
-    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 10px rgba(14,30,58,0.06);
   }
   .overlay-close:hover,
   .overlay-close:focus-visible {
-    border-color: var(--lime);
-    color: var(--lime);
-    background: rgba(139,197,63,0.06);
+    background: var(--paper-3);
+    border-color: rgba(14,30,58,0.28);
     outline: none;
   }
   .overlay-close svg { width: 14px; height: 14px; stroke-width: 1.5; }
@@ -577,8 +609,8 @@
     padding: 40px 24px;
     overflow: hidden;
     background:
-      radial-gradient(ellipse at 50% 42%, rgba(139,197,63,0.09) 0%, transparent 55%),
-      var(--navy);
+      radial-gradient(ellipse at 50% 42%, rgba(139,197,63,0.10) 0%, transparent 55%),
+      var(--paper);
   }
   /* Ambient drifting particles */
   #breatheOverlay::before,
@@ -590,17 +622,17 @@
     width: 2px;
     height: 2px;
     border-radius: 50%;
-    background: rgba(139,197,63,0.5);
+    background: rgba(107,169,48,0.55);
     box-shadow:
-      -180px -110px 0 rgba(139,197,63,0.32),
-       150px -190px 0 rgba(250,247,242,0.14),
-      -260px  70px 0 rgba(139,197,63,0.24),
-       220px  140px 0 rgba(250,247,242,0.18),
-       -80px  210px 0 rgba(139,197,63,0.26),
-       310px  -70px 0 rgba(139,197,63,0.16),
-      -350px  -50px 0 rgba(250,247,242,0.13),
-        90px  260px 0 rgba(139,197,63,0.2),
-       -30px -220px 0 rgba(250,247,242,0.16);
+      -180px -110px 0 rgba(107,169,48,0.42),
+       150px -190px 0 rgba(14,30,58,0.14),
+      -260px  70px 0 rgba(107,169,48,0.32),
+       220px  140px 0 rgba(14,30,58,0.18),
+       -80px  210px 0 rgba(107,169,48,0.34),
+       310px  -70px 0 rgba(107,169,48,0.22),
+      -350px  -50px 0 rgba(14,30,58,0.13),
+        90px  260px 0 rgba(107,169,48,0.28),
+       -30px -220px 0 rgba(14,30,58,0.16);
     pointer-events: none;
     animation: particle-drift 28s ease-in-out infinite alternate;
     opacity: 0.85;
@@ -621,7 +653,7 @@
     font-size: 11px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(250,247,242,0.5);
+    color: var(--ink-mute);
     margin-bottom: 46px;
     position: relative;
     z-index: 2;
@@ -629,9 +661,12 @@
   .breathe-eyebrow .sep {
     display: inline-block;
     margin: 0 10px;
-    opacity: 0.5;
+    color: var(--sage);
+    opacity: 0.8;
   }
-  .breathe-eyebrow .round { color: rgba(250,247,242,0.88); }
+  .breathe-eyebrow .round { color: var(--ink-soft); }
+  .breathe-eyebrow .round strong,
+  .breathe-eyebrow .round #breatheRound { color: var(--sage); font-weight: 500; }
 
   .breathe-rings {
     position: relative;
@@ -649,30 +684,39 @@
   }
   .breathe-count {
     position: absolute;
-    inset: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--display);
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
-    font-size: clamp(80px, 14vw, 128px);
+    font-size: clamp(120px, 20vw, 200px);
     line-height: 1;
-    color: rgba(139, 197, 63, 0.95);
+    color: var(--navy);
     letter-spacing: -0.03em;
-    font-variation-settings: "opsz" 60;
-    text-shadow: 0 0 40px rgba(139, 197, 63, 0.4);
+    font-variation-settings: "opsz" 72;
+    text-shadow:
+      0 0 30px rgba(255, 255, 255, 0.9),
+      0 0 60px rgba(255, 255, 255, 0.7),
+      0 4px 20px rgba(14, 30, 58, 0.18);
     pointer-events: none;
-    z-index: 3;
+    z-index: 10;
+    min-width: 1ch;
+    text-align: center;
+  }
+  .breathe-count.pop {
     animation: count-pop 1s ease-out;
   }
   @keyframes count-pop {
-    0%   { opacity: 0; transform: scale(0.72); }
-    18%  { opacity: 1; transform: scale(1.06); }
-    100% { opacity: 0.95; transform: scale(1); }
+    0%   { opacity: 0.35; transform: translate(-50%, -50%) scale(0.78); }
+    22%  { opacity: 1;    transform: translate(-50%, -50%) scale(1.12); }
+    100% { opacity: 1;    transform: translate(-50%, -50%) scale(1); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .breathe-count { animation: none; }
+    .breathe-count.pop { animation: none; }
   }
 
   /* Slow rotating clinical dial */
@@ -682,19 +726,19 @@
   }
   .breathe-dial .dial-ring {
     fill: none;
-    stroke: rgba(250,247,242,0.09);
+    stroke: rgba(14,30,58,0.14);
     stroke-width: 1;
     vector-effect: non-scaling-stroke;
   }
   .breathe-dial .dial-ticks-minor {
     fill: none;
-    stroke: rgba(250,247,242,0.28);
+    stroke: rgba(14,30,58,0.22);
     stroke-width: 6;
     vector-effect: non-scaling-stroke;
   }
   .breathe-dial .dial-ticks-major {
     fill: none;
-    stroke: rgba(139,197,63,0.7);
+    stroke: rgba(107,169,48,0.8);
     stroke-width: 10;
     vector-effect: non-scaling-stroke;
   }
@@ -706,7 +750,7 @@
   /* Phase progress arc — synced to current phase duration via --phase-dur */
   .breathe-arc {
     fill: none;
-    stroke: rgba(139,197,63,0.85);
+    stroke: var(--sage);
     stroke-width: 1.5;
     stroke-linecap: round;
     vector-effect: non-scaling-stroke;
@@ -714,7 +758,7 @@
     transform-origin: center;
     stroke-dasharray: 414.69;
     stroke-dashoffset: 414.69;
-    filter: drop-shadow(0 0 4px rgba(139,197,63,0.6));
+    filter: drop-shadow(0 0 4px rgba(107,169,48,0.35));
   }
   .breathe-arc.run {
     animation: arc-fill var(--phase-dur, 4s) linear forwards;
@@ -731,20 +775,20 @@
   }
   .breathe-body circle {
     fill: none;
-    stroke: rgba(139,197,63,0.6);
+    stroke: rgba(107,169,48,0.5);
     stroke-width: 1;
     vector-effect: non-scaling-stroke;
   }
-  .breathe-body circle.r1 { stroke-opacity: 0.9; }
-  .breathe-body circle.r2 { stroke-opacity: 0.55; }
-  .breathe-body circle.r3 { stroke-opacity: 0.32; }
-  .breathe-body circle.r4 { stroke-opacity: 0.16; }
+  .breathe-body circle.r1 { stroke-opacity: 0.62; }
+  .breathe-body circle.r2 { stroke-opacity: 0.48; }
+  .breathe-body circle.r3 { stroke-opacity: 0.34; }
+  .breathe-body circle.r4 { stroke-opacity: 0.20; }
   .breathe-body .core {
-    fill: rgba(139,197,63,0.20);
-    stroke: rgba(139,197,63,0.75);
+    fill: var(--sage);
+    stroke: var(--sage);
     stroke-width: 1;
     vector-effect: non-scaling-stroke;
-    filter: drop-shadow(0 0 12px rgba(139,197,63,0.55));
+    filter: drop-shadow(0 0 12px rgba(139,197,63,0.45));
   }
   @keyframes ring-breathe {
     0%     { transform: scale(0.55); }
@@ -760,7 +804,7 @@
     font-size: clamp(40px, 7vw, 68px);
     line-height: 1.1;
     letter-spacing: -0.022em;
-    color: var(--ivory);
+    color: var(--ink);
     min-height: 1.15em;
     font-variation-settings: "opsz" 60;
     position: relative;
@@ -778,12 +822,12 @@
     font-size: 10.5px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(250,247,242,0.62);
-    background: rgba(250,247,242,0.02);
+    color: var(--ink-mute);
+    background: var(--paper);
     position: relative;
     z-index: 2;
   }
-  .breathe-rhythm .num { color: var(--lime); font-weight: 600; }
+  .breathe-rhythm .num { color: var(--sage); font-weight: 600; }
   .breathe-rhythm .sep { opacity: 0.4; margin: 0 10px; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -1291,10 +1335,10 @@
   const setCountValue = (n) => {
     if (!countEl) return;
     countEl.textContent = String(n);
-    // Re-trigger pop animation on each second
-    countEl.style.animation = 'none';
+    // Re-trigger pop animation on each second via class toggle
+    countEl.classList.remove('pop');
     void countEl.offsetWidth;
-    countEl.style.animation = '';
+    countEl.classList.add('pop');
   };
 
   const startCountdown = (durMs) => {
