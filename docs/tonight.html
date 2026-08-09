@@ -1048,7 +1048,6 @@
 
   <div class="breathe-pulse-wrap" aria-hidden="true">
     <div class="breathe-pulse"></div>
-    <div class="breathe-count" id="breatheCount" aria-live="polite">4</div>
   </div>
 </div>
 
@@ -1164,36 +1163,12 @@
   const breatheOverlay = document.getElementById('breatheOverlay');
   const phaseEl = document.getElementById('breathePhase');
   const roundEl = document.getElementById('breatheRound');
-  const countEl = document.getElementById('breatheCount');
   const phases = ['Breathe in', 'Hold', 'Breathe out'];
   const durations = [4000, 4000, 6000];
   let breatheTimer = null;
-  let countTimer = null;
-
-  const setCountValue = (n) => {
-    if (!countEl) return;
-    countEl.textContent = String(n);
-    // Re-trigger pop animation on each second via class toggle
-    countEl.classList.remove('pop');
-    void countEl.offsetWidth;
-    countEl.classList.add('pop');
-  };
-
-  const startCountdown = (durMs) => {
-    if (countTimer) clearInterval(countTimer);
-    const total = Math.round(durMs / 1000);
-    let n = total;
-    setCountValue(n);
-    countTimer = setInterval(() => {
-      n -= 1;
-      if (n < 1) { clearInterval(countTimer); countTimer = null; return; }
-      setCountValue(n);
-    }, 1000);
-  };
 
   const stopBreathing = () => {
     if (breatheTimer) { clearTimeout(breatheTimer); breatheTimer = null; }
-    if (countTimer) { clearInterval(countTimer); countTimer = null; }
   };
 
   document.getElementById('breatheTile').addEventListener('click', (e) => {
@@ -1203,7 +1178,6 @@
     breatheOverlay.classList.add('is-open');
     phaseEl.textContent = phases[0];
     roundEl.textContent = String(round);
-    startCountdown(durations[0]);
 
     if (breatheTimer) clearTimeout(breatheTimer);
 
@@ -1223,7 +1197,6 @@
         roundEl.textContent = String(round);
       }
       phaseEl.textContent = phases[i];
-      startCountdown(durations[i]);
       breatheTimer = setTimeout(tick, durations[i]);
     };
     breatheTimer = setTimeout(tick, durations[0]);

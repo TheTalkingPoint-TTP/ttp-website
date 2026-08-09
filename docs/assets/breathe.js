@@ -145,27 +145,6 @@
         filter: brightness(1.18);
       }
     }
-    .breathe-overlay .count {
-      position: relative;
-      z-index: 2;
-      font-family: "Newsreader", "Source Serif Pro", serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(120px, 20vw, 200px);
-      line-height: 1;
-      color: #FAF7F2;
-      letter-spacing: -0.04em;
-      font-variation-settings: "opsz" 72;
-      text-shadow: 0 4px 24px rgba(14, 30, 58, 0.5);
-      min-width: 1ch;
-      text-align: center;
-    }
-    .breathe-overlay .count.pop { animation: breathe-count-pop 1s ease-out; }
-    @keyframes breathe-count-pop {
-      0%   { opacity: 0.45; transform: scale(0.78); }
-      22%  { opacity: 1;    transform: scale(1.14); }
-      100% { opacity: 1;    transform: scale(1); }
-    }
     .breathe-overlay .close-btn {
       margin-top: 44px;
       background: transparent;
@@ -220,14 +199,12 @@
     <p class="phase" id="breathePhase">Breathe in</p>
     <div class="pulse-wrap" aria-hidden="true">
       <div class="pulse"></div>
-      <div class="count" id="breatheCount">4</div>
     </div>
     <button class="close-btn" type="button">Close</button>
   `;
   document.body.appendChild(overlay);
 
   const phaseEl = overlay.querySelector('#breathePhase');
-  const countEl = overlay.querySelector('#breatheCount');
   const roundEl = overlay.querySelector('#breatheRound');
   const closeBtn = overlay.querySelector('.close-btn');
   const phases = ['Breathe in', 'Hold', 'Breathe out'];
@@ -235,29 +212,9 @@
   let i = 0;
   let round = 1;
   let phaseTimer = null;
-  let countTimer = null;
-
-  function setCount(n) {
-    countEl.textContent = String(n);
-    countEl.classList.remove('pop');
-    void countEl.offsetWidth;
-    countEl.classList.add('pop');
-  }
-
-  function startCountdown(durMs) {
-    if (countTimer) clearInterval(countTimer);
-    let n = Math.round(durMs / 1000);
-    setCount(n);
-    countTimer = setInterval(function () {
-      n -= 1;
-      if (n < 1) { clearInterval(countTimer); countTimer = null; return; }
-      setCount(n);
-    }, 1000);
-  }
 
   function stopTimers() {
     if (phaseTimer) { clearTimeout(phaseTimer); phaseTimer = null; }
-    if (countTimer) { clearInterval(countTimer); countTimer = null; }
   }
 
   function tick() {
@@ -269,7 +226,6 @@
       roundEl.textContent = String(round);
     }
     phaseEl.textContent = phases[i];
-    startCountdown(durations[i]);
     phaseTimer = setTimeout(tick, durations[i]);
   }
 
@@ -279,7 +235,6 @@
     roundEl.textContent = '1';
     phaseEl.textContent = phases[0];
     overlay.classList.add('show');
-    startCountdown(durations[0]);
     phaseTimer = setTimeout(tick, durations[0]);
   }
   function close() {
