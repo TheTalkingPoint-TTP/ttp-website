@@ -209,11 +209,38 @@
   @media (max-width: 900px) { .doors { padding: 0 24px 16px; } }
 
   .door {
-    padding: clamp(42px, 6vw, 68px) 0;
+    padding: clamp(56px, 8vw, 96px) 0;
     display: grid;
     gap: clamp(28px, 4vw, 48px);
     align-items: center;
-    border-top: 1px solid var(--hairline);
+    border-top: 1px solid rgba(14,30,58,0.10);
+    position: relative;
+  }
+  /* Sage divider node between doors */
+  .door + .door::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 44px;
+    height: 12px;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .door + .door::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8BC53F;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 4px #FFFFFF, 0 0 0 5px rgba(139,197,63,0.28);
   }
   .door.two-col { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); }
   @media (max-width: 800px) { .door.two-col { grid-template-columns: 1fr; } }
@@ -222,26 +249,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
     gap: 12px;
     flex-wrap: wrap;
   }
   .door-chip {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     font-family: var(--body);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 6px 12px;
+    padding: 10px 18px;
     border-radius: 999px;
-    background: var(--sage-tint);
-    color: var(--sage);
+    background: #6BA930;
+    color: #FFFFFF;
+    box-shadow: 0 8px 22px -8px rgba(107,169,48,0.55);
   }
-  .door-chip.coral { background: var(--coral-tint); color: var(--coral); }
-  .door-chip svg { width: 12px; height: 12px; }
+  .door-chip.coral {
+    background: #D93F1A;
+    color: #FFFFFF;
+    box-shadow: 0 8px 22px -8px rgba(217,63,26,0.55);
+  }
+  .door-chip svg { width: 14px; height: 14px; }
   .door-num {
     font-family: var(--mono);
     font-size: 10.5px;
