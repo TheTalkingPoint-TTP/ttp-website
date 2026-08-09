@@ -344,13 +344,12 @@
   .logo-text .semi { font-style: normal; color: #8BC53F; font-size: 1.35em; vertical-align: -3px; margin-left: 1px; font-weight: 700; }
   .footer-brand .logo-text { font-size: 26px; }
   .head .brand .logo-text { color: rgba(250, 247, 242, 0.95); }
-  /* Real TTP brand mark on a small navy plate so it reads on any surface */
-  .logo-plate { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; background: #0E1E3A; border-radius: 14px; box-shadow: 0 6px 18px -8px rgba(14,30,58,0.35); }
-  .logo-plate img { height: 40px; width: auto; display: block; }
-  .footer-brand .logo-plate { padding: 12px 20px; border-radius: 16px; }
-  .footer-brand .logo-plate img { height: 52px; }
-  /* On pages that already sit on navy, drop the plate chrome */
-  .head .brand .logo-plate, body.on-navy .logo-plate { background: transparent; box-shadow: none; padding: 0; }
+  /* Real TTP brand mark — inline, no plate */
+  .logo-plate { display: inline-flex; align-items: center; justify-content: center; padding: 0; background: transparent; border-radius: 0; box-shadow: none; }
+  .logo-plate img { height: 60px; width: auto; display: block; }
+  .footer-brand .logo-plate img { height: 78px; }
+  /* Crisis page keeps the white logo on its navy background */
+  .head .brand .logo-plate img { height: 72px; }
 
 </style>
 <style>
