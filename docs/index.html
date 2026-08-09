@@ -260,14 +260,14 @@
     content: "";
     position: absolute; inset: 0;
     border-radius: 50%;
-    border: 2.5px solid rgba(139, 197, 63, 0.6);
-    animation: breathe-pulse 3.5s ease-out infinite;
+    border: 2px solid rgba(139, 197, 63, 0.45);
+    animation: breathe-pulse 8s ease-in-out infinite;
     pointer-events: none;
   }
-  .hero-breathe::after { animation-delay: 1.75s; }
+  .hero-breathe::after { animation-delay: 4s; }
   @keyframes breathe-pulse {
-    0%   { transform: scale(0.88); opacity: 1; border-width: 2.5px; }
-    100% { transform: scale(1.55); opacity: 0; border-width: 1px; }
+    0%   { transform: scale(0.9); opacity: 0.9; border-width: 2px; }
+    100% { transform: scale(1.4); opacity: 0; border-width: 1px; }
   }
   .hero-breathe .heart-icon {
     width: 54px;
@@ -275,14 +275,14 @@
     color: var(--sage-bright);
     position: relative;
     z-index: 2;
-    animation: heart-pulse 2.2s ease-in-out infinite;
-    filter: drop-shadow(0 0 8px rgba(139, 197, 63, 0.35));
+    animation: heart-pulse 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(139, 197, 63, 0.3));
   }
   @keyframes heart-pulse {
     0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.18); filter: drop-shadow(0 0 14px rgba(139, 197, 63, 0.55)); }
+    50%      { transform: scale(1.09); filter: drop-shadow(0 0 12px rgba(139, 197, 63, 0.45)); }
   }
-  .hero-breathe:hover .heart-icon { animation-duration: 1.6s; }
+  .hero-breathe:hover .heart-icon { animation-duration: 4s; }
   .hero-breathe .ring-text {
     position: absolute;
     inset: 0;
