@@ -2113,74 +2113,144 @@
 
   <div class="hero-body">
     <div class="hero-left">
-      <h1 class="hero-headline">
-        <span class="line1 line">Let's talk</span><br/>
-        <span class="line2 line">about what</span><br/>
-        <span class="line3 line">no one says
-          <span class="underline-scribble">
-            <em>out loud</em>
-            <svg viewBox="0 0 600 40" preserveAspectRatio="none">
-              <path d="M 8 28 Q 80 6, 160 22 T 320 18 T 480 24 T 592 16" />
-            </svg>
-          </span>.
-        </span>
+      <span class="hero-live" aria-label="ListenUp availability">
+        <span class="hero-live-dot" aria-hidden="true"></span>
+        Live now · Answered in under 5 minutes
+      </span>
+      <h1 class="hero-headline hero-headline-triage">
+        You're <em>not</em> alone.
       </h1>
-      <p class="hero-rotate" aria-live="polite" aria-label="Topics we talk about with you">
-        <span class="hero-rotate-em">—</span>
-        <span id="heroRotateWord" class="hero-rotate-word">fear</span>
-        <span class="hero-rotate-punct">.</span>
-      </p>
       <style>
-        .hero-rotate {
-          margin: 14px 0 34px;
-          font-family: "Newsreader", "Source Serif Pro", serif;
-          font-variation-settings: "opsz" 60;
-          font-weight: 380;
-          font-size: clamp(24px, 3.2vw, 38px);
-          line-height: 1;
-          letter-spacing: -0.02em;
+        /* Triage hero — live badge + simplified headline */
+        .hero-live {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-family: "JetBrains Mono", ui-monospace, monospace;
+          font-size: 11px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
           color: #8BC53F;
-          min-height: 1.2em;
-          display: flex;
-          align-items: baseline;
-          gap: 12px;
+          padding: 6px 12px;
+          border: 1px solid rgba(139, 197, 63, 0.5);
+          border-radius: 999px;
+          margin-bottom: 22px;
+          font-weight: 600;
         }
-        .hero-rotate-em { color: rgba(139, 197, 63, 0.45); font-weight: 380; }
-        .hero-rotate-word {
+        .hero-live-dot {
+          width: 8px; height: 8px;
+          background: #8BC53F;
+          border-radius: 50%;
+          animation: hero-live-pulse 2s ease-in-out infinite;
+        }
+        @keyframes hero-live-pulse {
+          0%, 100% { opacity: 0.4; box-shadow: 0 0 0 0 rgba(139, 197, 63, 0.5); }
+          50%      { opacity: 1;   box-shadow: 0 0 0 6px rgba(139, 197, 63, 0); }
+        }
+        .hero-headline.hero-headline-triage {
+          font-family: "Newsreader", "Source Serif Pro", serif;
+          font-variation-settings: "opsz" 72;
+          font-weight: 380;
+          font-size: clamp(56px, 9vw, 128px);
+          line-height: 0.98;
+          letter-spacing: -0.03em;
+          margin-bottom: 30px;
+        }
+        .hero-headline.hero-headline-triage em {
           font-style: italic;
-          display: inline-block;
-          will-change: transform, opacity;
+          font-weight: 380;
+          color: #8BC53F;
         }
-        .hero-rotate-word.rotating { animation: heroRotateWord 700ms cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes heroRotateWord {
-          0%   { opacity: 1; transform: translateY(0); }
-          38%  { opacity: 0; transform: translateY(-10px); }
-          62%  { opacity: 0; transform: translateY(10px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .hero-rotate-punct { color: rgba(139, 197, 63, 0.75); font-style: normal; }
         @media (prefers-reduced-motion: reduce) {
-          .hero-rotate-word.rotating { animation: none; }
+          .hero-live-dot { animation: none; }
         }
       </style>
       <button type="button" class="hero-breathe" data-breathe-trigger aria-label="Take 90 seconds to breathe with us" title="Take 90 seconds to breathe">
         <svg class="ring-text" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="heroHeartRing" d="M 2,50 A 48,48 0 0,1 98,50" fill="none"/></defs><text textLength="146" lengthAdjust="spacing"><textPath href="#heroHeartRing">click and breathe</textPath></text></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
       </button>
       <p class="hero-sub">
-        Mental health, trauma response, and mediation that actually works. <strong>Real humans</strong>, on the other end of a WhatsApp message, at 3am, in your language when you don't know what else to do.
+        <strong>Real humans. No bots.</strong> A trained listener answers your WhatsApp in minutes — in your language, at 3am if you need it — and stays with you until you're safe.
       </p>
+      <div class="hero-actions hero-actions-triage">
+        <a href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20to%20someone." class="btn-primary btn-whatsapp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.9 11.9 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 6L0 24l6.18-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a10 10 0 01-5.1-1.4l-.36-.21-3.67.96.98-3.58-.24-.37A9.98 9.98 0 1122 12c0 5.52-4.48 10-10 10z"/></svg>
+          WhatsApp ListenUp
+        </a>
+        <a href="#paths" class="btn-ghost">Find your door</a>
+      </div>
+      <p class="hero-fine">
+        24/7 · All 11 official languages · POPIA · HPCSA governed
+      </p>
+      <style>
+        /* Triage hero — actions row + fine print sit under the hero-sub on the left side */
+        .hero-actions.hero-actions-triage {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-top: 8px;
+        }
+        .btn-whatsapp {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: #8BC53F;
+          color: #0E1E3A;
+          padding: 15px 26px;
+          border-radius: 999px;
+          font-family: "Outfit", system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 15.5px;
+          text-decoration: none;
+          transition: background 0.2s, transform 0.15s;
+          border: none;
+        }
+        .btn-whatsapp:hover { background: #a4dc4e; transform: translateY(-1px); }
+        .hero-fine {
+          margin-top: 20px;
+          font-family: "JetBrains Mono", ui-monospace, monospace;
+          font-size: 11px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: rgba(250, 247, 242, 0.55);
+          line-height: 1.5;
+        }
+      </style>
     </div>
     <div class="hero-right">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-        <source src="assets/ttp-video.mp4" type="video/mp4" />
-      </video>
-      <div class="hero-actions">
-        <a href="#cta" class="btn-primary">
-          Start the conversation
-          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#manifesto" class="btn-ghost">See what we're about</a>
-      </div>
+      <img class="hero-portrait" src="assets/img/elzabe-opperman.jpeg" alt="Elzabe Opperman — The Talking Point" loading="eager" />
+      <span class="hero-portrait-badge">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Private · POPIA · HPCSA governed
+      </span>
+      <style>
+        /* Triage hero — portrait replaces the old ttp-video */
+        .hero-right { position: relative; }
+        .hero-portrait {
+          width: 100%;
+          aspect-ratio: 4 / 5;
+          object-fit: cover;
+          border-radius: 20px;
+          filter: grayscale(0.05) contrast(1.03);
+          display: block;
+        }
+        .hero-portrait-badge {
+          position: absolute;
+          left: 16px;
+          bottom: 16px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(250, 247, 242, 0.94);
+          color: #0E1E3A;
+          padding: 8px 14px;
+          border-radius: 999px;
+          font-family: "JetBrains Mono", ui-monospace, monospace;
+          font-size: 10.5px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+      </style>
     </div>
   </div>
 </section>
@@ -2267,9 +2337,37 @@
           <h3 class="situation-title">We're a <em>school</em>.</h3>
         </a>
       </div>
+
+      <!-- 6th door — the soft "I don't know" option, per Bianca's clinical concern
+           about decision paralysis. Routes to a pre-filled WhatsApp intake so the
+           visitor doesn't have to categorise their own crisis before asking for help. -->
+      <div class="situation-cell">
+        <a href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%20don%27t%20know%20where%20to%20start." class="situation-card situation-card-soft" target="_blank" rel="noopener">
+          <div class="situation-head-row">
+            <span class="situation-tag">Not sure which?</span>
+            <span class="situation-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          </div>
+          <p class="situation-desc">You can't put words to it yet. That's fine. Just say hello — we'll figure the rest out together.</p>
+          <h3 class="situation-title">Just say <em>hello</em>.</h3>
+        </a>
+      </div>
     </div>
   </div>
 </section>
+<style>
+  /* Soft door — the "Just say hello" 6th card. Sage rather than navy so it
+     stands out as "the option for when you can't pick." */
+  .situation-card.situation-card-soft {
+    background: linear-gradient(160deg, #6BA930 0%, #4a7f1e 100%);
+    color: var(--ivory);
+  }
+  .situation-card.situation-card-soft .situation-tag,
+  .situation-card.situation-card-soft .situation-desc,
+  .situation-card.situation-card-soft .situation-title { color: var(--ivory); }
+  .situation-card.situation-card-soft .situation-tag { background: rgba(250, 247, 242, 0.14); color: rgba(250, 247, 242, 0.92); }
+  .situation-card.situation-card-soft .situation-arrow { color: var(--ivory); }
+  .situation-card.situation-card-soft .situation-arrow svg { stroke: currentColor; }
+</style>
 
 <!-- ═══════════════════════════════════════════════ REAL HUMANS STRIP -->
 <!--
@@ -3473,33 +3571,8 @@
     });
   })();
 
-  /* ═══════════════════ HERO ROTATING WORD ═══════════════════
-     Cycles the sage word beneath the hero headline through the
-     hard/soft things TTP is for. Word swap happens at the invisible
-     midpoint of the CSS keyframe animation so the transition reads as
-     one continuous gesture. Respects prefers-reduced-motion via CSS. */
-  (function () {
-    const el = document.getElementById('heroRotateWord');
-    if (!el) return;
-    const words = ['fear', 'grief', 'shame', 'silence', 'loss', 'joy', 'tomorrow', 'love'];
-    let i = 0;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setInterval(() => {
-      if (reduce) {
-        i = (i + 1) % words.length;
-        el.textContent = words[i];
-        return;
-      }
-      el.classList.add('rotating');
-      setTimeout(() => {
-        i = (i + 1) % words.length;
-        el.textContent = words[i];
-      }, 320);
-      setTimeout(() => {
-        el.classList.remove('rotating');
-      }, 720);
-    }, 3500);
-  })();
+  /* Rotating-word behaviour removed in the Triage rewrite —
+     new hero uses a static "You're not alone." headline. */
 </script>
 
 <script defer src="assets/breathe.js"></script>
