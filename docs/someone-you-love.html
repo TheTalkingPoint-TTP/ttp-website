@@ -14,619 +14,656 @@
 <style>
   :root {
     --navy: #0E1E3A;
-    --navy-90: #14254a;
-    --lime: #8BC53F;
-    --lime-bright: #a4dc4e;
-    --ivory: #FAF7F2;
-    --ivory-warm: #F5EFE4;
-    --coral: #FF5C39;
-    --mute: rgba(250, 247, 242, 0.55);
-    --mute-dark: rgba(14, 30, 58, 0.55);
-    --hairline: rgba(250, 247, 242, 0.14);
-    --hairline-dark: rgba(14, 30, 58, 0.14);
-    --display: "Newsreader", "Source Serif Pro", serif;
-    --body: "Outfit", system-ui, sans-serif;
+    --navy-2: #14254a;
+    --paper: #FFFFFF;
+    --paper-2: #FAFAFA;
+    --paper-3: #F2F2F2;
+    --sage: #6BA930;
+    --sage-bright: #8BC53F;
+    --sage-tint: rgba(139, 197, 63, 0.12);
+    --coral: #D93F1A;
+    --coral-tint: rgba(217, 63, 26, 0.08);
+    --ink: #0E1E3A;
+    --ink-soft: rgba(14, 30, 58, 0.72);
+    --ink-mute: rgba(14, 30, 58, 0.50);
+    --hairline: rgba(14, 30, 58, 0.10);
+    --display: "Newsreader", Georgia, serif;
+    --body: "Outfit", -apple-system, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, monospace;
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--navy);
-    color: var(--ivory);
+    background: var(--paper);
+    color: var(--ink);
     font-family: var(--body);
-    line-height: 1.5;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
   }
   a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
+  img { max-width: 100%; height: auto; display: block; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
 
-  /* ─── CRISIS STRIP (persistent, above nav) ─── */
+  /* ═════════════ CRISIS STRIP ═════════════ */
   .crisis {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 102;
-    background: var(--navy-90);
-    color: var(--ivory);
-    padding: 8px clamp(16px, 4vw, 56px);
-    min-height: 36px;
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    padding: 12px 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 26px;
-    font-family: var(--mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .crisis .label { color: rgba(250,247,242,0.75); display: inline-flex; align-items: center; gap: 8px; }
-  .crisis .label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
-  .crisis a {
-    color: var(--ivory);
-    border-bottom: 1px dotted rgba(250,247,242,0.45);
-    padding-bottom: 1px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .crisis a:hover { color: var(--lime); border-bottom-color: var(--lime); }
-  .crisis strong { color: var(--ivory); font-weight: 700; margin-right: 4px; }
-  .crisis a.tonight-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--lime); color: var(--navy);
-    padding: 4px 12px; border-radius: 999px;
-    border-bottom: none; font-weight: 700; letter-spacing: 0.14em;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .crisis a.tonight-link:hover { background: var(--lime-bright); transform: translateY(-1px); }
-  @media (max-width: 720px) {
-    .crisis { gap: 14px; font-size: 10px; padding: 7px 12px; min-height: 32px; letter-spacing: 0.1em; }
-    .crisis .label { display: none; }
-    .crisis a.tonight-link { padding: 3px 10px; font-size: 10px; }
-  }
-
-  /* ─── NAV ─── */
-  nav.top {
-    position: fixed; top: 36px; left: 0; right: 0;
-    padding: 22px clamp(20px, 4vw, 56px);
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(14, 30, 58, 0.92);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border-bottom: 1px solid var(--hairline);
-    transition: background 0.3s var(--ease-out);
-  }
-  nav.top.scrolled { background: var(--navy); }
-  .logo { display: flex; align-items: center; }
-  .logo img, .logo svg.logo-svg { height: 112px; width: auto; display: block; }
-  @media (max-width: 720px) { .logo img, .logo svg.logo-svg { height: 90px; } }
-  .nav-links { display: flex; gap: 36px; font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
-  .nav-links a {
-    position: relative; padding: 6px 0;
-    color: var(--ivory); transition: color 0.3s;
-  }
-  .nav-links a:hover { color: var(--lime); }
-  .nav-cta {
-    background: var(--lime); color: var(--navy);
-    padding: 12px 22px; border-radius: 999px;
-    font-weight: 600; font-size: 13.5px;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: background 0.3s var(--ease-out), transform 0.3s;
-  }
-  .nav-cta:hover { background: var(--lime-bright); transform: translateY(-1px); }
-  .nav-actions { display: inline-flex; align-items: center; gap: 10px; }
-  .nav-breathe {
-    position: relative;
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 56px; height: 56px;
-    padding: 12px;
-    background: transparent; border: none; border-radius: 50%;
-    cursor: pointer; color: var(--lime);
-    transition: background 0.2s, transform 0.2s;
-  }
-  .nav-breathe:hover, .nav-breathe:focus-visible {
-    background: rgba(139, 197, 63, 0.12);
-    transform: translateY(-1px); outline: none;
-  }
-  .nav-breathe::before,
-  .nav-breathe::after {
-    content: ""; position: absolute; inset: 0;
-    border-radius: 50%;
-    border: 2px solid var(--lime);
-    pointer-events: none; opacity: 0;
-    animation: nav-heart-ripple 13s ease-out infinite;
-  }
-  .nav-breathe::after { animation-delay: 6.5s; }
-  @keyframes nav-heart-ripple {
-    0%   { transform: scale(1);    opacity: 0.55; }
-    60%  { opacity: 0; }
-    100% { transform: scale(1.85); opacity: 0; }
-  }
-  .nav-breathe svg:not(.ring-text) {
-    width: 100%; height: 100%;
-    position: relative; z-index: 1;
-    transform-origin: center;
-    animation: nav-heart-pulse 5.5s ease-in-out infinite;
-  }
-  .nav-breathe .ring-text {
-    position: absolute;
-    width: 180%; height: 180%;
-    top: -40%; left: -40%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: visible;
-    opacity: 0.7;
-  }
-  .nav-breathe .ring-text text {
-    fill: currentColor;
-    font-family: var(--mono);
-    font-size: 9.5px;
-    font-weight: 500;
-    text-transform: uppercase;
-  }
-  .nav-breathe:hover svg:not(.ring-text),
-  .nav-breathe:hover::before,
-  .nav-breathe:hover::after { animation-play-state: paused; }
-  .nav-breathe:hover .ring-text { opacity: 1; }
-  @keyframes nav-heart-pulse {
-    0%, 100% { transform: scale(0.92); opacity: 0.88; }
-    50%      { transform: scale(1.06); opacity: 1; }
-  }
-  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .burger span { width: 22px; height: 1.5px; background: var(--ivory); }
-  @media (max-width: 880px) {
-    .nav-links { display: none; }
-    .nav-cta, .nav-breathe { display: none; }
-    .burger { display: flex; }
-  }
-
-  /* ─── SECTION BASE ─── */
-  section { padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px); position: relative; }
-  .container { max-width: 1100px; margin: 0 auto; }
-
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 12px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--mute);
-    margin-bottom: 28px;
-  }
-  .eyebrow.dark { color: var(--mute-dark); }
-  .eyebrow .marker { width: 8px; height: 8px; background: var(--ivory); border-radius: 50%; opacity: 0.6; }
-
-  .section-title {
-    font-family: var(--display);
-    font-weight: 380;
-    font-variation-settings: "opsz" 60;
-    font-size: clamp(34px, 4.8vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -0.028em;
-    margin-bottom: 24px;
-    max-width: 22ch;
-  }
-  .section-title em { font-style: italic; font-weight: 350; }
-  .section-lede {
+    gap: 18px;
     font-family: var(--body);
-    font-size: clamp(16px, 1.4vw, 19px);
-    line-height: 1.55;
-    color: rgba(250,247,242,0.78);
-    max-width: 56ch;
-    margin-bottom: 40px;
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.82);
+    flex-wrap: wrap;
   }
-  .section-lede strong { color: var(--ivory); font-weight: 600; }
+  .crisis .icon {
+    width: 22px; height: 22px;
+    background: var(--coral);
+    color: var(--paper);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .crisis strong { color: #FFFFFF; font-weight: 600; }
+  .crisis > span > strong > a { color: #FFFFFF; }
+  .crisis a { color: var(--sage-bright); font-weight: 600; }
+  .crisis a:hover { color: #FFFFFF; }
+  .crisis .sep { color: rgba(255, 255, 255, 0.35); }
 
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 76vh;
-    padding: 180px clamp(20px, 4vw, 56px) 80px;
-    display: flex; flex-direction: column; justify-content: center;
-    position: relative; overflow: hidden;
+  /* ═════════════ NAV ═════════════ */
+  .nav {
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1440px;
+    margin: 0 auto;
   }
-  .hero-bg {
-    position: absolute; inset: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse 80% 50% at 20% 30%, rgba(139, 197, 63, 0.06), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(255, 92, 57, 0.05), transparent 60%);
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo img { height: 56px; width: auto; display: block; }
+  .footer-brand .logo img { height: 72px; }
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .nav-links a.active { color: var(--coral); font-weight: 600; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-right {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    align-items: center;
+  }
+  .nav-right .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .burger { display: none; cursor: pointer; padding: 8px; }
+  .burger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 4px 0; }
+  @media (max-width: 1080px) {
+    .nav-links, .nav-right { display: none; }
+    .burger { display: block; }
+  }
+
+  /* ═════════════ HERO ═════════════ */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px 88px;
+  }
+  @media (max-width: 900px) {
+    .hero { padding: 40px 24px 64px; }
   }
   .hero-meta {
-    font-family: var(--mono); font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--mute);
-    margin-bottom: 36px;
-    display: inline-flex; align-items: center; gap: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 32px;
   }
-  .hero-meta::before { content: ""; width: 8px; height: 8px; background: var(--ivory); opacity: 0.5; border-radius: 50%; }
+  .hero-meta::before {
+    content: "";
+    width: 8px; height: 8px;
+    background: var(--sage);
+    border-radius: 50%;
+  }
   .hero-headline {
     font-family: var(--display);
-    font-weight: 380;
-    font-variation-settings: "opsz" 60;
-    font-size: clamp(38px, 5.6vw, 84px);
-    line-height: 1.02;
+    font-variation-settings: "opsz" 72;
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1.03;
     letter-spacing: -0.028em;
-    color: var(--ivory);
+    color: var(--ink);
     margin-bottom: 28px;
     max-width: 22ch;
   }
-  .hero-headline em { font-style: italic; font-weight: 350; }
+  .hero-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--sage);
+  }
   .hero-sub {
     font-family: var(--body);
-    font-size: clamp(17px, 1.4vw, 20px);
-    line-height: 1.5;
-    color: rgba(250, 247, 242, 0.78);
-    max-width: 52ch;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 56ch;
     margin-bottom: 36px;
   }
-  .hero-sub strong { color: var(--ivory); font-weight: 600; }
+  .hero-sub strong { color: var(--ink); font-weight: 500; }
 
-  /* ─── BUTTONS ─── */
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
   .btn-primary {
-    background: var(--lime); color: var(--navy);
-    padding: 16px 28px; border-radius: 999px;
-    font-weight: 600; font-size: 15px;
-    display: inline-flex; align-items: center; gap: 12px;
-    transition: transform 0.3s var(--ease-out), background 0.3s;
-    border: none; cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--sage-bright);
+    color: var(--navy);
+    padding: 16px 28px;
+    border-radius: 999px;
     font-family: var(--body);
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform 0.15s, background 0.2s;
+    border: none;
+    cursor: pointer;
   }
-  .btn-primary:hover { background: var(--lime-bright); transform: translateY(-2px); }
-  .btn-primary svg { width: 16px; height: 16px; transition: transform 0.3s var(--ease-out); }
-  .btn-primary:hover svg { transform: translateX(4px); }
-  .btn-ghost {
-    color: var(--ivory);
-    padding: 16px 28px; border-radius: 999px;
-    border: 1px solid var(--hairline);
-    font-weight: 500; font-size: 15px;
+  .btn-primary:hover { background: #a4dc4e; transform: translateY(-1px); }
+  .btn-primary svg { flex-shrink: 0; width: 16px; height: 16px; }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     background: transparent;
-    transition: border-color 0.3s, background 0.3s;
-    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--ink);
+    padding: 16px 28px;
+    border-radius: 999px;
+    border: 1.5px solid var(--hairline);
     font-family: var(--body);
+    font-weight: 500;
+    font-size: 15px;
+    transition: border-color 0.2s;
   }
-  .btn-ghost:hover { border-color: var(--ivory); background: rgba(250, 247, 242, 0.04); }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-outline:hover { border-color: var(--ink); }
 
-  /* ─── ALTERNATING SECTION BACKGROUNDS ─── */
-  .section-ivory { background: var(--ivory); color: var(--navy); }
-  .section-ivory .section-lede { color: rgba(14,30,58,0.7); }
-  .section-ivory .section-lede strong { color: var(--navy); }
-  .section-warm { background: var(--ivory-warm); color: var(--navy); }
-  .section-warm .section-lede { color: rgba(14,30,58,0.7); }
-  .section-warm .section-lede strong { color: var(--navy); }
+  /* ═════════════ SECTIONS ═════════════ */
+  section.band { padding: 88px 40px; }
+  @media (max-width: 900px) { section.band { padding: 64px 24px; } }
+  .band .inner { max-width: 1100px; margin: 0 auto; }
+  .band-paper   { background: var(--paper); }
+  .band-paper-2 { background: var(--paper-2); }
+  .band-paper-3 { background: var(--paper-3); }
 
-  /* ─── SIGNS / LISTS ─── */
-  .sign-list, .say-list, .dont-list, .care-list {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 20px;
+  }
+  .eyebrow .marker {
+    width: 8px; height: 8px;
+    background: var(--sage);
+    border-radius: 50%;
+  }
+  .section-title {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 400;
+    font-size: clamp(32px, 4.6vw, 56px);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 24ch;
+  }
+  .section-title em { font-style: italic; color: var(--sage); font-weight: 400; }
+  .section-lede {
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin-bottom: 40px;
+  }
+  .section-lede strong { color: var(--ink); font-weight: 600; }
+
+  /* ═════════════ SIGN / CARE LIST ═════════════ */
+  .sign-list, .care-list {
     list-style: none;
     display: grid;
-    gap: 18px;
+    gap: 16px;
     margin-top: 8px;
   }
   .sign-list li, .care-list li {
-    padding: 22px 24px;
-    border: 1px solid var(--hairline-dark);
-    border-radius: 12px;
-    background: rgba(255,255,255,0.4);
+    padding: 22px 26px;
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    background: var(--paper);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .sign-list .sign-head, .care-list .sign-head {
+  .sign-list li:hover, .care-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(14, 30, 58, 0.06);
+  }
+  .sign-head {
     font-family: var(--display);
-    font-size: 19px; font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--ink);
     margin-bottom: 6px;
-    color: var(--navy);
   }
-  .sign-list .sign-body, .care-list .sign-body {
-    font-size: 15px;
-    line-height: 1.55;
-    color: rgba(14,30,58,0.72);
+  .sign-body {
+    font-family: var(--body);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
   }
 
-  /* SAY / DON'T SAY two-column */
+  /* ═════════════ SAY / DON'T-SAY GRID ═════════════ */
   .say-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(24px, 4vw, 56px);
+    gap: 22px;
     margin-top: 8px;
   }
-  @media (max-width: 800px) { .say-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 820px) { .say-grid { grid-template-columns: 1fr; } }
+
+  .say-col {
+    padding: 30px 28px 32px;
+    border-radius: 20px;
+    border: 1px solid var(--hairline);
+  }
+  .say-col.do   { background: var(--sage-tint); border-color: rgba(107, 169, 48, 0.28); }
+  .say-col.dont { background: var(--coral-tint); border-color: rgba(217, 63, 26, 0.22); }
   .say-col h3 {
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    margin-bottom: 16px;
-    color: var(--mute);
+    margin-bottom: 20px;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
   }
-  .section-ivory .say-col h3, .section-warm .say-col h3 { color: var(--mute-dark); }
-  .say-col h3 .pip { display: inline-block; width: 8px; height: 8px; border-radius: 50%; vertical-align: 1px; margin-right: 8px; }
-  .say-col.do h3 .pip { background: var(--lime); }
+  .say-col h3 .pip {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+  }
+  .say-col.do h3 .pip   { background: var(--sage); }
   .say-col.dont h3 .pip { background: var(--coral); }
-  .say-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .say-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
   .say-col li {
     font-family: var(--display);
-    font-size: clamp(17px, 1.4vw, 20px);
-    line-height: 1.45;
+    font-variation-settings: "opsz" 24;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.4;
     padding: 16px 18px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.5);
-    color: var(--navy);
+    border-radius: 12px;
+    background: var(--paper);
+    color: var(--ink);
     border-left: 3px solid transparent;
   }
-  .say-col.do li { border-left-color: var(--lime); }
-  .say-col.dont li { border-left-color: var(--coral); text-decoration: line-through; text-decoration-color: rgba(255,92,57,0.5); text-decoration-thickness: 1.5px; }
+  .say-col.do li   { border-left-color: var(--sage); }
+  .say-col.dont li {
+    border-left-color: var(--coral);
+    text-decoration: line-through;
+    text-decoration-color: rgba(217, 63, 26, 0.5);
+    text-decoration-thickness: 1.5px;
+  }
   .say-col li small {
     display: block;
     font-family: var(--body);
-    font-size: 13px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
     text-decoration: none;
-    color: rgba(14,30,58,0.6);
     margin-top: 6px;
-    font-style: normal;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
-  /* ─── CALLING TTP — numbered steps ─── */
+  /* ═════════════ NUMBERED STEPS ═════════════ */
   .steps {
     list-style: none;
     counter-reset: step;
     display: grid;
-    gap: 18px;
-    margin-top: 16px;
+    gap: 16px;
+    margin-top: 12px;
   }
   .steps li {
     counter-increment: step;
-    padding: 22px 24px 22px 70px;
-    border: 1px solid var(--hairline-dark);
-    border-radius: 12px;
-    background: rgba(255,255,255,0.4);
+    padding: 24px 26px 24px 74px;
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    background: var(--paper);
     position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .steps li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(14, 30, 58, 0.06);
   }
   .steps li::before {
     content: counter(step, decimal-leading-zero);
     position: absolute;
-    left: 24px; top: 22px;
+    left: 26px; top: 26px;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 600;
     letter-spacing: 0.14em;
-    color: var(--navy);
-    opacity: 0.5;
+    color: var(--sage);
   }
-  .steps .step-head {
+  .step-head {
     font-family: var(--display);
-    font-size: 19px;
+    font-variation-settings: "opsz" 24;
     font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--ink);
     margin-bottom: 6px;
-    color: var(--navy);
   }
-  .steps .step-body {
-    font-size: 15px;
-    line-height: 1.55;
-    color: rgba(14,30,58,0.72);
+  .step-body {
+    font-family: var(--body);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
   }
-  .steps .step-body strong { color: var(--navy); font-weight: 600; }
+  .step-body strong { color: var(--ink); font-weight: 600; }
+  .step-body a {
+    color: var(--sage);
+    border-bottom: 1px dotted rgba(107, 169, 48, 0.5);
+    padding-bottom: 1px;
+    font-weight: 500;
+  }
+  .step-body a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
-  /* What TTP can / can't do */
+  /* ═════════════ CAN / CAN'T ═════════════ */
   .canlist {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    margin-top: 28px;
+    gap: 22px;
+    margin-top: 36px;
   }
-  @media (max-width: 800px) { .canlist { grid-template-columns: 1fr; } }
+  @media (max-width: 820px) { .canlist { grid-template-columns: 1fr; } }
   .canlist > div {
-    padding: 22px 24px;
-    border-radius: 12px;
-    border: 1px solid var(--hairline-dark);
-    background: rgba(255,255,255,0.4);
+    padding: 26px 28px 28px;
+    border-radius: 16px;
+    border: 1px solid var(--hairline);
+    background: var(--paper);
   }
+  .canlist .can  { border-left: 3px solid var(--sage); }
+  .canlist .cant { border-left: 3px solid var(--ink-mute); }
   .canlist h4 {
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    color: var(--ink);
   }
-  .canlist .can h4 { color: var(--navy); }
-  .canlist .cant h4 { color: rgba(14,30,58,0.55); }
-  .canlist ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .canlist li { font-size: 15px; line-height: 1.5; padding-left: 16px; position: relative; color: rgba(14,30,58,0.78); }
-  .canlist .can li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 1.5px; background: var(--navy); }
-  .canlist .cant li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 1.5px; background: rgba(14,30,58,0.4); }
+  .canlist ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .canlist li {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.55;
+    padding-left: 20px;
+    position: relative;
+    color: var(--ink-soft);
+  }
+  .canlist .can li::before {
+    content: "";
+    position: absolute; left: 0; top: 11px;
+    width: 10px; height: 2px;
+    background: var(--sage);
+    border-radius: 2px;
+  }
+  .canlist .cant li::before {
+    content: "";
+    position: absolute; left: 0; top: 11px;
+    width: 10px; height: 2px;
+    background: var(--ink-mute);
+    border-radius: 2px;
+  }
 
-  /* ─── TONIGHT BAND (last section) ─── */
+  /* ═════════════ TONIGHT BAND (navy urgent moment) ═════════════ */
   .tonight-band {
     background: var(--navy);
-    color: var(--ivory);
-    padding: clamp(80px, 12vh, 130px) clamp(20px, 4vw, 56px);
+    color: var(--paper);
+    padding: 96px 40px;
   }
-  .tonight-band .section-lede { color: rgba(250,247,242,0.78); }
-  .tonight-band .section-lede strong { color: var(--ivory); }
-  .tonight-cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--navy);
-    color: var(--ivory);
-    padding: 80px clamp(20px, 4vw, 56px) 32px;
-    border-top: 1px solid var(--hairline);
-  }
-  .footer-inner { max-width: 1400px; margin: 0 auto; }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 60px;
-  }
-  @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
-  .footer-brand {
-    font-family: var(--display);
-    font-variation-settings: "opsz" 60;
-    font-weight: 350;
-    font-size: 34px;
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    margin-bottom: 24px;
-  }
-  .footer-brand em { color: var(--lime); font-style: italic; }
-  .footer-tagline { font-size: 15px; color: rgba(250, 247, 242, 0.6); max-width: 30ch; line-height: 1.5; margin-bottom: 28px; }
-  .footer-col h4 {
-    font-family: var(--mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--mute);
+  @media (max-width: 900px) { .tonight-band { padding: 72px 24px; } }
+  .tonight-band .inner { max-width: 1100px; margin: 0 auto; }
+  .tonight-band .eyebrow { color: rgba(255, 255, 255, 0.65); }
+  .tonight-band .eyebrow .marker { background: var(--coral); }
+  .tonight-band .section-title { color: var(--paper); }
+  .tonight-band .section-title em { color: var(--sage-bright); }
+  .tonight-band .section-lede {
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 62ch;
+    font-size: 17px;
     margin-bottom: 20px;
-    font-weight: 500;
   }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-col a { font-size: 14px; color: rgba(250, 247, 242, 0.85); transition: color 0.3s; }
-  .footer-col a:hover { color: var(--lime); }
+  .tonight-band .section-lede strong { color: var(--paper); font-weight: 600; }
+  .tonight-cta-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .tonight-band .btn-outline {
+    color: var(--paper);
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+  .tonight-band .btn-outline:hover { border-color: var(--paper); background: rgba(255,255,255,0.04); }
+
+  /* ═════════════ FOOTER ═════════════ */
+  .footer {
+    background: var(--paper-3);
+    padding: 56px 40px 40px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+  .footer-col h5 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; padding: 0; }
+  .footer-col li {
+    padding: 4px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .footer-col li a { color: inherit; }
+  .footer-col li a:hover { color: var(--ink); }
+  .footer-col li a.crisis-link { color: var(--coral); font-weight: 600; }
+  .footer-col li strong { color: var(--ink); font-weight: 600; }
+  .footer-brand p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-top: 12px;
+  }
   .footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding-top: 24px;
     border-top: 1px solid var(--hairline);
-    padding-top: 28px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    font-size: 12.5px;
+    color: var(--ink-mute);
     flex-wrap: wrap;
-    gap: 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    color: var(--mute);
-    text-transform: uppercase;
+    gap: 12px;
   }
 
-  /* ─── TONIGHT FAB ─── */
+  /* ═════════════ TONIGHT FAB (bottom-left) ═════════════ */
   .tonight-fab {
     position: fixed; bottom: 18px; left: 18px; z-index: 200;
-    background: var(--lime); color: var(--navy);
-    border: 1px solid var(--lime);
+    background: var(--sage-bright); color: var(--navy);
+    border: 1px solid var(--sage-bright);
     border-radius: 999px;
     padding: 11px 18px 11px 14px;
     font-family: var(--mono);
     font-size: 11px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.14em;
     display: inline-flex; align-items: center; gap: 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 24px rgba(14, 30, 58, 0.18);
     transition: background 0.2s, transform 0.15s;
   }
-  .tonight-fab:hover { background: var(--lime-bright); transform: translateY(-2px); }
+  .tonight-fab:hover { background: #a4dc4e; transform: translateY(-2px); }
   .tonight-fab .heart {
     display: inline-flex; align-items: center; justify-content: center;
     width: 20px; height: 20px; border-radius: 50%;
-    background: var(--navy); color: var(--lime);
+    background: var(--navy); color: var(--sage-bright);
     font-size: 11px; line-height: 1;
   }
   .tonight-fab svg { width: 13px; height: 13px; }
   @media (max-width: 720px) {
-    .tonight-fab { padding: 11px 16px 11px 14px; font-size: 10.5px; bottom: 14px; left: 14px; }
+    .tonight-fab { padding: 10px 15px 10px 13px; font-size: 10.5px; bottom: 14px; left: 14px; }
     .tonight-fab .heart { width: 18px; height: 18px; }
   }
 
-  /* ─── QUICK EXIT ─── */
+  /* ═════════════ QUICK EXIT (bottom-right) ═════════════ */
   .quickexit {
     position: fixed; bottom: 18px; right: 18px; z-index: 200;
-    background: var(--navy-90); color: var(--ivory);
-    border: 1px solid var(--hairline);
+    background: var(--navy); color: var(--paper);
+    border: 1px solid var(--navy);
     border-radius: 999px;
     padding: 10px 16px 10px 14px;
     font-family: var(--mono);
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 24px rgba(14, 30, 58, 0.22);
     display: inline-flex; align-items: center; gap: 8px;
     transition: background 0.2s, transform 0.15s, border-color 0.2s, color 0.2s;
   }
   .quickexit:hover, .quickexit:focus-visible {
-    background: var(--coral); color: var(--navy); border-color: var(--coral);
+    background: var(--coral); border-color: var(--coral); color: var(--paper);
     transform: translateY(-2px); outline: none;
   }
   .quickexit svg { width: 14px; height: 14px; }
   .quickexit kbd {
     font-family: var(--mono); font-size: 9.5px;
     padding: 2px 6px; border-radius: 4px;
-    background: rgba(250,247,242,0.08); border: 1px solid var(--hairline);
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
   @media (max-width: 720px) {
     .quickexit { padding: 9px 13px 9px 12px; font-size: 10px; bottom: 14px; right: 14px; }
     .quickexit kbd { display: none; }
   }
-
-  /* ─── REDUCED MOTION ─── */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.001ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.001ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════ CRISIS STRIP -->
-<aside class="crisis" role="region" aria-label="Crisis support — South Africa">
-  <span class="label">If you need help right now</span>
-  <span><strong>SADAG</strong><a href="tel:0800567567">0800 567 567</a></span>
-  <span><strong>Lifeline SA</strong><a href="tel:0861322322">0861 322 322</a></span>
-  <span><a href="tonight.html" class="tonight-link">Help tonight ↗</a></span>
-</aside>
+<!-- Crisis strip -->
+<div class="crisis">
+  <span class="icon">!</span>
+  <strong>Not okay right now?</strong>
+  <a href="tonight.html">Go to Tonight</a>
+  <span class="sep">·</span>
+  <span>SADAG <strong><a href="tel:0800567567" style="color:var(--ink);">0800 567 567</a></strong></span>
+</div>
 
-<!-- ═══════════════════════════════════════════════ NAV -->
-<nav class="top" id="topnav">
-  <a href="index.html" class="logo" aria-label="The Talking Point — home">
-    <svg class="logo-svg" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Talking Point">
-      <ellipse cx="215" cy="58" rx="58" ry="44" fill="#FAF7F2"/>
-      <path d="M 176 88 Q 168 122 158 126 Q 198 106 218 76 Z" fill="#FAF7F2"/>
-      <circle cx="215" cy="44" r="10" fill="#8BC53F"/>
-      <path d="M 206 64 q -2 22 -10 30 q 16 -2 22 -16 q 4 -10 -2 -14 z" fill="#8BC53F"/>
-      <text x="6" y="34" font-family="Outfit, system-ui, sans-serif" font-size="32" font-weight="800" fill="#FAF7F2" letter-spacing="-1px">the</text>
-      <text x="6" y="84" font-family="Outfit, system-ui, sans-serif" font-size="50" font-weight="800" fill="#8BC53F" letter-spacing="-1.6px">talking</text>
-      <text x="6" y="130" font-family="Outfit, system-ui, sans-serif" font-size="40" font-weight="800" fill="#FAF7F2" letter-spacing="-1.4px">point</text>
-    </svg>
-  </a>
+<!-- Nav -->
+<nav class="nav">
+  <a href="index.html" class="logo" aria-label="The Talking Point — home"><img src="assets/img/ttp-logo-new.png" alt="The Talking Point" /></a>
   <div class="nav-links">
     <a href="index.html#paths">Where to start</a>
-    <a href="index.html#manifesto">What we believe</a>
-    <a href="index.html#listenup">ListenUp</a>
-    <a href="index.html#services">Services</a>
-    <a href="schools.html">Schools</a>
-    <a href="blog/quiet-reads.html">Quiet reads</a>
+    <a href="someone-you-love.html" class="active">Someone I love</a>
+    <a href="index.html#services">Workplace</a>
+    <a href="services/mediation.html">Mediation</a>
+    <a href="schools.html">School</a>
+    <a href="tonight.html">Tonight</a>
   </div>
-  <div class="nav-actions">
-    <button type="button" class="nav-breathe" data-breathe-trigger aria-label="Take 90 seconds to breathe with us" title="Take 90 seconds to breathe">
-      <svg class="ring-text" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="navHeartRing" d="M 2,50 A 48,48 0 0,1 98,50" fill="none"/></defs><text textLength="146" lengthAdjust="spacing"><textPath href="#navHeartRing">click and breathe</textPath></text></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-    </button>
-    <a href="https://wa.me/27720740289?text=I%27m%20worried%20about%20someone%20I%20love%20and%20I%20don%27t%20know%20what%20to%20do." class="nav-cta">Start the conversation →</a>
+  <div class="nav-right">
+    <span class="link">🌐 Language</span>
+    <a href="#" class="link" onclick="window.location.replace('https://www.weathersa.co.za/'); return false;">↗ Quick exit</a>
   </div>
   <div class="burger"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- ═══════════════════════════════════════════════ HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="container">
-    <div class="hero-meta">For partners, parents, siblings, friends</div>
-    <h1 class="hero-headline">Someone you love is struggling. <em>You don't know what to do.</em></h1>
-    <p class="hero-sub">
-      You're not the one in crisis — but you're the one staying up at 3am wondering if you missed something, if you're saying the wrong thing, if today is the day to push or the day to wait. This page is for you.
-    </p>
-    <div class="hero-actions">
-      <a href="#signs" class="btn-primary">
-        Where to start
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#call-ttp" class="btn-ghost">Reach TTP on their behalf</a>
-    </div>
+  <div class="hero-meta">For partners, parents, siblings, friends</div>
+  <h1 class="hero-headline">Someone you love is struggling. <em>You don't know what to do.</em></h1>
+  <p class="hero-sub">
+    You're not the one in crisis — but you're the one staying up at 3am wondering if you missed something, if you're saying the wrong thing, if today is the day to push or the day to wait. This page is for you.
+  </p>
+  <div class="hero-actions">
+    <a href="#signs" class="btn-primary">
+      Where to start
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#call-ttp" class="btn-outline">Reach TTP on their behalf</a>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════ WARNING SIGNS -->
-<section class="section-ivory" id="signs">
-  <div class="container">
-    <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>The signs / 01</span>
+<section class="band band-paper-2" id="signs">
+  <div class="inner">
+    <span class="eyebrow"><span class="marker"></span>The signs · 01</span>
     <h2 class="section-title">The things to <em>actually</em> watch for.</h2>
     <p class="section-lede">
       Not the textbook list. The quieter, more easily-missed shifts that real people describe when they look back at the weeks before someone they loved stopped being okay.
@@ -662,9 +699,9 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════ WHAT TO SAY / NOT SAY -->
-<section class="section-warm">
-  <div class="container">
-    <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>What to say / 02</span>
+<section class="band band-paper">
+  <div class="inner">
+    <span class="eyebrow"><span class="marker"></span>What to say · 02</span>
     <h2 class="section-title">What to say. And what <em>not</em> to.</h2>
     <p class="section-lede">
       There's no perfect sentence. But there are sentences that open the door — and sentences that quietly close it. Use the left column. Avoid the right.
@@ -723,9 +760,9 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════ HOW TO CALL TTP ON THEIR BEHALF -->
-<section class="section-ivory" id="call-ttp">
-  <div class="container">
-    <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>Reaching us for them / 03</span>
+<section class="band band-paper-2" id="call-ttp">
+  <div class="inner">
+    <span class="eyebrow"><span class="marker"></span>Reaching us for them · 03</span>
     <h2 class="section-title">How to call us on someone else's behalf.</h2>
     <p class="section-lede">
       You don't need their permission to ask for advice. You don't need their permission to call. The case manager will treat the conversation as confidential, and will help you figure out what comes next.
@@ -734,7 +771,7 @@
     <ol class="steps">
       <li>
         <p class="step-head">Open WhatsApp ListenUp first if you can.</p>
-        <p class="step-body">It's quieter than a phone call, you can write it out in your own time, and the case manager has it in writing. <a href="https://wa.me/27720740289?text=I%27m%20worried%20about%20someone%20I%20love.%20Can%20we%20talk%20about%20what%20to%20do%3F" style="color:var(--navy); border-bottom:1px dotted rgba(14,30,58,0.4); padding-bottom:1px; font-weight:500;">Open WhatsApp</a>. Answered within minutes, day or night.</p>
+        <p class="step-body">It's quieter than a phone call, you can write it out in your own time, and the case manager has it in writing. <a href="https://wa.me/27720740289?text=I%27m%20worried%20about%20someone%20I%20love.%20Can%20we%20talk%20about%20what%20to%20do%3F">Open WhatsApp</a>. Answered within minutes, day or night.</p>
       </li>
       <li>
         <p class="step-head">Lead with what you've actually noticed.</p>
@@ -780,9 +817,9 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════ LOOKING AFTER YOURSELF -->
-<section class="section-warm">
-  <div class="container">
-    <span class="eyebrow dark"><span class="marker" style="background:var(--navy); opacity:0.6;"></span>You, too / 04</span>
+<section class="band band-paper">
+  <div class="inner">
+    <span class="eyebrow"><span class="marker"></span>You, too · 04</span>
     <h2 class="section-title">Looking after yourself <em>while you carry this</em>.</h2>
     <p class="section-lede">
       Supporting someone in pain is its own kind of slow exhaustion. If you don't tend to yourself, you will not have anything left to give them. This is not selfish. This is the maths.
@@ -813,10 +850,10 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ TONIGHT (if it's tonight) -->
+<!-- ═══════════════════════════════════════════════ TONIGHT BAND (navy, urgent) -->
 <section class="tonight-band">
-  <div class="container">
-    <span class="eyebrow"><span class="marker"></span>Tonight, if it's tonight / 05</span>
+  <div class="inner">
+    <span class="eyebrow"><span class="marker"></span>Tonight, if it's tonight · 05</span>
     <h2 class="section-title">If they're not safe <em>tonight</em>.</h2>
     <p class="section-lede">
       If something they said today scared you. If they've gone quiet in a way that doesn't feel right. If you're sitting up reading this at 2am because you don't know what else to do — here's what to do next.
@@ -833,55 +870,53 @@
     <div class="tonight-cta-row">
       <a href="tonight.html" class="btn-primary">
         Open the tonight page
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="tel:0800567567" class="btn-ghost">SADAG 24h · 0800 567 567</a>
-      <a href="https://wa.me/27720740289?text=I%27m%20with%20someone%20who%20is%20not%20safe%20tonight.%20I%20need%20to%20talk%20to%20a%20case%20manager%20now." class="btn-ghost">WhatsApp ListenUp now</a>
+      <a href="tel:0800567567" class="btn-outline">SADAG 24h · 0800 567 567</a>
+      <a href="https://wa.me/27720740289?text=I%27m%20with%20someone%20who%20is%20not%20safe%20tonight.%20I%20need%20to%20talk%20to%20a%20case%20manager%20now." class="btn-outline">WhatsApp ListenUp now</a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════ FOOTER -->
-<footer>
+<footer class="footer">
   <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
-        <h3 class="footer-brand">the.talking point<em>;</em></h3>
-        <p class="footer-tagline">Real humans. Real support. 24/7. Mental health, mediation, and response across all nine provinces of South Africa.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="index.html#listenup">ListenUp platform</a></li>
-          <li><a href="index.html#services">Counselling &amp; trauma</a></li>
-          <li><a href="index.html#services">Mediation</a></li>
-          <li><a href="index.html#services">Workplace conflict</a></li>
-          <li><a href="index.html#services">Schools</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>If you're worried</h4>
-        <ul>
-          <li><a href="someone-you-love.html">Someone you love</a></li>
-          <li><a href="tonight.html">Not okay tonight</a></li>
-          <li><a href="index.html#paths">Where to start</a></li>
-          <li><a href="index.html#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Reach us</h4>
-        <ul>
-          <li><a href="tel:+27213002053">+27 (0) 21 300 2053</a> <span style="opacity:0.5; font-size:12px;">· office</span></li>
-          <li><a href="mailto:info@thetalkingpoint.co.za">info@thetalkingpoint.co.za</a></li>
-          <li><a href="https://wa.me/27720740289?text=I%27m%20worried%20about%20someone%20I%20love.">WhatsApp ListenUp</a> <span style="opacity:0.5; font-size:12px;">· answered within minutes</span></li>
-        </ul>
-      </div>
+    <div class="footer-col footer-brand">
+      <div class="logo"><img src="assets/img/ttp-logo-new.png" alt="The Talking Point" /></div>
+      <p>Real humans. No bots. No scripts. Holding space across South Africa since 2017.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© The Talking Point Group (Pty) Ltd · 2017/519926/07</span>
-      <span>Cape Town · Joburg · all 9 provinces</span>
-      <span>Visiting in private? Use Incognito (Chrome) or Private (Safari) — your visit won't show in browser history.</span>
+    <div class="footer-col">
+      <h5>Reach someone</h5>
+      <ul>
+        <li><a href="tonight.html" class="crisis-link">Tonight (crisis)</a></li>
+        <li><a href="index.html#paths">Find your door</a></li>
+        <li><a href="index.html#services">Why people trust us</a></li>
+        <li><a href="someone-you-love.html">Someone you love</a></li>
+        <li><a href="schools.html">For schools</a></li>
+      </ul>
     </div>
+    <div class="footer-col">
+      <h5>Emergency lines</h5>
+      <ul>
+        <li>SAPS · <strong><a href="tel:10111">10111</a></strong></li>
+        <li>GBV · <strong><a href="tel:0800428428">0800 428 428</a></strong></li>
+        <li>SADAG · <strong><a href="tel:0800567567">0800 567 567</a></strong></li>
+        <li>Ambulance · <strong><a href="tel:112">112</a></strong></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Governance</h5>
+      <ul>
+        <li>POPIA compliant</li>
+        <li>HPCSA &amp; SACSSP registered</li>
+        <li>SLA-bound clinical escalation</li>
+        <li>Confidential &amp; encrypted</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 The Talking Point Group · <a href="index.html" style="color:inherit;">thetalkingpoint.co.za</a></span>
+    <span>If you're in immediate danger, call <strong style="color:var(--coral);"><a href="tel:10111" style="color:inherit;">10111</a></strong></span>
   </div>
 </footer>
 
@@ -889,24 +924,17 @@
 <a href="tonight.html" class="tonight-fab" aria-label="Not okay tonight? Open the help-tonight page">
   <span class="heart" aria-hidden="true">♡</span>
   Not okay tonight?
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
 </a>
 
 <!-- ═══════════════════════════════════════════════ QUICK EXIT -->
 <button class="quickexit" id="quickexit" type="button" aria-label="Quick exit — leave this site immediately" title="Press Esc to leave instantly">
   Quick exit
   <kbd>Esc</kbd>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M14 10l7-7M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M14 10l7-7M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
 </button>
 
 <script>
-  // Nav scroll state
-  const nav = document.getElementById('topnav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
-
   // Quick exit (replace history so back button can't return)
   const quickExit = () => window.location.replace('https://www.weathersa.co.za/');
   document.getElementById('quickexit').addEventListener('click', quickExit);

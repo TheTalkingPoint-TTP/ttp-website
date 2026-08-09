@@ -56,7 +56,26 @@
     align-items: center;
     gap: 16px;
   }
-  .head a { border-bottom: 1px dotted rgba(250,247,242,0.3); padding-bottom: 1px; }
+  .head .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(250,247,242,0.85);
+  }
+  .head .brand img {
+    height: 48px;
+    width: auto;
+    display: block;
+  }
+  .head .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px dotted rgba(250,247,242,0.3);
+    padding-bottom: 1px;
+  }
+  .head .back:hover { color: var(--lime); border-color: var(--lime); }
+  .head .back svg { width: 12px; height: 12px; }
 
   .lede {
     font-family: var(--display);
@@ -179,10 +198,15 @@
 </head>
 <body>
 
-<div class="head">
-  <span><a href="index.html">← the.talking point</a></span>
-  <span>For you, right now</span>
-</div>
+<nav class="head" aria-label="Tonight navigation">
+  <a class="brand" href="index.html" aria-label="The Talking Point — home">
+    <img src="assets/img/ttp-logo-new.png" alt="The Talking Point" />
+  </a>
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    the.talking point
+  </a>
+</nav>
 
 <h1 class="lede">If you're not okay <em>tonight</em>, this page is for you.</h1>
 <p class="sub">Four things you can do in the next five minutes. You don't have to do them in order. You don't have to do all of them. Just one is enough.</p>
