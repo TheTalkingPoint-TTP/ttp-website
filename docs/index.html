@@ -326,6 +326,16 @@
     filter: contrast(1.03) saturate(1.05);
     will-change: opacity;
   }
+  /* Zoom out on tightly-framed portraits so heads read at the same scale
+     as Bianca / Elzabe / Thobeka. */
+  .portrait-img[src*="nomakhosazana"],
+  .portrait-img[src*="lindelani"],
+  .portrait-img[src*="paddy"],
+  .portrait-img[src*="elzette"],
+  .portrait-img[src*="adri"] {
+    transform: scale(0.82);
+    transform-origin: 50% 40%;
+  }
   .portrait-img.is-active { opacity: 1; }
   .portrait::after {
     content: "";
