@@ -393,6 +393,66 @@
     filter: brightness(1.4);
   }
 
+  /* ═════════════ COMING SOON — TTP guided meditations placeholder ═════════════ */
+  .ql-coming {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(48px, 6vw, 72px) clamp(32px, 5vw, 56px);
+    background:
+      radial-gradient(ellipse at 20% -20%, rgba(139,197,63,0.10) 0%, transparent 55%),
+      var(--paper-2);
+    border: 1px solid var(--hairline);
+    border-radius: 22px;
+    text-align: left;
+  }
+  .ql-coming-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 22px;
+  }
+  .ql-coming-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--sage-bright);
+    box-shadow: 0 0 0 4px rgba(139,197,63,0.2);
+    animation: ql-coming-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes ql-coming-pulse {
+    0%,100% { box-shadow: 0 0 0 4px rgba(139,197,63,0.2); }
+    50%     { box-shadow: 0 0 0 8px rgba(139,197,63,0.06); }
+  }
+  .ql-coming-title {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.1; letter-spacing: -0.022em;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .ql-coming-title em { font-style: italic; color: var(--sage); }
+  .ql-coming-sub {
+    font-family: var(--body);
+    font-size: 16px; line-height: 1.6;
+    color: var(--ink-soft); margin-bottom: 28px;
+    max-width: 56ch;
+  }
+  .ql-coming-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px;
+    background: var(--navy); color: #FFFFFF;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    box-shadow: 0 10px 24px -10px rgba(14,30,58,0.4);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .ql-coming-cta:hover, .ql-coming-cta:focus-visible {
+    background: #1c2f5a; transform: translateY(-2px);
+    box-shadow: 0 14px 30px -10px rgba(14,30,58,0.5);
+    outline: none;
+  }
+
   /* ═════════════ CLOSE ═════════════ */
   .ql-close {
     background: var(--paper-2);
@@ -505,9 +565,8 @@
 <nav class="ql-tabs" aria-label="Section navigation">
   <div class="ql-tabs-inner">
     <a href="#ambient" class="ql-tab"><span class="dot"></span>Ambient</a>
-    <a href="#breathe" class="ql-tab"><span class="dot"></span>Breathe</a>
-    <a href="#listen" class="ql-tab"><span class="dot"></span>Listen</a>
     <a href="#read" class="ql-tab"><span class="dot"></span>Read</a>
+    <a href="#guided" class="ql-tab"><span class="dot"></span>Guided · coming</a>
   </div>
 </nav>
 
@@ -591,109 +650,6 @@
     </figure>
   </div>
 </section>
-
-<!-- ═══════════════════════════════════════════════ BREATHE -->
-<section class="ql-section" id="breathe">
-  <header class="ql-section-head">
-    <span class="ql-section-eyebrow">Breathe · short guided practices</span>
-    <h2 class="ql-section-title">When you need to <em>land</em>.</h2>
-    <p class="ql-section-sub">Three to eight minutes. Free downloadable audio from qualified teachers — UCLA Mindful Awareness Research Center and the Free Mindfulness Project. Open in a new tab, play once, close again.</p>
-  </header>
-
-  <div class="ql-grid">
-    <a class="ql-card" href="https://www.uclahealth.org/programs/marc/free-guided-meditations/guided-meditations" target="_blank" rel="noopener">
-      <div class="ql-card-head">
-        <span class="ql-card-meta"><strong>3 min</strong> · UCLA Mindful</span>
-        <span class="ql-card-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg></span>
-      </div>
-      <h3>Breathing meditation.</h3>
-      <p>A short breath-focused practice from the UCLA Mindful Awareness Research Center. Good first port of call if you've never done this before.</p>
-      <span class="ql-card-cta">Open UCLA Mindful <span class="arrow">↗</span></span>
-    </a>
-
-    <a class="ql-card" href="https://www.freemindfulness.org/download" target="_blank" rel="noopener">
-      <div class="ql-card-head">
-        <span class="ql-card-meta"><strong>5 min</strong> · Free Mindfulness Project</span>
-        <span class="ql-card-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-      </div>
-      <h3>Five-minute breathing space.</h3>
-      <p>A tightly-timed practice for the middle of a hard afternoon. Downloadable MP3 you can keep on your phone for next time.</p>
-      <span class="ql-card-cta">Open Free Mindfulness <span class="arrow">↗</span></span>
-    </a>
-
-    <a class="ql-card" href="https://www.uclahealth.org/programs/marc/free-guided-meditations/guided-meditations" target="_blank" rel="noopener">
-      <div class="ql-card-head">
-        <span class="ql-card-meta"><strong>13 min</strong> · UCLA Mindful</span>
-        <span class="ql-card-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c4-2 6-2 10 0s6 2 10 0"/><path d="M2 6c4-2 6-2 10 0s6 2 10 0"/><path d="M2 18c4-2 6-2 10 0s6 2 10 0"/></svg></span>
-      </div>
-      <h3>Body scan for sleep.</h3>
-      <p>Longer, slower — takes you from head to feet with permission to drift off along the way. For 3am on a hard night.</p>
-      <span class="ql-card-cta">Open UCLA Mindful <span class="arrow">↗</span></span>
-    </a>
-
-    <a class="ql-card" href="https://www.freemindfulness.org/download" target="_blank" rel="noopener">
-      <div class="ql-card-head">
-        <span class="ql-card-meta"><strong>10 min</strong> · Free Mindfulness Project</span>
-        <span class="ql-card-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.5-8-13a8 8 0 0 1 16 0c0 6.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
-      </div>
-      <h3>Compassionate breath.</h3>
-      <p>A ten-minute self-compassion practice for when you're being hard on yourself. Softer voice, no jargon.</p>
-      <span class="ql-card-cta">Open Free Mindfulness <span class="arrow">↗</span></span>
-    </a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════ LISTEN -->
-<section class="ql-section" id="listen">
-  <header class="ql-section-head">
-    <span class="ql-section-eyebrow">Listen · longer talks &amp; guided sleep</span>
-    <h2 class="ql-section-title">When you need <em>a voice in the room</em>.</h2>
-    <p class="ql-section-sub">Longer pieces — from ten minutes to a full sleep meditation. Free public talks from teachers our clinicians trust. Voice, silence, sometimes music. Nothing that will try to sell you anything.</p>
-  </header>
-
-  <div class="ql-grid">
-    <a class="ql-card" href="https://www.tarabrach.com/guided-meditations/" target="_blank" rel="noopener">
-      <div class="ql-card-head">
-        <span class="ql-card-meta"><strong>Library</strong> · Tara Brach</span>
-        <span class="ql-card-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16V4z"/><path d="M8 4v16M16 4v16"/></svg></span>
-      </div>
-      <h3>Tara Brach · free meditations.</h3>
-      <p>Hundreds of free talks on grief, anxiety, forgiveness and self-compassion, from one of the most-recommended teachers in the field.</p>
-      <span class="ql-card-cta">Open library <span class="arrow">↗</span></span>
-    </a>
-
-    <a class="ql-card" href="https://insighttimer.com/meditation-topics/sleep" target="_blank" rel="noopener">
-      <div class="ql-card-head">
-        <span class="ql-card-meta"><strong>20–45 min</strong> · Insight Timer</span>
-        <span class="ql-card-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
-      </div>
-      <h3>Sleep meditations.</h3>
-      <p>Free sleep meditations from the world's largest free library. Long-form so you can put your phone face-down and drift.</p>
-      <span class="ql-card-cta">Open Insight Timer <span class="arrow">↗</span></span>
-    </a>
-
-    <a class="ql-card" href="https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/mental-wellbeing-audio-guides/" target="_blank" rel="noopener">
-      <div class="ql-card-head">
-        <span class="ql-card-meta"><strong>8 tracks</strong> · NHS</span>
-        <span class="ql-card-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12c-2 4-6 8-10 8s-8-4-10-8c2-4 6-8 10-8s8 4 10 8z"/><circle cx="12" cy="12" r="3"/></svg></span>
-      </div>
-      <h3>NHS mood audio guides.</h3>
-      <p>Eight audio guides from the UK NHS — anxiety, low mood, self-esteem, sleep. Clinically robust, plain language, free.</p>
-      <span class="ql-card-cta">Open NHS guides <span class="arrow">↗</span></span>
-    </a>
-
-    <a class="ql-card" href="https://www.tarabrach.com/guided-meditations/" target="_blank" rel="noopener">
-      <div class="ql-card-head">
-        <span class="ql-card-meta"><strong>Talks</strong> · Tara Brach</span>
-        <span class="ql-card-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 20.75l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
-      </div>
-      <h3>Radical compassion.</h3>
-      <p>A single guided practice for meeting yourself with kindness when everything feels sharp. One of Tara Brach's most-shared talks.</p>
-      <span class="ql-card-cta">Open talk <span class="arrow">↗</span></span>
-    </a>
-  </div>
-</section>
-
 <!-- ═══════════════════════════════════════════════ READ — TTP original reflections -->
 <section class="ql-section" id="read">
   <header class="ql-section-head">
@@ -754,6 +710,18 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ COMING SOON — TTP-original guided meditations -->
+<section class="ql-section" id="guided">
+  <div class="ql-coming">
+    <span class="ql-coming-eyebrow"><span class="ql-coming-dot" aria-hidden="true"></span>In production</span>
+    <h2 class="ql-coming-title">Guided meditations &mdash; <em>ours, in the works</em>.</h2>
+    <p class="ql-coming-sub">Our clinical team is recording a short set of guided breathing, sleep and grounding pieces in your language. When they're ready they'll live here, in the same in&#8209;page player as the Ambient section &mdash; no external tabs, no other people's branding, no bad landing pages.</p>
+    <a class="ql-coming-cta" href="https://wa.me/27720740289?text=I%27d%20like%20to%20be%20told%20when%20the%20TTP%20guided%20meditations%20are%20live.">
+      Tell me when they're live
+    </a>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════════════ CLOSE -->
 <section class="ql-close">
   <h2>None of this replaces <em>a real human</em>.</h2>
@@ -768,7 +736,7 @@
 <footer class="footer">
   <div>© 2026 The Talking Point · <a href="index.html">thetalkingpoint.co.za</a></div>
   <span class="attribution">
-    Ambient audio licensed for TTP via Envato Elements. Third-party audio linked with attribution: UCLA Mindful Awareness Research Center · Free Mindfulness Project · Tara Brach · Insight Timer · UK NHS Every Mind Matters. Reflections © The Talking Point.
+    Ambient audio licensed for TTP via Envato Elements. Reflections © The Talking Point.
   </span>
 </footer>
 
