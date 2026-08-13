@@ -394,6 +394,55 @@
   }
 
   /* ═════════════ GUIDED — Free Mindfulness Project via CC-BY-NC ═════════════ */
+  .ql-subsection {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--hairline);
+  }
+  .ql-subsection:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .ql-sub-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: baseline;
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .ql-sub-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--sage);
+    padding-top: 8px;
+  }
+  .ql-sub-title {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 48;
+    font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1.15;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .ql-sub-desc {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 56ch;
+  }
+  @media (max-width: 560px) {
+    .ql-sub-head { grid-template-columns: 1fr; gap: 8px; }
+    .ql-sub-label { padding-top: 0; }
+  }
+
   .ql-guided-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -802,108 +851,154 @@
   <header class="ql-section-head">
     <span class="ql-section-eyebrow">Guided · press play</span>
     <h2 class="ql-section-title">Sit with <em>someone's voice</em>.</h2>
-    <p class="ql-section-sub">Nine guided practices, three minutes to forty-seven. Curated from qualified teachers &mdash; Vidyamala Burch, UCLA MARC, UCSD Center for Mindfulness and more &mdash; distributed under CC&#8209;BY&#8209;NC via <a href="https://www.freemindfulness.org" target="_blank" rel="noopener" style="color:var(--sage);border-bottom:1px solid rgba(107,169,48,0.4);">The Free Mindfulness Project</a>. Every piece plays in&#8209;page. No external tabs, no ads.</p>
+    <p class="ql-section-sub">Curated guided practices from qualified teachers &mdash; distributed under CC&#8209;BY&#8209;NC via <a href="https://www.freemindfulness.org" target="_blank" rel="noopener" style="color:var(--sage);border-bottom:1px solid rgba(107,169,48,0.4);">The Free Mindfulness Project</a>. Grouped by what they do. Every piece plays in&#8209;page.</p>
   </header>
 
-  <div class="ql-guided-grid">
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>3 min</strong> · Free Mindfulness</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg></span>
+  <!-- Mindfulness of breath -->
+  <div class="ql-subsection">
+    <div class="ql-sub-head">
+      <span class="ql-sub-label">01</span>
+      <div>
+        <h3 class="ql-sub-title">Mindfulness of breath.</h3>
+        <p class="ql-sub-desc">Breath is always with you and always in the present. Come back to it when the mind is somewhere else.</p>
       </div>
-      <h3>Three-minute breathing.</h3>
-      <p>The shortest one. A tightly-timed reset when there isn't time for anything else. Voice by Free Mindfulness Project.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/3min-breathing.mp3"></audio>
-      <span class="ql-guided-attr">Free Mindfulness Project · CC&#8209;BY&#8209;NC</span>
-    </figure>
+    </div>
+    <div class="ql-guided-grid">
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>3 min</strong> · Free Mindfulness</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8" opacity=".5"/></svg></span>
+        </div>
+        <h3>Three-minute breathing.</h3>
+        <p>The shortest one. A tightly-timed reset when there isn't time for anything else.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/3min-breathing.mp3"></audio>
+        <span class="ql-guided-attr">Free Mindfulness Project &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
 
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>4 min</strong> · Still Mind</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c4-2 6-2 10 0s6 2 10 0"/><path d="M2 6c4-2 6-2 10 0s6 2 10 0"/><path d="M2 18c4-2 6-2 10 0s6 2 10 0"/></svg></span>
-      </div>
-      <h3>Four-minute body scan.</h3>
-      <p>Head to feet, quickly. Good for a lunch break or between meetings when the shoulders are up around the ears.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/4min-body-scan.mp3"></audio>
-      <span class="ql-guided-attr">Still Mind · CC&#8209;BY&#8209;NC</span>
-    </figure>
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>5 min</strong> · Life Happens</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        </div>
+        <h3>Five-minute breath.</h3>
+        <p>Gentle, unhurried breath work. A useful daily anchor &mdash; short enough to actually do, long enough to feel a difference.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/5min-breath.mp3"></audio>
+        <span class="ql-guided-attr">Life Happens &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
 
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>5 min</strong> · Life Happens</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-      </div>
-      <h3>Five-minute breath.</h3>
-      <p>Gentle, unhurried breath work. A useful daily anchor &mdash; short enough to actually do, long enough to feel a difference.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/5min-breath.mp3"></audio>
-      <span class="ql-guided-attr">Life Happens · CC&#8209;BY&#8209;NC</span>
-    </figure>
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>11 min</strong> · Vidyamala Burch</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 20.75l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+        </div>
+        <h3>Compassionate breath.</h3>
+        <p>Vidyamala Burch's self-compassion practice. Meet yourself with softness on a hard day.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/11min-compassionate-breath.mp3"></audio>
+        <span class="ql-guided-attr">Vidyamala Burch &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
+    </div>
+  </div>
 
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>6 min</strong> · Vidyamala Burch</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.5-8-13a8 8 0 0 1 16 0c0 6.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+  <!-- Body scan -->
+  <div class="ql-subsection">
+    <div class="ql-sub-head">
+      <span class="ql-sub-label">02</span>
+      <div>
+        <h3 class="ql-sub-title">Body scan.</h3>
+        <p class="ql-sub-desc">Move your focus around the body, curious about what's there. Good after a long day, and better before sleep.</p>
       </div>
-      <h3>Release tension.</h3>
-      <p>Vidyamala Burch (Breathworks) walks you through letting go of held stress in the body. Warm voice, no jargon.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/6min-tension-release.mp3"></audio>
-      <span class="ql-guided-attr">Vidyamala Burch · CC&#8209;BY&#8209;NC</span>
-    </figure>
+    </div>
+    <div class="ql-guided-grid">
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>4 min</strong> · Still Mind</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c4-2 6-2 10 0s6 2 10 0"/><path d="M2 6c4-2 6-2 10 0s6 2 10 0"/><path d="M2 18c4-2 6-2 10 0s6 2 10 0"/></svg></span>
+        </div>
+        <h3>Four-minute body scan.</h3>
+        <p>Head to feet, quickly. Good for a lunch break or between meetings when the shoulders are up around the ears.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/4min-body-scan.mp3"></audio>
+        <span class="ql-guided-attr">Still Mind &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
 
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>10 min</strong> · Free Mindfulness</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8" opacity=".55"/></svg></span>
-      </div>
-      <h3>Ten minutes with just bells.</h3>
-      <p>For people who don't want a voice at all. Silence, three gentle bells &mdash; one at the start, one in the middle, one at the end. Bring your own practice.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/10min-silence-bells.mp3"></audio>
-      <span class="ql-guided-attr">Free Mindfulness Project · CC&#8209;BY&#8209;NC</span>
-    </figure>
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>6 min</strong> · Vidyamala Burch</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.5-8-13a8 8 0 0 1 16 0c0 6.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+        </div>
+        <h3>Release tension.</h3>
+        <p>Vidyamala Burch (Breathworks) walks you through letting go of held stress in the body. Warm voice, no jargon.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/6min-tension-release.mp3"></audio>
+        <span class="ql-guided-attr">Vidyamala Burch &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
 
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>11 min</strong> · Vidyamala Burch</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 20.75l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
-      </div>
-      <h3>Compassionate breath.</h3>
-      <p>Meet yourself with softness on a hard day. Vidyamala's self-compassion practice, gentle and slow. Good after a long week.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/11min-compassionate-breath.mp3"></audio>
-      <span class="ql-guided-attr">Vidyamala Burch · CC&#8209;BY&#8209;NC</span>
-    </figure>
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>23 min</strong> · UCSD Mindfulness</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </div>
+        <h3>Body scan for sleep.</h3>
+        <p>Longer, slower &mdash; from head to feet with permission to drift off along the way. For 3am on a hard night.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/23min-body-scan-sleep.mp3"></audio>
+        <span class="ql-guided-attr">UCSD Center for Mindfulness &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
 
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>12 min</strong> · UCLA MARC</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M20 4v16M12 4v16"/><path d="M4 12h16"/></svg></span>
-      </div>
-      <h3>Breath, sound, body.</h3>
-      <p>A three-part practice from the UCLA Mindful Awareness Research Center. Start with breath, land in sound, finish in the body.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/12min-breath-sound-body.mp3"></audio>
-      <span class="ql-guided-attr">UCLA MARC · CC&#8209;BY&#8209;NC</span>
-    </figure>
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>47 min</strong> · UCSD Mindfulness</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9l6 3"/></svg></span>
+        </div>
+        <h3>Deep body scan &middot; long.</h3>
+        <p>Forty-seven minutes for when you want to give it real time. Sleep-length. Drift off if you need to.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/47min-deep-body-scan.mp3"></audio>
+        <span class="ql-guided-attr">UCSD Center for Mindfulness &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
+    </div>
+  </div>
 
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>23 min</strong> · UCSD Mindfulness</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+  <!-- Sitting meditations -->
+  <div class="ql-subsection">
+    <div class="ql-sub-head">
+      <span class="ql-sub-label">03</span>
+      <div>
+        <h3 class="ql-sub-title">Sitting meditation.</h3>
+        <p class="ql-sub-desc">Longer practice with breath as the anchor, expanding into sound and the whole body. For when you have the time.</p>
       </div>
-      <h3>Body scan for sleep.</h3>
-      <p>Longer, slower &mdash; from head to feet with permission to drift off along the way. For 3am on a hard night. UCSD Center for Mindfulness.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/23min-body-scan-sleep.mp3"></audio>
-      <span class="ql-guided-attr">UCSD Center for Mindfulness · CC&#8209;BY&#8209;NC</span>
-    </figure>
+    </div>
+    <div class="ql-guided-grid">
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>12 min</strong> · UCLA MARC</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16M20 4v16M12 4v16"/><path d="M4 12h16"/></svg></span>
+        </div>
+        <h3>Breath, sound, body.</h3>
+        <p>A three-part sitting practice from the UCLA Mindful Awareness Research Center. Start with breath, land in sound, finish in the body.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/12min-breath-sound-body.mp3"></audio>
+        <span class="ql-guided-attr">UCLA MARC &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
+    </div>
+  </div>
 
-    <figure class="ql-guided">
-      <div class="ql-guided-head">
-        <span class="ql-guided-meta"><strong>47 min</strong> · UCSD Mindfulness</span>
-        <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9l6 3"/></svg></span>
+  <!-- Self-guided (silence + bells) -->
+  <div class="ql-subsection">
+    <div class="ql-sub-head">
+      <span class="ql-sub-label">04</span>
+      <div>
+        <h3 class="ql-sub-title">Self-guided practice.</h3>
+        <p class="ql-sub-desc">For when you want to sit in silence. A single bell at the start, another at the end. Bring your own practice.</p>
       </div>
-      <h3>Deep body scan · long.</h3>
-      <p>Forty-seven minutes for when you want to give it real time. Sleep-length. Drift off if you need to. UCSD Center for Mindfulness.</p>
-      <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/47min-deep-body-scan.mp3"></audio>
-      <span class="ql-guided-attr">UCSD Center for Mindfulness · CC&#8209;BY&#8209;NC</span>
-    </figure>
+    </div>
+    <div class="ql-guided-grid">
+      <figure class="ql-guided">
+        <div class="ql-guided-head">
+          <span class="ql-guided-meta"><strong>10 min</strong> · Free Mindfulness</span>
+          <span class="ql-guided-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8" opacity=".55"/></svg></span>
+        </div>
+        <h3>Ten minutes with just bells.</h3>
+        <p>Silence, three gentle bells &mdash; one at the start, one in the middle, one at the end. No voice.</p>
+        <audio class="ql-guided-audio" controls preload="none" src="assets/audio/guided/10min-silence-bells.mp3"></audio>
+        <span class="ql-guided-attr">Free Mindfulness Project &middot; CC&#8209;BY&#8209;NC</span>
+      </figure>
+    </div>
   </div>
 </section>
 
