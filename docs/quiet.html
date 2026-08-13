@@ -326,16 +326,13 @@
 
   .ql-ambient {
     position: relative;
-    padding: 32px 26px 26px;
+    padding: 32px 26px 24px;
     color: #FFFFFF;
     border-radius: 18px;
     overflow: hidden;
-    min-height: 220px;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    text-decoration: none;
-    transition: transform 0.28s ease;
+    display: flex; flex-direction: column;
+    margin: 0;
   }
-  .ql-ambient:hover { transform: translateY(-3px); }
   .ql-ambient-1 { background: linear-gradient(135deg, #2d4a6f 0%, #1a2d4d 100%); }
   .ql-ambient-2 { background: linear-gradient(135deg, #1a3a4a 0%, #0a2028 100%); }
   .ql-ambient-3 { background: linear-gradient(135deg, #2d4a2a 0%, #1a2d18 100%); }
@@ -355,7 +352,7 @@
   .ql-ambient-meta {
     font-family: var(--mono);
     font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
+    color: rgba(139,197,63,0.85);
     margin-bottom: 8px;
     position: relative;
   }
@@ -365,23 +362,35 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 1.15; letter-spacing: -0.016em;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     position: relative;
   }
   .ql-ambient p {
     font-family: var(--body);
-    font-size: 13px; line-height: 1.5;
+    font-size: 13.5px; line-height: 1.55;
     color: rgba(255,255,255,0.8);
     position: relative;
+    margin-bottom: 20px;
+    flex: 1;
   }
-  .ql-ambient-cta {
-    margin-top: 18px;
-    font-family: var(--mono);
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--sage-bright);
-    display: inline-flex; align-items: center; gap: 8px;
+  .ql-ambient-audio {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.10);
     position: relative;
+    z-index: 1;
+    accent-color: #8BC53F;
+    color-scheme: dark;
+  }
+  .ql-ambient-audio::-webkit-media-controls-panel {
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px;
+  }
+  .ql-ambient-audio::-webkit-media-controls-play-button,
+  .ql-ambient-audio::-webkit-media-controls-mute-button {
+    filter: brightness(1.4);
   }
 
   /* ═════════════ CLOSE ═════════════ */
@@ -669,33 +678,39 @@
   <header class="ql-section-head">
     <span class="ql-section-eyebrow">Ambient · nature soundscapes</span>
     <h2 class="ql-section-title">Something to put <em>underneath</em>.</h2>
-    <p class="ql-section-sub">Long-form nature loops — put them on in the background while you work, cook, or fall asleep. Opens in a new tab so it can play while you use the rest of the site.</p>
+    <p class="ql-section-sub">Press play and leave it on. Each loop plays seamlessly for as long as you need it — while you work, cook, or fall asleep. Licensed for TTP through Envato Elements.</p>
   </header>
 
   <div class="ql-ambient-grid">
-    <a class="ql-ambient ql-ambient-1" href="https://www.youtube.com/results?search_query=rain+8+hours+no+ads+no+thunder" target="_blank" rel="noopener">
+    <figure class="ql-ambient ql-ambient-1">
       <span class="ql-ambient-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 13v8M8 13v8M12 15v6M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/></svg></span>
-      <span class="ql-ambient-meta">Loop · 8 hours</span>
+      <span class="ql-ambient-meta">Seamless loop</span>
       <h3>Steady rain.</h3>
       <p>Slow, unbroken rain. No thunder, no talking, no ads. For work, sleep, or a hard afternoon.</p>
-      <span class="ql-ambient-cta">Open on YouTube <span>↗</span></span>
-    </a>
+      <audio class="ql-ambient-audio" controls loop preload="none" src="assets/audio/ambient/rain.mp3">
+        Your browser doesn't support inline audio. <a href="assets/audio/ambient/rain.mp3">Download the track.</a>
+      </audio>
+    </figure>
 
-    <a class="ql-ambient ql-ambient-2" href="https://www.youtube.com/results?search_query=ocean+waves+10+hours+no+music" target="_blank" rel="noopener">
+    <figure class="ql-ambient ql-ambient-2">
       <span class="ql-ambient-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c4-2 6-2 10 0s6 2 10 0"/><path d="M2 12c4-2 6-2 10 0s6 2 10 0"/><path d="M2 18c4-2 6-2 10 0s6 2 10 0"/></svg></span>
-      <span class="ql-ambient-meta">Loop · 10 hours</span>
+      <span class="ql-ambient-meta">Seamless loop</span>
       <h3>Ocean at night.</h3>
       <p>Slow surf on a calm beach. The kind of rhythm the nervous system remembers before you do.</p>
-      <span class="ql-ambient-cta">Open on YouTube <span>↗</span></span>
-    </a>
+      <audio class="ql-ambient-audio" controls loop preload="none" src="assets/audio/ambient/ocean.mp3">
+        Your browser doesn't support inline audio. <a href="assets/audio/ambient/ocean.mp3">Download the track.</a>
+      </audio>
+    </figure>
 
-    <a class="ql-ambient ql-ambient-3" href="https://www.youtube.com/results?search_query=forest+birds+ambient+3+hours+no+music" target="_blank" rel="noopener">
+    <figure class="ql-ambient ql-ambient-3">
       <span class="ql-ambient-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="M5 8a7 7 0 0 1 14 0"/><path d="M2 12h4M18 12h4"/><path d="M8 15l-3 3M16 15l3 3"/></svg></span>
-      <span class="ql-ambient-meta">Loop · 3 hours</span>
+      <span class="ql-ambient-meta">Seamless loop</span>
       <h3>Forest, at dawn.</h3>
       <p>Wind through leaves, a slow bird call, occasional water. Somewhere else, for a moment.</p>
-      <span class="ql-ambient-cta">Open on YouTube <span>↗</span></span>
-    </a>
+      <audio class="ql-ambient-audio" controls loop preload="none" src="assets/audio/ambient/forest.mp3">
+        Your browser doesn't support inline audio. <a href="assets/audio/ambient/forest.mp3">Download the track.</a>
+      </audio>
+    </figure>
   </div>
 </section>
 
@@ -713,7 +728,7 @@
 <footer class="footer">
   <div>© 2026 The Talking Point · <a href="index.html">thetalkingpoint.co.za</a></div>
   <span class="attribution">
-    Third-party audio linked with attribution: UCLA Mindful Awareness Research Center · Free Mindfulness Project · Tara Brach · Insight Timer · UK NHS Every Mind Matters. Reflections © The Talking Point.
+    Ambient audio licensed for TTP via Envato Elements. Third-party audio linked with attribution: UCLA Mindful Awareness Research Center · Free Mindfulness Project · Tara Brach · Insight Timer · UK NHS Every Mind Matters. Reflections © The Talking Point.
   </span>
 </footer>
 
