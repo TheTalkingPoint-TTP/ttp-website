@@ -86,6 +86,15 @@
   /* Stack above the crisis-page Quick exit which also sits at bottom-right */
   .wa-floater.wa-floater--stack { bottom: 76px; }
 </style>
+<style id="hide-whatsapp">
+/* ── WhatsApp temporarily removed per stakeholder request ──
+   Restore by deleting every <style id="hide-whatsapp"> block. */
+.wa-floater,
+.wa-floater--stack,
+a[href*="wa.me"],
+a[href^="https://wa.me"],
+.footer-contact li:has(a[href*="wa.me"]) { display: none !important; }
+</style>
 </head>
 <body>
 
