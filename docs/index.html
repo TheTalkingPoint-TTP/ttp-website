@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Talking Point — Real humans. Real support. 24/7.</title>
-<meta name="description" content="Mental health, mediation, and response across South Africa. A trained listener answers your WhatsApp in minutes — in your language, any hour — and stays with you until you're safe." />
+<title>The Talking Point · Real humans. Real support. 24/7.</title>
+<meta name="description" content="Mental health, mediation, and response across South Africa. A trained listener answers your WhatsApp in minutes, in your language, any hour, and stays with you until you're safe." />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -371,33 +371,52 @@
   }
   .portrait-caption {
     position: absolute;
-    left: 20px; right: 20px;
-    bottom: 20px;
+    left: 22px; right: 22px;
+    bottom: 22px;
     z-index: 3;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     transition: opacity 350ms ease;
-    min-height: 44px;
+    min-height: 64px;
   }
   .portrait-caption.is-fading { opacity: 0; }
   .portrait-name {
     font-family: var(--display);
-    font-variation-settings: "opsz" 24;
+    font-variation-settings: "opsz" 32;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 1.1;
     color: var(--paper);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.012em;
   }
-  .portrait-role {
+  .portrait-title {
     font-family: var(--body);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+    line-height: 1.3;
+  }
+  .portrait-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--sage-bright);
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
   }
+  .portrait-board { font-weight: 700; }
+  .portrait-board:empty { display: none; }
+  .portrait-board:empty + .portrait-sep { display: none; }
+  .portrait-sep { opacity: 0.5; }
+  .portrait-region { color: rgba(250, 247, 242, 0.85); }
+  /* Legacy fallback (still referenced by some scripts) */
+  .portrait-role { display: none; }
   .portrait-badge {
     position: absolute;
     left: 16px; top: 16px;
@@ -1421,7 +1440,7 @@ a[href^="https://wa.me"],
 
 <!-- Nav -->
 <nav class="nav">
-  <a href="index.html" class="logo" aria-label="The Talking Point — home"><span class="logo-plate"><img src="assets/img/ttp-logo-navy.png" alt="The Talking Point" /></span></a>
+  <a href="index.html" class="logo" aria-label="The Talking Point, home"><span class="logo-plate"><img src="assets/img/ttp-logo-navy.png" alt="The Talking Point" /></span></a>
   <div class="nav-links">
     <a href="#paths">Where to start</a>
     <a href="someone-you-love.html">Someone I love</a>
@@ -1443,7 +1462,7 @@ a[href^="https://wa.me"],
   <div>
     <span class="live-badge">Live now · Answered in &lt; 5 minutes</span>
     <h1>You're <em>not</em> alone.</h1>
-    <p class="hero-sub">Real humans. No bots. No scripts. A trained listener answers your WhatsApp in minutes — in your language, any hour — and stays with you until you're safe.</p>
+    <p class="hero-sub">Real humans. No bots. No scripts. A trained listener answers your WhatsApp in minutes, in your language, any hour, and stays with you until you're safe.</p>
     <div class="hero-actions">
       <a href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20to%20someone." class="btn-primary" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.9 11.9 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 6L0 24l6.18-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a10 10 0 01-5.1-1.4l-.36-.21-3.67.96.98-3.58-.24-.37A9.98 9.98 0 1122 12c0 5.52-4.48 10-10 10z"/></svg>
@@ -1462,22 +1481,24 @@ a[href^="https://wa.me"],
   </div>
   <!-- Rotating portrait: all 8 team members. Cross-fade every 5s. -->
   <div class="portrait" aria-label="Rotating photos of TTP team members">
-    <img class="portrait-img is-active" src="assets/img/bianca-lawrence.jpg" alt="Bianca Lawrence — Registered Counsellor" data-name="Bianca Lawrence" data-role="Registered Counsellor · Western Cape" loading="eager" />
-    <img class="portrait-img" src="assets/img/nomakhosazana-silinga.jpg" alt="Nomakhosazana Silinga — Social Worker" data-name="Nomakhosazana Silinga" data-role="Social Worker · Western Cape" loading="eager" />
-    <img class="portrait-img" src="assets/img/lindelani-magubane.jpg" alt="Lindelani Magubane — Registered Counsellor" data-name="Lindelani Magubane" data-role="Registered Counsellor · Gauteng" loading="eager" />
-    <img class="portrait-img" src="assets/img/paddy-venner.jpg" alt="Paddy Venner — Registered Life Coach" data-name="Paddy Venner" data-role="Registered Life Coach · Western Cape" loading="eager" />
-    <img class="portrait-img" src="assets/img/elzette-fritz.jpg" alt="Dr Elzette Fritz — Educational Psychologist" data-name="Dr Elzette Fritz" data-role="Educational Psychologist · Western Cape" loading="eager" />
-    <img class="portrait-img" src="assets/img/thobeka-siduko.jpg" alt="Thobeka Siduko — Companion Counsellor" data-name="Thobeka Siduko" data-role="Companion Counsellor · North West" loading="eager" />
-    <img class="portrait-img" src="assets/img/elzabe-opperman.jpeg" alt="Elzabe Opperman — The Talking Point" data-name="Elzabe Opperman" data-role="The Talking Point" loading="eager" />
-    <img class="portrait-img" src="assets/img/adri-grobler.jpeg" alt="Adri Grobler — The Talking Point" data-name="Adri Grobler" data-role="The Talking Point" loading="eager" />
+    <img class="portrait-img is-active" src="assets/img/bianca-lawrence.jpg" alt="Bianca Lawrence, Registered Counsellor" data-name="Bianca Lawrence" data-title="Registered Counsellor" data-board="HPCSA" data-region="Western Cape" loading="eager" />
+    <img class="portrait-img" src="assets/img/nomakhosazana-silinga.jpg" alt="Nomakhosazana Silinga, Social Worker" data-name="Nomakhosazana Silinga" data-title="Social Worker" data-board="SACSSP" data-region="Western Cape" loading="eager" />
+    <img class="portrait-img" src="assets/img/lindelani-magubane.jpg" alt="Lindelani Magubane, Registered Counsellor" data-name="Lindelani Magubane" data-title="Registered Counsellor" data-board="HPCSA" data-region="Gauteng" loading="eager" />
+    <img class="portrait-img" src="assets/img/elzette-fritz.jpg" alt="Dr Elzette Fritz, Educational Psychologist" data-name="Dr Elzette Fritz" data-title="Educational Psychologist" data-board="HPCSA" data-region="Western Cape" loading="eager" />
+    <img class="portrait-img" src="assets/img/thobeka-siduko.jpg" alt="Thobeka Siduko, Companion Counsellor" data-name="Thobeka Siduko" data-title="Companion Counsellor" data-board="" data-region="North West" loading="eager" />
+    <img class="portrait-img" src="assets/img/elzabe-opperman.jpeg" alt="Elzabe Opperman, The Talking Point" data-name="Elzabe Opperman" data-title="The Talking Point" data-board="" data-region="South Africa" loading="eager" />
+    <img class="portrait-img" src="assets/img/adri-grobler.jpeg" alt="Adri Grobler, The Talking Point" data-name="Adri Grobler" data-title="The Talking Point" data-board="" data-region="South Africa" loading="eager" />
+    <img class="portrait-img" src="assets/img/james-sturdee.jpg" alt="James Sturdee, Registered Counsellor" data-name="James Sturdee" data-title="Registered Counsellor" data-board="HPCSA" data-region="KZN" loading="eager" />
+    <img class="portrait-img" src="assets/img/eduan-greyling.jpg" alt="Eduan Greyling, Specialist Wellness Counsellor" data-name="Eduan Greyling" data-title="Specialist Wellness Counsellor" data-board="ASCHP" data-region="Western Cape" loading="eager" />
     <span class="portrait-badge">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       Private · POPIA · HPCSA governed
     </span>
-    <p class="portrait-caption" aria-live="polite">
+    <div class="portrait-caption" aria-live="polite">
       <span class="portrait-name">Bianca Lawrence</span>
-      <span class="portrait-role">Registered Counsellor · Western Cape</span>
-    </p>
+      <span class="portrait-title">Registered Counsellor</span>
+      <span class="portrait-meta"><span class="portrait-board">HPCSA</span><span class="portrait-sep" aria-hidden="true"> · </span><span class="portrait-region">Western Cape</span></span>
+    </div>
   </div>
 </section>
 
@@ -1492,11 +1513,11 @@ a[href^="https://wa.me"],
       <a href="tonight.html" class="door">
         <div class="door-photo">
           <span class="door-tag"><span class="door-num">01</span>I need to talk</span>
-          <img src="assets/img/moments/1-reach.jpg" alt="Two hands gripping each other by the wrists — someone reaching, someone catching." />
+          <img src="assets/img/moments/1-reach.jpg" alt="Two hands gripping each other by the wrists, someone reaching, someone catching." />
         </div>
         <div class="door-body">
           <h3 class="door-title">For you, right now</h3>
-          <p class="door-desc">A real human answers in minutes — no menus, no bots. Say as much or as little as you want, in your language.</p>
+          <p class="door-desc">A real human answers in minutes, no menus, no bots. Say as much or as little as you want, in your language.</p>
           <span class="door-cta">Answered in &lt; 5 minutes · 24/7</span>
         </div>
       </a>
@@ -1504,11 +1525,11 @@ a[href^="https://wa.me"],
       <a href="someone-you-love.html" class="door">
         <div class="door-photo">
           <span class="door-tag"><span class="door-num">02</span>Someone I love</span>
-          <img src="assets/img/moments/4-hold.jpg" alt="An adult hand cradling a tiny closed fist — the quiet weight of caring for someone." />
+          <img src="assets/img/moments/4-hold.jpg" alt="An adult hand cradling a tiny closed fist, the quiet weight of caring for someone." />
         </div>
         <div class="door-body">
           <h3 class="door-title">For someone you love</h3>
-          <p class="door-desc">Worried about a partner, parent, child or friend? We help you say the hard thing — and step in gently when they can't.</p>
+          <p class="door-desc">Worried about a partner, parent, child or friend? We help you say the hard thing, and step in gently when they can't.</p>
           <span class="door-cta">Family &amp; circle-of-care support</span>
         </div>
       </a>
@@ -1528,11 +1549,11 @@ a[href^="https://wa.me"],
       <a href="services/mediation.html" class="door">
         <div class="door-photo">
           <span class="door-tag"><span class="door-num">04</span>Mediation</span>
-          <img src="assets/img/moments/5-steady.jpg" alt="Five river stones balanced in a cairn — evenly weighted, quietly steady." />
+          <img src="assets/img/moments/5-steady.jpg" alt="Five river stones balanced in a cairn, evenly weighted, quietly steady." />
         </div>
         <div class="door-body">
           <h3 class="door-title">When it has to be fair</h3>
-          <p class="door-desc">Trained mediators hold the space for families, colleagues and communities in conflict — calmly, respectfully, in your language.</p>
+          <p class="door-desc">Trained mediators hold the space for families, colleagues and communities in conflict, calmly, respectfully, in your language.</p>
           <span class="door-cta">Neutral · multilingual facilitation</span>
         </div>
       </a>
@@ -1544,7 +1565,7 @@ a[href^="https://wa.me"],
         </div>
         <div class="door-body">
           <h3 class="door-title">For your school</h3>
-          <p class="door-desc">Learner wellbeing, bullying, grief and crisis response — age-appropriate, clinician-supervised, and discreet.</p>
+          <p class="door-desc">Learner wellbeing, bullying, grief and crisis response, age-appropriate, clinician-supervised, and discreet.</p>
           <span class="door-cta">Clinician-supervised · safeguarding-first</span>
         </div>
       </a>
@@ -1570,7 +1591,7 @@ a[href^="https://wa.me"],
     <div class="lp-lede">
       <span class="lp-eyebrow"><span class="lp-eyebrow-dot" aria-hidden="true"></span>The platform · live now</span>
       <h2 id="lp-title" class="lp-title">Meet <em>ListenUp</em>.</h2>
-      <p class="lp-sub">The WhatsApp platform behind every human on our team. No app to download. No form. No waiting music. Just a message from you to a real, trained person — in your language, any hour, from any phone.</p>
+      <p class="lp-sub">The WhatsApp platform behind every human on our team. No app to download. No form. No waiting music. Just a message from you to a real, trained person, in your language, any hour, from any phone.</p>
       <div class="lp-cta-row">
         <a class="lp-cta" href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%27d%20like%20to%20try%20ListenUp." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.9 11.9 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 6L0 24l6.18-1.62A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52z"/></svg>
@@ -1597,7 +1618,7 @@ a[href^="https://wa.me"],
             <div class="lp-wa-day">Today · 22:47</div>
             <div class="lp-bubble lp-bubble-in">Hi. I don't really know how to say this but I'm not okay tonight.</div>
             <div class="lp-bubble lp-bubble-out">
-              I'm here. No rush at all — I'm going to sit with you for as long as you need.
+              I'm here. No rush at all, I'm going to sit with you for as long as you need.
               <span class="lp-bubble-time">22:47 <span class="lp-ticks">✓✓</span></span>
             </div>
             <div class="lp-bubble lp-bubble-out">
@@ -1626,7 +1647,7 @@ a[href^="https://wa.me"],
       <span class="lp-cap-glyph">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </span>
-      <h3>On WhatsApp — no app to download</h3>
+      <h3>On WhatsApp, no app to download</h3>
       <p>Works on any phone, any network, any signal. If you can send a message, you can reach us.</p>
     </div>
     <div class="lp-cap">
@@ -1641,28 +1662,28 @@ a[href^="https://wa.me"],
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </span>
       <h3>Human first, AI-assisted</h3>
-      <p>Every message reaches a trained listener. AI helps us route, translate and triage — it never replies for us.</p>
+      <p>Every message reaches a trained listener. AI helps us route, translate and triage, it never replies for us.</p>
     </div>
     <div class="lp-cap">
       <span class="lp-cap-glyph">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
       </span>
       <h3>Any language, any hour</h3>
-      <p>All eleven official South African languages. 24/7/365 — including public holidays, weekends and 03:00 on a Tuesday.</p>
+      <p>All eleven official South African languages. 24/7/365, including public holidays, weekends and 03:00 on a Tuesday.</p>
     </div>
     <div class="lp-cap">
       <span class="lp-cap-glyph">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v4M8 23h8"/></svg>
       </span>
       <h3>Voice notes welcome</h3>
-      <p>Not everyone types well in a hard moment. Speak, send. We listen properly — no transcript sent to a machine.</p>
+      <p>Not everyone types well in a hard moment. Speak, send. We listen properly, no transcript sent to a machine.</p>
     </div>
     <div class="lp-cap">
       <span class="lp-cap-glyph">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-8-6.5-8-13a8 8 0 0 1 16 0c0 6.5-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
       </span>
       <h3>Clinical escalation built in</h3>
-      <p>When there's risk to life, our protocol moves fast — direct dispatch to armed &amp; medical response across all nine provinces.</p>
+      <p>When there's risk to life, our protocol moves fast, direct dispatch to armed &amp; medical response across all nine provinces.</p>
     </div>
   </div>
 </section>
@@ -1699,14 +1720,14 @@ a[href^="https://wa.me"],
     <div class="story-card" id="field-reports">
       <span class="quote-mark">"</span>
       <h3>Two students. <em>Twenty-four hours</em> apart.</h3>
-      <p>A school called us in the middle of a devastating week. We moved our practice on-site for three months — one counsellor with the learners at first break, another walking the corridors between classes, another in the staff room with teachers who were holding it together in public and falling apart in private. The point wasn't to fix anything quickly. It was to be there, every day, until the school could breathe on its own again.</p>
+      <p>A school called us in the middle of a devastating week. We moved our practice on-site for three months, one counsellor with the learners at first break, another walking the corridors between classes, another in the staff room with teachers who were holding it together in public and falling apart in private. The point wasn't to fix anything quickly. It was to be there, every day, until the school could breathe on its own again.</p>
       <p class="attr">— Anonymised case story, with consent</p>
       <a href="blog/posts/high-school-tragedy.html" class="read-more">Read the full story →</a>
     </div>
     <div class="minutes-right">
       <span class="minutes-eyebrow">When minutes matter</span>
       <h2>Listening is the first step. Keeping you safe is the whole job.</h2>
-      <p>We don't stop at a sympathetic ear. When there's risk to life, our clinical escalation protocol moves — fast — to armed or medical response, anywhere in South Africa's nine provinces.</p>
+      <p>We don't stop at a sympathetic ear. When there's risk to life, our clinical escalation protocol moves, fast, to armed or medical response, anywhere in South Africa's nine provinces.</p>
       <ul class="minutes-list">
         <li>Trained listeners, not call-centre scripts</li>
         <li>Clinical supervision on every shift</li>
@@ -1726,7 +1747,7 @@ a[href^="https://wa.me"],
   <div class="stories-inner">
     <span class="stories-eyebrow">Real work · real people</span>
     <h2 class="stories-title">Real stories. <em>Real lives that turned.</em></h2>
-    <p class="stories-sub">Case files from the work TTP has done. Anonymised, permission-given — nothing changed except what could identify them.</p>
+    <p class="stories-sub">Case files from the work TTP has done. Anonymised, permission-given, nothing changed except what could identify them.</p>
     <div class="stories-grid">
       <a href="blog/posts/high-school-tragedy.html" class="story-tile">
         <div class="story-tile-photo">
@@ -1911,13 +1932,13 @@ a[href^="https://wa.me"],
   <div class="humans-inner">
     <span class="humans-eyebrow">The humans behind it</span>
     <h2 class="humans-title">People you can trust to hold your story.</h2>
-    <p class="humans-sub">Registered, supervised, and matched to your language. Every listener is a real human — no bots, no scripts.</p>
+    <p class="humans-sub">Registered, supervised, and matched to your language. Every listener is a real human, no bots, no scripts.</p>
 
     <div class="humans-grid">
       <div class="human">
         <div class="human-avatar"><img src="assets/img/bianca-lawrence.jpg" alt="Bianca Lawrence" loading="lazy" /></div>
         <div class="human-name">Bianca Lawrence</div>
-        <div class="human-role">Registered Counsellor</div>
+        <div class="human-role">Registered Counsellor · HPCSA</div>
         <div class="human-langs">Western Cape</div>
       </div>
       <div class="human">
@@ -1929,19 +1950,13 @@ a[href^="https://wa.me"],
       <div class="human">
         <div class="human-avatar"><img src="assets/img/lindelani-magubane.jpg" alt="Lindelani Magubane" loading="lazy" /></div>
         <div class="human-name">Lindelani Magubane</div>
-        <div class="human-role">Registered Counsellor</div>
+        <div class="human-role">Registered Counsellor · HPCSA</div>
         <div class="human-langs">Gauteng</div>
-      </div>
-      <div class="human">
-        <div class="human-avatar"><img src="assets/img/paddy-venner.jpg" alt="Paddy Venner" loading="lazy" /></div>
-        <div class="human-name">Paddy Venner</div>
-        <div class="human-role">Registered Life Coach</div>
-        <div class="human-langs">Western Cape</div>
       </div>
       <div class="human">
         <div class="human-avatar"><img src="assets/img/elzette-fritz.jpg" alt="Dr Elzette Fritz" loading="lazy" /></div>
         <div class="human-name">Dr Elzette Fritz</div>
-        <div class="human-role">Educational Psychologist</div>
+        <div class="human-role">Educational Psychologist · HPCSA</div>
         <div class="human-langs">Western Cape</div>
       </div>
       <div class="human">
@@ -1961,6 +1976,18 @@ a[href^="https://wa.me"],
         <div class="human-name">Adri Grobler</div>
         <div class="human-role">The Talking Point</div>
         <div class="human-langs">South Africa</div>
+      </div>
+      <div class="human">
+        <div class="human-avatar"><img src="assets/img/james-sturdee.jpg" alt="James Sturdee" loading="lazy" /></div>
+        <div class="human-name">James Sturdee</div>
+        <div class="human-role">Registered Counsellor · HPCSA</div>
+        <div class="human-langs">KZN</div>
+      </div>
+      <div class="human">
+        <div class="human-avatar"><img src="assets/img/eduan-greyling.jpg" alt="Eduan Greyling" loading="lazy" /></div>
+        <div class="human-name">Eduan Greyling</div>
+        <div class="human-role">Specialist Wellness Counsellor · ASCHP</div>
+        <div class="human-langs">Western Cape</div>
       </div>
     </div>
   </div>
@@ -2023,15 +2050,17 @@ a[href^="https://wa.me"],
 </footer>
 
 <script>
-  /* Hero portrait rotator — cycles all 8 team members every 5s. */
+  /* Hero portrait rotator — cycles all team members. */
   (function () {
     const stack = document.querySelector('.portrait');
     if (!stack) return;
     const imgs = Array.from(stack.querySelectorAll('.portrait-img'));
     if (imgs.length < 2) return;
     const caption = document.querySelector('.portrait-caption');
-    const nameEl = caption?.querySelector('.portrait-name');
-    const roleEl = caption?.querySelector('.portrait-role');
+    const nameEl   = caption?.querySelector('.portrait-name');
+    const titleEl  = caption?.querySelector('.portrait-title');
+    const boardEl  = caption?.querySelector('.portrait-board');
+    const regionEl = caption?.querySelector('.portrait-region');
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let i = 0;
     setInterval(() => {
@@ -2039,9 +2068,11 @@ a[href^="https://wa.me"],
       const nextImg = imgs[next];
       if (caption) caption.classList.add('is-fading');
       setTimeout(() => {
-        if (nameEl) nameEl.textContent = nextImg.dataset.name || '';
-        if (roleEl) roleEl.textContent = nextImg.dataset.role || '';
-        if (caption) caption.classList.remove('is-fading');
+        if (nameEl)   nameEl.textContent   = nextImg.dataset.name   || '';
+        if (titleEl)  titleEl.textContent  = nextImg.dataset.title  || '';
+        if (boardEl)  boardEl.textContent  = nextImg.dataset.board  || '';
+        if (regionEl) regionEl.textContent = nextImg.dataset.region || '';
+        if (caption)  caption.classList.remove('is-fading');
       }, 350);
       imgs[i].classList.remove('is-active');
       nextImg.classList.add('is-active');
