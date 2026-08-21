@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>#NetstarRESTORE — The Talking Point Group</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="Trauma support for Netstar clients, their families, and the teams who answer. A proposal from The Talking Point Group.">
+<meta property="og:title" content="#NetstarRESTORE">
+<meta property="og:description" content="The car comes back. The person doesn't, not straight away.">
+<style>
+@font-face{font-family:'Newsreader';src:url('assets/newsreader-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Newsreader';src:url('assets/newsreader-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Newsreader';src:url('assets/newsreader-400i.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Outfit';src:url('assets/outfit-300.woff2') format('woff2');font-weight:300;font-display:swap;}
+@font-face{font-family:'Outfit';src:url('assets/outfit-400.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'Outfit';src:url('assets/outfit-500.woff2') format('woff2');font-weight:500;font-display:swap;}
+@font-face{font-family:'JBMono';src:url('assets/jetbrains-600.woff2') format('woff2');font-weight:600;font-display:swap;}
+
+:root{
+  --navy:#0E1E3A; --paper:#fff; --paper-2:#FAFAFA; --paper-3:#F2F2F2;
+  --sage:#6BA930; --sage-bright:#8BC53F; --coral:#D93F1A;
+  --ink:#0E1E3A; --ink-soft:rgba(14,30,58,.72); --ink-mute:rgba(14,30,58,.50);
+  --hairline:rgba(14,30,58,.10);
+  --display:'Newsreader',Georgia,serif; --body:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'JBMono',ui-monospace,monospace;
+  --ease:cubic-bezier(.23,1,.32,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;
+  line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+.wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+
+/* nav */
+.nav{display:flex;align-items:center;justify-content:space-between;
+  max-width:760px;margin:0 auto;padding:22px 28px;}
+.nav img{height:56px;width:auto;}
+.nav .for{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-mute);font-weight:600;text-align:right;line-height:1.6;}
+
+/* hero */
+.hero{position:relative;background:var(--navy);min-height:clamp(460px,72vh,680px);
+  display:flex;align-items:flex-end;overflow:hidden;}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:50% 42%;opacity:.62;}
+.hero .wash{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(14,30,58,.42) 0%,rgba(14,30,58,.50) 38%,rgba(14,30,58,.88) 80%,#0E1E3A 100%);}
+.hero .inner{position:relative;width:100%;max-width:760px;margin:0 auto;padding:0 28px 64px;}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(32px,5vw,52px);line-height:1.05;
+  letter-spacing:-.03em;color:#fff;}
+.hero h1 em{font-style:italic;color:var(--sage-bright);}
+.hero .sub{font-family:var(--display);font-size:clamp(17px,2.2vw,21px);color:rgba(255,255,255,.8);
+  margin-top:22px;max-width:33em;line-height:1.45;}
+
+.eyebrow{display:inline-flex;align-items:center;gap:11px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;color:rgba(139,197,63,.95);font-weight:600;margin-bottom:22px;}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--sage-bright);
+  box-shadow:0 0 0 4px rgba(139,197,63,.2);flex:none;margin-right:11px;}
+
+section{padding:78px 0;border-top:1px solid var(--hairline);}
+section:first-of-type{border-top:none;}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.4vw,42px);line-height:1.1;
+  letter-spacing:-.03em;margin-bottom:30px;}
+h2 em{font-style:italic;color:var(--sage);}
+h3{font-family:var(--display);font-weight:500;font-size:22px;letter-spacing:-.012em;margin-bottom:14px;}
+p{color:var(--ink-soft);margin-bottom:20px;}
+p strong{font-weight:500;color:var(--ink);}
+.lede{font-family:var(--display);font-size:clamp(20px,2.7vw,26px);line-height:1.42;letter-spacing:-.012em;
+  color:var(--ink);margin-bottom:30px;}
+
+.reflect{text-align:center;margin:52px auto;max-width:34em;}
+.reflect .line{width:56px;height:1px;background:var(--sage);opacity:.6;margin:0 auto 26px;}
+.reflect .b{font-family:var(--display);font-style:italic;font-size:clamp(21px,2.9vw,27px);
+  line-height:1.38;letter-spacing:-.012em;color:var(--ink);}
+.reflect .b em{font-style:italic;color:var(--sage);}
+.reflect .attr{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-mute);font-weight:600;margin-top:22px;}
+
+.chats{display:flex;gap:18px;margin:34px 0 14px;flex-wrap:wrap;}
+.chats img{flex:1 1 300px;min-width:0;border-radius:14px;box-shadow:0 12px 34px -20px rgba(14,30,58,.4);}
+.cap{font-size:14px;color:var(--ink-mute);line-height:1.55;}
+
+.steps{margin-top:8px;}
+.steps div{padding:18px 0;border-top:1px solid var(--hairline);}
+.steps div:last-child{border-bottom:1px solid var(--hairline);}
+.steps b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--sage);font-weight:600;margin-bottom:7px;}
+.steps span{color:var(--ink-soft);}
+
+.cards{display:flex;gap:14px;margin:34px 0 26px;overflow-x:auto;padding-bottom:6px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.cards::-webkit-scrollbar{display:none;}
+.cards img{flex:0 0 168px;width:168px;border-radius:16px;
+  box-shadow:0 12px 32px -18px rgba(14,30,58,.24);}
+/* on laptop and up, break the row out of the reading measure so all five fit */
+@media (min-width:900px){
+  .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;overflow:visible;
+    width:calc(100% + 130px);margin-left:-65px;}
+  .cards img{width:100%;height:auto;flex:none;}
+}
+
+.promise{border-left:2px solid var(--sage);padding-left:24px;margin:26px 0;}
+.band{width:100%;border-radius:16px;margin:34px 0;}
+
+.closing{background:var(--paper-2);border-radius:18px;padding:38px 34px;margin-top:34px;}
+.closing .next{font-family:var(--display);font-size:clamp(21px,2.7vw,26px);line-height:1.35;
+  letter-spacing:-.012em;color:var(--ink);margin:0;}
+.closing .next em{font-style:italic;color:var(--sage);}
+.cta{display:inline-block;margin-top:26px;background:var(--navy);color:#fff;text-decoration:none;
+  font-family:var(--body);font-weight:500;font-size:16px;padding:15px 30px;border-radius:999px;
+  transition:transform 160ms var(--ease),background 160ms var(--ease);}
+.cta:hover{background:#17294b;transform:translateY(-1px);}
+
+footer{background:var(--navy);color:rgba(255,255,255,.62);padding:52px 0;margin-top:0;}
+footer .wrap{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-end;}
+footer .sc{font-family:var(--display);color:#fff;font-size:21px;letter-spacing:-.012em;}
+footer a{color:var(--sage-bright);text-decoration:none;}
+footer .m{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);font-weight:600;}
+
+@media (max-width:640px){
+  body{font-size:16px;}
+  section{padding:56px 0;}
+  .hero{min-height:clamp(400px,62vh,520px);}
+  .hero .inner{padding-bottom:48px;}
+  .nav img{height:42px;}
+  .closing{padding:30px 24px;}
+}
+@media print{ .cta{display:none;} .hero{min-height:auto;} }
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} html{scroll-behavior:auto;} }
+</style></head>
+<body>
+
+<div class="nav">
+  <img src="assets/logo.jpg" alt="The Talking Point">
+  <div class="for">Prepared for Netstar<br>August 2026</div>
+</div>
+
+<div class="hero">
+  <img src="assets/hero.jpg" alt="">
+  <div class="wash"></div>
+  <div class="inner">
+    <div class="eyebrow"><span class="dot"></span>A proposal for Netstar</div>
+    <h1>The car comes back.<br>The person <em>doesn't</em>,<br>not straight away.</h1>
+    <div class="sub">#NetstarRESTORE — trauma support for your clients, their families, and the teams who answer.</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <div class="eyebrow"><span class="dot"></span>What happens after the recovery</div>
+  <h2>Recovery is the first step.<br>Keeping her whole is <em>the rest of the job</em>.</h2>
+
+  <div class="lede">At 19:40 a woman presses the panic button on the N1. By 21:00 the car has been recovered and the case is closed. Nobody phones her again.</div>
+
+  <p>Netstar is very good at the part everyone can see. The control room answers, the recovery team moves, the vehicle comes home. On the night, that is the only thing that matters, and you do it better than almost anyone.</p>
+
+  <p>What nobody in this industry owns is the week afterwards. She does not sleep. She checks the locks four times. She will not drive at night, and she cannot explain to her children why she snapped at them on Saturday. Her husband tells people she was lucky. She knows she was, and it does not help.</p>
+
+  <p>Six weeks later she is still not right, and by then nobody connects it to the hijacking at all.</p>
+
+  <div class="reflect">
+    <div class="line"></div>
+    <div class="b">We would like to make <em>one phone call</em>. Once your control room tells us the danger has passed, one of our counsellors phones her. Not a survey. Not an SMS with a link. A person, with a name, who has time.</div>
+    <div class="attr">That is the whole of it</div>
+  </div>
+
+  <p>Everything else here is detail about how we would do it properly, and who would be on the other end of the line. We cannot undo what happened to her. We can sit with her in the days when it is loudest, notice early if it is becoming something worse, and make sure she knows she is not losing her mind. That is usually enough. When it is not, we get her to someone who can do more.</p>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="dot"></span>How the call reaches her</div>
+  <h2>Meet <em>ListenUp</em>.</h2>
+
+  <p>We work on WhatsApp, on purpose. Nobody downloads an app at eleven at night. The message arrives where she already talks to her sister, from a person, and she can answer in her own time. People who cannot yet say it out loud will very often type it.</p>
+
+  <div class="chats">
+    <img loading="lazy" src="assets/chat1.jpg" alt="A ListenUp conversation two hours after a hijacking">
+    <img loading="lazy" src="assets/chat2.jpg" alt="A ListenUp conversation the morning after a collision">
+  </div>
+  <p class="cap">Illustrative, but this is the tone and the pace. Real conversations stay between the person and the counsellor. Netstar would never see them.</p>
+
+  <h3 style="margin-top:44px">What follows the first call</h3>
+  <div class="steps">
+    <div><b>That night</b><span>Someone stays available. Not a queue, not a callback slot. A person who is awake.</span></div>
+    <div><b>The next morning</b><span>We check in, because the second day is often worse than the first and nobody warns people about that.</span></div>
+    <div><b>Day seven</b><span>We look at how she is sleeping and driving. If she needs a counsellor, we arrange it and we pay for it.</span></div>
+    <div><b>Day thirty, and again at ninety</b><span>Quieter calls. Most people are steadier by now. The ones who are not are the ones we would otherwise have missed.</span></div>
+  </div>
+
+  <p style="margin-top:26px">The same follows a serious accident, a home invasion, or a theft that leaves someone frightened in their own driveway. Cover reaches everyone who was in the car and the household, not only the name on the account.</p>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="dot"></span>Who answers</div>
+  <h2>People you can trust<br>to <em>hold her story</em>.</h2>
+
+  <p>Not a call centre and not a chatbot. Counsellors, social workers and psychologists, registered with the HPCSA and SACSSP, working across all nine provinces in the languages people actually want to cry in.</p>
+
+  <div class="cards">
+    <img loading="lazy" src="assets/c1.jpg" alt="James Sturdee, Registered Counsellor, KwaZulu-Natal">
+    <img loading="lazy" src="assets/c2.jpg" alt="Lindelani Magubane, Registered Counsellor, Gauteng">
+    <img loading="lazy" src="assets/c3.jpg" alt="Thobeka Siduko, Companion Counsellor, North West">
+    <img loading="lazy" src="assets/c4.jpg" alt="Nomakhosazana Silinga, Social Worker, Western Cape">
+    <img loading="lazy" src="assets/c5.jpg" alt="Dr Elzette Fritz, Educational Psychologist, Western Cape">
+  </div>
+
+  <p>Whoever answers at two in the morning is as qualified as whoever answers at ten. We have been doing this for nine years, and we already run this kind of outreach for some of the country's larger insurers.</p>
+
+  <h3 style="margin-top:44px">Two promises we would put in writing</h3>
+  <div class="promise">
+    <p><strong>We will not phone anyone until you tell us it is safe to.</strong> Your control room decides when the danger has passed. Safety, medical care and the police come first, every time, and we do not go near a person before you say so.</p>
+    <p style="margin-bottom:0"><strong>You will never see what she said.</strong> You would receive whether contact was made and whether the case closed. Not the conversation. We would not have anything worth having if people thought otherwise, and neither would you.</p>
+  </div>
+
+  <p class="cap">We take only a name, a number, the type of incident and roughly where it happened. No tracking history and no telemetry ever comes to us. Everything is held in South Africa under POPIA.</p>
+</section>
+
+<section>
+  <div class="eyebrow"><span class="dot"></span>Your own people</div>
+  <h2>And the person who took<br>her call at <em>19:40</em>.</h2>
+
+  <p>Your controller heard all of it. The shouting, the silence afterwards, whether she was still breathing. Then the call ended and she took the next one, and she will never find out how it turned out.</p>
+
+  <p>Recovery officers arrive at scenes with weapons and injuries. None of them will put their hand up and ask for help, because in that job you do not. It comes out instead as sick days, as short tempers, as good people quietly resigning after eleven years.</p>
+
+  <img class="band" loading="lazy" src="assets/circle.jpg" alt="">
+
+  <p>We would cover them too, on the same terms and with the same confidentiality: debriefing after the shifts that deserve it, group sessions built into the roster, and a number their families can use. Nothing said reaches HR. You would see only whether a team is carrying too much.</p>
+
+  <p>It is the part we feel most strongly about, and the part you could start tomorrow without touching a single client record.</p>
+
+  <h3 style="margin-top:44px">We think it is good business too</h3>
+  <p>A competitor can match your hardware, your coverage and your price. None of them can match the phone call. It also lands at the moment someone decides whether to renew, and it holds on to controllers who cost a fortune to replace. We will make that case properly when we meet, but it is not why we are proposing it.</p>
+
+  <div class="closing">
+    <p>Start small. One group of clients, one control room shift, six to eight weeks. Your control room refers by hand, so nothing has to be built. At the end you will know what people actually do when someone calls them, and we can talk about price against real numbers.</p>
+    <p class="next">We would like ninety minutes to agree <em>what we call about</em>, and who we start with.</p>
+    <a class="cta" href="mailto:info@thetalkingpoint.co.za?subject=NetstarRESTORE%20%E2%80%94%20let%27s%20find%2090%20minutes">Set up the conversation</a>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <div>
+    <div class="sc">The Talking Point Group</div>
+    <div style="margin-top:10px;font-size:15px">
+      021 300 2053 &nbsp;·&nbsp; <a href="mailto:info@thetalkingpoint.co.za">info@thetalkingpoint.co.za</a><br>
+      <a href="https://www.thetalkingpoint.co.za">thetalkingpoint.co.za</a>
+    </div>
+  </div>
+  <div class="m">Reg. 2017/519926/07<br>Brackenfell, Western Cape</div>
+</div></footer>
+
+</body></html>
