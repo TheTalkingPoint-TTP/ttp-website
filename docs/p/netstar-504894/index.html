@@ -79,7 +79,23 @@ p strong{font-weight:500;color:var(--ink);}
   color:var(--ink-mute);font-weight:600;margin-top:22px;}
 
 .chats{display:flex;gap:18px;margin:34px 0 14px;flex-wrap:wrap;}
-.chats img{flex:1 1 300px;min-width:0;border-radius:14px;box-shadow:0 12px 34px -20px rgba(14,30,58,.4);}
+.chat{flex:1 1 300px;min-width:0;margin:0;display:flex;flex-direction:column;
+  border-radius:14px;overflow:hidden;background:#ECE9E2;
+  box-shadow:0 12px 34px -20px rgba(14,30,58,.4);}
+.chat .tag{background:var(--navy);color:#fff;font-size:10px;font-weight:500;letter-spacing:.085em;
+  text-transform:uppercase;padding:11px 14px;}
+.chat .who{display:flex;align-items:center;gap:10px;background:#F7F8F3;padding:9px 14px;
+  border-bottom:1px solid rgba(14,30,58,.07);}
+.chat .who .av{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--sage-bright);
+  color:#fff;font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;}
+.chat .who b{display:block;font-size:13px;font-weight:500;line-height:1.25;}
+.chat .who i{display:block;font-size:10px;font-style:normal;color:var(--ink-mute);}
+.chat .log{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:14px;}
+.chat .m{max-width:78%;padding:8px 11px 5px;border-radius:10px;font-size:12.5px;font-weight:400;
+  line-height:1.44;color:var(--ink);box-shadow:0 1px 1px rgba(14,30,58,.06);}
+.chat .m.us{align-self:flex-end;background:#DFF1C8;}
+.chat .m.them{align-self:flex-start;background:#fff;}
+.chat .m time{display:block;text-align:right;font-size:9px;color:var(--ink-mute);margin-top:2px;}
 .cap{font-size:14px;color:var(--ink-mute);line-height:1.55;}
 
 .steps{margin-top:8px;}
@@ -108,10 +124,6 @@ p strong{font-weight:500;color:var(--ink);}
 .closing .next{font-family:var(--display);font-size:clamp(21px,2.7vw,26px);line-height:1.35;
   letter-spacing:-.012em;color:var(--ink);margin:0;}
 .closing .next em{font-style:italic;color:var(--sage);}
-.cta{display:inline-block;margin-top:26px;background:var(--navy);color:#fff;text-decoration:none;
-  font-family:var(--body);font-weight:500;font-size:16px;padding:15px 30px;border-radius:999px;
-  transition:transform 160ms var(--ease),background 160ms var(--ease);}
-.cta:hover{background:#17294b;transform:translateY(-1px);}
 
 footer{background:var(--navy);color:rgba(255,255,255,.62);padding:52px 0;margin-top:0;}
 footer .wrap{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-end;}
@@ -128,7 +140,7 @@ footer .m{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-tra
   .nav img{height:42px;}
   .closing{padding:30px 24px;}
 }
-@media print{ .cta{display:none;} .hero{min-height:auto;} }
+@media print{ .hero{min-height:auto;} }
 @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;} html{scroll-behavior:auto;} }
 </style></head>
 <body>
@@ -178,8 +190,40 @@ footer .m{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-tra
   <p>We work on WhatsApp, on purpose. Nobody downloads an app at eleven at night. The message arrives where she already talks to her sister, from a person, and she can answer in her own time. People who cannot yet say it out loud will very often type it.</p>
 
   <div class="chats">
-    <img loading="lazy" src="assets/chat1.jpg" alt="A ListenUp conversation two hours after a hijacking">
-    <img loading="lazy" src="assets/chat2.jpg" alt="A ListenUp conversation the morning after a collision">
+    <figure class="chat">
+      <div class="tag">Code red &middot; hijacking, two hours after</div>
+      <div class="who"><span class="av">L</span><span><b>ListenUp</b><i>online &middot; responding</i></span></div>
+      <div class="log">
+      <div class="m us">Hi Thabo. This is Nomsa from ListenUp. Netstar asked me to check in after tonight. You do not have to talk if you would rather not.<time>21:14</time></div>
+      <div class="m them">im ok. cant stop shaking though<time>21:16</time></div>
+      <div class="m us">That is your body doing exactly what it should after something like that. Are you somewhere safe right now?<time>21:17</time></div>
+      <div class="m them">yes im at my sisters place<time>21:19</time></div>
+      <div class="m us">Good. I am here tonight if you wake up and need someone. I will also check in tomorrow.<time>21:20</time></div>
+      <div class="m them">i keep thinking i shouldve done something<time>21:23</time></div>
+      <div class="m us">You did the thing that mattered. Everyone came home. That thought is very common, and it is not the truth.<time>21:24</time></div>
+      <div class="m them">my daughter was in the back seat<time>21:27</time></div>
+      <div class="m us">Then we look after her too. She is covered, at no cost to you. Children often show it a few days later rather than tonight.<time>21:28</time></div>
+      <div class="m them">ok. thank you<time>21:31</time></div>
+      <div class="m us">Sleep if it comes. I will message at nine. If tonight gets long before then, type here.<time>21:32</time></div>
+      </div>
+    </figure>
+    <figure class="chat">
+      <div class="tag">Code amber &middot; collision, next morning</div>
+      <div class="who"><span class="av">L</span><span><b>ListenUp</b><i>online &middot; responding</i></span></div>
+      <div class="log">
+      <div class="m us">Morning Lerato. Netstar picked up the collision yesterday afternoon. How did last night go?<time>07:40</time></div>
+      <div class="m them">Badly. Every time I close my eyes I see the bakkie coming.<time>08:22</time></div>
+      <div class="m us">That replaying is very normal in the first week. It usually settles. Is driving today feeling possible, or not yet?<time>08:24</time></div>
+      <div class="m them">Not yet. My husband is taking me to work.<time>08:31</time></div>
+      <div class="m us">That is a sensible call, not a setback. Shall we talk properly this week?<time>08:33</time></div>
+      <div class="m them">i think so. im scared ill be like this for months<time>08:36</time></div>
+      <div class="m us">Most people are steadier within a few weeks. If you are not, that is exactly who we keep watching, and we arrange a counsellor and cover it.<time>08:38</time></div>
+      <div class="m them">thursday could work<time>08:41</time></div>
+      <div class="m us">Thursday then. I will remind you on Wednesday evening, and on day seven I will ask about your sleep and your driving.<time>08:42</time></div>
+      <div class="m them">thank you. that helps<time>08:44</time></div>
+      <div class="m us">It is what we are here for. None of this goes back to Netstar.<time>08:45</time></div>
+      </div>
+    </figure>
   </div>
   <p class="cap">Illustrative, but this is the tone and the pace. Real conversations stay between the person and the counsellor. Netstar would never see them.</p>
 
@@ -239,7 +283,6 @@ footer .m{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-tra
   <div class="closing">
     <p>Start small. One group of clients, one control room shift, six to eight weeks. Your control room refers by hand, so nothing has to be built. At the end you will know what people actually do when someone calls them, and we can talk about price against real numbers.</p>
     <p class="next">We would like ninety minutes to agree <em>what we call about</em>, and who we start with.</p>
-    <a class="cta" href="mailto:info@thetalkingpoint.co.za?subject=NetstarRESTORE%20%E2%80%94%20let%27s%20find%2090%20minutes">Set up the conversation</a>
   </div>
 </section>
 
