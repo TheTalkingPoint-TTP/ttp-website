@@ -1738,6 +1738,30 @@ a[href^="https://wa.me"],
         <span class="team-card-meta"><span class="team-card-board">ASCHP</span> · <span class="team-card-region">Western Cape</span></span>
       </div>
     </div>
+    <div class="team-card">
+      <img src="assets/img/emma-dorrington.jpeg" alt="Emma Dorrington" loading="lazy" />
+      <div class="team-card-caption">
+        <span class="team-card-name">Emma Dorrington</span>
+        <span class="team-card-title">Registered Counsellor</span>
+        <span class="team-card-meta"><span class="team-card-board">HPCSA</span> · <span class="team-card-region">Western Cape</span></span>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="assets/img/madelynn-diesel.jpeg" alt="Madelynn Diesel" loading="lazy" />
+      <div class="team-card-caption">
+        <span class="team-card-name">Madelynn Diesel</span>
+        <span class="team-card-title">Social Worker</span>
+        <span class="team-card-meta"><span class="team-card-board">SACSSP</span> · <span class="team-card-region">Eastern Cape</span></span>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="assets/img/paddy-venner.jpg" alt="Paddy Venner" loading="lazy" />
+      <div class="team-card-caption">
+        <span class="team-card-name">Paddy Venner</span>
+        <span class="team-card-title">Life Coach</span>
+        <span class="team-card-meta"><span class="team-card-board">COMENSA</span> · <span class="team-card-region">Western Cape</span></span>
+      </div>
+    </div>
     <!-- Duplicated set (aria-hidden — seamless loop) -->
     <div class="team-card" aria-hidden="true">
       <img src="assets/img/bianca-lawrence.jpg" alt="" loading="lazy" />
@@ -1809,6 +1833,30 @@ a[href^="https://wa.me"],
         <span class="team-card-name">Eduan Greyling</span>
         <span class="team-card-title">Specialist Wellness Counsellor</span>
         <span class="team-card-meta"><span class="team-card-board">ASCHP</span> · <span class="team-card-region">Western Cape</span></span>
+      </div>
+    </div>
+    <div class="team-card" aria-hidden="true">
+      <img src="assets/img/emma-dorrington.jpeg" alt="" loading="lazy" />
+      <div class="team-card-caption">
+        <span class="team-card-name">Emma Dorrington</span>
+        <span class="team-card-title">Registered Counsellor</span>
+        <span class="team-card-meta"><span class="team-card-board">HPCSA</span> · <span class="team-card-region">Western Cape</span></span>
+      </div>
+    </div>
+    <div class="team-card" aria-hidden="true">
+      <img src="assets/img/madelynn-diesel.jpeg" alt="" loading="lazy" />
+      <div class="team-card-caption">
+        <span class="team-card-name">Madelynn Diesel</span>
+        <span class="team-card-title">Social Worker</span>
+        <span class="team-card-meta"><span class="team-card-board">SACSSP</span> · <span class="team-card-region">Eastern Cape</span></span>
+      </div>
+    </div>
+    <div class="team-card" aria-hidden="true">
+      <img src="assets/img/paddy-venner.jpg" alt="" loading="lazy" />
+      <div class="team-card-caption">
+        <span class="team-card-name">Paddy Venner</span>
+        <span class="team-card-title">Life Coach</span>
+        <span class="team-card-meta"><span class="team-card-board">COMENSA</span> · <span class="team-card-region">Western Cape</span></span>
       </div>
     </div>
   </div>
@@ -2457,6 +2505,86 @@ a[href^="https://wa.me"],
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M27.3 4.63A15.86 15.86 0 0 0 16 0C7.16 0 0 7.16 0 16c0 2.82.74 5.56 2.14 7.98L0 32l8.24-2.15A15.9 15.9 0 0 0 16 32c8.84 0 16-7.16 16-16 0-4.27-1.66-8.28-4.7-11.37zM16 29.34a13.34 13.34 0 0 1-6.8-1.86l-.49-.29-4.88 1.27 1.3-4.75-.32-.5A13.36 13.36 0 1 1 29.36 16c0 7.35-5.99 13.34-13.36 13.34zm7.32-9.98c-.4-.2-2.37-1.17-2.74-1.3-.37-.14-.63-.2-.9.2-.27.4-1.03 1.3-1.26 1.56-.23.27-.46.3-.86.1-.4-.2-1.7-.63-3.23-2-1.2-1.07-2-2.39-2.24-2.79-.23-.4-.02-.62.17-.82.18-.18.4-.47.6-.7.2-.23.27-.4.4-.66.14-.27.07-.5-.03-.7-.1-.2-.9-2.17-1.24-2.97-.32-.78-.65-.67-.9-.68-.23-.01-.5-.02-.77-.02-.27 0-.7.1-1.07.5-.37.4-1.4 1.37-1.4 3.34 0 1.97 1.43 3.87 1.63 4.14.2.27 2.82 4.3 6.83 6.03 2.55 1.1 3.55 1.19 4.83 1 .78-.12 2.37-.97 2.7-1.9.34-.94.34-1.74.24-1.9-.1-.17-.37-.27-.77-.47z"/></svg>
   <span class="wa-floater-label">Chat to us</span>
 </a>
+
+<script>
+(function () {
+  const section = document.querySelector('.team-marquee');
+  const track = document.querySelector('.team-marquee-track');
+  if (!section || !track) return;
+
+  function getTranslateX() {
+    return new DOMMatrix(getComputedStyle(track).transform).m41;
+  }
+
+  function captureAndPause() {
+    const tx = getTranslateX();
+    track.style.animationPlayState = 'paused';
+    track.style.transform = 'translateX(' + tx + 'px)';
+    return tx;
+  }
+
+  function resumeFrom(tx) {
+    const halfW = track.scrollWidth / 2;
+    const dur = parseFloat(getComputedStyle(track).animationDuration) || 90;
+    let n = tx % halfW;
+    if (n > 0) n -= halfW;
+    track.style.transform = '';
+    track.style.animationDelay = (-(Math.abs(n) / halfW) * dur) + 's';
+    track.style.animationPlayState = '';
+  }
+
+  // Drag
+  let dragging = false, dragStartX = 0, dragOffset = 0;
+  section.addEventListener('mousedown', function (e) {
+    dragging = true;
+    dragStartX = e.clientX;
+    dragOffset = captureAndPause();
+    section.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (!dragging) return;
+    dragOffset += e.clientX - dragStartX;
+    dragStartX = e.clientX;
+    track.style.transform = 'translateX(' + dragOffset + 'px)';
+  });
+  window.addEventListener('mouseup', function () {
+    if (!dragging) return;
+    dragging = false;
+    section.style.cursor = '';
+    resumeFrom(dragOffset);
+  });
+
+  // Wheel / trackpad
+  let wheelActive = false, wheelOffset = 0, wheelTimer;
+  section.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    if (!wheelActive) { wheelOffset = captureAndPause(); wheelActive = true; }
+    wheelOffset -= (e.deltaX || e.deltaY) * 0.8;
+    track.style.transform = 'translateX(' + wheelOffset + 'px)';
+    clearTimeout(wheelTimer);
+    wheelTimer = setTimeout(function () {
+      resumeFrom(wheelOffset);
+      wheelActive = false;
+    }, 900);
+  }, { passive: false });
+
+  // Touch
+  let touchStartX = 0, touchOffset = 0;
+  section.addEventListener('touchstart', function (e) {
+    touchStartX = e.touches[0].clientX;
+    touchOffset = captureAndPause();
+  }, { passive: true });
+  section.addEventListener('touchmove', function (e) {
+    touchOffset += e.touches[0].clientX - touchStartX;
+    touchStartX = e.touches[0].clientX;
+    track.style.transform = 'translateX(' + touchOffset + 'px)';
+  }, { passive: true });
+  section.addEventListener('touchend', function () {
+    resumeFrom(touchOffset);
+  });
+})();
+</script>
 
 </body>
 </html>
