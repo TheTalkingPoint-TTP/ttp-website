@@ -2512,77 +2512,102 @@ a[href^="https://wa.me"],
   const track = document.querySelector('.team-marquee-track');
   if (!section || !track) return;
 
-  function getTranslateX() {
-    return new DOMMatrix(getComputedStyle(track).transform).m41;
+  // Take over from CSS animation
+  track.style.animation = 'none';
+
+  const AUTO_SPEED = 0.55; // px per frame at ~60fps
+  let pos = 0;
+  let momentum = 0;
+  let dragging = false;
+  let hovering = false;
+  let lastDx = 0;
+
+  function halfW() { return track.scrollWidth / 2; }
+
+  function normalise(p) {
+    var hw = halfW();
+    p = p % hw;
+    if (p > 0) p -= hw;
+    return p;
   }
 
-  function captureAndPause() {
-    const tx = getTranslateX();
-    track.style.animationPlayState = 'paused';
-    track.style.transform = 'translateX(' + tx + 'px)';
-    return tx;
+  function tick() {
+    if (dragging) {
+      // position updated by mousemove/touchmove
+    } else if (hovering) {
+      // bleed momentum off, then hold
+      momentum *= 0.94;
+      pos += momentum;
+    } else {
+      // auto-scroll; blend in auto speed after momentum fades
+      var target = -AUTO_SPEED;
+      momentum += (target - momentum) * 0.04;
+      pos += momentum;
+    }
+    pos = normalise(pos);
+    track.style.transform = 'translateX(' + pos + 'px)';
+    requestAnimationFrame(tick);
   }
 
-  function resumeFrom(tx) {
-    const halfW = track.scrollWidth / 2;
-    const dur = parseFloat(getComputedStyle(track).animationDuration) || 90;
-    let n = tx % halfW;
-    if (n > 0) n -= halfW;
-    track.style.transform = '';
-    track.style.animationDelay = (-(Math.abs(n) / halfW) * dur) + 's';
-    track.style.animationPlayState = '';
-  }
+  // Hover
+  section.addEventListener('mouseenter', function () {
+    hovering = true;
+    section.style.cursor = 'grab';
+  });
+  section.addEventListener('mouseleave', function () {
+    hovering = false;
+    section.style.cursor = '';
+    if (!dragging) momentum = 0;
+  });
 
   // Drag
-  let dragging = false, dragStartX = 0, dragOffset = 0;
+  var lastX = 0;
   section.addEventListener('mousedown', function (e) {
     dragging = true;
-    dragStartX = e.clientX;
-    dragOffset = captureAndPause();
+    lastX = e.clientX;
+    lastDx = 0;
+    momentum = 0;
     section.style.cursor = 'grabbing';
     e.preventDefault();
   });
   window.addEventListener('mousemove', function (e) {
     if (!dragging) return;
-    dragOffset += e.clientX - dragStartX;
-    dragStartX = e.clientX;
-    track.style.transform = 'translateX(' + dragOffset + 'px)';
+    lastDx = e.clientX - lastX;
+    lastX = e.clientX;
+    pos += lastDx;
   });
   window.addEventListener('mouseup', function () {
     if (!dragging) return;
     dragging = false;
+    hovering = false;
     section.style.cursor = '';
-    resumeFrom(dragOffset);
+    momentum = lastDx; // carry drag speed into free-scroll
   });
 
   // Wheel / trackpad
-  let wheelActive = false, wheelOffset = 0, wheelTimer;
   section.addEventListener('wheel', function (e) {
     e.preventDefault();
-    if (!wheelActive) { wheelOffset = captureAndPause(); wheelActive = true; }
-    wheelOffset -= (e.deltaX || e.deltaY) * 0.8;
-    track.style.transform = 'translateX(' + wheelOffset + 'px)';
-    clearTimeout(wheelTimer);
-    wheelTimer = setTimeout(function () {
-      resumeFrom(wheelOffset);
-      wheelActive = false;
-    }, 900);
+    pos -= (e.deltaX || e.deltaY) * 0.9;
+    momentum = 0;
   }, { passive: false });
 
   // Touch
-  let touchStartX = 0, touchOffset = 0;
+  var touchX = 0;
   section.addEventListener('touchstart', function (e) {
-    touchStartX = e.touches[0].clientX;
-    touchOffset = captureAndPause();
+    touchX = e.touches[0].clientX;
+    lastDx = 0;
+    momentum = 0;
   }, { passive: true });
   section.addEventListener('touchmove', function (e) {
-    touchOffset += e.touches[0].clientX - touchStartX;
-    touchStartX = e.touches[0].clientX;
-    track.style.transform = 'translateX(' + touchOffset + 'px)';
+    lastDx = e.touches[0].clientX - touchX;
+    touchX = e.touches[0].clientX;
+    pos += lastDx;
   }, { passive: true });
   section.addEventListener('touchend', function () {
-    resumeFrom(touchOffset);
+    momentum = lastDx;
   });
+
+  requestAnimationFrame(tick);
 })();
 </script>
 
