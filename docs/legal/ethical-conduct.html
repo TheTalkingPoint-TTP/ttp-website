@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════
+  Ethical conduct policy — The Talking Point (TTP)
+  A legal / governance document. Findable via footer only.
+═══════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ethical conduct policy · The Talking Point</title>
+<meta name="description" content="The principles, responsibilities and reporting channels that guide how everyone at The Talking Point conducts business — with each other, with clients, and with the wider community." />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #FFFFFF;
+    --paper-2: #FAFAFA;
+    --paper-3: #F2F2F2;
+    --navy: #0E1E3A;
+    --ink: #0E1E3A;
+    --ink-soft: rgba(14, 30, 58, 0.72);
+    --ink-mute: rgba(14, 30, 58, 0.50);
+    --ink-faint: rgba(14, 30, 58, 0.32);
+    --hairline: rgba(14, 30, 58, 0.10);
+    --hairline-strong: rgba(14, 30, 58, 0.18);
+    --sage: #6BA930;
+    --sage-bright: #8BC53F;
+    --sage-tint: rgba(139, 197, 63, 0.12);
+    --coral: #D93F1A;
+    --display: "Newsreader", Georgia, serif;
+    --body: "Outfit", -apple-system, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --measure: 960px;
+    --measure-wide: 1120px;
+    --measure-read: 720px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; height: auto; display: block; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ── CRISIS STRIP ── */
+  .crisis {
+    background: var(--navy);
+    padding: 12px 32px;
+    display: flex; justify-content: center; align-items: center;
+    gap: 18px;
+    font-family: var(--body); font-size: 13.5px;
+    color: rgba(255,255,255,0.82);
+    flex-wrap: wrap;
+  }
+  .crisis .icon {
+    width: 22px; height: 22px;
+    background: var(--coral); color: var(--paper);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+  }
+  .crisis a {
+    color: var(--sage-bright);
+    font-weight: 600;
+    display: inline-block;
+    transition: color 150ms var(--ease-out), transform 140ms var(--ease-out);
+  }
+  .crisis a:hover { color: #FFFFFF; }
+  .crisis a:active { transform: scale(0.97); }
+  .crisis .sep { color: rgba(255,255,255,0.35); }
+
+  /* ── NAV ── */
+  .nav {
+    padding: 22px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px;
+    max-width: 1440px; margin: 0 auto;
+  }
+  .logo { display: inline-flex; align-items: center; gap: 12px; }
+  .logo-plate { display: inline-flex; align-items: center; justify-content: center; padding: 0; background: transparent; border-radius: 0; box-shadow: none; }
+  .logo-plate img { height: 78px; width: auto; display: block; }
+  .nav-links {
+    display: flex; gap: 30px; font-size: 15px;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-links a {
+    display: inline-block;
+    transition: color 150ms var(--ease-out), transform 140ms var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:active { transform: scale(0.96); }
+
+  /* ── HERO — restrained ── */
+  .lp-hero {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: clamp(56px, 8vw, 96px) 40px clamp(28px, 4vw, 44px);
+  }
+  @media (max-width: 720px) { .lp-hero { padding: 48px 24px 24px; } }
+
+  .lp-eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 28px;
+  }
+  .lp-eyebrow::before {
+    content: ""; width: 32px; height: 1px; background: var(--sage);
+  }
+  .lp-title {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 60;
+    font-weight: 380;
+    font-style: italic;
+    font-size: clamp(38px, 5.4vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    max-width: 20ch;
+  }
+  .lp-sub {
+    margin-top: 22px;
+    font-family: var(--display);
+    font-variation-settings: "opsz" 22;
+    font-weight: 380;
+    font-size: clamp(17px, 1.6vw, 20px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 56ch;
+  }
+
+  /* ── META STRIP ── */
+  .lp-meta-wrap {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  @media (max-width: 720px) { .lp-meta-wrap { padding: 0 24px; } }
+  .lp-meta {
+    background: var(--paper-2);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 6px 4px;
+    max-width: var(--measure-read);
+  }
+  .lp-meta dl {
+    display: grid;
+    grid-template-columns: minmax(160px, 220px) 1fr;
+    margin: 0;
+  }
+  .lp-meta dt, .lp-meta dd {
+    padding: 14px 20px;
+    border-top: 1px solid var(--hairline);
+    margin: 0;
+  }
+  .lp-meta dt:first-of-type, .lp-meta dd:first-of-type { border-top: 0; }
+  .lp-meta dt {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+    align-self: center;
+  }
+  .lp-meta dd {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 22;
+    font-weight: 400;
+    font-size: 16.5px;
+    color: var(--ink);
+    align-self: center;
+  }
+  @media (max-width: 560px) {
+    .lp-meta dl { grid-template-columns: 1fr; }
+    .lp-meta dt { padding-bottom: 2px; border-top: 1px solid var(--hairline); }
+    .lp-meta dd { padding-top: 2px; padding-bottom: 14px; border-top: 0; }
+    .lp-meta dt:first-of-type { border-top: 0; }
+  }
+
+  /* ── BODY ── */
+  .lp-body {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: clamp(56px, 7vw, 88px) 40px clamp(48px, 6vw, 72px);
+  }
+  @media (max-width: 720px) { .lp-body { padding: 56px 24px 40px; } }
+  .lp-body-inner { max-width: var(--measure-read); }
+
+  .lp-section { margin-top: clamp(40px, 5vw, 56px); }
+  .lp-section:first-child { margin-top: 0; }
+
+  .lp-section-num {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .lp-section-num::before {
+    content: ""; width: 20px; height: 1px; background: var(--sage);
+  }
+
+  .lp-body h2 {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 44;
+    font-weight: 400;
+    font-size: clamp(24px, 2.6vw, 32px);
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+    max-width: 32ch;
+  }
+  .lp-body h3 {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 30;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 28px 0 10px;
+  }
+  .lp-body p {
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .lp-body p strong { color: var(--ink); font-weight: 600; }
+  .lp-body p b { color: var(--ink); font-weight: 600; }
+  .lp-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 18px;
+  }
+  .lp-body ul li {
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .lp-body ul li::before {
+    content: "";
+    position: absolute;
+    left: 4px; top: 12px;
+    width: 6px; height: 1px;
+    background: var(--ink-faint);
+  }
+  .lp-body ul ul { margin: 8px 0 8px; }
+  .lp-body ul ul li::before {
+    background: transparent;
+    border: 1px solid var(--ink-faint);
+    border-radius: 50%;
+    width: 4px; height: 4px;
+    top: 10px; left: 4px;
+  }
+  .lp-body a {
+    color: var(--sage);
+    border-bottom: 1px solid rgba(107,169,48,0.4);
+    padding-bottom: 1px;
+    transition: border-color 150ms var(--ease-out);
+  }
+  .lp-body a:hover { border-bottom-color: var(--sage); }
+  .lp-body strong.term { color: var(--ink); font-weight: 600; }
+
+  /* Definitions block (bold term + inline description) */
+  .lp-defs { margin: 6px 0 18px; }
+  .lp-defs p { margin-bottom: 10px; }
+
+  /* Contact card (used in Complaints policy) */
+  .lp-contact-card {
+    margin-top: 24px;
+    padding: 22px 26px;
+    background: var(--paper-2);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    font-family: var(--body);
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .lp-contact-card .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* ── CLOSE ── */
+  .lp-close {
+    background: var(--paper-2);
+    padding: clamp(56px, 8vw, 96px) 40px;
+    text-align: center;
+    border-top: 1px solid var(--hairline);
+  }
+  .lp-close h2 {
+    font-family: var(--display);
+    font-variation-settings: "opsz" 48;
+    font-weight: 380;
+    font-size: clamp(26px, 3.4vw, 38px);
+    line-height: 1.14;
+    letter-spacing: -0.022em;
+    color: var(--ink); margin-bottom: 16px;
+    max-width: 24ch;
+    margin-left: auto; margin-right: auto;
+  }
+  .lp-close h2 em { font-style: italic; color: var(--sage); }
+  .lp-close p {
+    font-size: 15.5px; color: var(--ink-soft);
+    max-width: 52ch;
+    margin: 0 auto 28px;
+    line-height: 1.65;
+  }
+  .lp-close-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink); color: var(--paper);
+    padding: 14px 24px; border-radius: 999px;
+    font-family: var(--body); font-weight: 600;
+    font-size: 14.5px;
+    transition: transform 160ms var(--ease-out), background 200ms var(--ease-out);
+  }
+  .lp-close-cta:hover { background: #1a2d4d; }
+  @media (hover: hover) and (pointer: fine) {
+    .lp-close-cta:hover { transform: translateY(-2px); }
+  }
+  .lp-close-cta:active { transform: scale(0.97); }
+
+  /* ── FOOTER (4-column, matching index.html) ── */
+  .footer {
+    background: var(--paper-3);
+    padding: 64px 40px 40px;
+    font-family: var(--body);
+    color: var(--ink-soft);
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .footer-inner { grid-template-columns: 1fr; gap: 36px; } }
+  .footer-brand .logo img { height: 78px; }
+  .footer-col h5 {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; }
+  .footer-col li {
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+    color: var(--ink-soft);
+  }
+  .footer-col li a { color: inherit; display: inline-block; transition: color 150ms var(--ease-out), transform 140ms var(--ease-out); }
+  .footer-col li a:hover { color: var(--ink); }
+  .footer-col li a:active { transform: scale(0.97); }
+  .footer-col li a.crisis-link { color: var(--coral); font-weight: 600; }
+  .footer-col li strong { color: var(--ink); font-weight: 600; }
+  .footer-brand p {
+    font-size: 14.5px; line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 18px 0 18px;
+    max-width: 32ch;
+  }
+  .footer-contact {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .footer-contact li { font-size: 14px; }
+  .footer-contact a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 1px;
+    transition: color 150ms var(--ease-out), border-color 150ms var(--ease-out), transform 140ms var(--ease-out);
+    display: inline-block;
+  }
+  .footer-contact a:hover { color: var(--sage); border-color: var(--sage); }
+  .footer-contact a:active { transform: scale(0.97); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .footer-bottom a { color: var(--ink-soft); }
+
+  /* WA floater (kept in DOM but hidden by hide-whatsapp) */
+  .wa-floater {
+    position: fixed; right: 20px; bottom: 20px; z-index: 900;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 20px 14px 16px;
+    background: #25D366; color: #FFFFFF;
+    border-radius: 999px;
+    font-family: "Outfit", sans-serif;
+    font-size: 14px; font-weight: 600;
+    box-shadow: 0 12px 30px -8px rgba(37,211,102,0.55), 0 4px 14px rgba(0,0,0,0.18);
+    text-decoration: none;
+  }
+  .wa-floater svg { width: 22px; height: 22px; display: block; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .crisis, .nav, .footer, .wa-floater, .lp-close { display: none !important; }
+    body { background: #fff; color: #000; }
+    .lp-hero, .lp-meta-wrap, .lp-body { max-width: 100%; padding: 0 0 16pt; }
+    .lp-title { font-size: 24pt; color: #000; }
+    .lp-sub, .lp-body p, .lp-body li { font-size: 11pt; color: #000; line-height: 1.5; }
+    .lp-body h2 { font-size: 15pt; color: #000; margin-top: 18pt; }
+    .lp-body h3 { font-size: 12pt; color: #000; }
+    .lp-meta { background: transparent; border: 1px solid #999; }
+    .lp-meta dt, .lp-meta dd { color: #000; }
+    .lp-body a { color: #000; border-bottom: 1px solid #666; }
+    .lp-section-num, .lp-eyebrow { color: #444; }
+    @page { margin: 18mm; }
+  }
+</style>
+<style id="hide-whatsapp">
+/* ── WhatsApp temporarily removed per stakeholder request ──
+   Restore by deleting every <style id="hide-whatsapp"> block. */
+.wa-floater,
+.wa-floater--stack,
+a[href*="wa.me"],
+a[href^="https://wa.me"],
+.footer-contact li:has(a[href*="wa.me"]) { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ CRISIS STRIP -->
+<div class="crisis">
+  <span class="icon">!</span>
+  <span>Not okay right now? <strong><a href="../tonight.html">Go to Tonight</a></strong></span>
+  <span class="sep">·</span>
+  <span>SADAG · <strong><a href="tel:0800567567">0800 567 567</a></strong></span>
+</div>
+
+<!-- ═══════════════════════════════════════════════ NAV -->
+<nav class="nav">
+  <a href="../index.html" class="logo" aria-label="The Talking Point, home">
+    <span class="logo-plate"><img src="../assets/img/ttp-logo-navy.png" alt="The Talking Point" /></span>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html#paths">Where to start</a>
+    <a href="../someone-you-love.html">Someone I love</a>
+    <a href="../services/mediation.html">Mediation</a>
+    <a href="../schools.html">School</a>
+    <a href="../quiet.html">Audio library</a>
+    <a href="../tonight.html" style="color: var(--coral); font-weight: 600;">Tonight</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ HERO -->
+<header class="lp-hero">
+  <span class="lp-eyebrow">Legal · effective 3 April 2024</span>
+  <h1 class="lp-title">Ethical conduct policy.</h1>
+  <p class="lp-sub">The principles, responsibilities and reporting channels that guide how everyone at The Talking Point conducts business — with each other, with clients, and with the wider community.</p>
+</header>
+
+<!-- ═══════════════════════════════════════════════ META STRIP -->
+<div class="lp-meta-wrap">
+  <div class="lp-meta" aria-label="Policy metadata">
+    <dl>
+      <dt>Policy owner</dt>
+      <dd>The Talking Point Group</dd>
+      <dt>Effective date</dt>
+      <dd>3 April 2024</dd>
+      <dt>Version</dt>
+      <dd>1.0 · last revised 3 April 2024</dd>
+    </dl>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ BODY -->
+<main class="lp-body">
+  <div class="lp-body-inner">
+    <section class="lp-section" id="s1">
+      <span class="lp-section-num">Section 01</span>
+      <h2>Purpose</h2>
+      <p>At The Talking Point (TTP), we are committed to conducting our business with the highest standards of ethics, integrity, and transparency. This Ethical Conduct Policy outlines the principles and guidelines that all employees, contractors, and stakeholders must adhere to in their interactions and decision-making processes.</p>
+    </section>
+
+    <section class="lp-section" id="s2">
+      <span class="lp-section-num">Section 02</span>
+      <h2>Scope</h2>
+      <p>The scope of this Ethical Conduct Policy is to:</p>
+      <ul>
+        <li>Define the ethical standards and expectations for behaviour within TTP.</li>
+        <li>Promote a culture of honesty, fairness, and respect in all business dealings.</li>
+        <li>Provide guidance on identifying and addressing ethical dilemmas and conflicts of interest.</li>
+        <li>Ensure compliance with applicable laws, regulations, and industry standards.</li>
+      </ul>
+    </section>
+
+    <section class="lp-section" id="s3">
+      <span class="lp-section-num">Section 03</span>
+      <h2>Core principles</h2>
+      <p>TTP is guided by the following core principles of ethical conduct in respect of colleagues, clients, contractors, and stakeholders:</p>
+      <div class="lp-defs">
+        <p><strong class="term">Integrity:</strong> Act honestly and ethically in all business activities, maintaining the highest standards of personal and professional integrity.</p>
+        <p><strong class="term">Respect:</strong> Treat all individuals with dignity, fairness, and respect, regardless of their background, beliefs, or position.</p>
+        <p><strong class="term">Transparency:</strong> Conduct business transparently, providing accurate and truthful information to stakeholders and avoiding deceptive or misleading practices.</p>
+        <p><strong class="term">Compliance:</strong> Adhere to all applicable laws, regulations, and internal policies, ensuring legal and regulatory compliance in all business operations.</p>
+        <p><strong class="term">Confidentiality:</strong> Safeguard confidential and proprietary information of TTP, clients, contractors, and stakeholders, and respect the privacy rights of individuals.</p>
+      </div>
+    </section>
+
+    <section class="lp-section" id="s4">
+      <span class="lp-section-num">Section 04</span>
+      <h2>Responsibilities</h2>
+      <h3>Management</h3>
+      <p>Senior management and leaders are responsible for setting a positive example of ethical conduct, fostering a culture of integrity, and providing guidance and support to employees.</p>
+      <h3>Employees and management</h3>
+      <p>All employees are expected to familiarise themselves with this Ethical Conduct Policy, comply with its principles and guidelines, and report any unethical behaviour or violations observed.</p>
+      <div class="lp-defs" style="margin-top:18px;">
+        <p><strong class="term">Conflict of Interest:</strong> Avoid conflicts of interest that may compromise objectivity or impartiality in decision-making. Disclose any potential conflicts of interest to management or the appropriate authority.</p>
+        <p><strong class="term">Anti-Corruption:</strong> Prohibit bribery, corruption, kickbacks, and other unethical practices, whether involving public officials, private individuals, or business partners.</p>
+        <p><strong class="term">Fair Competition:</strong> Engage in fair and ethical competition, respecting the rights of competitors and refraining from unfair trade practices, price-fixing, or market manipulation.</p>
+        <p><strong class="term">Gifts and Entertainment:</strong> Exercise discretion and moderation when giving or receiving gifts, hospitality, or entertainment, ensuring they do not influence business decisions or create obligations.</p>
+        <p><strong class="term">Data Privacy:</strong> Respect and protect the privacy of personal and sensitive information, comply with data protection laws, and obtain consent for collecting and processing personal data.</p>
+        <p><strong class="term">Environmental Responsibility:</strong> Promote sustainable practices, minimize environmental impact, and comply with environmental laws and regulations.</p>
+        <p><strong class="term">Compliance with Laws and Regulations:</strong> All employees, contractors and representatives must comply with applicable laws and regulations in the countries where we operate. Ignorance of the law is not an excuse, and employees and representatives are encouraged to seek guidance when unsure about legal requirements.</p>
+      </div>
+    </section>
+
+    <section class="lp-section" id="s5">
+      <span class="lp-section-num">Section 05</span>
+      <h2>Reporting violations</h2>
+      <p>Employees, representatives, contractors, and stakeholders are encouraged to report any suspected violations of this Ethical Conduct Policy or unethical behaviour to <a href="mailto:info@thetalkingpoint.co.za">info@thetalkingpoint.co.za</a>.</p>
+      <p>Reports may be made anonymously, and retaliation against individuals who report violations in good faith is strictly prohibited.</p>
+    </section>
+
+    <section class="lp-section" id="s6">
+      <span class="lp-section-num">Section 06</span>
+      <h2>Consequences of non-compliance</h2>
+      <p>Violations of this Ethical Conduct Policy may result in disciplinary action, up to and including termination of employment or contractual relationship. Additionally, legal consequences may apply if violations involve criminal conduct or breach of laws.</p>
+    </section>
+
+    <section class="lp-section" id="s7">
+      <span class="lp-section-num">Section 07</span>
+      <h2>Review and approval</h2>
+      <p>This Ethical Conduct Policy will be reviewed periodically to ensure its effectiveness, relevance, and alignment with evolving ethical standards, legal requirements, and industry best practices.</p>
+    </section>
+  </div>
+</main>
+
+
+
+<!-- ═══════════════════════════════════════════════ CLOSE -->
+<section class="lp-close">
+  <h2>Have a <em>question</em>?</h2>
+  <p>For information requests, policy questions, or to exercise your rights under this policy, write to us. We'll respond in writing.</p>
+  <a class="lp-close-cta" href="mailto:info@thetalkingpoint.co.za">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M2 4h20c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm10 8.5L2.5 6h19L12 12.5z"/></svg>
+    info@thetalkingpoint.co.za
+  </a>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-brand">
+      <div class="logo"><span class="logo-plate"><img src="../assets/img/ttp-logo-navy.png" alt="The Talking Point" /></span></div>
+      <p>Real humans. No bots. No scripts. Holding space across South Africa since 2017.</p>
+      <ul class="footer-contact">
+        <li><a href="mailto:info@thetalkingpoint.co.za">info@thetalkingpoint.co.za</a></li>
+        <li><a href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20to%20someone." target="_blank" rel="noopener">WhatsApp ListenUp · +27 72 074 0289</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Reach someone</h5>
+      <ul>
+        <li><a href="../tonight.html" class="crisis-link">Tonight (crisis)</a></li>
+        <li><a href="../index.html#paths">Find your door</a></li>
+        <li><a href="../index.html#services">Why people trust us</a></li>
+        <li><a href="../someone-you-love.html">Someone you love</a></li>
+        <li><a href="../schools.html">For schools</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Emergency lines</h5>
+      <ul>
+        <li>SAPS · <strong><a href="tel:10111">10111</a></strong></li>
+        <li>GBV · <strong><a href="tel:0800428428">0800 428 428</a></strong></li>
+        <li>SADAG · <strong><a href="tel:0800567567">0800 567 567</a></strong></li>
+        <li>Ambulance · <strong><a href="tel:112">112</a></strong></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Governance</h5>
+      <ul>
+        <li>HPCSA &amp; SACSSP registered</li>
+        <li>SLA-bound clinical escalation</li>
+        <li>Confidential &amp; encrypted</li>
+        <li><a href="privacy.html" style="border-bottom:1px solid var(--hairline);padding-bottom:1px;">POPIA compliant</a></li>
+        <li><a href="complaints.html" style="border-bottom:1px solid var(--hairline);padding-bottom:1px;">Complaints policy</a></li>
+        <li><a href="ethical-conduct.html" style="border-bottom:1px solid var(--hairline);padding-bottom:1px;">Ethical conduct</a></li>
+        <li><a href="../assets/legal/paia-manual.pdf" target="_blank" rel="noopener" style="border-bottom:1px solid var(--hairline);padding-bottom:1px;">PAIA Manual (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 The Talking Point Group · <a href="../index.html" style="color:inherit;">thetalkingpoint.co.za</a></span>
+    <span>If you're in immediate danger, call <strong style="color:var(--coral);"><a href="tel:10111" style="color:inherit;">10111</a></strong></span>
+  </div>
+</footer>
+
+<!-- Persistent WhatsApp bubble (hidden by hide-whatsapp) -->
+<a class="wa-floater" href="https://wa.me/27720740289?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20to%20someone." target="_blank" rel="noopener" aria-label="Chat to us on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M27.3 4.63A15.86 15.86 0 0 0 16 0C7.16 0 0 7.16 0 16c0 2.82.74 5.56 2.14 7.98L0 32l8.24-2.15A15.9 15.9 0 0 0 16 32c8.84 0 16-7.16 16-16 0-4.27-1.66-8.28-4.7-11.37zM16 29.34a13.34 13.34 0 0 1-6.8-1.86l-.49-.29-4.88 1.27 1.3-4.75-.32-.5A13.36 13.36 0 1 1 29.36 16c0 7.35-5.99 13.34-13.36 13.34z"/></svg>
+  <span class="wa-floater-label">Chat to us</span>
+</a>
+
+</body>
+</html>
